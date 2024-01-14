@@ -1,0 +1,90 @@
+
+.navbar-upper {
+    background-color: #392F5B; /* Samme Mørk lilla bakgrunn som vi hadde på figma for øvre del av navbar */
+    color: #FFF;
+    height: 120px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 30px; 
+    border-bottom: 3px solid #C8B479; 
+  }
+  .navbar-lower {
+    background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
+    color: #000;
+    
+  }
+  .navbar-upper .navbar-brand, .navbar-upper .nav-link {
+    color: #FFF; 
+  }
+  .navbar-lower .nav-link {
+    color: #000; /* Svart tekst for nedre navbar */
+  }
+  .navbar-logo {
+    
+    height: 100px;
+    margin-right: 0;
+  }
+  .getAfterItTekst {
+    border-bottom: 2px solid #C8B479; 
+    font-size: 30px;
+    margin-top: 35px;
+  }
+  /* plasseringen av logoen og profilikonet */
+  .navbar-content {
+    display: flex;
+    
+  }
+  .navbar-toggler {
+    border-color: #C8B479;
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-color: #4B2E83;
+  }
+  .adminLogo{
+    font-size: 25px;
+   color:#C8B479;
+    
+  }
+  .shopping{
+    font-size: 25px;
+    color:#C8B479;;
+  }
+
+  .navbar-lower{
+    background-color: #D9D9D9;
+    
+  
+  }
+  
+ 
+ 
+
+  /*Dette er css for å gjøre det enda mer responsivt. Berkay...*/
+  @media (max-width: 768px) {
+    .navbar-upper {
+      height: 100px; /*For å justere navbaren større i mindre skjerm siden den er fastsatt(height) i vanlig */
+      flex-direction: column; /* vertikalt */
+      align-items: center; /* det er forå plassere midt på(altså itemene) */
+    }
+  
+    .navbar-logo {
+      height: 80px; /* logo height for mindre skjerm */
+      margin-bottom: 10px;
+      
+   
+    }
+    .adminLogo{
+      font-size: 20px;
+     
+      
+    }
+    .shopping{
+      font-size: 20px;
+      
+    }
+  
+   
+  }
+  
