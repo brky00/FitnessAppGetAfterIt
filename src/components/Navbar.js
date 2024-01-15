@@ -75,6 +75,12 @@ const Navbar = () => {
               </a>
             </div>
           </div>
+          <div className="shoppingDiv2">
+              <a href="#cart" className="ms-auto">
+                <i class="fa-solid fa-cart-shopping shopping"></i>
+              </a>
+            </div>
+          
         </div>
       </nav>
     </>

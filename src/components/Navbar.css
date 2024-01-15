@@ -73,6 +73,9 @@
  position: relative;
  left: 10px;
  }
+ .shoppingDiv2{
+  display: none;
+ }
 
 
 
@@ -108,6 +111,21 @@
       right: -5px; 
     }
    */
+   .shoppingDiv {
+   display: none;
+    }
+    .shoppingDiv2{
+      display: flex;
+     }
    
+  }
+
+  @media (max-width: 1000px){
+    .shoppingDiv2{
+      display: flex;
+     }
+     .shoppingDiv{
+      display: none;
+     }
   }
   
