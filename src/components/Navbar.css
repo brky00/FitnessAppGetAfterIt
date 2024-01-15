@@ -26,7 +26,7 @@
     margin-right: 0;
   }
   .getAfterItTekst {
-    border-bottom: 2px solid #C8B479; 
+    text-decoration: underline solid #C8B479;
     font-size: 35px;
     margin-top: 35px;
 
