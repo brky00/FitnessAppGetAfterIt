@@ -21,7 +21,7 @@ const Navbar = () => {
 
       {/* Second Navbar */}
       <nav className="navbar navbar-expand-lg navbar-lower">
-        <div className="container-fluid">
+        <div className="container">
           <button
             className="navbar-toggler"
             type="button"
@@ -70,9 +70,11 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a href="#cart" className="ms-auto">
+         <div className="shoppingDiv">
+         <a href="#cart" className="ms-auto">
             <i class="fa-solid fa-cart-shopping shopping"></i>
           </a>
+         </div>
         </div>
       </nav>
     </>
