@@ -12,9 +12,9 @@ const Navbar = () => {
           <a className="navbar-brand" href="#home">
             <img src={logoImage} alt="Logo" className="navbar-logo" />
           </a>
-          <span className="getAfterItTekst">Get After It</span>
+          <span className="getAfterItTekst mx-auto">Get After It</span>
           <a href="#profile">
-            <i class="fa-solid fa-user adminLogo"></i>
+            <i className="fa-solid fa-user adminLogo"></i>
           </a>
         </div>
       </nav>
@@ -69,12 +69,18 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
+            <div className="shoppingDiv">
+              <a href="#cart" className="ms-auto">
+                <i class="fa-solid fa-cart-shopping shopping"></i>
+              </a>
+            </div>
           </div>
-         <div className="shoppingDiv">
-         <a href="#cart" className="ms-auto">
-            <i class="fa-solid fa-cart-shopping shopping"></i>
-          </a>
-         </div>
+          <div className="shoppingDiv2">
+              <a href="#cart" className="ms-auto">
+                <i class="fa-solid fa-cart-shopping shopping"></i>
+              </a>
+            </div>
+          
         </div>
       </nav>
     </>
