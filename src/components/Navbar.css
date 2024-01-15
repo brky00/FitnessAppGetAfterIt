@@ -55,7 +55,7 @@
   }
   .shopping{
     font-size: 25px;
-    color:#C8B479;;
+    color:#C8B479;
   }
 
   .navbar-lower{
@@ -71,10 +71,10 @@
 }
 
 /* For å justere posisjonen til shopping card eller shoppingDiv hvis vi vil endre etterhvert */
- .shoppingDiv {
+ /* .shoppingDiv {
  position: relative;
  left: 10px;
- }
+ } */
  .shoppingDiv2{
   display: none;
  }
