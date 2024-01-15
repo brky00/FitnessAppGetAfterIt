@@ -1,13 +1,13 @@
 
-.navbar-upper {
-    background-color: #392F5B; /* Samme Mørk lilla bakgrunn som vi hadde på figma for øvre del av navbar */
-    color: #FFF;
-    height: 120px;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 30px; 
-    border-bottom: 3px solid #C8B479; 
+.navbar-upper { /* Samme Mørk lilla bakgrunn som vi hadde på figma for øvre del av navbar */
+  background-color: #392F5B;
+  color: #FFF;
+  height: 120px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0 30px; 
+  border-bottom: 3px solid #C8B479; 
   }
   .navbar-lower {
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
@@ -26,9 +26,13 @@
     margin-right: 0;
   }
   .getAfterItTekst {
-    text-decoration: underline solid #C8B479;
+    text-decoration: underline  #C8B479;
     font-size: 35px;
     margin-top: 35px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
 
   }
   /* plasseringen av logoen og profilikonet */
@@ -78,7 +82,6 @@
     
     
   }
-  
  
  
 
@@ -86,8 +89,9 @@
   @media (max-width: 768px) {
     .navbar-upper {
       height: 100px; /*For å justere navbaren større i mindre skjerm siden den er fastsatt(height) i vanlig */
-      flex-direction: column; /* vertikalt */
-      align-items: center; /* det er forå plassere midt på(altså itemene) */
+     
+      /* det er forå plassere midt på(altså itemene) */
+      padding: 0 0px;
     }
   
     .navbar-logo {
@@ -101,6 +105,10 @@
      
       
     }
+    .getAfterItTekst {
+      font-size: 30px;
+      margin: 0;
+  }
     /*Hvis vi ville endre posisjonen til shopping card i mindre skjerm og*/
     /* .shoppingDiv {
       right: -5px; 

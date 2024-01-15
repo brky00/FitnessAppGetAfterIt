@@ -7,14 +7,14 @@ const Navbar = () => {
   return (
     <>
       {/* Upper Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-upper">
+       <nav className="navbar navbar-expand-lg navbar-upper">
         <div className="container-fluid navbar-content">
           <a className="navbar-brand" href="#home">
             <img src={logoImage} alt="Logo" className="navbar-logo" />
           </a>
-          <span className="getAfterItTekst">Get After It</span>
+          <span className="getAfterItTekst mx-auto">Get After It</span>
           <a href="#profile">
-            <i class="fa-solid fa-user adminLogo"></i>
+            <i className="fa-solid fa-user adminLogo"></i>
           </a>
         </div>
       </nav>
