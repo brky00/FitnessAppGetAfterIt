@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
       {/* Upper Navbar */}
-       <nav className="navbar navbar-expand-lg navbar-upper">
+      <nav className="navbar navbar-expand-lg navbar-upper">
         <div className="container-fluid navbar-content">
           <a className="navbar-brand" href="#home">
             <img src={logoImage} alt="Logo" className="navbar-logo" />
@@ -69,12 +69,18 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
+            <div className="shoppingDiv">
+              <a href="#cart" className="ms-auto">
+                <i class="fa-solid fa-cart-shopping shopping"></i>
+              </a>
+            </div>
           </div>
-         <div className="shoppingDiv">
-         <a href="#cart" className="ms-auto">
-            <i class="fa-solid fa-cart-shopping shopping"></i>
-          </a>
-         </div>
+          <div className="shoppingDiv2">
+              <a href="#cart" className="ms-auto">
+                <i class="fa-solid fa-cart-shopping shopping"></i>
+              </a>
+            </div>
+          
         </div>
       </nav>
     </>

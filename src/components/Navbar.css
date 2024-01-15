@@ -13,6 +13,7 @@
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
     color: #000;
     
+    
   }
   .navbar-upper .navbar-brand, .navbar-upper .nav-link {
     color: #FFF; 
@@ -27,7 +28,7 @@
   }
   .getAfterItTekst {
     text-decoration: underline  #C8B479;
-    font-size: 35px;
+    font-size: 50px;
     margin-top: 35px;
     position: absolute;
     left: 50%;
@@ -54,34 +55,40 @@
   }
   .shopping{
     font-size: 25px;
-    color:#C8B479;;
+    color:#C8B479;
   }
 
   .navbar-lower{
     background-color: #D9D9D9;
-    
+  
+  color: #000;
   
   }
- /* Existing CSS for navbar-lower container */
+
 .navbar-lower .container {
   display: flex;
-  justify-content: space-between; /* Add this line */
+  justify-content: space-between;
 }
 
 /* For å justere posisjonen til shopping card eller shoppingDiv hvis vi vil endre etterhvert */
-/* .shoppingDiv {
-  position: relative;
-  right: -60px; 
-} */
+ /* .shoppingDiv {
+ position: relative;
+ left: 10px;
+ } */
+ .shoppingDiv2{
+  display: none;
+ }
 
-/* Additional adjustments for responsiveness */
+ .navbar-lower .navbar-nav .nav-item {
+  margin-right: 20px; 
+  margin-left: 20px; 
+}
 
-  .shopping{
-    
-    font-size: 20px;
-    
-    
-  }
+.shoppingDiv{
+  margin-left: 60px; 
+
+}
+
  
  
 
@@ -114,6 +121,21 @@
       right: -5px; 
     }
    */
+   .shoppingDiv {
+   display: none;
+    }
+    .shoppingDiv2{
+      display: flex;
+     }
    
+  }
+
+  @media (max-width: 1000px){
+    .shoppingDiv2{
+      display: flex;
+     }
+     .shoppingDiv{
+      display: none;
+     }
   }
   
