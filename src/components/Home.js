@@ -31,10 +31,8 @@ const Home = () => {
         
       </section>
 
-      {/* Contact  */}
-      <section id="contact">
-        <Contact />
-      </section>
+      
+     
 
       {/* Instagram */}
       <section id="instagram">
