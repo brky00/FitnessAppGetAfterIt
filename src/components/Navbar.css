@@ -13,7 +13,6 @@
   }
   .navbar-lower {
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
-    color: #000;
     font-family: 'Raleway', sans-serif;
     
     
@@ -24,7 +23,19 @@
   }
   .navbar-lower .nav-link {
     color: #000; /* Svart tekst for nedre navbar */
+    transition: color 0.5s, text-decoration-color 0.3s;
   }
+
+  
+  .navbar-lower .navbar-nav .nav-link:hover, 
+  .navbar-lower .navbar-nav .nav-link:focus { 
+    color: #392F5B; 
+    text-decoration: underline; 
+    text-decoration-color: #C8B479; 
+    transform: scale(1.1);
+  }
+
+
   .navbar-logo {
     
     height: 100px;
@@ -55,12 +66,24 @@
   }
   .adminLogo{
     font-size: 25px;
-   color:#C8B479;
-    
+   color:#C8B479; 
+   transition: color 0.5s,
+  }
+
+  .adminLogo:hover {
+    color: whitesmoke;
+    transform: scale(1.1);
   }
   .shopping{
     font-size: 25px;
     color:#C8B479;
+    transition: color 0.5s,
+    
+  }
+
+  .shopping:hover {
+    color: #392F5B; 
+    transform: scale(1.2);
   }
 
   .navbar-lower{
