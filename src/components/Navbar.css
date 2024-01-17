@@ -12,6 +12,8 @@
   .navbar-lower {
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
     color: #000;
+    font-family: 'Raleway', sans-serif;
+    
     
     
   }
@@ -33,6 +35,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+   
     
 
   }
