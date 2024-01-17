@@ -8,6 +8,8 @@
   align-items: center; 
   padding: 0 30px; 
   border-bottom: 3px solid #C8B479; 
+  
+  
   }
   .navbar-lower {
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
@@ -92,6 +94,12 @@
 
 }
 
+.NavbarBoth{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+}
  
  
 
