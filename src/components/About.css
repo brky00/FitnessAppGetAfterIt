@@ -9,6 +9,17 @@
     width: auto;
 }
 
+.Dbells{
+    height: 400px;
+    width: auto;
+}
+
+.Dlift{
+    height: 400px;
+    width: auto;
+}
+
+
 .container h1{
     text-decoration: underline  #C8B479;
     font-family: "Raleway", sans-serif; 

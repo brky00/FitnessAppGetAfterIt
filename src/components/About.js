@@ -2,6 +2,8 @@ import React from 'react'
 import './About.css'
 import logoImage from "./images/lionGetAfterIt.png";
 import aboutBackExercise from "./images/TestBilde-Arm.jpg";
+import dumbbellsImage from "./images/dumbbells.jpg";
+import deadliftImage from "./images/deadlift.jpg";
 
 const About = () => {
   return (
@@ -43,8 +45,14 @@ const About = () => {
       </div>
 
       <div className='row'>
-        <div className='col-8'>
+        <div className='col-lg-4'>
           <img src={aboutBackExercise} alt='backExercise' className='backExercise-image'/>
+        </div>
+        <div className='col-lg-2'>
+          <img src={dumbbellsImage} alt='DumbbellsImage' className='Dbells'/>
+        </div>
+        <div className='col-lg-3'>
+          <img src={deadliftImage} alt='deadLiftImage' className='Dlift'/>
         </div>
       </div>
 
