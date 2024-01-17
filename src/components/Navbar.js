@@ -7,6 +7,7 @@ const Navbar = () => {
   return (
     <>
       {/* Upper Navbar */}
+      <div className="NavbarBoth">
       <nav className="navbar navbar-expand-lg navbar-upper">
         <div className="container-fluid navbar-content">
           <a className="navbar-brand" href="#home">
@@ -83,6 +84,8 @@ const Navbar = () => {
           
         </div>
       </nav>
+      </div>
+      
     </>
   );
 };
