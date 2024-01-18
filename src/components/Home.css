@@ -38,6 +38,8 @@
   .btn:hover {
     background-color: #dddddd; /* Endrer bittelitt farge ved hover, men det skal jeg evt endre etterhvert. sånn foreløpig */
   }
+
+ 
   
   @media (max-width: 768px) {
     .background-video video {
@@ -47,14 +49,10 @@
     }
 
     .btn {
-      
-     
-     
-     
-     
       font-size: 25px;
       font-family: sans-serif;
       width: 140px;
       
     }
+    
 }
