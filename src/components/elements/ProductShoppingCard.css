@@ -10,11 +10,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
   .plus {
-    font-size: 7rem;
+    font-size: 4rem;
     font-family:emoji;
     color: #C8B479;
     
@@ -26,24 +26,23 @@
     background-color: #392F5B; 
     border: none;
     color: white; 
-    padding: 0; 
-    font-size: 1rem; /* Büyük sembol için font boyutu */
+    padding: 0;
     font-weight: 100; /* Kalınlık için */
     /* Sembolün dikey hizalanması */
     
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
   
   
     .minus{
-            font-size: 9rem;
+            font-size: 4rem;
             font-family: math;
             color: #C8B479;
-            transform: scale(1.5, 1); 
+            transform: scale(2.2, 1); 
             
             
            
@@ -60,8 +59,8 @@
   
   .quantity-input {
     padding: 10px 20px;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     font-size: 1.8rem;
   }
 
