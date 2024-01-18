@@ -73,14 +73,14 @@ const Navbar = () => {
 
               <div className="shoppingDiv">
                 <Link className="shopping1" to="/shopping">
-                <i class="fa-solid fa-cart-shopping shopping"></i>
+                  <i class="fa-solid fa-cart-shopping shopping"></i>
                 </Link>
               </div>
             </div>
             <div className="shoppingDiv2">
-              <a href="#cart" className="ms-auto">
+              <Link className="shopping2" to="/shopping">
                 <i class="fa-solid fa-cart-shopping shopping"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

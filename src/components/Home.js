@@ -20,7 +20,7 @@ const Home = () => {
           <div className="buttons-container">
             <button className="btn">
               <Link className="nav-link" to="/merch">
-                MERCH
+                Merch
               </Link>
             </button>
             <button className="btn">Packages</button>
