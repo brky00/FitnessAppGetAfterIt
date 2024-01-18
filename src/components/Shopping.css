@@ -1,0 +1,60 @@
+.size-box {
+    width: 80px;
+    height: 80px;
+    background-color: #d9d9d9;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity-container {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity-btn {
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .minus,
+  .plus {
+    font-size: 13rem;
+    position: absolute;
+    bottom: -95px;
+    font-weight: 100;
+  }
+  
+  .plus {
+    font-size: 8rem;
+    bottom: -44px;
+  }
+  
+  .quantity-input {
+    padding: 10px 20px;
+    width: 80px;
+    height: 80px;
+    font-size: 1.2rem;
+  }
+
+  .sCardContainer{
+    
+    background-color: aquamarine;
+    margin-top: 50px;
+  }
+  
+  @media (max-width: 768px){
+    .sCardContainer{
+    
+      
+        margin-top: 0;
+        
+      }
+
+  }
+ 
