@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./ProductShoppingCard.css";
 
 const ProductShoppingCard = ({ imgSrc, size, quantity, price }) => {
   return (
@@ -11,19 +12,21 @@ const ProductShoppingCard = ({ imgSrc, size, quantity, price }) => {
       </div>
       <div className="col d-flex align-items-center justify-content-center">
         <div className="quantity-container">
-          <button className="btn bg-primary d-flex align-items-center quantity-btn">
+          <button className="btn d-flex align-items-center justify-content-center quantity-btn-minus">
             <span className="minus">-</span>
           </button>
           <input
             type="text"
-            className=" text-center quantity-input"
-            value={quantity} 
+            className="form-control text-center quantity-input"
+            value={quantity}
           />
-          <button className="btn bg-primary d-flex align-items-center quantity-btn">
+
+          <button className="btn d-flex align-items-center justify-content-center quantity-btn-plus">
             <span className="plus">+</span>
           </button>
         </div>
       </div>
+
       <div className="col d-flex align-items-center justify-content-center">
         {`NOK ${price}`}
       </div>

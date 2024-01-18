@@ -9,7 +9,7 @@ const products = [];
 const newProduct = {
   imgSrc: hoodie,
   size: "L",
-  quantity: 1,
+  quantity: 1, 
   price: 150,
 };
 const newProductsArray = [...products, newProduct];

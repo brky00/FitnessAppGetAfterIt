@@ -1,0 +1,68 @@
+.quantity-btn-plus {
+    background-color: #392F5B; 
+    border: none;
+    color: white; 
+    padding: 0; 
+    font-size: 1rem; /* Büyük sembol için font boyutu */
+    font-weight: 100; /* Kalınlık için */
+    line-height: 1; /* Sembolün dikey hizalanması */
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+  }
+  .plus {
+    font-size: 7rem;
+    font-family:emoji;
+    color: #C8B479;
+    
+    
+  }
+  
+
+  .quantity-btn-minus{
+    background-color: #392F5B; 
+    border: none;
+    color: white; 
+    padding: 0; 
+    font-size: 1rem; /* Büyük sembol için font boyutu */
+    font-weight: 100; /* Kalınlık için */
+    /* Sembolün dikey hizalanması */
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+  }
+  
+  
+    .minus{
+            font-size: 9rem;
+            font-family: math;
+            color: #C8B479;
+            transform: scale(1.5, 1); 
+            
+            
+           
+         
+    }
+  
+
+  .quantity-container {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity-input {
+    padding: 10px 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  
