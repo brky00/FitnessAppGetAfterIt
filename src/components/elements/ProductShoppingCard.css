@@ -109,6 +109,9 @@ body {
   height: 150px;
   width: auto;
 }
+.form-control{
+  background-color: #F3E8E8;
+}
 
 /*responsive kode kommer til å bli fjernet på større skjerm her.*/
 .responsive-product{
@@ -154,8 +157,10 @@ body {
     width: 35px;
     height: 35px;
     font-size: 1.8rem;
+   
  
   }
+  
 
   .non-responsive-product{
     display: none;

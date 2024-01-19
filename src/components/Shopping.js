@@ -25,7 +25,7 @@ const Shopping = () => {
   return (
     <div>
       <div className="container sCardContainer">
-        <div>
+        <div className="row onlyProducterContainer ">
           {/* Product */}
           <div className="row text-center mb-2 sCardTitler">
             <div className="col">Product</div>
