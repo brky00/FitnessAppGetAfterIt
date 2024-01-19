@@ -1,56 +1,53 @@
 import React from "react";
-import "./Shopping.css";
 import hoodie from "./images/hoodieGti.png";
 import short from "./images/shortGti.png";
 import ProductShoppingCard from "./elements/ProductShoppingCard";
+import "./Shopping.css";
 
-// Örnek ürün verileri
+// Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
 const products = [];
 const newProduct = {
   imgSrc: hoodie,
   size: "L",
-  quantity: 1, 
+  quantity: 1,
   price: 150,
 };
 const newProductsArray = [...products, newProduct];
 const newProduct2 = {
   imgSrc: short,
-  size: "L",
-  quantity: 1,
-  price: 150,
+  size: "M",
+  quantity: 2,
+  price: 300,
 };
 const newProductsArray2 = [...newProductsArray, newProduct];
 
 const Shopping = () => {
   return (
-    
-    
-    <div className="container sCardContainer">
-      <div>
-        <div className="row text-center mb-2">
-          <div className="col">Product</div>
-          <div className="col">Size</div>
-          <div className="col">Quantity</div>
-          <div className="col">Price</div>
+    <div>
+      <div className="container sCardContainer">
+        <div>
+          {/* Product */}
+          <div className="row text-center mb-2 sCardTitler">
+            <div className="col">Product</div>
+            <div className="col">Size</div>
+            <div className="col">Quantity</div>
+            <div className="col">Price</div>
+          </div>
+          <ProductShoppingCard
+            imgSrc={newProduct.imgSrc}
+            size={newProduct.size}
+            quantity={newProduct.quantity}
+            price={newProduct.price}
+          />
+
+          <ProductShoppingCard
+            imgSrc={newProduct2.imgSrc}
+            size={newProduct2.size}
+            quantity={newProduct2.quantity}
+            price={newProduct2.price}
+          />
         </div>
-
-        {/* Product */}
-
-        <ProductShoppingCard
-          imgSrc={newProduct.imgSrc}
-          size={newProduct.size}
-          quantity={newProduct.quantity}
-          price={newProduct.price}
-        />
-
-        <ProductShoppingCard
-          imgSrc={newProduct2.imgSrc}
-          size={newProduct2.size}
-          quantity={newProduct2.quantity}
-          price={newProduct2.price}
-        />
-
-        {/* Summary Row */}
+        {/* Summary Row start*/}
         <div className="row">
           <div className="col-md-4 offset-md-8 d-flex justify-content-between">
             <div>Total products:</div>
@@ -71,6 +68,7 @@ const Shopping = () => {
             <div>NOK 440</div>
           </div>
         </div>
+        {/* Summary Row end*/}
 
         {/* Action Buttons */}
         <div className="row">
