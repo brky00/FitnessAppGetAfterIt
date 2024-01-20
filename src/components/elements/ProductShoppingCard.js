@@ -1,22 +1,33 @@
 import React from "react";
 import "./ProductShoppingCard.css";
 
-const ProductShoppingCard = ({ imgSrc, size, quantity, price }) => {
+const ProductShoppingCard = ({ image, size, quantity, price,productName }) => {
   return (
-    <div className="sCardContainer2">
-      <div className="non-responsive-product">
-        <div className="row mb-3 productRow mt-3 mb-3">
-          <div className="d-flex col-md-3 col-sm-12 productImgCol ">
-            <img
-              src={imgSrc}
+    <div className="productCardContainer">
+      <div className="product">
+        <div className="row mb-3 mt-3 mb-3 productRow ">
+          <div className="d-flex col-md-3 col-sm-12 productImgCol justify-content-center ">
+           <div className="row d-flex d-flex justify ">
+            <div className="col-sm-12 d-flex justify-content-center mb-1">
+            <span className="responsiveProductTittel">{productName}</span>
+            </div>
+          <div className="col-sm-12 d-flex justify-content-center ">
+          <img
+              src={image}
               alt="product"
-              className="img-thumbnail productImg mb-3"
+              className="img-thumbnail productImg mb-2"
             />
           </div>
-          <div className="col d-flex align-items-center justify-content-center">
-            <span className="size-box">{size}</span>
+           </div>
           </div>
-          <div className="col d-flex align-items-center justify-content-center">
+          <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mb-1">
+
+           <div className="d-flex align-items-center"> 
+           <span className="me-2 responsiveSizeTittel">Size</span>
+           <span className="size-box">{size}</span>
+           </div>
+          </div>
+          <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mt-1 mb-2">
             <div className="quantity-container">
               <button className="btn d-flex align-items-center justify-content-center quantity-btn-plus">
                 <span className="plus">+</span>
@@ -34,27 +45,14 @@ const ProductShoppingCard = ({ imgSrc, size, quantity, price }) => {
             </div>
           </div>
 
-          <div className="col d-flex align-items-center justify-content-center">
+          <div className="col-md-3 col-sm-12 d-flex align-items-center justify-content-center">
             <span className="productPrice d-flex align-items-center justify-content-center">
               {`NOK ${price}`}
             </span>
           </div>
         </div>
       </div>
-      {/* responsive container system start */}
-      <div className="responsive-product">
-        <div className="row">
-          <div className="col-sm-6 ">
-            <img
-              src={imgSrc}
-              alt="product"
-              className="img-thumbnail productImg "
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Responsive container system end */}
+      
     </div>
   );
 };

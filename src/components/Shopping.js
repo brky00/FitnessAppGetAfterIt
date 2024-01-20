@@ -7,6 +7,7 @@ import "./Shopping.css";
 // Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
 const products = [];
 const newProduct = {
+  productName:"tshirt",
   imgSrc: hoodie,
   size: "L",
   quantity: 1,
@@ -14,6 +15,7 @@ const newProduct = {
 };
 const newProductsArray = [...products, newProduct];
 const newProduct2 = {
+  productName:"short",
   imgSrc: short,
   size: "M",
   quantity: 2,
@@ -28,20 +30,22 @@ const Shopping = () => {
         <div className="row onlyProducterContainer ">
           {/* Product */}
           <div className="row text-center mb-2 sCardTitler">
-            <div className="col">Product</div>
-            <div className="col">Size</div>
-            <div className="col">Quantity</div>
-            <div className="col">Price</div>
+            <div className="col-md-3 col-lg-3">Product</div>
+            <div className="col-md-3 col-lg-3">Size</div>
+            <div className="col-md-3 col-lg-3">Quantity</div>
+            <div className="col-md-3 col-lg-3">Price</div>
           </div>
           <ProductShoppingCard
-            imgSrc={newProduct.imgSrc}
+          productName={newProduct.productName}
+            image={newProduct.imgSrc}
             size={newProduct.size}
             quantity={newProduct.quantity}
             price={newProduct.price}
           />
 
           <ProductShoppingCard
-            imgSrc={newProduct2.imgSrc}
+          productName={newProduct2.productName}
+            image={newProduct2.imgSrc}
             size={newProduct2.size}
             quantity={newProduct2.quantity}
             price={newProduct2.price}

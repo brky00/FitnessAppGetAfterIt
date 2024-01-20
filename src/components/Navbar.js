@@ -40,14 +40,14 @@ const Navbar = () => {
             >
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link" href="/#home">
+                  <Link className="nav-link" to="/">
                     HOME
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/contact">
+                  <Link className="nav-link" to="/contact">
                     CONTACT
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/merch">

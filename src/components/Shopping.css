@@ -10,12 +10,9 @@
 
 
 @media (max-width: 768px) {
-    .non-responsive-product{
-        display: none;     
-    }
     .sCardTitler{
         display: none;
-
     }
-
+    
+   
 }
