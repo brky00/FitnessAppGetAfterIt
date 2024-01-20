@@ -1,0 +1,195 @@
+body {
+  background-color: #d9d9d9;
+}
+.responsiveSizeTittel,.responsiveProductTittel{
+  display:none;
+}
+
+.sCardContainer {
+  background-color: #ffffff;
+  margin-top: 50px;
+}
+/* Dette justerer mellomrommet mellom product radet og titlene(product size osv.)
+ .sCardContainer2 {
+  
+  margin-top: 20px;
+} */
+
+.productRow{
+  border-bottom: solid #c8b479;
+  margin-left: 8px;
+  margin-right: 8px;
+  
+  
+
+}
+.responsiveProduct{
+  display: none;
+}
+
+
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-box {
+  width: 80px;
+  height: 80px;
+  background-color: #d9d9d9;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-size: 2rem;
+}
+
+.quantity-btn-plus {
+  background-color: #392f5b;
+  border: none;
+  color: white;
+  padding: 0;
+  font-weight: 100;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+.plus {
+  font-size: 4rem;
+  font-family: emoji;
+  color: #c8b479;
+}
+
+.quantity-btn-minus {
+  background-color: #392f5b;
+  border: none;
+  color: white;
+  padding: 0;
+  font-weight: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+}
+
+.minus {
+  font-size: 4rem;
+  font-family: math;
+  color: #c8b479;
+
+  transform: scale(
+    2.2,
+    1
+  ); /*Dette er for å utvide symbolen i x eksenen litt mer*/
+}
+
+.quantity-input {
+  padding: 10px 20px;
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+  border: solid #c8b479;
+}
+.productPrice {
+  font-size: xx-large;
+  font-family: sans-serif;
+  background-color: #d9d9d9;
+  height: 40%;
+  width: 160px;
+  border: 1px solid;
+  
+}
+
+.productImgCol{
+  
+}
+.productImg{
+  height: 150px;
+  width: auto;
+}
+.form-control{
+  background-color: #F3E8E8;
+}
+
+/*responsive kode kommer til å bli fjernet på større skjerm her.*/
+
+
+@media (max-width: 768px) {
+  .sCardContainer {
+    margin-top: 0;
+  }
+  .responsiveTittel{
+    display:flex;
+  }
+
+  .size-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    font-size: 1rem;
+  }
+
+  .sCardTitler {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .quantity-btn-plus {
+    width: 35px;
+    height: 35px;
+  }
+  .plus {
+    font-size: 3rem;
+  
+ 
+  }
+  .quantity-btn-minus {
+    width: 35px;
+    height: 35px;
+    
+  }
+  .minus{
+    font-size: 3rem;
+   
+  }
+  .quantity-input {
+    width: 45px;
+    height: 35px;
+    font-size: 1.8rem;
+
+    padding: 0px 0px;
+ 
+  font-size: 1.8rem;
+  border: solid #c8b479;
+   
+ 
+  }
+
+  .productPrice {
+    font-size: x-large;
+    font-family: "Times New Roman, Times, serif";
+    background-color: #d9d9d9;
+    height: 80%;
+    width: 160px;
+    
+    
+  }
+  .responsiveSizeTittel{
+    font-size: x-large;
+    
+    
+  }
+  .responsiveSizeTittel,.responsiveProductTittel{
+    display:flex;
+  }
+  
+
+}
