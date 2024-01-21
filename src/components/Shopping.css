@@ -13,6 +13,8 @@
     .sCardTitler{
         display: none;
     }
-    
+    .sCardContainer {
+       margin-top: 0;
+    }
    
 }

@@ -27,7 +27,9 @@ const Shopping = () => {
   return (
     <div>
       <div className="container sCardContainer">
-        <div className="row onlyProducterContainer ">
+        <div className="row">
+          <div className="col">
+          <div className="onlyProducterContainer ">
           {/* Product */}
           <div className="row text-center mb-2 sCardTitler">
             <div className="col-md-3 col-lg-3">Product</div>
@@ -50,6 +52,9 @@ const Shopping = () => {
             quantity={newProduct2.quantity}
             price={newProduct2.price}
           />
+        </div>
+          </div>
+
         </div>
         {/* Summary Row start*/}
         <div className="row">
