@@ -1,7 +1,7 @@
 body {
   background-color: #d9d9d9;
 }
-.responsiveSizeTittel,.responsiveProductTittel{
+.responsiveSizeTittel{
   display:none;
 }
 
@@ -26,7 +26,9 @@ body {
 .responsiveProduct{
   display: none;
 }
-
+.productTittel{
+  font-size: 22px;
+}
 
 
 .quantity-container {
@@ -172,11 +174,11 @@ body {
   }
 
   .productPrice {
-    font-size: 25px;
+    font-size: 22px;
     font-family: "Times New Roman, Times, serif";
     background-color: #d9d9d9;
     height: 80%;
-    width: 160px;
+    width: 150px;
     
     
   }

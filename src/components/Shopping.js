@@ -7,7 +7,7 @@ import "./Shopping.css";
 // Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
 const products = [];
 const newProduct = {
-  productName:"Tshirt",
+  productName:"Get After It Hoodie",
   imgSrc: hoodie,
   size: "L",
   quantity: 1,

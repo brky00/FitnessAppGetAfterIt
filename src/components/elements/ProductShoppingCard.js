@@ -9,7 +9,7 @@ const ProductShoppingCard = ({ image, size, quantity, price,productName }) => {
           <div className="d-flex col-md-3 col-sm-12 productImgCol justify-content-center ">
            <div className="row d-flex d-flex justify ">
             <div className="col-sm-12 d-flex justify-content-center mb-1">
-            <span className="responsiveProductTittel">{productName}</span>
+            <span className="productTittel">{productName}</span>
             </div>
           <div className="col-sm-12 d-flex justify-content-center productImgDiv">
           <img
