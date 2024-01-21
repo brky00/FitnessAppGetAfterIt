@@ -57,37 +57,39 @@ const Shopping = () => {
 
         </div>
         {/* Summary Row start*/}
-        <div className="row">
-          <div className="col-md-4 offset-md-8 d-flex justify-content-between">
-            <div>Total products:</div>
-            <div>2</div>
-          </div>
-        </div>
+        {/* Summary Row start*/}
+<div className="row">
+  <div className="col-md-4 mx-auto d-flex justify-content-between">
+    <div>Total products:</div>
+    <div>2</div>
+  </div>
+</div>
 
-        <div className="row">
-          <div className="col-md-4 offset-md-8 d-flex justify-content-between">
-            <div>Delivery</div>
-            <div>NOK 0.0</div>
-          </div>
-        </div>
+<div className="row">
+  <div className="col-md-4 mx-auto d-flex justify-content-between">
+    <div>Delivery</div>
+    <div>NOK 0.0</div>
+  </div>
+</div>
 
-        <div className="row mb-3">
-          <div className="col-md-4 offset-md-8 d-flex justify-content-between">
-            <div>Total</div>
-            <div>NOK 440</div>
-          </div>
-        </div>
-        {/* Summary Row end*/}
+<div className="row mb-3">
+  <div className="col-md-4 mx-auto d-flex justify-content-between">
+    <div>Total</div>
+    <div>NOK 440</div>
+  </div>
+</div>
+{/* Summary Row end*/}
 
-        {/* Action Buttons */}
-        <div className="row">
-          <div className="col-md-2 offset-md-8 mb-3">
-            <button className="contiuneButton">Continue Shopping</button>
-          </div>
-          <div className="col-md-2">
-            <button className="checkoutButton">Checkout</button>
-          </div>
-        </div>
+{/* Action Buttons */}
+<div className="row">
+  <div className="col-md-2 mx-auto mb-3 d-flex justify-content-between">
+    <button className="contiuneButton">Continue Shopping</button>
+  </div>
+  <div className="col-md-2 mx-auto">
+    <button className="checkoutButton">Checkout</button>
+  </div>
+</div>
+
       </div>
     </div>
   );
