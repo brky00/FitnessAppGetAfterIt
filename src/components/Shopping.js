@@ -7,7 +7,7 @@ import "./Shopping.css";
 // Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
 const products = [];
 const newProduct = {
-  productName:"tshirt",
+  productName:"Tshirt",
   imgSrc: hoodie,
   size: "L",
   quantity: 1,
@@ -15,7 +15,7 @@ const newProduct = {
 };
 const newProductsArray = [...products, newProduct];
 const newProduct2 = {
-  productName:"short",
+  productName:"Short",
   imgSrc: short,
   size: "M",
   quantity: 2,
