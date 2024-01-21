@@ -8,6 +8,12 @@
    
   }
 
+  .summaryDiv{
+    font-family: sans-serif;
+    font-size: large;
+    
+  }
+
 
 @media (max-width: 768px) {
     .sCardTitler{
