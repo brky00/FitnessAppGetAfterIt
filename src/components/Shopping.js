@@ -82,10 +82,8 @@ const Shopping = () => {
 
 {/* Action Buttons */}
 <div className="row">
-  <div className="col-md-2 mx-auto mb-3 d-flex justify-content-between">
+  <div className="col-sm-4 col-md-4 col-lg-4 mx-auto mb-3 d-flex justify-content-between">
     <button className="contiuneButton">Continue Shopping</button>
-  </div>
-  <div className="col-md-2 mx-auto">
     <button className="checkoutButton">Checkout</button>
   </div>
 </div>
