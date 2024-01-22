@@ -56,7 +56,16 @@
     color: #ffffff;
     border-radius: 8px;
     padding: 10px 15px;
-    
+    transition: background-color 0.5s ease;
+  }
+
+  .checkoutButton:hover {
+    background-color: #dddddd; 
+    transform: scale(1.1);
+  }
+  .contiuneButton:hover{
+    background-color: #dddddd; 
+    transform: scale(1.1);
   }
   
 
