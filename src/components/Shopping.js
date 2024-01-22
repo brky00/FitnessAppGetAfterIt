@@ -7,7 +7,7 @@ import "./Shopping.css";
 // Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
 const products = [];
 const newProduct = {
-  productName:"Get After It Hoodie",
+  productName: "Get After It Hoodie",
   imgSrc: hoodie,
   size: "L",
   quantity: 1,
@@ -15,7 +15,7 @@ const newProduct = {
 };
 const newProductsArray = [...products, newProduct];
 const newProduct2 = {
-  productName:"Short",
+  productName: "Short",
   imgSrc: short,
   size: "M",
   quantity: 2,
@@ -29,60 +29,55 @@ const Shopping = () => {
       <div className="container sCardContainer">
         <div className="row">
           <div className="col">
-          <div className="onlyProducterContainer ">
-          {/* Product */}
-          <div className="row text-center mb-2 sCardTitler">
-            <div className="col-md-3 col-lg-3">Product</div>
-            <div className="col-md-3 col-lg-3">Size</div>
-            <div className="col-md-3 col-lg-3">Quantity</div>
-            <div className="col-md-3 col-lg-3">Price</div>
-          </div>
-          <ProductShoppingCard
-          productName={newProduct.productName}
-            image={newProduct.imgSrc}
-            size={newProduct.size}
-            quantity={newProduct.quantity}
-            price={newProduct.price}
-          />
+            <div className="onlyProducterContainer ">
+              {/* Product */}
+              <div className="row text-center mb-2 sCardTitler">
+                <div className="col-md-3 col-lg-3">Product</div>
+                <div className="col-md-3 col-lg-3">Size</div>
+                <div className="col-md-3 col-lg-3">Quantity</div>
+                <div className="col-md-3 col-lg-3">Price</div>
+              </div>
+              <ProductShoppingCard
+                productName={newProduct.productName}
+                image={newProduct.imgSrc}
+                size={newProduct.size}
+                quantity={newProduct.quantity}
+                price={newProduct.price}
+              />
 
-          <ProductShoppingCard
-          productName={newProduct2.productName}
-            image={newProduct2.imgSrc}
-            size={newProduct2.size}
-            quantity={newProduct2.quantity}
-            price={newProduct2.price}
-          />
-        </div>
+              <ProductShoppingCard
+                productName={newProduct2.productName}
+                image={newProduct2.imgSrc}
+                size={newProduct2.size}
+                quantity={newProduct2.quantity}
+                price={newProduct2.price}
+              />
+            </div>
           </div>
-
         </div>
         {/* Summary Row start*/}
-        {/* Summary Row start*/}
-<div className="row">
-  <div className="col-md-4 mx-auto d-flex justify-content-between">
-    <div>Total products:</div>
-    <div>2</div>
+        <div className="d-flex justify-content-center">
+        <h1 className="summaryTitle">Summary</h1>
+        </div>
+        
+        <div className="d-flex justify-content-center align-items-center flex-wrap summaryContainer" >
+          
+  <div className="d-flex summaryDiv">
+    <span className="summaryContent">Total products:</span> <span>2</span>
+  </div>
+  <div className="d-flex summaryDiv">
+    <span className="summaryContent">Delivery:</span> <span>NOK 0.0</span>
+  </div>
+  <div className="d-flex summaryDiv">
+    <span className="d-flex summaryContentSum align-items-center">Sum:</span> <span className="summaryNok">NOK 450.00</span>
   </div>
 </div>
 
-<div className="row">
-  <div className="col-md-4 mx-auto d-flex justify-content-between">
-    <div>Delivery</div>
-    <div>NOK 0.0</div>
-  </div>
-</div>
+        {/* Summary Row end*/}
 
-<div className="row mb-3">
-  <div className="col-md-4 mx-auto d-flex justify-content-between">
-    <div>Total</div>
-    <div>NOK 440</div>
-  </div>
-</div>
-{/* Summary Row end*/}
-
-{/* Action Buttons */}
-<div className="row">
-  <div className="col-sm-4 col-md-4 col-lg-4 mx-auto mb-3 d-flex justify-content-between">
+        {/* Action Buttons */}
+        <div className="row">
+  <div className="col-md-12 col-lg-12 col-sm-12 button-container d-flex justify-content-center">
     <button className="contiuneButton">Continue Shopping</button>
     <button className="checkoutButton">Checkout</button>
   </div>

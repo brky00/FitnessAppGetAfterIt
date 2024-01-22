@@ -7,12 +7,58 @@
     margin-top: 15px;
    
   }
+  .summaryContainer{
+    gap: 30px;
+    padding: 10px;
+  }
 
-  .summaryDiv{
+  .summaryDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: sans-serif;
     font-size: large;
+    background-color: #D9D9D9;
+    height: 52px;
+    padding: 30px 20px 30px 20px; /* Yatay padding ayarı, içeriğe bağlı olarak genişliği ayarlar */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 18px;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+  
+ .summaryTitle{
+  font-size: 35px;
+    font-family: Arial, sans-serif;
+ }
+  
+  .summaryContentSum{
+    font-weight: bold;
+  }
+  .summaryNok{
+    font-weight: 600;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 80px; /* gap mellom butonner */
+    margin-bottom: 30px;
+  }
+
+  .contiuneButton, .checkoutButton{
+    font-family: Arial, sans-serif;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    font-size: 19px;
+    border: 2px #c8b479 solid;
+    background-color: #392f5b;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 15px;
     
   }
+  
 
 
 @media (max-width: 768px) {
@@ -21,6 +67,60 @@
     }
     .sCardContainer {
        margin-top: 0;
+     
+    }
+
+    .summaryContainer {
+      gap: 0; /* İçerikler arası boşluk azaltıldı */
+      padding: 5px;
+    }
+
+
+    .summaryDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      font-size: large;
+      background-color: #D9D9D9;
+      padding: 0; /* Dikey padding düşürüldü */
+      margin-top: 1px; /* Üstteki boşluk azaltıldı */
+      margin-bottom: 3px; /* Alt boşluk azaltıldı */
+      border: 1px solid;
+      border-radius: 3px;
+      width: 250px;
+      height: 25px;
+    }
+  
+    
+
+    .summaryContentSum{
+     
+    }
+    .summaryNok{
+     
+    }
+  
+    .button-container {
+      display: flex;
+      gap: 30px; /* gap mellom butonner */
+      margin-bottom: 20px;
+    }
+  
+    .contiuneButton, .checkoutButton{
+      margin-top: 10px;
+      margin-bottom: 25px;
+      font-size: 18px;
+      border: 2px #c8b479 solid;
+      background-color: #392f5b;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 6px 8px;
+      
+    }
+    .summaryTitle{
+      font-size: 22px;
+      
     }
    
 }

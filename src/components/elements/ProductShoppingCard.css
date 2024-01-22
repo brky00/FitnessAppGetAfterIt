@@ -28,6 +28,8 @@ body {
 }
 .productTittel{
   font-size: 22px;
+  font-family: Arial, sans-serif;
+  text-decoration: underline  #392f5b;
 }
 
 
@@ -47,6 +49,7 @@ body {
   justify-content: center;
   border: 1px solid;
   font-size: 2rem;
+  border-radius: 3px;
 }
 
 .quantity-btn-plus {
@@ -107,12 +110,12 @@ body {
   height: 40%;
   width: 160px;
   border: 1px solid;
+  margin-bottom: 10px;
+  border-radius: 3px;
   
 }
 
-.productImgCol{
-  
-}
+
 .productImg{
   height: 150px;
   width: auto;
