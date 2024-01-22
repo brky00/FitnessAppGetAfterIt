@@ -30,6 +30,7 @@ body {
   font-size: 22px;
   font-family: Arial, sans-serif;
   text-decoration: underline  #392f5b;
+  text-align: center;
 }
 
 
@@ -108,10 +109,13 @@ body {
   font-family: sans-serif;
   background-color: #d9d9d9;
   height: 40%;
-  width: 160px;
+  width: auto;
   border: 1px solid;
   margin-bottom: 10px;
   border-radius: 3px;
+ 
+  
+  
   
 }
 
@@ -178,10 +182,11 @@ body {
 
   .productPrice {
     font-size: 22px;
+    
     font-family: "Times New Roman, Times, serif";
     background-color: #d9d9d9;
-    height: 80%;
-    width: 150px;
+    max-height: 50px;
+    padding: 5px;
     
     
   }
