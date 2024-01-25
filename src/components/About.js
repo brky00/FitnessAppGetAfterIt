@@ -26,8 +26,8 @@ const About = () => {
             With years of combined experience, relentless passion, and an unyielding commitment to our craft, 
             we've honed our expertise as personal trainers to bring you fitness solutions that truly make a difference. 
 
-          </p>
-            </div>
+            </p>
+          </div>
           </div>
 
           <div className='row'>
@@ -49,7 +49,7 @@ const About = () => {
           <img src={aboutBackExercise} alt='backExercise' className='backExercise-image'/>
         </div>
         <div className='col-lg-2'>
-          <img src={dumbbellsImage} alt='DumbbellsImage' className='Dbells'/>
+          
         </div>
         <div className='col-lg-3'>
           <img src={deadliftImage} alt='deadLiftImage' className='Dlift'/>

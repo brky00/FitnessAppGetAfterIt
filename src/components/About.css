@@ -1,7 +1,7 @@
 .navbar-logo-about{
-    height: 300px;
+    height: 280px;
     width: auto;
-   
+    margin-right: auto;
 }
 
 .backExercise-image{
@@ -27,5 +27,5 @@
 
 .p{
     font-family: "Raleway", sans-serif; 
-
+    
 }
