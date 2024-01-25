@@ -5,7 +5,13 @@ import Packages from "./Packages";
 import { Link } from "react-router-dom";
 import getAfterItAnimation from "./videos/getafter_it_animation.mp4";
 import "./Home.css";
-
+import Footer from "./Footer";
+import "./Footer.css";
+import Merch from "./Merch";
+import "./Merch.css";
+import hoodie from './images/hoodie.png';
+import shorts from './images/shorts.png';
+import Jakke from './images/jakke.png';
 // importerte componenter er ovenfor...
 
 const Home = () => {
@@ -42,6 +48,9 @@ const Home = () => {
       <section id="packages">
         <Packages />
       </section>
+     
+      {/*Footer */}
+      <Footer />
     </>
   );
 };

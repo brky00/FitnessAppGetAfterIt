@@ -1,6 +1,6 @@
 footer{
     position: relative;
-    background: rgb(213, 213, 213);
+    background: #392F5B;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -29,7 +29,7 @@ footer .content .top{
 }
 
 .content .top .logo-details{
-    color: rgb(0, 0, 0);
+    color: #C8B479;
     font-size: 50px;
 }
 
@@ -95,7 +95,7 @@ footer .content .link-boxes .box{
     width: calc(100% / 5 - 10px);
 }
 .content .link-boxes .box .link_name{
-    color: #000000;
+    color: #C8B479;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 10px;
@@ -108,7 +108,7 @@ footer .content .link-boxes .box{
     bottom: -2px;
     height: 2px;
     width: 35px;
-    background: #000000;
+    background: #C8B479;
 }
 .content .link-boxes .box li{
     margin: 6px 0;
@@ -116,7 +116,7 @@ footer .content .link-boxes .box{
 }
 
 .content .link-boxes .box li a{
-    color: #000000;
+    color: #ffffff;
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
@@ -145,11 +145,11 @@ footer .content .link-boxes .box{
     border-radius: 4px;
     padding: 0 10px;
     font-size: 15px;
-    color: #000000;
+    color: #C8B479;
     margin-top:5px;
 }
 .link-boxes .input-box input::placeholder{
-    color: #000000;
+    color: hwb(0 0% 100%);
     font-size: 16px;
 }
 .link-boxes .input-box input[type="button"]{
@@ -170,7 +170,7 @@ footer .content .link-boxes .box{
 
 footer .bottom-details{
     width: 100%;
-    background: #151515;
+    background: #000000;
 }
 footer .bottom-details .bottom_text{
     max-width: 1250px;
@@ -244,4 +244,43 @@ footer .bottom-details .bottom_text{
     footer .contet .link-boxes .input-box{
         width: 100%;
     }
+    
+}
+.finish{
+    background-color: #151515;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    color: #C09A65;
+    list-style: none;
+}
+
+.box{
+    margin-top: 20px;
+    list-style: none;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.logo-details{
+    margin-left: 4.5%;
+}
+
+@media(max-width: 700px){
+    .finish{
+        font-size: 12px;
+    }
+}
+
+.footer-bottom{
+    width: 100%;
+    background: #151515;
+    color: white;
+}
+.footer-bottom {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
 }
