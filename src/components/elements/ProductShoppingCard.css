@@ -7,7 +7,8 @@ body {
 
 .sCardContainer {
   background-color: #ffffff;
-  margin-top: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 /* Dette justerer mellomrommet mellom product radet og titlene(product size osv.)
  .sCardContainer2 {
@@ -99,7 +100,8 @@ body {
 
 .quantity-input {
   padding: 10px 20px;
-  width: 38%;
+  width: auto;
+  width: 25%;
   height: 60px;
   font-size: 1.8rem;
   border: solid #c8b479;
