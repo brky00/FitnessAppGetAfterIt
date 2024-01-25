@@ -2,22 +2,22 @@ import React from 'react'
 import './About.css'
 import logoImage from "./images/lionGetAfterIt.png";
 import aboutBackExercise from "./images/TestBilde-Arm.jpg";
-import dumbbellsImage from "./images/dumbbells.jpg";
+
 import deadliftImage from "./images/deadlift.jpg";
 
 const About = () => {
   return (
     <div className='container'>
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex justify-content-center mt-3'>
       <h1>About us</h1>
       </div>
       
 
-      <div className='row'>
-        <div className='col-4'>
-          <img src={logoImage} alt="Logo" className="navbar-logo-about" />
+      <div className='row rad1 mb-4'>
+        <div className='col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center'>
+          <img src={logoImage} alt="Logo" className="img-fluid navbar-logo-about" />
         </div>
-        <div className='col-8'>
+        <div className='col-sm-12 col-md-8 col-lg-8'>
           <div className='row'>
             <div className='col'>
             <p>
@@ -30,7 +30,7 @@ const About = () => {
           </div>
           </div>
 
-          <div className='row'>
+          <div className='row rad2'>
             <div className='col'>
             <p>We're not just here to sell; we're here to inspire, to motivate, and to guide. 
             By merging our expertise with the accessibility of social media, we're revolutionizing how online training is perceived and executed.
@@ -44,15 +44,13 @@ const About = () => {
         </div>
       </div>
 
-      <div className='row'>
-        <div className='col-lg-4'>
-          <img src={aboutBackExercise} alt='backExercise' className='backExercise-image'/>
+      <div className='row '>
+        <div className='col-6'>
+          <img src={aboutBackExercise} alt='backExercise' className='img-fluid backExercise-image aboutClientImg'/>
         </div>
-        <div className='col-lg-2'>
-          
-        </div>
-        <div className='col-lg-3'>
-          <img src={deadliftImage} alt='deadLiftImage' className='Dlift'/>
+      
+        <div className='col-6'>
+          <img src={deadliftImage} alt='deadLiftImage' className='img-fluid Dlift aboutClientImg'/>
         </div>
       </div>
 

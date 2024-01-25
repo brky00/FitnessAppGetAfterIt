@@ -1,7 +1,7 @@
 .navbar-logo-about{
     height: 280px;
     width: auto;
-    margin-right: auto;
+   
 }
 
 .backExercise-image{
@@ -28,4 +28,19 @@
 .p{
     font-family: "Raleway", sans-serif; 
     
+}
+
+
+
+
+@media (max-width: 768px){
+    .navbar-logo-about{
+        height: 190px;
+        width: auto;
+    }
+
+    .aboutClientImg{
+        max-height:110px ;
+        max-width: 110%;
+    }
 }
