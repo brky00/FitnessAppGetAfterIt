@@ -110,7 +110,7 @@ body {
   font-size: xx-large;
   font-family: sans-serif;
   background-color: #d9d9d9;
-  height: 40%;
+  height: 25%;
   width: auto;
   border: 1px solid;
   margin-bottom: 10px;
@@ -189,7 +189,7 @@ body {
     font-family: "Times New Roman, Times, serif";
     background-color: #d9d9d9;
     max-height: 50px;
-    padding: 5px;
+    padding: 15px;
     
     
   }

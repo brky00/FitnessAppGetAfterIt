@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import getAfterItAnimation from "./videos/getafter_it_animation.mp4";
 import "./Home.css";
 import Footer from "./Footer";
-import "./Footer.css";
-import "./Merch.css";
+
 
 const Home = () => {
   return (
@@ -45,7 +44,7 @@ const Home = () => {
       </section>
      
       {/*Footer */}
-      <Footer />
+      <Footer/>
     </>
   );
 };
