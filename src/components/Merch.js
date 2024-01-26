@@ -1,8 +1,10 @@
 import React from 'react';
 import './Merch.css';
-import hoodieImage from './images/hoodie.png'; // Make sure the file name is correct
-import shortsImage from './images/shorts.png'; // Corrected the variable name
-import jacketImage from './images/jakke.png'; // Make sure the file name is correct
+import { Link } from "react-router-dom";
+import hoodieImage from './images/hoodie.png';
+import shortsImage from './images/shorts.png'
+import jacketImage from './images/jakke.png';
+
 
 const Merch = () => {
   return (
@@ -20,9 +22,10 @@ const Merch = () => {
       </div>
       <div className="product-grid">
           <div className="product">
-              <img src={hoodieImage} alt="Gai Hoodie" />
+              <Link to='/merchinfo'> <img src={hoodieImage} alt="Gai Hoodie" />
               <p>Gai hoodie</p>
-              <p>NOK 220</p>
+              <p>NOK 220</p></Link>
+             
           </div>
           <div className="product">
               <img src={shortsImage} alt="Gai Shorts" />
@@ -34,7 +37,6 @@ const Merch = () => {
               <p>Gai college jacket</p>
               <p>NOK 220</p>
           </div>
-          {/* Repeat for each product */}
       </div>
     </div>
   );

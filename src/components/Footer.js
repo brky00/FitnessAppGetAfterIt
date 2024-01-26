@@ -36,7 +36,6 @@ const Footer = () => {
           </ul>
           <ul className="box">
             <li className="link_name">Follow Us</li>
-            {/* External links can use 'a' tags instead of 'Link' */}
             <li><a href="https://www.instagram.com">Instagram</a></li>
             <li><a href="https://www.facebook.com">Facebook</a></li>
             <li><a href="https://www.twitter.com">Twitter</a></li>
