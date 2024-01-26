@@ -1,0 +1,87 @@
+.merch-images {
+    display: flex; /* This will layout the child elements (images) in a row */
+    justify-content: center; /* This will center the images in the row */
+    align-items: center; /* This will align the images vertically in the center */
+    gap: 10px; /* This adds space between the images */
+    /* Add any additional styling as needed */
+  }
+  
+.product-image{
+    height: 500px;
+    justify-content: center;
+}
+  
+  .merch-details .product-image {
+    width: auto; /* Adjust the width as needed */
+    height: 100px; /* Example fixed height */
+    /* Ensure the width is auto or 100% if you want the image to be responsive */
+  }
+  
+
+.merch-container {
+    display: flex;
+    flex-direction: row; /* Assuming you want side-by-side layout */
+    align-items: flex-start; /* Align items to the start of the flex container */
+    padding: 20px;
+    max-width: 1200px; /* Adjust based on your layout needs */
+    margin: auto; /* Center the container */
+    justify-content: center;
+  }
+  
+  .merch-images {
+    /* Add styles for the images container */
+    flex: 1; /* Take up equal space as the details */
+    flex-direction: row;
+  }
+  
+  .merch-details {
+    flex: 1; /* Take up equal space as the images */
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+  .merch-price {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .merch-description {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .size-selector {
+    display: flex; /* Center buttons in the selector */
+    margin-bottom: 20px;
+  }
+  
+  .size-button {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .size-button:last-child {
+    margin-right: 0;
+  }
+  
+  .add-to-bag-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Make button full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+    margin-bottom: 20px;
+  }
+  
+  .return-policy, .delivery-info {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
