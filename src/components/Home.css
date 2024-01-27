@@ -28,16 +28,20 @@
     border: solid #C8B479;
     background-color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* En liten animasjon for hover */
+    transition: background-color 0.5s ease; /* En liten animasjon for hover */
     font-size: 50px;
     font-family: sans-serif;
+    font-weight: 600;
     width: 300px;
     padding: 0;
   }
   
   .btn:hover {
     background-color: #dddddd; /* Endrer bittelitt farge ved hover, men det skal jeg evt endre etterhvert. sånn foreløpig */
+    transform: scale(1.1);
   }
+
+ 
   
   @media (max-width: 768px) {
     .background-video video {
@@ -47,14 +51,10 @@
     }
 
     .btn {
-      
-     
-     
-     
-     
-      font-size: 25px;
+      font-size: 23px;
       font-family: sans-serif;
-      width: 140px;
+      width: 120px;
       
     }
+    
 }
