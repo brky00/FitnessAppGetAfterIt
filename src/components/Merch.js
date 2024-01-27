@@ -21,18 +21,18 @@ const Merch = () => {
           </label>
       </div>
       <div className="product-grid">
-          <div className="product">
+          <div className="productMerch">
               <Link to='/merchinfo'> <img src={hoodieImage} alt="Gai Hoodie" />
               <p>Gai hoodie</p>
               <p>NOK 220</p></Link>
              
           </div>
-          <div className="product">
+          <div className="productMerch">
               <img src={shortsImage} alt="Gai Shorts" />
               <p>Gai shorts</p>
               <p>NOK 220</p>
           </div>
-          <div className="product">
+          <div className="productMerch">
               <img src={jacketImage} alt="Gai College Jacket" />
               <p>Gai college jacket</p>
               <p>NOK 220</p>

@@ -47,19 +47,19 @@ h1 {
     gap: 20px;
 }
 
-.product {
+.productMerch {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
 }
 
-.product img {
+.productMerch img {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.product p {
+.productMerch p {
     margin: 5px 0;
 }
 
