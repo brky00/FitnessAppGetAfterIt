@@ -43,7 +43,9 @@ form h1{
     border-color: #C8B479;
     margin-top: 20px;
     cursor: pointer;
-    
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
 }
 
 .back-link{
