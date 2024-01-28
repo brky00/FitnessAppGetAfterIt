@@ -13,9 +13,9 @@ const Navbar = () => {
             <img src={logoImage} alt="Logo" className="navbar-logo" />
           </a>
           <span className="getAfterItTekst mx-auto">Get After It</span>
-          <a href="#profile">
+          <Link to="/loginAdmin">
             <i className="fa-solid fa-user adminLogo"></i>
-          </a>
+          </Link>
         </div>
       </nav>
 
