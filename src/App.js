@@ -3,6 +3,13 @@ import Navbar from "./components/Navbar";
 import Merch from "./components/Merch";
 import Home from "./components/Home";
 import Login from "./components/LoginAdmin";
+import Contact from "./components/Contact";
+
+import Shopping from "./components/Shopping";
+
+import MerchInfo from "./components/Merchinfo";
+
+
 
 
 function App() {
@@ -12,7 +19,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/merch" element={<Merch />} />
-        <Route path="/loginAdmin" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="/shopping" element={<Shopping />} />
+
+        <Route path="/merchinfo" element={<MerchInfo />} />
+
+        
+
       </Routes>
     </Router>
   );

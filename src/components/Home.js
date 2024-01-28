@@ -1,39 +1,36 @@
-import React from 'react';
-import About from './About';
-import Instagram from './Instagram';
-import Contact from './Contact';
-import Packages from './Packages';
-import getAfterItAnimation from './videos/getafter_it_animation.mp4';
-import './Home.css';
+import React from "react";
+import About from "./About";
+import Instagram from "./Instagram";
+import Packages from "./Packages";
+import { Link } from "react-router-dom";
+import getAfterItAnimation from "./videos/getafter_it_animation.mp4";
+import "./Home.css";
+import Footer from "./Footer";
 
-// importerte componenter er ovenfor...
 
 const Home = () => {
   return (
     <>
       {/* Home delen */}
       <section id="home">
-      <div className="background-video">
-         <video autoPlay loop muted>
-           <source src={getAfterItAnimation} type="video/mp4" />
-         </video>
-         <div className="buttons-container">
-            <button className="btn">Merch</button>
+        <div className="background-video">
+          <video autoPlay loop muted>
+            <source src={getAfterItAnimation} type="video/mp4" />
+          </video>
+          <div className="buttons-container">
+            <button className="btn">
+              <Link className="nav-link" to="/merch">
+                Merch
+              </Link>
+            </button>
             <button className="btn">Packages</button>
           </div>
-       </div>
+        </div>
       </section>
 
       {/* About section delen */}
       <section id="about">
-     
         <About />
-        
-      </section>
-
-      {/* Contact  */}
-      <section id="contact">
-        <Contact />
       </section>
 
       {/* Instagram */}
@@ -45,11 +42,11 @@ const Home = () => {
       <section id="packages">
         <Packages />
       </section>
-
      
+      {/*Footer */}
+      <Footer/>
     </>
   );
 };
 
 export default Home;
-

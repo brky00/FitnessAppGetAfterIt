@@ -1,0 +1,218 @@
+body {
+  background-color: #d9d9d9;
+}
+.responsiveSizeTittel{
+  display:none;
+}
+
+.sCardContainer {
+  background-color: #ffffff;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+/* Dette justerer mellomrommet mellom product radet og titlene(product size osv.)
+ .sCardContainer2 {
+  
+  margin-top: 20px;
+} */
+
+.productRow{
+  border-bottom: solid #c8b479;
+  margin-left: 8px;
+  margin-right: 8px;
+  
+  
+
+}
+.responsiveProduct{
+  display: none;
+}
+.productTittel{
+  font-size: 22px;
+  font-family: Arial, sans-serif;
+  text-decoration: underline  #392f5b;
+  text-align: center;
+}
+
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-box {
+  width: 80px;
+  height: 80px;
+  background-color: #d9d9d9;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-size: 2rem;
+  border-radius: 3px;
+}
+
+.quantity-btn-plus {
+  background-color: #392f5b;
+  border: none;
+  color: white;
+  padding: 0;
+  font-weight: 100;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+.plus {
+  font-size: 4rem;
+  font-family: emoji;
+  color: #c8b479;
+}
+
+.quantity-btn-minus {
+  background-color: #392f5b;
+  border: none;
+  color: white;
+  padding: 0;
+  font-weight: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+}
+
+.minus {
+  font-size: 4rem;
+  font-family: math;
+  color: #c8b479;
+
+  transform: scale(
+    2.2,
+    1
+  ); /*Dette er for å utvide symbolen i x eksenen litt mer*/
+}
+
+.quantity-input {
+  padding: 10px 20px;
+  width: auto;
+  width: 25%;
+  height: 60px;
+  font-size: 1.8rem;
+  border: solid #c8b479;
+}
+.productPrice {
+  font-size: xx-large;
+  font-family: sans-serif;
+  background-color: #d9d9d9;
+  height: 25%;
+  width: auto;
+  border: 1px solid;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 5px;
+ 
+  
+  
+  
+}
+
+
+.productImg{
+  height: 150px;
+  width: auto;
+}
+.form-control{
+  background-color: #F3E8E8;
+}
+
+/*responsive kode kommer til å bli fjernet på større skjerm her.*/
+
+
+@media (max-width: 768px) {
+ 
+  .responsiveTittel{
+    display:flex;
+  }
+
+  .size-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    font-size: 1rem;
+  }
+
+  .sCardTitler {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .quantity-btn-plus {
+    width: 35px;
+    height: 35px;
+  }
+  .plus {
+    font-size: 3rem;
+  
+ 
+  }
+  .quantity-btn-minus {
+    width: 35px;
+    height: 35px;
+    
+  }
+  .minus{
+    font-size: 3rem;
+   
+  }
+  .quantity-input {
+    width: 50px;
+    height: 35px;
+    
+
+    padding: 0px 0px;
+ 
+  font-size: 1.7rem;
+  border: solid #c8b479;
+   
+ 
+  }
+
+  .productPrice {
+    font-size: 22px;
+    
+    font-family: "Times New Roman, Times, serif";
+    background-color: #d9d9d9;
+    max-height: 50px;
+    padding: 15px;
+    
+    
+  }
+  .responsiveSizeTittel{
+    font-size:22px;
+    
+    
+  }
+  .responsiveSizeTittel,.responsiveProductTittel{
+    display:flex;
+  }
+  .productImg{
+    height: 100px;
+    width: auto;
+  }
+  .responsiveProductTittel{
+    font-size: 25px;
+  }
+
+  .productRow {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+  }
+  
+
+}
