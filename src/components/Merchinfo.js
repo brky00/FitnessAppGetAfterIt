@@ -4,21 +4,20 @@ import purplehoodie from './images/purple-hoodie.png';
 import orangehoodie from './images/orange-hoodie.png';
 import bluehoodie from './images/blue-hoodie.png';
 import greenhoodie from './images/green-hoodie.png';
-{/*}
-<img src={purplehoodie} alt="Hoodie" className="product-image" />
-<img src={greenhoodie} alt="Hoodie" className="product-image" />
-<img src={orangehoodie} alt="Hoodie" className="product-image" />
-<img src={bluehoodie} alt="Hoodie" className="product-image" />
-*/}
+import { useParams } from 'react-router-dom';
 
-const MerchInfo = () => {
-  // Replace with actual data fetching or props
+
+
+const MerchInfo = ({ productItems }) => {
+  console.log("p.Items: ",productItems);
+  const { id } = useParams()
+  {{console.log(id);}}
+  let currentProduct = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
+  
+  const { name, price, image,description,sizes,selectionImages } = currentProduct;
+ 
   const productDetails = {
-    name: "GAI GOODIE",
-    price: "NOK 220",
-    description: "Premium Cotton Training Hoodie",
-    returnPolicy: "Free 30-Day Return Policy!",
-    delivery: "Free Standard Delivery over 700 NOK",
+    
     sizes: ["S", "M", "L", "XL"]
   };
 
@@ -26,24 +25,24 @@ const MerchInfo = () => {
     <div className="merch-container">
         
       <div className="merch-images">
-      <img src={purplehoodie} alt="Hoodie" className="product-image" />
+      <img src={image} alt="Hoodie" className="product-image" />
       </div>
       <div className="merch-details">
-        <h1>{productDetails.name}</h1>
-        <img src={purplehoodie} alt="Hoodie" className="product-image" />
-        <img src={greenhoodie} alt="Hoodie" className="product-image" />
-        <img src={orangehoodie} alt="Hoodie" className="product-image" />
-        <img src={bluehoodie} alt="Hoodie" className="product-image" />
-        <p className="merch-price">{productDetails.price}</p>
-        <p className="merch-description">{productDetails.description}</p>
+        <h1>{name}</h1>
+    
+        {selectionImages.map(selectImg => (
+            <img src={selectImg} className="product-image"/>
+          ))}
+        <p className="merch-price">{price}</p>
+        <p className="merch-description">{name}</p>
         <div className="size-selector">
-          {productDetails.sizes.map(size => (
+          {sizes.map(size => (
             <button key={size} className="size-button">{size}</button>
           ))}
         </div>
         <button className="add-to-bag-btn">ADD TO BAG</button>
-        <p className="return-policy">{productDetails.returnPolicy}</p>
-        <p className="delivery-info">{productDetails.delivery}</p>
+        <p className="return-policy">{"Free 30-Day Return Policy!"}</p>
+        <p className="delivery-info">{"Free Standard Delivery over 700 NOK"}</p>
       </div>
     </div>
   );

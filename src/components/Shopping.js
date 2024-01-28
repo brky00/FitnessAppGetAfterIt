@@ -87,8 +87,10 @@ const Shopping = () => {
             <button className="checkoutButton">Checkout</button>
           </div>
         </div>
+        
       </div>
       <Footer/>
+      
     </div>
     
   );
