@@ -1,17 +1,13 @@
 import React from 'react';
 import './Merchinfo.css'; // Importing the CSS styles
-import purplehoodie from './images/purple-hoodie.png';
-import orangehoodie from './images/orange-hoodie.png';
-import bluehoodie from './images/blue-hoodie.png';
-import greenhoodie from './images/green-hoodie.png';
 import { useParams } from 'react-router-dom';
 
 
 
-const MerchInfo = ({ productItems }) => {
+const MerchInfo = ({ productItems, handleAddProduct }) => {
   console.log("p.Items: ",productItems);
   const { id } = useParams()
-  {{console.log(id);}}
+
   let currentProduct = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
   
   const { name, price, image,description,sizes,selectionImages } = currentProduct;
@@ -40,7 +36,10 @@ const MerchInfo = ({ productItems }) => {
             <button key={size} className="size-button">{size}</button>
           ))}
         </div>
-        <button className="add-to-bag-btn">ADD TO BAG</button>
+       
+          <button className="add-to-bag-btn" onClick={() => handleAddProduct(currentProduct)}>ADD TO BAG</button>
+       
+        
         <p className="return-policy">{"Free 30-Day Return Policy!"}</p>
         <p className="delivery-info">{"Free Standard Delivery over 700 NOK"}</p>
       </div>

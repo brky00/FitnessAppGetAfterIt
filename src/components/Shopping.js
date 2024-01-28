@@ -1,33 +1,16 @@
 import React from "react";
-import hoodie from "./images/hoodieGti.png";
-import short from "./images/shortGti.png";
 import ProductShoppingCard from "./elements/ProductShoppingCard";
 import "./Shopping.css";
 import Footer from "./Footer";
 
-// Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
-const products = [];
-const newProduct = {
-  productName: "Get After It Hoodie",
-  imgSrc: hoodie,
-  size: "L",
-  quantity: 1,
-  price: 150,
-};
-const newProductsArray = [...products, newProduct];
-const newProduct2 = {
-  productName: "Short",
-  imgSrc: short,
-  size: "M",
-  quantity: 2,
-  price: 300,
-};
-const newProductsArray2 = [...newProductsArray, newProduct];
 
-const Shopping = () => {
+
+const Shopping = ({cartItems, handleAddProduct}) => {
+  console.log(cartItems);
   return (
     <div>
       <div className="container sCardContainer">
+        <h1 cla>Shopping Card</h1>
         <div className="row">
           <div className="col">
             <div className="onlyProducterContainer ">
@@ -38,21 +21,33 @@ const Shopping = () => {
                 <div className="col-md-3 col-lg-3">Quantity</div>
                 <div className="col-md-3 col-lg-3">Price</div>
               </div>
-              <ProductShoppingCard
-                productName={newProduct.productName}
-                image={newProduct.imgSrc}
-                size={newProduct.size}
-                quantity={newProduct.quantity}
-                price={newProduct.price}
-              />
+              {cartItems.length === 0 &&(
+                <div className="cart-items-empty">No items are added. </div>
+              )}
+              <div>
+                {/*id,name, price,, image, description, sizes, selectionImages:*/}
+                {cartItems.map((item)=>(
+                  <ProductShoppingCard
+                  item={item}
+                handleAddProduct={handleAddProduct}
+                 key={item.id} 
+                //   name={item.name}
+                // image={item.image}
+                // description={item.description}
+                // sizes={item.sizes}
+                // quantity={"1"}
+                // price={item.price}
+                  />
+                ))}
+              </div>
 
-              <ProductShoppingCard
+              {/* <ProductShoppingCard
                 productName={newProduct2.productName}
                 image={newProduct2.imgSrc}
                 size={newProduct2.size}
                 quantity={newProduct2.quantity}
                 price={newProduct2.price}
-              />
+              /> */}
             </div>
           </div>
         </div>

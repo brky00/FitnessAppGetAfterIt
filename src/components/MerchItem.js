@@ -5,7 +5,7 @@ const MerchItem = ({ product }) => {
   return (
     <div className="col-3">
        <Link to={`/merchinfo/${id}`}>
-        <img className="img-fluid " src={image} alt="Gai Hoodie" />
+        <img className="img-fluid " src={image} alt="item image" />
         <p>{name}</p>
         <p>{price}</p>
       </Link>
