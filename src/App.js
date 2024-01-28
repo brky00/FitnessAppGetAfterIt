@@ -24,7 +24,8 @@ function App() {
         <Route path="/shopping" element={<Shopping />} />
 
         <Route path="/merchinfo" element={<MerchInfo />} />
-
+        
+        <Route path="/LoginAdmin" element={<Login />} />
         
 
       </Routes>

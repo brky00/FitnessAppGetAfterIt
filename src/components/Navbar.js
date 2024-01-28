@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logoImage from "./images/lionGetAfterIt.png";
+import Login from "./LoginAdmin";
 
 const Navbar = () => {
   return (
@@ -14,9 +15,9 @@ const Navbar = () => {
               <img src={logoImage} alt="Logo" className="navbar-logo" />
             </a>
             <span className="getAfterItTekst mx-auto">Get After It</span>
-            <a href="#profile">
+            <Link to="/LoginAdmin">
               <i className="fa-solid fa-user adminLogo"></i>
-            </a>
+            </Link>
           </div>
         </nav>
 
