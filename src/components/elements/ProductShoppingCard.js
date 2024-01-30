@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductShoppingCard.css";
 
-const ProductShoppingCard = ({ item,handleAddProduct}) => {
+const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) => {
   // const {image, price,name,description ,handleAddProduct}=item;
   //
   return (
@@ -27,12 +27,12 @@ const ProductShoppingCard = ({ item,handleAddProduct}) => {
 
            <div className="d-flex align-items-center"> 
            <span className="me-2 responsiveSizeTittel">Size</span>
-           <span className="size-box">{"L"}</span>
+           <span className="size-box">{item.productSize}</span>
            </div>
           </div>
           <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mt-1 mb-2">
             <div className="quantity-container">
-              <button onClick={() => handleAddProduct(item)} className="btn d-flex align-items-center justify-content-center quantity-btn-plus">
+              <button onClick={() => handleAddQuantity(item)} className="btn d-flex align-items-center justify-content-center quantity-btn-plus">
                 <span className="plus">+</span>
               </button>
 
@@ -42,7 +42,7 @@ const ProductShoppingCard = ({ item,handleAddProduct}) => {
                 value={item.quantity}
               />
 
-              <button className="btn d-flex align-items-center justify-content-center quantity-btn-minus">
+              <button onClick={() => handleRemoveQuantity(item)}  className="btn d-flex align-items-center justify-content-center quantity-btn-minus">
                 <span className="minus">-</span>
               </button>
             </div>

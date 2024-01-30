@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Merchinfo.css'; // Importing the CSS styles
 import { useParams } from 'react-router-dom';
 
 
 
-const MerchInfo = ({ productItems, handleAddProduct }) => {
+const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize }) => {
   console.log("p.Items: ",productItems);
   const { id } = useParams()
+  const handleButtonClick = () => {
+    if (!selectedSize) {
+      // Eğer boyut seçilmemişse, kullanıcıya uyarı göster
+      alert("Please select a size before adding to bag.");
+    } else {
+      // Eğer boyut seçilmişse, ürünü sepete ekle
+      handleAddProduct({ product, selectedSize });
+    }
+  };
 
-  let currentProduct = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
   
-  const { name, price, image,description,sizes,selectionImages } = currentProduct;
+
+  let product = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
+  
+  const { name, price, image,description,sizes,selectionImages } = product;
  
   const productDetails = {
     
@@ -33,11 +44,12 @@ const MerchInfo = ({ productItems, handleAddProduct }) => {
         <p className="merch-description">{name}</p>
         <div className="size-selector">
           {sizes.map(size => (
-            <button key={size} className="size-button">{size}</button>
+            <button onClick={()=>setSelectedSize(size)} key={size} className="size-button">{size}</button>
           ))}
         </div>
        
-          <button className="add-to-bag-btn" onClick={() => handleAddProduct(currentProduct)}>ADD TO BAG</button>
+        <button className="add-to-bag-btn" onClick={handleButtonClick}>ADD TO BAG</button>
+      
        
         
         <p className="return-policy">{"Free 30-Day Return Policy!"}</p>

@@ -68,7 +68,40 @@
     transform: scale(1.1);
   }
   
+  .remove-all-btn{
+    font-family: Arial, sans-serif;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    font-size: 19px;
+    border: 2px #c8b479 solid;
+    background-color: #392f5b;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: background-color 0.5s ease;
+  }
+  .remove-all-btn:hover{
+    
+    transform: scale(1.1);
+  }
+  .remove-all-div{
+    display: flex;
+    justify-content: end;
 
+  }
+
+  .cart-items-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .cart-items-empty-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+  }
 
 @media (max-width: 768px) {
     .sCardTitler{

@@ -12,19 +12,63 @@ import { useState } from "react";
 
 function App() {
   const { productItems } = data;
-  const [cartItems, setCartItems]=useState([])
+  const [cartItems, setCartItems]=useState([]);
+  const [selectedSize, setSelectedSize]=useState("");
 
-  const handleAddProduct = (product)=>{
-    const productExist = cartItems.find((item) => item.id === product.id);
-   if(productExist){
-    setCartItems(cartItems.map((item) => item.id === product.id ? 
-    {...productExist, quantity: productExist.quantity+1} :item )
-    );
-   }
-   else{
-    setCartItems([...cartItems, {...product, quantity: 1}])
-   }
-  }
+  const handleAddProduct = ({product, selectedSize}) => {
+    const productExist = cartItems.find((item) => item.id === product.id && item.productSize === selectedSize);
+    if (productExist) {
+      // Eğer ürün zaten sepete eklenmişse ve boyut aynıysa, miktarını artır
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id && item.productSize === selectedSize
+            ? { ...productExist, quantity: productExist.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      // Eğer ürün sepete ilk defa ekleniyorsa, yeni bir ürün olarak sepete ekle
+      setCartItems([...cartItems, { ...product, quantity: 1, productSize: selectedSize }]);
+    }
+  };
+  
+
+  const handleRemoveQuantity = (product) => {
+    const productExist = cartItems.find((item) => item.id === product.id && item.productSize === product.productSize);
+    if (productExist && productExist.quantity === 1) {
+      setCartItems(cartItems.filter((item) => item.id !== product.id || item.productSize !== product.productSize));
+    } else if (productExist) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id && item.productSize === product.productSize
+            ? { ...productExist, quantity: productExist.quantity - 1 }
+            : item
+        )
+      );
+    }
+  };
+  
+
+  const handleAddQuantity = (product) => {
+    const productExist = cartItems.find((item) => item.id === product.id && item.productSize === product.productSize);
+    if (productExist) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id && item.productSize === product.productSize
+            ? { ...productExist, quantity: productExist.quantity + 1 }
+            : item
+        )
+      );
+    }
+  };
+
+  const handleRemoveAllProducts = () => {
+    setCartItems([]);
+  };
+  
+  
+  console.log("selectedSize",selectedSize);
+  console.log("Appjs Cart items:",cartItems);
   
   return (
     <Router>
@@ -34,9 +78,9 @@ function App() {
         <Route path="/merch" element={<Merch productItems={productItems}/>} />
         <Route path="/contact" element={<Contact />} />
 
-        <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct}/>} />
+        <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} />
 
-        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct}/>} />
+        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize}/>} />
 
         
 
