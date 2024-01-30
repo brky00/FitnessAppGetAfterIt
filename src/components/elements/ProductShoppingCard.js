@@ -27,7 +27,7 @@ const ProductShoppingCard = ({ item,handleAddProduct}) => {
 
            <div className="d-flex align-items-center"> 
            <span className="me-2 responsiveSizeTittel">Size</span>
-           <span className="size-box">{"size"}</span>
+           <span className="size-box">{"L"}</span>
            </div>
           </div>
           <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mt-1 mb-2">
@@ -39,7 +39,7 @@ const ProductShoppingCard = ({ item,handleAddProduct}) => {
               <input
                 type="text"
                 className="form-control text-center quantity-input"
-                value={"quantity"}
+                value={item.quantity}
               />
 
               <button className="btn d-flex align-items-center justify-content-center quantity-btn-minus">
