@@ -22,8 +22,8 @@ const Shopping = ({
         {cartItems.length === 0 && (
           <div className="container sCardContainerEmpty">
           <div className="row ">
-            <div className="col-12 d-flex justify-content-center ">
-              <h2>No items are added in the shopping card.</h2>
+            <div className="col-12 emptyCardText d-flex justify-content-center ">
+              <h2 className="d-flex justify-content">No items are added in the shopping card.</h2>
             </div>
             <div className="col-12 emptyCardImage d-flex justify-content-center mt-2 mb-2 ">
               <img className="img-fluid" src={shoppingCardIsEmpity} />
@@ -35,7 +35,7 @@ const Shopping = ({
         {cartItems.length > 0 && (
            <div className="container sCardContainer">
           <div>
-            <h1 cla>Shopping Card</h1>
+            <h1 >Shopping Card</h1>
             <div className="row">
               <div className="col">
                 <div className="onlyProducterContainer ">
@@ -63,9 +63,6 @@ const Shopping = ({
               </div>
             </div>
             {/* Summary Row start*/}
-            <div className="d-flex justify-content-center">
-              <h1 className="summaryTitle">Summary</h1>
-            </div>
             <div className="remove-all-div">
               {/* Sepetten tüm ürünleri kaldır butonu */}
               <button
@@ -75,6 +72,10 @@ const Shopping = ({
                 Clear card <i class="fa-solid fa-cart-shopping shopping"></i>
               </button>
             </div>
+            <div className="d-flex justify-content-center">
+              <h1 className="summaryTitle">Summary</h1>
+            </div>
+            
 
             <div className="d-flex justify-content-center align-items-center flex-wrap summaryContainer">
               <div className="d-flex summaryDiv">

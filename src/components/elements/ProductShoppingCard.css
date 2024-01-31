@@ -220,6 +220,22 @@ body {
     margin-top: 0!important;
     margin-bottom: 0!important;
   }
+  .sCardContainerEmpty{
+   
+ padding: 10px;
+  }
+
+  .emptyCardImage img{
+    height: auto;
+    width: auto;
+    padding: 20px;
+  }
+ .emptyCardText h2{
+  font-size: 14px;
   
+ }
+ 
 
 }
+
+
