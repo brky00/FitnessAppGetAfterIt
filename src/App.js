@@ -11,9 +11,11 @@ import { useState } from "react";
 
 
 function App() {
+  
   const { productItems } = data;
   const [cartItems, setCartItems]=useState([]);
   const [selectedSize, setSelectedSize]=useState("");
+  console.log("APP CARTITEMS KARDO ",cartItems);
 
   const handleAddProduct = ({product, selectedSize}) => {
     const productExist = cartItems.find((item) => item.id === product.id && item.productSize === selectedSize);

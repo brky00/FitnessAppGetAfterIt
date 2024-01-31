@@ -45,7 +45,7 @@ const About = () => {
       </div>
 
       <div className='row '>
-        <div className='col-6'>
+        <div className='col-6 '>
           <img src={aboutBackExercise} alt='backExercise' className='img-fluid backExercise-image aboutClientImg'/>
         </div>
       

@@ -44,7 +44,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
         <p className="merch-description">{name}</p>
         <div className="size-selector">
           {sizes.map(size => (
-            <button onClick={()=>setSelectedSize(size)} key={size} className="size-button">{size}</button>
+            <button onClick={()=>setSelectedSize(size)} key={size} className={`size-button ${selectedSize === size ? 'size-button-selected' : ''}`}>{size}</button>
           ))}
         </div>
        

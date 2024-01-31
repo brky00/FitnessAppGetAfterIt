@@ -10,6 +10,13 @@ body {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
+.sCardContainerEmpty{
+  background-color: #ffffff;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 90px;
+}
 /* Dette justerer mellomrommet mellom product radet og titlene(product size osv.)
  .sCardContainer2 {
   

@@ -90,17 +90,14 @@
 
   }
 
-  .cart-items-empty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  .cart-items-empty-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+  
+
+
+ 
+
+  .emptyCardImage img{
+    height: 250px;
+    width: auto;
   }
 
 @media (max-width: 768px) {

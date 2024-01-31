@@ -1,8 +1,6 @@
 import React from "react";
 import "./Merch.css";
-import hoodieImage from "./images/hoodie.png";
-import shortsImage from "./images/shorts.png";
-import jacketImage from "./images/jakke.png";
+
 import MerchItem from "./MerchItem";
 
 const Merch = ({ productItems }) => {
