@@ -90,3 +90,47 @@
   color: white; /* Beyaz yazı rengi */
   border: 2px solid #4CAF50; /* Yeşil çerçeve */
 }
+
+.notification-box{
+  position: absolute;
+ 
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+  z-index: 1000; 
+  
+
+}
+.notification-box::after {
+  content: '';
+  position: absolute;
+  top: -20px; 
+  left: 50%; 
+  margin-left: -10px; 
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #dff0d8 transparent; 
+  width: 0;
+  height: 0;
+}
+.notification-box.showIt {
+  display: block;
+ 
+}
+
+
+
+/* 
+.nBoxDiv{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+ 
+} */
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
