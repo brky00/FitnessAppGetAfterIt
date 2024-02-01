@@ -13,8 +13,11 @@ const Shopping = ({
   handleAddQuantity,
   handleRemoveAllProducts,
 }) => {
-  console.log("cartitems productSize", cartItems.productSize);
-  console.log("cart items s card", cartItems);
+  const totalPrice = cartItems.reduce(
+    (price, item) => price + item.quantity * item.price,
+    0
+  );
+  
 
   return (
     <div>
@@ -90,7 +93,7 @@ const Shopping = ({
                 <span className="d-flex summaryContentSum align-items-center">
                   Sum:
                 </span>{" "}
-                <span className="summaryNok">NOK 450.00</span>
+                <span className="summaryNok">{totalPrice}</span>
               </div>
             </div>
 

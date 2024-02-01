@@ -50,8 +50,9 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
 
           <div className="col-md-3 col-sm-12 d-flex align-items-center justify-content-center">
             <span className="productPrice d-flex align-items-center justify-content-center">
-              {`NOK ${item.price}`}
+              {`NOK ${(item.price)*(item.quantity)}`}
             </span>
+           
           </div>
         </div>
       </div>
