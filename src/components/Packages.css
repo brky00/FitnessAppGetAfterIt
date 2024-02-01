@@ -1,14 +1,47 @@
 .cardTitle-responsive{
     display: none;
 }
+.card ul li{
+    margin-bottom: 1rem;
+}
 
-
+.card-title::before {
+    content: "";
+    display: block;
+    margin-top: 0px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
+    margin-bottom: 28px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
+    width: 80%; /* Çizginin genişliğini ayarlayın */
+    height: 2px; /* Çizginin kalınlığını ayarlayın */
+    background: #C8B479; /* Çizginin rengini ayarlayın */
+    margin-left: auto; /* Çizgiyi yatay olarak ortalamak için */
+    margin-right: auto; /* Çizgiyi yatay olarak ortalamak için */
+  }
+  
+  /* .PackakesTitle{
+    text-decoration: underline;
+  } */
+  .PackagesTitle {
+    position: relative; /* Pseudo-element için pozisyon referans noktası */
+    display: inline-block; /* H1 etiketini gereksiz boşluk eklemeyecek şekilde sınırlar */
+  }
+  
+  .PackagesTitle::after {
+    content: ''; /* Pseudo-element için gereken boş içerik */
+    display: block; /* Çizgiyi yeni bir satırda göstermek için */
+    width: 100%; /* Alt çizginin başlıkla aynı genişliğe sahip olması için */
+    height: 2px; /* Alt çizginin kalınlığı */
+    background-color: #C8B479; /* Alt çizginin rengi */
+    position: absolute; /* Başlığa göre pozisyonlandırma */
+    left: 0; /* Sol kenara yapışık */
+    bottom: -10px; /* Alt çizginin başlığın altından ne kadar uzakta olacağını ayarlar */
+  }
 @media (max-width: 768px) {
     .cardTitle-no-responsive{
         display: none;
     }
 
     .cardTitle-responsive{
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 }
