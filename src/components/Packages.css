@@ -1,0 +1,14 @@
+.cardTitle-responsive{
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .cardTitle-no-responsive{
+        display: none;
+    }
+
+    .cardTitle-responsive{
+        display: block;
+    }
+}
