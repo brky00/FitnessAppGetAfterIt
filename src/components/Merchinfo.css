@@ -6,12 +6,17 @@
     /* Add any additional styling as needed */
   }
   
-.product-image{
-    height: 500px;
+
+  .merch-images img{
+    height: 400px;
+    width: auto;
+  }
+.product-image-merchDetails{
+    
     justify-content: center;
 }
   
-  .merch-details .product-image {
+  .merch-details .product-image-merchDetails {
     width: auto; /* Adjust the width as needed */
     height: 100px; /* Example fixed height */
     /* Ensure the width is auto or 100% if you want the image to be responsive */
@@ -92,7 +97,7 @@
 }
 
 .notification-box{
-  position: absolute;
+  position: fixed;
  
   background-color: #dff0d8;
   color: #3c763d;
@@ -100,6 +105,7 @@
   border-radius: 5px;
   display: none;
   z-index: 1000; 
+  
   
 
 }
@@ -120,17 +126,38 @@
  
 }
 
-
-
-/* 
 .nBoxDiv{
-  display: flex;
-  justify-content: center;
-  width: 100%;
+ display: flex;
+ justify-content: flex-start;
+
  
-} */
+}
+
+
+
 
 @keyframes fadeInOut {
   0%, 100% { opacity: 0; }
   10%, 90% { opacity: 1; }
+}
+
+
+
+@media (max-width: 768px) {
+  .nBoxDiv{
+    display: flex;
+    justify-content: center;
+   
+   
+    
+   }
+   .nBoxDiv p {
+    font-size: smaller;
+   }
+
+   .notification-box{
+    height: auto;
+   padding: 3px;
+   width: auto;
+   }
 }

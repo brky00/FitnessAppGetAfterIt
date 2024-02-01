@@ -15,7 +15,7 @@
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
     font-family: 'Raleway', sans-serif;
     border-bottom: 5px solid #C8B479; 
-    font-size: larger;
+    font-size: large;
     
     
     
@@ -110,12 +110,12 @@
  }
 
  .navbar-lower .navbar-nav .nav-item {
-  margin-right: 20px; 
-  margin-left: 20px; 
+  margin-right: 25px; 
+  margin-left: 25px; 
 }
 
 .shoppingDiv{
-  margin-left: 60px; 
+ margin-left: 32px;
 
 }
 
@@ -126,7 +126,7 @@
   
 }
  
- 
+
 
   /*Dette er css for å gjøre det enda mer responsivt. Berkay...*/
   @media (max-width: 768px) {

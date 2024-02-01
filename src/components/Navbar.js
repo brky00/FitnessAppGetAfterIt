@@ -38,43 +38,50 @@ const Navbar = () => {
               className="collapse navbar-collapse justify-content-center"
               id="navbarNavDropdown"
             >
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    HOME
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/contact">
-                    CONTACT
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/merch">
-                    MERCH
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/#instagram">
-                    INSTAGRAM
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/#packages">
-                    PACKAGES
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/#about">
-                    ABOUT US
-                  </a>
-                </li>
-              </ul>
+              {/*orginal org orgi*/}
 
-              <div className="shoppingDiv">
-                <Link className="shopping1" to="/shopping">
-                  <i class="fa-solid fa-cart-shopping shopping"></i>
-                </Link>
+              <div class="row">
+                <div class="col-md-11 col-lg-11">
+                  <ul className="navbar-nav">
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/">
+                        HOME
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/contact">
+                        CONTACT
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/merch">
+                        MERCH
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="/#instagram">
+                        INSTAGRAM
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="/#packages">
+                        PACKAGES
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="/#about">
+                        ABOUT US
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-md-1 col-lg-1 d-flex align-items-center ">
+                  <div className="shoppingDiv">
+                    <Link className="shopping1" to="/shopping">
+                      <i class="fa-solid fa-cart-shopping shopping"></i>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="shoppingDiv2">

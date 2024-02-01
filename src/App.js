@@ -29,7 +29,7 @@ function App() {
         )
       );
     } else {
-      // Eğer ürün sepete ilk defa ekleniyorsa, yeni bir ürün olarak sepete ekle
+      // Det blir added som en ny produkt hvis det ikke finnes fra før
       setCartItems([...cartItems, { ...product, quantity: 1, productSize: selectedSize }]);
     }
   };
@@ -82,7 +82,7 @@ function App() {
 
         <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} />
 
-        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize}/>} />
+        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />} />
 
         
 
