@@ -69,7 +69,7 @@
     margin-top: 32px;
     margin-bottom: 10px;
   }
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .cardTitle-no-responsive{
         display: none;
     }
@@ -94,4 +94,45 @@
     .packageDescription{
       font-size: 14px;
     }
+} */
+
+@media (max-width: 767px) {
+  /* Card başlıklarının stilleri */
+  .cardTitle-no-responsive {
+      display: none;
+  }
+
+  .cardTitle-responsive {
+      display: flex;
+      justify-content: center;
+  }
+
+  /* Card genel stilleri */
+  .pCard .card {
+      width: 15rem; /* Kartın genişliğini küçült */
+      font-size: 15px; /* Kart içindeki yazı boyutunu küçült */
+  }
+
+  .PackagesTitle {
+      font-size: 35px; /* Paket başlık boyutunu küçült */
+  }
+  
+  .card-text {
+      font-size: 13px; /* Kart metin boyutunu küçült */
+  }
+
+  .packageDescription {
+      font-size: 12px; 
+      font-weight: 00;
+  }
+
+  /* Dilerseniz kart içindeki resim boyutunu da ayarlayabilirsiniz */
+  .card-img-top {
+      width: 100%; /* Resmi kart genişliğine uyarla */
+      height: auto; /* Resmin yüksekliğini orantılı tut */
+  }
+  .descriptionTitle{
+    font-weight: 500;
+  }
 }
+

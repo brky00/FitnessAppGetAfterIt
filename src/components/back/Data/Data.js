@@ -19,7 +19,7 @@ const data = {
   productItems: [
     {
       id: "1",
-      name: "Gai hoodie",
+      name: "Gti hoodie",
       price: 220,
       image: hoodieImage,
       description: "Premium Cotton Training Hoodie",
@@ -28,7 +28,7 @@ const data = {
     },
     {
       id: "2",
-      name: "Gai shorts",
+      name: "Gti shorts",
       price: 220,
       image: shortsImage,
       description: "Gti Cotton Shorts",
@@ -37,7 +37,7 @@ const data = {
     },
     {
       id: "3",
-      name: "Gai collage jacket",
+      name: "Gti collage jacket",
       price: 220,
       image: jacketImage,
       description: "Premium Gti Jacket",
@@ -48,7 +48,7 @@ const data = {
  
   {
     id: "4",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",
@@ -57,7 +57,7 @@ const data = {
   },
   {
     id: "5",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",
@@ -66,7 +66,7 @@ const data = {
   },
   {
     id: "6",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",
@@ -74,31 +74,31 @@ const data = {
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "7",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
-    description: "Premium Gti Jacket",
+    description: "Gti test-product",
     sizes: ["M", "L", "XL"],
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "8",
-    name: "Gai collage jacket",
+    name: "Gti collage jacket",
     price: 220,
     image: jacketImage,
-    description: "Premium Gti Jacket",
+    description: "Gti test-product",
     sizes: ["M", "L", "XL"],
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "9",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
-    description: "Premium Gti Jacket",
+    description: "Gti test-product",
     sizes: ["M", "L", "XL"],
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "10",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",
@@ -106,7 +106,7 @@ const data = {
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "11",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",
@@ -114,7 +114,7 @@ const data = {
     selectionImages:[greenJacket,blueJacket,yellowJacket]
   },{
     id: "12",
-    name: "Gai collage jacket",
+    name: "Gti test-product",
     price: 220,
     image: jacketImage,
     description: "Premium Gti Jacket",

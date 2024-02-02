@@ -32,17 +32,20 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
           </div>
           <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mt-1 mb-2">
             <div className="quantity-container">
-              <button onClick={() => handleAddQuantity(item)} className="btn d-flex align-items-center justify-content-center quantity-btn-plus">
+              <button onClick={() => handleAddQuantity(item)} className=" d-flex align-items-center justify-content-center quantity-btn-plus">
                 <span className="plus">+</span>
               </button>
 
-              <input
+              {/* <input
                 type="text"
                 className="form-control text-center quantity-input"
                 value={item.quantity}
-              />
+              /> */}
+              <div className=" quantity-div">
+              {item.quantity}
+              </div>
 
-              <button onClick={() => handleRemoveQuantity(item)}  className="btn d-flex align-items-center justify-content-center quantity-btn-minus">
+              <button onClick={() => handleRemoveQuantity(item)}  className="d-flex align-items-center justify-content-center quantity-btn-minus">
                 <span className="minus">-</span>
               </button>
             </div>

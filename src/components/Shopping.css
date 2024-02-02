@@ -94,13 +94,12 @@
 
   
 
-
- 
-
   .emptyCardImage img{
     height: 250px;
     width: auto;
   }
+
+  
 
 @media (max-width: 768px) {
     .sCardTitler{
@@ -173,11 +172,12 @@
       
     }
     .remove-all-btn{    
-      font-size: 10px;
+      font-size: 15px;
       padding: 8px 13px;
       margin-right: 0;
       
     
     }
+   
     
 }

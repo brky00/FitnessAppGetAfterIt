@@ -4,9 +4,12 @@ import { useParams } from 'react-router-dom';
 
 
 
-const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize }) => {
+const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize,cartItems }) => {
   const [showNotification, setShowNotification] = useState(false);
   const { id } = useParams()
+  const totalPrice = cartItems.reduce(
+    (price, item) => price + item.quantity * item.price,0
+  );
   const handleButtonClick = () => {
     if (!selectedSize) {
       // alert if size not selected yet
@@ -15,7 +18,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
       // If size is choosed so add to card
       handleAddProduct({ product, selectedSize });
       setShowNotification(true); {/*it shows the box*/ }
-      setTimeout(() => setShowNotification(false), 3000); {/* 4 seconds*/ }
+      setTimeout(() => setShowNotification(false), 3000); {/* 3 seconds*/ }
     }
   };
 
@@ -35,14 +38,21 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
       {showNotification && (
         <div class="container">
           <div class="row">
-            <div class="col-md-2 offset-md-9">
+            <div class="col-md-2 offset-md-8 col-lg-2 offset-lg-8">
               <div className='nBoxDiv'>
                 <div
-                  className={`notification-box ${
+                  className={`notification-box p-3 ${
                     showNotification ? "showIt" : ""
                   }`}
                 >
-                  <p>{`Product ${name} in size ${selectedSize} is added to cart`}</p>
+                 <div className='align-items-center'>
+                 <p className='feedbackP'>{`Product "${name}" is added to cart`}</p>
+                 {totalPrice>750&&(
+                  <div className='bg-light d-flex justify-content-center'>You have achieved free shipping</div>          
+                 )}
+                 
+                  <div className='mt-3 d-flex justify-content-center align-items-center'><button type="button" class="btn btn-secondary">Shopping card</button></div>
+                 </div>
                 </div>
               </div>
             </div>

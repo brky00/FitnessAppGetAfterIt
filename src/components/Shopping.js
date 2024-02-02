@@ -13,32 +13,31 @@ const Shopping = ({
   handleAddQuantity,
   handleRemoveAllProducts,
 }) => {
-  const totalPrice = cartItems.reduce(
-    (price, item) => price + item.quantity * item.price,
-    0
-  );
+  const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price,0);
   
 
   return (
     <div>
-      
-        {cartItems.length === 0 && (
-          <div className="container sCardContainerEmpty">
+      {cartItems.length === 0 && (
+        <div className="container sCardContainerEmpty">
           <div className="row ">
             <div className="col-12 emptyCardText d-flex justify-content-center ">
-              <h2 className="d-flex justify-content">No items are added in the shopping card.</h2>
+              <h2 className="d-flex justify-content sCradEmpityText">
+                No items are added in the shopping card.
+              </h2>
             </div>
             <div className="col-12 emptyCardImage d-flex justify-content-center mt-2 mb-2 ">
               <img className="img-fluid" src={shoppingCardIsEmpity} />
             </div>
           </div>
-          </div>
-        )}
+        </div>
+      )}
 
-        {cartItems.length > 0 && (
-           <div className="container sCardContainer">
+      {cartItems.length > 0 && (
+        <div className="container sCardContainer">
           <div>
-            <h1 >Shopping Card</h1>
+            <h1>Shopping Card</h1>
             <div className="row">
               <div className="col">
                 <div className="onlyProducterContainer ">
@@ -72,28 +71,29 @@ const Shopping = ({
                 onClick={handleRemoveAllProducts}
                 className="remove-all-btn"
               >
-                Clear card <i class="fa-solid fa-cart-shopping shopping"></i>
+                Clear card <i class="fa-solid fa-trash"></i>
               </button>
             </div>
             <div className="d-flex justify-content-center">
               <h1 className="summaryTitle">Summary</h1>
             </div>
-            
 
             <div className="d-flex justify-content-center align-items-center flex-wrap summaryContainer">
               <div className="d-flex summaryDiv">
-                <span className="summaryContent">Total products:</span>{" "}
-                <span>2</span>
+                <span className="summaryContent">Total products:{" "}
+                {totalItems}</span>
               </div>
               <div className="d-flex summaryDiv">
-                <span className="summaryContent">Delivery:</span>{" "}
-                <span>NOK 0.0</span>
+                {totalPrice>700
+                  ? (<span className="summaryContent">Delivery:{" "}0</span>)
+                  : (<span className="summaryContent">Delivery:{" "}NOK 70</span>)}
+                
+              
               </div>
               <div className="d-flex summaryDiv">
                 <span className="d-flex summaryContentSum align-items-center">
-                  Sum:
-                </span>{" "}
-                <span className="summaryNok">{totalPrice}</span>
+                  Sum:{" "}{totalPrice}
+                  </span>
               </div>
             </div>
 
@@ -107,9 +107,8 @@ const Shopping = ({
               </div>
             </div>
           </div>
-          </div>
-        )}
-      
+        </div>
+      )}
 
       <Footer />
     </div>

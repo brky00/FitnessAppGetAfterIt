@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logoImage from "./images/lionGetAfterIt.png";
 
-const Navbar = () => {
+const Navbar = ({cartItems}) => {
+  const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+
   return (
     <>
       {/* Upper Navbar */}
@@ -78,7 +80,11 @@ const Navbar = () => {
                 <div className="col-md-1 col-lg-1 d-flex align-items-center ">
                   <div className="shoppingDiv">
                     <Link className="shopping1" to="/shopping">
-                      <i class="fa-solid fa-cart-shopping shopping"></i>
+                     <div className="d-flex align-items-center justify-content-center"> 
+                     <i class="fa-solid fa-cart-shopping shopping"></i>
+                      <span className="cart-length ms-1 d-flex align-items-center">
+                        {totalItems===0?"":totalItems}
+                        </span></div>
                     </Link>
                   </div>
                 </div>

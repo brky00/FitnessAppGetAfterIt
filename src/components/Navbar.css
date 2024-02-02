@@ -125,6 +125,16 @@
   z-index: 1000;
   
 }
+.shopping1{
+  
+    text-decoration: none; /* Underline'ı kaldırır */
+    color: inherit; /* Link'in rengini üst elementten alır */
+
+}
+.cart-length{
+  font-size: 22px;
+  
+}
  
 
 

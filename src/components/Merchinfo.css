@@ -88,15 +88,16 @@
 }
 
 .notification-box{
-  position: fixed;
- 
-  background-color: #dff0d8;
-  color: #3c763d;
-  padding: 15px;
-  border-radius: 5px;
   display: none;
-  z-index: 1000; 
+  position: fixed;
+  background-color: #dff0d8;
+  color: #000000;
   
+  border-radius: 5px;
+  z-index: 1000; 
+  margin-right: 20px;
+  font-family: Arial,sans-serif;
+
   
 
 }
@@ -104,8 +105,8 @@
   content: '';
   position: absolute;
   top: -20px; 
-  left: 50%; 
-  margin-left: -10px; 
+  left: 42%; 
+  margin-left: 90px; 
   border-width: 10px;
   border-style: solid;
   border-color: transparent transparent #dff0d8 transparent; 
@@ -113,16 +114,21 @@
   height: 0;
 }
 .notification-box.showIt {
-  display: block;
+  display: flex;
+  justify-content: center;
  
 }
+.feedbackP{
+  margin-top: 16px;
+  
+}
 
-.nBoxDiv{
+/* .nBoxDiv{
  display: flex;
  justify-content: flex-start;
 
  
-}
+} */
 
 
 
@@ -137,7 +143,7 @@
 @media (max-width: 768px) {
   .nBoxDiv{
     display: flex;
-    justify-content: center;
+    justify-content: end;
    
    
     
@@ -155,5 +161,30 @@
    .merch-images img{
     height: 200px;
     width: auto;
+  }
+
+  .notification-box::after {
+    content: '';
+    position: absolute;
+    top: -20px; 
+    left: 40%; 
+    margin-left: 120px; 
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #dff0d8 transparent; 
+    width: 0;
+    height: 0;
+  }
+
+
+  .notification-box{
+   
+   
+    margin-right: 0;
+    
+   
+  
+    
+  
   }
 }

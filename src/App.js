@@ -74,7 +74,7 @@ function App() {
   
   return (
     <Router>
-      <Navbar />
+      <Navbar cartItems={cartItems}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/merch" element={<Merch productItems={productItems}/>} />
@@ -82,7 +82,7 @@ function App() {
 
         <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} />
 
-        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />} />
+        <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} cartItems={cartItems}/>} />
 
         
 

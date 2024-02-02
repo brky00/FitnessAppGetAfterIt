@@ -73,6 +73,12 @@ body {
   justify-content: center;
   width: 60px;
   height: 60px;
+  transition: background-color 0.5s ease;
+}
+
+.quantity-btn-plus:hover {
+  
+  transform: scale(1.1);
 }
 .plus {
   font-size: 4rem;
@@ -92,6 +98,11 @@ body {
   width: 60px;
   height: 60px;
   border: 1px solid black;
+  transition: background-color 0.5s ease;
+}
+.quantity-btn-minus:hover  {
+  
+  transform: scale(1.1);
 }
 
 .minus {
@@ -105,13 +116,13 @@ body {
   ); /*Dette er for å utvide symbolen i x eksenen litt mer*/
 }
 
-.quantity-input {
-  padding: 10px 20px;
-  width: auto;
-  width: 25%;
-  height: 60px;
-  font-size: 1.8rem;
+
+.quantity-div{
   border: solid #c8b479;
+  padding: 7px 18px 7px 18px;
+  font-size: 28px;
+  background-color: #F3E8E8;
+ 
 }
 .productPrice {
   font-size: xx-large;
@@ -134,9 +145,7 @@ body {
   height: 150px;
   width: auto;
 }
-.form-control{
-  background-color: #F3E8E8;
-}
+
 
 /*responsive kode kommer til å bli fjernet på større skjerm her.*/
 
@@ -163,6 +172,7 @@ body {
     width: 35px;
     height: 35px;
   }
+
   .plus {
     font-size: 3rem;
   
@@ -177,7 +187,7 @@ body {
     font-size: 3rem;
    
   }
-  .quantity-input {
+  /* .quantity-input {
     width: 50px;
     height: 35px;
     
@@ -188,6 +198,14 @@ body {
   border: solid #c8b479;
    
  
+  } */
+
+  .quantity-div{
+    border: solid #c8b479;
+    padding: 1px 10px 1px 10px;
+    font-size: 18px;
+    background-color: #F3E8E8;
+   
   }
 
   .productPrice {
