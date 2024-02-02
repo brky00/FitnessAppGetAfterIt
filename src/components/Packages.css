@@ -8,13 +8,13 @@
 .packageimgDiv::after {
     content: "";
     display: block;
-    margin-top: 18px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
-    margin-bottom: 2px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
-    width: 80%; /* Çizginin genişliğini ayarlayın */
-    height: 3px; /* Çizginin kalınlığını ayarlayın */
-    background: #C8B479; /* Çizginin rengini ayarlayın */
-    margin-left: auto; /* Çizgiyi yatay olarak ortalamak için */
-    margin-right: auto; /* Çizgiyi yatay olarak ortalamak için */
+    margin-top: 18px; 
+    margin-bottom: 2px;
+    width: 80%;
+    height: 3px; 
+    background: #C8B479; 
+    margin-left: auto; 
+    margin-right: auto; 
   }
   
   /* .PackakesTitle{
@@ -34,20 +34,20 @@
     height: 4px; 
     background-color: #C8B479; 
     position: absolute; 
-    left: 0; /* Sol kenara yapışık */
-    bottom: -6px; /* Alt çizginin başlığın altından ne kadar uzakta olacağını ayarlar */
+    left: 0; 
+    bottom: -6px; 
   }
 
   .packagesRow::after {
     content: "";
     display: block;
-    margin-top: 0px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
-    margin-bottom: 2px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
-    width: 100%; /* Çizginin genişliğini ayarlayın */
-    height: 3px; /* Çizginin kalınlığını ayarlayın */
-    background: #C8B479; /* Çizginin rengini ayarlayın */
-    margin-left: auto; /* Çizgiyi yatay olarak ortalamak için */
-    margin-right: auto; /* Çizgiyi yatay olarak ortalamak için */
+    margin-top: 0px; 
+    margin-bottom: 2px; 
+    width: 100%; 
+    height: 3px; 
+    background: #C8B479; 
+    margin-left: auto; 
+    margin-right: auto;
   }
 
   .pCard .card{
@@ -69,32 +69,7 @@
     margin-top: 32px;
     margin-bottom: 10px;
   }
-/* @media (max-width: 767px) {
-    .cardTitle-no-responsive{
-        display: none;
-    }
 
-    .cardTitle-responsive{
-     display: flex;
-     justify-content: center;
-   
-    
-    }
-
-
-    .PackagesTitle {
-    
-      font-size: 35px;
-    }
-    
-    .card-text{
-      font-size: 15px;
-    }
-
-    .packageDescription{
-      font-size: 14px;
-    }
-} */
 
 @media (max-width: 767px) {
   /* Card başlıklarının stilleri */
@@ -107,18 +82,18 @@
       justify-content: center;
   }
 
-  /* Card genel stilleri */
+  
   .pCard .card {
-      width: 15rem; /* Kartın genişliğini küçült */
-      font-size: 15px; /* Kart içindeki yazı boyutunu küçült */
+      width: 15rem;
+      font-size: 15px;
   }
 
   .PackagesTitle {
-      font-size: 35px; /* Paket başlık boyutunu küçült */
+      font-size: 35px; 
   }
   
   .card-text {
-      font-size: 13px; /* Kart metin boyutunu küçült */
+      
   }
 
   .packageDescription {
@@ -126,10 +101,10 @@
       font-weight: 00;
   }
 
-  /* Dilerseniz kart içindeki resim boyutunu da ayarlayabilirsiniz */
+ 
   .card-img-top {
-      width: 100%; /* Resmi kart genişliğine uyarla */
-      height: auto; /* Resmin yüksekliğini orantılı tut */
+      width: 100%; 
+      height: auto; 
   }
   .descriptionTitle{
     font-weight: 500;
