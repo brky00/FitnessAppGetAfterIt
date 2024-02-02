@@ -2,11 +2,6 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.merch-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
 h1 {
     text-align: center;
@@ -40,32 +35,30 @@ h1 {
     text-align: left;
     margin-bottom: 20px;
 }
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+.stockLabel{
+    margin-left: 5px;
 }
 
-.productMerch {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
+.merchTitle{
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font-weight: 300;
+    font-size: 50px;
 }
 
-.productMerch img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.productMerch p {
-    margin: 5px 0;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
+
+    .merchTitle{
+        margin-top: 20px;
+        margin-bottom: 2px;
+        font-size: 38px;
+    }
+
+    
 }
+

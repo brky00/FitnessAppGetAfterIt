@@ -23,16 +23,7 @@
   }
   
 
-.merch-container {
-    display: flex;
-    flex-direction: row; /* Assuming you want side-by-side layout */
-    align-items: flex-start; /* Align items to the start of the flex container */
-    padding: 20px;
-    max-width: 1200px; /* Adjust based on your layout needs */
-    margin: auto; /* Center the container */
-    justify-content: center;
-  }
-  
+
   .merch-images {
     /* Add styles for the images container */
     flex: 1; /* Take up equal space as the details */
@@ -91,9 +82,9 @@
   }
   
 .size-button-selected {
-  background-color: #4CAF50; /* Yeşil arka plan */
-  color: white; /* Beyaz yazı rengi */
-  border: 2px solid #4CAF50; /* Yeşil çerçeve */
+  background-color: #392F5B; 
+  color: #fff;
+  border: 2px solid #C8B479; 
 }
 
 .notification-box{
@@ -160,4 +151,9 @@
    padding: 3px;
    width: auto;
    }
+
+   .merch-images img{
+    height: 200px;
+    width: auto;
+  }
 }

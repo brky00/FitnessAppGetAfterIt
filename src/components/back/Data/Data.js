@@ -44,6 +44,83 @@ const data = {
       sizes: ["M", "L", "XL"],
       selectionImages:[greenJacket,blueJacket,yellowJacket]
     },
+    /*orginal ends here*/
+ 
+  {
+    id: "4",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },
+  {
+    id: "5",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },
+  {
+    id: "6",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "7",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "8",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "9",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "10",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "11",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },{
+    id: "12",
+    name: "Gai collage jacket",
+    price: 220,
+    image: jacketImage,
+    description: "Premium Gti Jacket",
+    sizes: ["M", "L", "XL"],
+    selectionImages:[greenJacket,blueJacket,yellowJacket]
+  },
   ],
 };
 

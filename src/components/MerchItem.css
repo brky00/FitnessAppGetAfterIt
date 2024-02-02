@@ -1,0 +1,23 @@
+.merchItemImg{
+    height: 200px;
+    width:206px
+}
+
+.merchItemLink {
+    text-decoration: none; /* Underline'ı kaldırır */
+    color: inherit; /* Link'in rengini üst elementten alır */
+}
+.merchItemDiv{
+    font-family: 'Raleway', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .merchItemImg{
+        height: 140px;
+        width:145px ;
+    }
+
+}
+
+
+

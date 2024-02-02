@@ -5,13 +5,13 @@
     margin-bottom: 1rem;
 }
 
-.card-title::before {
+.packageimgDiv::after {
     content: "";
     display: block;
-    margin-top: 0px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
-    margin-bottom: 28px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
+    margin-top: 18px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
+    margin-bottom: 2px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
     width: 80%; /* Çizginin genişliğini ayarlayın */
-    height: 2px; /* Çizginin kalınlığını ayarlayın */
+    height: 3px; /* Çizginin kalınlığını ayarlayın */
     background: #C8B479; /* Çizginin rengini ayarlayın */
     margin-left: auto; /* Çizgiyi yatay olarak ortalamak için */
     margin-right: auto; /* Çizgiyi yatay olarak ortalamak için */
@@ -21,27 +21,77 @@
     text-decoration: underline;
   } */
   .PackagesTitle {
-    position: relative; /* Pseudo-element için pozisyon referans noktası */
-    display: inline-block; /* H1 etiketini gereksiz boşluk eklemeyecek şekilde sınırlar */
+    position: relative; 
+    display: inline-block; 
+    font-weight: revert-layer;
+    font-size: 50px;
   }
   
   .PackagesTitle::after {
-    content: ''; /* Pseudo-element için gereken boş içerik */
-    display: block; /* Çizgiyi yeni bir satırda göstermek için */
-    width: 100%; /* Alt çizginin başlıkla aynı genişliğe sahip olması için */
-    height: 2px; /* Alt çizginin kalınlığı */
-    background-color: #C8B479; /* Alt çizginin rengi */
-    position: absolute; /* Başlığa göre pozisyonlandırma */
+    content: ''; 
+    display: block; 
+    width: 100%; 
+    height: 4px; 
+    background-color: #C8B479; 
+    position: absolute; 
     left: 0; /* Sol kenara yapışık */
-    bottom: -10px; /* Alt çizginin başlığın altından ne kadar uzakta olacağını ayarlar */
+    bottom: -6px; /* Alt çizginin başlığın altından ne kadar uzakta olacağını ayarlar */
   }
-@media (max-width: 768px) {
+
+  .packagesRow::after {
+    content: "";
+    display: block;
+    margin-top: 0px; /* Çizginin resmin altından itibaren ne kadar uzaklıkta olacağını ayarlayın */
+    margin-bottom: 2px; /* Çizginin metinden önce ne kadar boşluk olacağını ayarlayın */
+    width: 100%; /* Çizginin genişliğini ayarlayın */
+    height: 3px; /* Çizginin kalınlığını ayarlayın */
+    background: #C8B479; /* Çizginin rengini ayarlayın */
+    margin-left: auto; /* Çizgiyi yatay olarak ortalamak için */
+    margin-right: auto; /* Çizgiyi yatay olarak ortalamak için */
+  }
+
+  .pCard .card{
+    background-color: #392F5B;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .packageDescription{
+    background-color: #392F5B;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+  }
+  .packagesContainer{
+    margin-top: 100px;
+  }
+
+  .descriptionTitle{
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+@media (max-width: 767px) {
     .cardTitle-no-responsive{
         display: none;
     }
 
     .cardTitle-responsive{
-        display: flex;
-        justify-content: center;
+     display: flex;
+     justify-content: center;
+   
+    
+    }
+
+
+    .PackagesTitle {
+    
+      font-size: 35px;
+    }
+    
+    .card-text{
+      font-size: 15px;
+    }
+
+    .packageDescription{
+      font-size: 14px;
     }
 }

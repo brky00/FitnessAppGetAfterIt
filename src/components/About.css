@@ -25,13 +25,15 @@
     font-family: "Raleway", sans-serif; 
 }
 
-.p{
-    font-family: "Raleway", sans-serif; 
-    
+
+
+.aboutContainer{
+    margin-bottom: 100px;
 }
-
-
-
+.aboutContainer p{
+    font-family: "Raleway", sans-serif; 
+    font-size: 18px;
+}
 
 @media (max-width: 768px){
     .navbar-logo-about{
@@ -40,7 +42,11 @@
     }
 
     .aboutClientImg{
-        max-height:110px ;
-        max-width: 110%;
+        max-height:100% ;
+        max-width: 100%;
+    }
+    .aboutContainer p{
+        font-family: "Raleway", sans-serif; 
+        font-size: 12px;
     }
 }

@@ -107,7 +107,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
         </div>
       </div>
 
-      <div className="merch-container"></div>
+     
     </>
   );
 };
