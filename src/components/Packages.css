@@ -4,7 +4,8 @@
 .card ul li{
     margin-bottom: 1rem;
 }
-
+.card {border-radius: 1rem;
+}
 .packageimgDiv::after {
     content: "";
     display: block;
@@ -60,6 +61,7 @@
     background-color: #392F5B;
     color: #ffffff;
     font-family: 'Raleway', sans-serif;
+    border-radius: 1rem;
   }
   .packagesContainer{
     margin-top: 100px;
