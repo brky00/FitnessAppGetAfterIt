@@ -29,7 +29,7 @@ const Merch = ({ productItems }) => {
          <div className="row">
          
           {productItems.map((prdct) => (
-             <div className="col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center merchCol mb-4">
+             <div className="col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center merchCol mb-4">
             <MerchItem product={prdct} key={prdct.id} />
             </div>
           ))}
