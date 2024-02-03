@@ -7,18 +7,17 @@
   }
   
 
-  .merch-images img{
-    height: 400px;
-    width: auto;
-  }
+
 .product-image-merchDetails{
     
     justify-content: center;
+    height: auto;
+    width: auto;
 }
   
-  .merch-details .product-image-merchDetails {
+  .merch-details .extra-product-image-merchDetails {
     width: auto; /* Adjust the width as needed */
-    height: 100px; /* Example fixed height */
+    height: auto; /* Example fixed height */
     /* Ensure the width is auto or 100% if you want the image to be responsive */
   }
   
@@ -30,13 +29,12 @@
     flex-direction: row;
   }
   
-  .merch-details {
-    flex: 1; /* Take up equal space as the images */
-    padding: 20px;
-    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-    justify-content: center;
+  /* .merch-details {
+    flex: 1; 
+   
+    box-sizing: border-box; 
     flex-direction: row;
-  }
+  } */
   
   .merch-price {
     color: #333;
@@ -158,10 +156,7 @@
    width: auto;
    }
 
-   .merch-images img{
-    height: 200px;
-    width: auto;
-  }
+
 
   .notification-box::after {
     content: '';

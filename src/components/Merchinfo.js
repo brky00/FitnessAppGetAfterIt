@@ -39,44 +39,61 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
         <div class="container">
           <div class="row">
             <div class="col-md-2 offset-md-8 col-lg-2 offset-lg-8">
-              <div className='nBoxDiv'>
+              <div className="nBoxDiv">
                 <div
                   className={`notification-box p-3 ${
                     showNotification ? "showIt" : ""
                   }`}
                 >
-                 <div className='align-items-center'>
-                 <p className='feedbackP'>{`Product "${name}" is added to cart`}</p>
-                 {totalPrice>750&&(
-                  <div className='bg-light d-flex justify-content-center'>You have achieved free shipping</div>          
-                 )}
-                 
-                  <div className='mt-3 d-flex justify-content-center align-items-center'><button type="button" class="btn btn-secondary">Shopping card</button></div>
-                 </div>
+                  <div className="align-items-center">
+                    <p className="feedbackP">{`Product "${name}" is added to cart`}</p>
+                    {totalPrice > 750 && (
+                      <div className="bg-light d-flex justify-content-center">
+                        You have achieved free shipping
+                      </div>
+                    )}
+
+                    <div className="mt-3 d-flex justify-content-center align-items-center">
+                      <button type="button" class="btn btn-secondary">
+                        Shopping card
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    
       )}
 
       <div class="container mt-5">
-        <div class="row">
-          <div class="col-md-10 offset-md-1">
-            <div class="row">
-              <div class="col-md-6 col-sm-6">
+        <div class="row ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row d-flex justify-content-center">
+              <div class="col-5 col-sm-5 col-md-5 col-lg-5 ">
                 <div className="merch-images">
-                  <img src={image} alt="Hoodie" className="img-fluid product-image-merchDetails" />
+                  <img
+                    src={image}
+                    alt="Hoodie"
+                    className="img-fluid product-image-merchDetails"
+                  />
                 </div>
               </div>
-              <div class="col-md-6  col-sm-6">
-                <div className="merch-details">
+              <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                <div className="merch-details ">
                   <h1>{name}</h1>
+                  <div className="row gx-3 ">
+                    {selectionImages.map((selectImg) => (
+                      <div className="col-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center ">
+                        <img
+                          src={selectImg}
+                          className="extra-product-image-merchDetails img-fluid"
+                        />
+                      </div>
+                    ))}
+                  </div>
 
-                  {selectionImages.map((selectImg) => (
-                    <img src={selectImg} className="product-image-merchDetails" />
-                  ))}
+                  {/*  */}
                   <p className="merch-price">{price}</p>
                   <p className="merch-description">{name}</p>
                   <div className="size-selector">
@@ -116,8 +133,6 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
           </div>
         </div>
       </div>
-
-     
     </>
   );
 };

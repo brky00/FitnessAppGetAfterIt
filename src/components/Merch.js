@@ -9,7 +9,7 @@ const Merch = ({ productItems }) => {
       <h1 className="merchTitle">Merch</h1>
       <div className="container merchContainer">
         <div className="row d-flex justify-content-center">
-          <div className="col-sm-12 col-md-3 col-lg-3">
+          <div className="col-12 col-sm-12 col-md-3 col-lg-3">
             <div className="search-bar">
               <input
                 type="text"
@@ -25,7 +25,7 @@ const Merch = ({ productItems }) => {
               </label>
             </div>
           </div>
-          <div className="col-sm-12 col-md-9 col-lg-9 d-flex">
+          <div className="col-12 col-sm-12 col-md-9 col-lg-9 d-flex">
          <div className="row">
          
           {productItems.map((prdct) => (
