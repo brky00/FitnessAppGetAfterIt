@@ -30,7 +30,7 @@ const Packages = () => {
           <div className="col-md-4 col-lg-4 col-sm-12 d-flex justify-content-center mb-5 pCard">
             <div class="card" style={{ width: "18rem" }}>
               <div className="packageimgDiv">
-                <img src={image1} className="card-img-top" alt="..." />
+                <img src={image1} className="card-img-top img-fluid" alt="..." />
               </div>
               <div class="card-body">
                 <h5 class="card-title d-flex justify-content-center">
