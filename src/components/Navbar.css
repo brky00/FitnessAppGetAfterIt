@@ -131,6 +131,12 @@
     color: inherit; /* Link'in rengini üst elementten alır */
 
 }
+.shopping2{
+  
+  text-decoration: none; /* Underline'ı kaldırır */
+  color: inherit; /* Link'in rengini üst elementten alır */
+
+}
 .cart-length{
   font-size: 22px;
   
@@ -173,6 +179,12 @@
     .shoppingDiv2{
       display: flex;
      }
+     .cart-length{
+      font-size: 20px;
+      }
+     
+
+    
    
   }
 
@@ -191,4 +203,7 @@
       font-size: 20px;
       margin: 0;
   }
+  .cart-length{
+    font-size: 18px;
+    }
   }

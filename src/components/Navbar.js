@@ -80,11 +80,12 @@ const Navbar = ({cartItems}) => {
                 <div className="col-md-1 col-lg-1 d-flex align-items-center ">
                   <div className="shoppingDiv">
                     <Link className="shopping1" to="/shopping">
-                     <div className="d-flex align-items-center justify-content-center"> 
-                     <i class="fa-solid fa-cart-shopping shopping"></i>
-                      <span className="cart-length ms-1 d-flex align-items-center">
-                        {totalItems===0?"":totalItems}
-                        </span></div>
+                      <div className="d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-cart-shopping shopping"></i>
+                        <span className="cart-length ms-1 d-flex align-items-center">
+                          {totalItems === 0 ? "" : totalItems}
+                        </span>
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -92,7 +93,12 @@ const Navbar = ({cartItems}) => {
             </div>
             <div className="shoppingDiv2">
               <Link className="shopping2" to="/shopping">
-                <i class="fa-solid fa-cart-shopping shopping"></i>
+                <div className="d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-cart-shopping shopping"></i>
+                  <span className="cart-length ms-1 d-flex align-items-center">
+                    {totalItems === 0 ? "" : totalItems}
+                  </span>
+                </div>
               </Link>
             </div>
           </div>
