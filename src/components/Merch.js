@@ -14,7 +14,7 @@ const Merch = ({ productItems }) => {
         case 2:
           return "col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center";
         default:
-          return "col-4 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center";
+          return "col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center";
       }
     };
   
