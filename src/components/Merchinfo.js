@@ -85,7 +85,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
         <div class="row  ">
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 "> {/*col for alt */}
             <div class="row d-flex justify-content-center"> {/* row for begge colonene img og prudct details */}
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6"> {/* col for stort img*/}
+              <div class="col-12 col-sm-12 col-md-6 col-lg-5"> {/* col for stort img*/}
                 <div className="merch-images">
                   <img
                     src={image}
@@ -94,7 +94,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
                   />
                 </div>
               </div>
-              <div class= "col-12 col-sm-12 col-md-6 col-lg-6" >{/* col for  product details */}
+              <div class= "col-12 col-sm-12 col-md-6 col-lg-7" >{/* col for  product details */}
                 <div className="merch-details ">
                   <h1>{name}</h1>
                   <div className="col d-flex flex-wrap extra-product-image-container">

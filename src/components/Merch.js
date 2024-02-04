@@ -29,14 +29,25 @@ const Merch = ({ productItems }) => {
   };
 
   // funskjoner for å filtrere produktene
+  /*man kunne brukt denne funksjonen også for å filtrere searc isteden men dette ville ikke ta med produkter som ikke starter med det ordet
+  hvis du søker for eks shorts men det heter gti shorts da hadde det ikke funka med startswith den tar med produkter som kun starter med oppgitte bokstav:
+    .filter(
+    (product) => (searchTerm === "" || product.name.toLowerCase().trim().startsWith(searchTerm.toLowerCase().trim())) &&
+    (!inStockOnly || product.inStock)
+  ) 
+
+*/
+
   const filteredProducts = productItems
   .filter(
-      (product) => product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .filter(
-      (product) => !inStockOnly || product.inStock
-    );
+    (product) => product.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
+  )
+   .filter(
+    (product) => !inStockOnly || product.inStock
+  );
 
+   
+    // dette bruker jeg for å sjekke og se filtrede prdukter i konsolen 
     console.log("filtrede produkter:",filteredProducts);
 
   return (

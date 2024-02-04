@@ -29,7 +29,7 @@ const data = {
     },
     {
       id: "2",
-      name: "Gti hshorts",
+      name: "Gti shorts",
       price: 220,
       image: shortsImage,
       description: "Gti Cotton Shorts",
