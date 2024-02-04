@@ -27,6 +27,21 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
   let product = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
   
   const { name, price, image,description,sizes,selectionImages } = product;
+
+   // selectionImages array'inin uzunluğuna göre column class'ını belirle
+   const getColumnClass = (imagesCount) => {
+    switch(imagesCount) {
+      case 2:
+        return "col-lg-6 d-flex justify-content-center";
+      case 3:
+        return "col-4 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center";
+      case 4:
+        return "col-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center";
+      default:
+        return "col-4 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center";
+    }
+  };
+ 
  
   const productDetails = {
     
@@ -66,11 +81,11 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
         </div>
       )}
 
-      <div class="container mt-5">
-        <div class="row ">
-          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="row d-flex justify-content-center">
-              <div class="col-5 col-sm-5 col-md-5 col-lg-5 ">
+      <div class="container mt-5 d-flex justify-content-center">
+        <div class="row  ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 "> {/*col for alt */}
+            <div class="row d-flex justify-content-center"> {/* row for begge colonene img og prudct details */}
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6"> {/* col for stort img*/}
                 <div className="merch-images">
                   <img
                     src={image}
@@ -79,12 +94,12 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
                   />
                 </div>
               </div>
-              <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+              <div class= "col-12 col-sm-12 col-md-6 col-lg-6" >{/* col for  product details */}
                 <div className="merch-details ">
                   <h1>{name}</h1>
-                  <div className="row gx-3 ">
+                  <div className="col d-flex flex-wrap extra-product-image-container">
                     {selectionImages.map((selectImg) => (
-                      <div className="col-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center ">
+                      <div >
                         <img
                           src={selectImg}
                           className="extra-product-image-merchDetails img-fluid"

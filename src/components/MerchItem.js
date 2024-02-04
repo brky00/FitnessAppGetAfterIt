@@ -7,7 +7,7 @@ const MerchItem = ({ product }) => {
     <div className="merchItemDiv">
        <Link className="merchItemLink" to={`/merchinfo/${id}` }>
         <img className="img-fluid merchItemImg " src={image} alt="item image" />
-        <p className="d-flex justify-content-center mt-2">{name}</p>
+        <p className="d-flex justify-content-center mt-2 merchItemName">{name}</p>
         <p className="d-flex justify-content-center merchPrice">{`NOK ${price}`}</p>
       </Link>
     </div>

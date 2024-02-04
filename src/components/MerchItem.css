@@ -11,10 +11,20 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.merchItemName{
+    margin-bottom: auto;
+    display: flex;
+    text-align: center;
+}
+.merchItemDiv:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s;
+  }
+
 @media (max-width: 768px) {
     .merchItemImg{
-        height: 140px;
-        width:145px ;
+        height: 100px;
+        width: 120px; ;
     }
 
 }

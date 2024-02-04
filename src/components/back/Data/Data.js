@@ -24,16 +24,19 @@ const data = {
       image: hoodieImage,
       description: "Premium Cotton Training Hoodie",
       sizes: ["S", "M", "L", "XL"],
-      selectionImages:[purplehoodie,orangehoodie,bluehoodie,greenhoodie]
+      selectionImages:[purplehoodie,orangehoodie,bluehoodie,greenhoodie],
+      inStock: true
     },
     {
       id: "2",
-      name: "Gti shorts",
+      name: "Gti hshorts",
       price: 220,
       image: shortsImage,
       description: "Gti Cotton Shorts",
       sizes: ["S", "M", "XL"],
       selectionImages:[greenShorts,blueShorts,redShorts,]
+      ,
+      inStock: true
     },
     {
       id: "3",
@@ -43,6 +46,8 @@ const data = {
       description: "Premium Gti Jacket",
       sizes: ["M", "L", "XL"],
       selectionImages:[greenJacket,blueJacket,yellowJacket]
+      ,
+      inStock: true
     },
     /*orginal ends here*/
  
@@ -53,7 +58,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+      inStock: false
   },
   {
     id: "5",
@@ -62,7 +68,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },
   {
     id: "6",
@@ -71,7 +78,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "7",
     name: "Gti test-product",
@@ -79,7 +87,8 @@ const data = {
     image: jacketImage,
     description: "Gti test-product",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "8",
     name: "Gti collage jacket",
@@ -87,7 +96,8 @@ const data = {
     image: jacketImage,
     description: "Gti test-product",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "9",
     name: "Gti test-product",
@@ -95,7 +105,8 @@ const data = {
     image: jacketImage,
     description: "Gti test-product",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "10",
     name: "Gti test-product",
@@ -103,7 +114,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "11",
     name: "Gti test-product",
@@ -111,7 +123,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },{
     id: "12",
     name: "Gti test-product",
@@ -119,7 +132,8 @@ const data = {
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
-    selectionImages:[greenJacket,blueJacket,yellowJacket]
+    selectionImages:[greenJacket,blueJacket,yellowJacket],
+    inStock: false
   },
   ],
 };

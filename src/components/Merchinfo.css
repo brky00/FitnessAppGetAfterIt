@@ -16,8 +16,8 @@
 }
   
   .merch-details .extra-product-image-merchDetails {
-    width: auto; /* Adjust the width as needed */
-    height: auto; /* Example fixed height */
+    width:auto ; /* Adjust the width as needed */
+    height: 120px; /* Example fixed height */
     /* Ensure the width is auto or 100% if you want the image to be responsive */
   }
   
@@ -172,14 +172,21 @@
   }
 
 
-  .notification-box{
+  .notification-box{  
+    margin-right: 0;  
+  }
+
+  .product-image-merchDetails{
+    height: 200px;
+    width: auto;
+  }
+
+  .merch-details .extra-product-image-merchDetails {
+    width:auto ; 
+    height: 100px; 
    
-   
-    margin-right: 0;
-    
-   
-  
-    
-  
+  }
+  .extra-product-image-container{
+    justify-content: center;
   }
 }

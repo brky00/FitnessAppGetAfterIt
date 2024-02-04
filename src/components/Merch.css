@@ -35,9 +35,14 @@ h1 {
     text-align: left;
     margin-bottom: 20px;
 }
-.stockLabel{
-    margin-left: 5px;
+.stockLabel{ 
+    font-size: 16px; /* Etiket font büyüklüğü artırıldı */
+    color: #333; /* Etiket rengi daha belirgin hale getirildi */
+    font-weight: bold; /* Etiket fontu kalınlaştırıldı */
+    
+  
 }
+
 
 .merchTitle{
     margin-top: 20px;
@@ -45,6 +50,19 @@ h1 {
     font-weight: 300;
     font-size: 50px;
 }
+
+
+
+  /* Title style for whole page */
+  h1.merchTitle {
+    text-align: center;
+    color: #443850; 
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font-weight: bold; 
+    font-size: 50px;
+}
+
 
 
 /* Responsive adjustments */
