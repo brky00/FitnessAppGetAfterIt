@@ -7,9 +7,9 @@ import deadliftImage from "./images/deadlift.jpg";
 
 const About = () => {
   return (
-    <div className='container'>
+    <div className='container aboutContainer'>
       <div className='d-flex justify-content-center mt-3'>
-      <h1>About us</h1>
+      <h1 className='AboutUsH1'>About us</h1>
       </div>
       
 
@@ -45,7 +45,7 @@ const About = () => {
       </div>
 
       <div className='row '>
-        <div className='col-6'>
+        <div className='col-6 '>
           <img src={aboutBackExercise} alt='backExercise' className='img-fluid backExercise-image aboutClientImg'/>
         </div>
       

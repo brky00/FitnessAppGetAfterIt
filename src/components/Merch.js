@@ -1,45 +1,97 @@
-import React from 'react';
-import './Merch.css';
-import { Link } from "react-router-dom";
-import hoodieImage from './images/hoodie.png';
-import shortsImage from './images/shorts.png'
-import jacketImage from './images/jakke.png';
+import React, { useState } from "react";
+import "./Merch.css";
+import MerchItem from "./MerchItem";
 
+const Merch = ({ productItems }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
 
-const Merch = () => {
-  return (
-    <div className="merch-container">
-      <h1>MERCH</h1>
-      <div className="search-bar">
-          <input type="text" placeholder="Search" />
-          <button type="submit">🔍</button>
-      </div>
-      <div className="stock-availability">
-          <label>
-              <input type="checkbox" name="in-stock" id="in-stock" />
-              IN STOCK
-          </label>
-      </div>
-      <div className="product-grid">
-          <div className="productMerch">
-              <Link to='/merchinfo'> <img src={hoodieImage} alt="Gai Hoodie" />
-              <p>Gai hoodie</p>
-              <p>NOK 220</p></Link>
-             
-          </div>
-          <div className="productMerch">
-              <img src={shortsImage} alt="Gai Shorts" />
-              <p>Gai shorts</p>
-              <p>NOK 220</p>
-          </div>
-          <div className="productMerch">
-              <img src={jacketImage} alt="Gai College Jacket" />
-              <p>Gai college jacket</p>
-              <p>NOK 220</p>
-          </div>
-      </div>
-    </div>
+     // selectionImages array'inin uzunluğuna göre column class'ını belirle
+     const getColumnClass = (filteredProductsCount) => {
+      switch(filteredProductsCount) {
+        case 1:
+          return "col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center";
+        case 2:
+          return "col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center";
+        default:
+          return "col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center";
+      }
+    };
+  
+  // Arama işlemi için olay işleyici
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Stok durumu için olay işleyici
+  const handleStockChange = (event) => {
+    setInStockOnly(event.target.checked);
+  };
+
+  // funskjoner for å filtrere produktene
+  /*man kunne brukt denne funksjonen også for å filtrere searc isteden men dette ville ikke ta med produkter som ikke starter med det ordet
+  hvis du søker for eks shorts men det heter gti shorts da hadde det ikke funka med startswith den tar med produkter som kun starter med oppgitte bokstav:
+    .filter(
+    (product) => (searchTerm === "" || product.name.toLowerCase().trim().startsWith(searchTerm.toLowerCase().trim())) &&
+    (!inStockOnly || product.inStock)
+  ) 
+
+*/
+
+  const filteredProducts = productItems
+  .filter(
+    (product) => product.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
+  )
+   .filter(
+    (product) => !inStockOnly || product.inStock
   );
-}
+
+   
+    // dette bruker jeg for å sjekke og se filtrede prdukter i konsolen 
+    console.log("filtrede produkter:",filteredProducts);
+
+  return (
+    <>
+      <h1 className="merchTitle">Merch</h1>
+      <div className="container merchContainer">
+        <div className="row d-flex justify-content-center align-items-start">
+          <div className="col-12 col-sm-12 col-md-4 col-lg-3 ">
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search"
+                style={{ width: "100%" }}
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+              <button type="submit">🔍</button>
+            </div>
+            <div className="stock-availability">
+              <label>
+                <input
+                  type="checkbox"
+                  name="in-stock"
+                  id="in-stock"
+                  checked={inStockOnly}
+                  onChange={handleStockChange}
+                />
+              </label>
+              <span className="stockLabel"> IN STOCK</span>
+            </div>
+          </div>
+          <div className="col-12 col-sm-12 col-md-8 col-lg-9 d-flex">
+            <div className="row gx-2 gy-0">
+              {filteredProducts.map((prdct) => (
+                <div className={getColumnClass(filteredProducts.length)}>
+                  <MerchItem product={prdct} key={prdct.id} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Merch;

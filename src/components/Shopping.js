@@ -1,96 +1,117 @@
 import React from "react";
-import hoodie from "./images/hoodieGti.png";
-import short from "./images/shortGti.png";
 import ProductShoppingCard from "./elements/ProductShoppingCard";
 import "./Shopping.css";
 import Footer from "./Footer";
+import shoppingCardIsEmpity from "./images/shoppingCardEmpty.png";
+//Neworginal origin Neworginalo+ nEWWWWWW New
+//Hello
 
-// Eksempel varer før vi har lagd json og merch siden for å ha systemet klar for
-const products = [];
-const newProduct = {
-  productName: "Get After It Hoodie",
-  imgSrc: hoodie,
-  size: "L",
-  quantity: 1,
-  price: 150,
-};
-const newProductsArray = [...products, newProduct];
-const newProduct2 = {
-  productName: "Short",
-  imgSrc: short,
-  size: "M",
-  quantity: 2,
-  price: 300,
-};
-const newProductsArray2 = [...newProductsArray, newProduct];
+const Shopping = ({
+  cartItems,
+  handleAddProduct,
+  handleRemoveQuantity,
+  handleAddQuantity,
+  handleRemoveAllProducts,
+}) => {
+  const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price,0);
+  
 
-const Shopping = () => {
   return (
     <div>
-      <div className="container sCardContainer">
-        <div className="row">
-          <div className="col">
-            <div className="onlyProducterContainer ">
-              {/* Product */}
-              <div className="row text-center mb-2 sCardTitler">
-                <div className="col-md-3 col-lg-3">Product</div>
-                <div className="col-md-3 col-lg-3">Size</div>
-                <div className="col-md-3 col-lg-3">Quantity</div>
-                <div className="col-md-3 col-lg-3">Price</div>
-              </div>
-              <ProductShoppingCard
-                productName={newProduct.productName}
-                image={newProduct.imgSrc}
-                size={newProduct.size}
-                quantity={newProduct.quantity}
-                price={newProduct.price}
-              />
-
-              <ProductShoppingCard
-                productName={newProduct2.productName}
-                image={newProduct2.imgSrc}
-                size={newProduct2.size}
-                quantity={newProduct2.quantity}
-                price={newProduct2.price}
-              />
+      {cartItems.length === 0 && (
+        <div className="container sCardContainerEmpty">
+          <div className="row ">
+            <div className="col-12 emptyCardText d-flex justify-content-center ">
+              <h2 className="d-flex justify-content sCradEmpityText">
+                No items are added in the shopping card.
+              </h2>
+            </div>
+            <div className="col-12 emptyCardImage d-flex justify-content-center mt-2 mb-2 ">
+              <img className="img-fluid" src={shoppingCardIsEmpity} />
             </div>
           </div>
         </div>
-        {/* Summary Row start*/}
-        <div className="d-flex justify-content-center">
-          <h1 className="summaryTitle">Summary</h1>
-        </div>
+      )}
 
-        <div className="d-flex justify-content-center align-items-center flex-wrap summaryContainer">
-          <div className="d-flex summaryDiv">
-            <span className="summaryContent">Total products:</span>{" "}
-            <span>2</span>
-          </div>
-          <div className="d-flex summaryDiv">
-            <span className="summaryContent">Delivery:</span>{" "}
-            <span>NOK 0.0</span>
-          </div>
-          <div className="d-flex summaryDiv">
-            <span className="d-flex summaryContentSum align-items-center">
-              Sum:
-            </span>{" "}
-            <span className="summaryNok">NOK 450.00</span>
+      {cartItems.length > 0 && (
+        <div className="container sCardContainer">
+          <div>
+            <h1>Shopping Card</h1>
+            <div className="row">
+              <div className="col">
+                <div className="onlyProducterContainer ">
+                  {/* Product */}
+                  <div className="row text-center mb-2 sCardTitler">
+                    <div className="col-md-3 col-lg-3">Product</div>
+                    <div className="col-md-3 col-lg-3">Size</div>
+                    <div className="col-md-3 col-lg-3">Quantity</div>
+                    <div className="col-md-3 col-lg-3">Price</div>
+                  </div>
+
+                  <div>
+                    {/*id,name, price,, image, description, sizes, selectionImages:*/}
+                    {cartItems.map((item) => (
+                      <ProductShoppingCard
+                        item={item}
+                        handleAddProduct={handleAddProduct}
+                        handleRemoveQuantity={handleRemoveQuantity}
+                        handleAddQuantity={handleAddQuantity}
+                        key={item.id}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Summary Row start*/}
+            <div className="remove-all-div">
+              {/* Sepetten tüm ürünleri kaldır butonu */}
+              <button
+                onClick={handleRemoveAllProducts}
+                className="remove-all-btn"
+              >
+                Clear card <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+            <div className="d-flex justify-content-center">
+              <h1 className="summaryTitle">Summary</h1>
+            </div>
+
+            <div className="d-flex justify-content-center align-items-center flex-wrap summaryContainer">
+              <div className="d-flex summaryDiv">
+                <span className="summaryContent">Total products:{" "}
+                {totalItems}</span>
+              </div>
+              <div className="d-flex summaryDiv">
+                {totalPrice>700
+                  ? (<span className="summaryContent">Delivery:{" "}0</span>)
+                  : (<span className="summaryContent">Delivery:{" "}NOK 70</span>)}
+                
+              
+              </div>
+              <div className="d-flex summaryDiv">
+                <span className="d-flex summaryContentSum align-items-center">
+                  Sum:{" "}{totalPrice}
+                  </span>
+              </div>
+            </div>
+
+            {/* Summary Row end*/}
+
+            {/* Action Buttons */}
+            <div className="row">
+              <div className="col-md-12 col-lg-12 col-sm-12 button-container d-flex justify-content-center">
+                <button className="contiuneButton">Continue Shopping</button>
+                <button className="checkoutButton">Checkout</button>
+              </div>
+            </div>
           </div>
         </div>
+      )}
 
-        {/* Summary Row end*/}
-
-        {/* Action Buttons */}
-        <div className="row">
-          <div className="col-md-12 col-lg-12 col-sm-12 button-container d-flex justify-content-center">
-            <button className="contiuneButton">Continue Shopping</button>
-            <button className="checkoutButton">Checkout</button>
-          </div>
-        </div>
-      </div>
-      <Footer/>
+      <Footer />
     </div>
-    
   );
 };
 

@@ -6,7 +6,7 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn, faTiktok } from '@fo
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="mt-5 footer">
       <div className="content">
         <div className="top">
           <div className="logo-details">

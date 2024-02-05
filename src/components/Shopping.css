@@ -68,7 +68,38 @@
     transform: scale(1.1);
   }
   
+  .remove-all-btn{
+   
+    margin-right: 50px; 
+    font-family: Arial, sans-serif;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 19px;
+    border: 2px #c8b479 solid;
+    background-color: #392f5b;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: background-color 0.5s ease;
+  }
+  .remove-all-btn:hover{
+    
+    transform: scale(1.1);
+  }
+  .remove-all-div{
+    display: flex;
+    justify-content: end;
 
+  }
+
+  
+
+  .emptyCardImage img{
+    height: 250px;
+    width: auto;
+  }
+
+  
 
 @media (max-width: 768px) {
     .sCardTitler{
@@ -133,5 +164,20 @@
       font-size: 22px;
       
     }
+
+    .remove-all-div{
+      display: flex;
+      justify-content: center;
+     
+      
+    }
+    .remove-all-btn{    
+      font-size: 15px;
+      padding: 8px 13px;
+      margin-right: 0;
+      
+    
+    }
    
+    
 }

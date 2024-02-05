@@ -22,7 +22,7 @@
     
   }
   
-  .btn {
+  .btn-home {
     padding: 10px 20px; /* Gir litt plass inne i knappene */
     border-radius: 0;
     border: solid #C8B479;
@@ -36,7 +36,7 @@
     padding: 0;
   }
   
-  .btn:hover {
+  .btn-home:hover {
     background-color: #dddddd; /* Endrer bittelitt farge ved hover, men det skal jeg evt endre etterhvert. sånn foreløpig */
     transform: scale(1.1);
   }
@@ -50,7 +50,7 @@
       object-fit: fill
     }
 
-    .btn {
+    .btn-home {
       font-size: 23px;
       font-family: sans-serif;
       width: 120px;

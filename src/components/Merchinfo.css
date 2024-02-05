@@ -6,41 +6,35 @@
     /* Add any additional styling as needed */
   }
   
-.product-image{
-    height: 500px;
+
+
+.product-image-merchDetails{
+    
     justify-content: center;
+    height: auto;
+    width: auto;
 }
   
-  .merch-details .product-image {
-    width: auto; /* Adjust the width as needed */
-    height: 100px; /* Example fixed height */
+  .merch-details .extra-product-image-merchDetails {
+    width:auto ; /* Adjust the width as needed */
+    height: 120px; /* Example fixed height */
     /* Ensure the width is auto or 100% if you want the image to be responsive */
   }
   
 
-.merch-container {
-    display: flex;
-    flex-direction: row; /* Assuming you want side-by-side layout */
-    align-items: flex-start; /* Align items to the start of the flex container */
-    padding: 20px;
-    max-width: 1200px; /* Adjust based on your layout needs */
-    margin: auto; /* Center the container */
-    justify-content: center;
-  }
-  
+
   .merch-images {
     /* Add styles for the images container */
     flex: 1; /* Take up equal space as the details */
     flex-direction: row;
   }
   
-  .merch-details {
-    flex: 1; /* Take up equal space as the images */
-    padding: 20px;
-    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-    justify-content: center;
+  /* .merch-details {
+    flex: 1; 
+   
+    box-sizing: border-box; 
     flex-direction: row;
-  }
+  } */
   
   .merch-price {
     color: #333;
@@ -85,3 +79,114 @@
     margin-bottom: 10px;
   }
   
+.size-button-selected {
+  background-color: #392F5B; 
+  color: #fff;
+  border: 2px solid #C8B479; 
+}
+
+.notification-box{
+  display: none;
+  position: fixed;
+  background-color: #dff0d8;
+  color: #000000;
+  
+  border-radius: 5px;
+  z-index: 1000; 
+  margin-right: 20px;
+  font-family: Arial,sans-serif;
+
+  
+
+}
+.notification-box::after {
+  content: '';
+  position: absolute;
+  top: -20px; 
+  left: 42%; 
+  margin-left: 90px; 
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #dff0d8 transparent; 
+  width: 0;
+  height: 0;
+}
+.notification-box.showIt {
+  display: flex;
+  justify-content: center;
+ 
+}
+.feedbackP{
+  margin-top: 16px;
+  
+}
+
+/* .nBoxDiv{
+ display: flex;
+ justify-content: flex-start;
+
+ 
+} */
+
+
+
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
+
+
+
+@media (max-width: 768px) {
+  .nBoxDiv{
+    display: flex;
+    justify-content: end;
+   
+   
+    
+   }
+   .nBoxDiv p {
+    font-size: smaller;
+   }
+
+   .notification-box{
+    height: auto;
+   padding: 3px;
+   width: auto;
+   }
+
+
+
+  .notification-box::after {
+    content: '';
+    position: absolute;
+    top: -20px; 
+    left: 40%; 
+    margin-left: 120px; 
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #dff0d8 transparent; 
+    width: 0;
+    height: 0;
+  }
+
+
+  .notification-box{  
+    margin-right: 0;  
+  }
+
+  .product-image-merchDetails{
+    height: 200px;
+    width: auto;
+  }
+
+  .merch-details .extra-product-image-merchDetails {
+    width:auto ; 
+    height: 100px; 
+   
+  }
+  .extra-product-image-container{
+    justify-content: center;
+  }
+}

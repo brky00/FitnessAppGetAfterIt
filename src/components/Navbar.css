@@ -15,7 +15,7 @@
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
     font-family: 'Raleway', sans-serif;
     border-bottom: 5px solid #C8B479; 
-    font-size: larger;
+    font-size: large;
     
     
     
@@ -110,12 +110,12 @@
  }
 
  .navbar-lower .navbar-nav .nav-item {
-  margin-right: 20px; 
-  margin-left: 20px; 
+  margin-right: 25px; 
+  margin-left: 25px; 
 }
 
 .shoppingDiv{
-  margin-left: 60px; 
+ margin-left: 32px;
 
 }
 
@@ -125,8 +125,24 @@
   z-index: 1000;
   
 }
+.shopping1{
+  
+    text-decoration: none; /* Underline'ı kaldırır */
+    color: inherit; /* Link'in rengini üst elementten alır */
+
+}
+.shopping2{
+  
+  text-decoration: none; /* Underline'ı kaldırır */
+  color: inherit; /* Link'in rengini üst elementten alır */
+
+}
+.cart-length{
+  font-size: 22px;
+  
+}
  
- 
+
 
   /*Dette er css for å gjøre det enda mer responsivt. Berkay...*/
   @media (max-width: 768px) {
@@ -138,7 +154,7 @@
     }
   
     .navbar-logo {
-      height: 80px; /* logo height for mindre skjerm */
+      height: 60px; /* logo height for mindre skjerm */
       margin-bottom: 10px;
       
    
@@ -163,6 +179,12 @@
     .shoppingDiv2{
       display: flex;
      }
+     .cart-length{
+      font-size: 20px;
+      }
+     
+
+    
    
   }
 
@@ -175,3 +197,13 @@
      }
   }
   
+  @media (max-width: 350px) 
+  {
+    .getAfterItTekst {
+      font-size: 20px;
+      margin: 0;
+  }
+  .cart-length{
+    font-size: 18px;
+    }
+  }

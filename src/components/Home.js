@@ -18,12 +18,12 @@ const Home = () => {
             <source src={getAfterItAnimation} type="video/mp4" />
           </video>
           <div className="buttons-container">
-            <button className="btn">
+            <button className="btn-home">
               <Link className="nav-link" to="/merch">
                 Merch
               </Link>
             </button>
-            <button className="btn">Packages</button>
+            <button className="btn-home">Packages</button>
           </div>
         </div>
       </section>
