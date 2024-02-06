@@ -12,6 +12,14 @@ import img9 from "./images/instagramIMGs/thumb_9.png"
 import img10 from "./images/instagramIMGs/thumb_10.png"
 import img11 from "./images/instagramIMGs/thumb_11.png"
 import img12 from "./images/instagramIMGs/thumb_12.png"
+import img13 from "./images/instagramIMGs/thumb_13.png"
+import img14 from "./images/instagramIMGs/thumb_14.png"
+import img15 from "./images/instagramIMGs/thumb_15.png"
+import img16 from "./images/instagramIMGs/thumb_16.png"
+import img17 from "./images/instagramIMGs/thumb_17.png"
+import img18 from "./images/instagramIMGs/thumb_18.png"
+import img19 from "./images/instagramIMGs/thumb_19.png"
+import img20 from "./images/instagramIMGs/thumb_20.png"
 import instaIcon from "./images/instagramIMGs/insta_icon.png"
 import GaiLogo from "./images/lionGetAfterIt.png"
 
@@ -30,12 +38,20 @@ const Instagram = () => {
     { link: "https://www.instagram.com/p/CyvH8L7t6_V/", thumbnail: img10, alt: "lost 100 punds" },
     { link: "https://www.instagram.com/p/CyVfehjN3Nl/", thumbnail: img11, alt: "cheat meal dirty fries" },
     { link: "https://www.instagram.com/p/CxVToHdNObN", thumbnail: img12, alt: "back extensions" },
+    { link: "https://www.instagram.com/p/C2rlfFLNjgU/", thumbnail: img13, alt: "preworkout meal" },
+    { link: "https://www.instagram.com/p/C2j8mhUPAtR/", thumbnail: img14, alt: "benchpress recipe" },
+    { link: "https://www.instagram.com/p/C2e_7tityd0/", thumbnail: img15, alt: "grenade protein bar" },
+    { link: "https://www.instagram.com/p/C2UggVttE7V/", thumbnail: img16, alt: "late night snack" },
+    { link: "https://www.instagram.com/p/C2Zm4T4tTeh/", thumbnail: img17, alt: "3 week break" },
+    { link: "https://www.instagram.com/p/CzyS9pXtC88/", thumbnail: img18, alt: "our new partner" },
+    { link: "https://www.instagram.com/p/CyA0lzhNg5L/", thumbnail: img19, alt: "protein powder" },
+    { link: "https://www.instagram.com/p/CuWjUyWAvI9/", thumbnail: img20, alt: "bigger traps" }
   ];
 
-  const [videosToShow, setVideosToShow] = useState(3);
+  const [videosToShow, setVideosToShow] = useState(4);
 
   const loadVideos = () => {
-    setVideosToShow(prevVideosToShow => prevVideosToShow + 3);
+    setVideosToShow(prevVideosToShow => prevVideosToShow + 4);
   };
 
   return (

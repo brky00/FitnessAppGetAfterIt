@@ -10,6 +10,7 @@
 
 body {
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    font-size: 1rem;
     color: var(--text-color);
     background-color: var(--background-color);
     margin: 0px;
@@ -31,8 +32,8 @@ body {
 
 .instagram-feed{
     display: grid;
-    grid-template-columns: repeat(3, 250px);
-    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 2%;
     justify-items: stretch;
     align-items: stretch;
     padding: 20px;
@@ -133,21 +134,23 @@ body {
     background-color: white;
     border: 1px solid #C8B479;
     color: black;
-    padding: 8px 16px;
+    padding: 6px 10px;
+    margin: 10px;
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
+
 .insta-follow-btn .instagram-icon{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin-right: 8px;
 }
 
 .insta-follow-btn {
-    
     transition: all 0.3s ease; 
   }
   
@@ -157,6 +160,11 @@ body {
     color: white; 
     transform: scale(1.05); 
   }
+
+.insta-follow-btn, #load-more {
+    padding: 12px 20px 12px;
+    font-size: 1em;
+}
 
 #load-more:hover {
     background-color: #392F5B;
@@ -168,6 +176,27 @@ button {
     transition: background-color 0.3s ease;
 }
 
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+h2 {
+    font-size: 1.5em;
+}
+
+
+@media (max-width: 992px) {
+    .instagram-feed {
+        /* For medium-sized screens, display 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
 
 @media (max-width: 768px) {
     .instagram-feed {
@@ -176,10 +205,19 @@ button {
     }
 }
 
+
 /* Media query for very small screens */
 @media (max-width: 480px) {
     .instagram-feed {
         /* On very small screens, have only 1 column */
         grid-template-columns: 1fr;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .instagram-header {
+        flex-direction: column;
     }
 }
