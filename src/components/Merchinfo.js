@@ -18,7 +18,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
       // If size is choosed so add to card
       handleAddProduct({ product, selectedSize });
       setShowNotification(true); {/*it shows the box*/ }
-      setTimeout(() => setShowNotification(false), 3000); {/* 3 seconds*/ }
+      setTimeout(() => setShowNotification(false), 4000); {/* 4 seconds*/ }
     }
   };
 
