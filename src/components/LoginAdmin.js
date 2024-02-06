@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import './LoginAdmin.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import './firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
@@ -19,6 +21,7 @@ const Login = () => {
                 const adminUser = userCredential.user;
                 console.log('User logged in succesfully: ', adminUser.email);
                 // (implement kode for å sende bruker til admin panel)
+                navigate('/dashTable');      
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -42,6 +45,7 @@ const Login = () => {
                 </div>
                 
                 <button type="submit" className="btn-primary">Login</button>
+
                 <a href="/" className='back-link'>&larr;Back to home page</a>
             </form>
         </div>

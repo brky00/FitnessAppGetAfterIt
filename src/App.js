@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Shopping from "./components/Shopping";
 import MerchInfo from "./components/Merchinfo";
 import data from "./components/back/Data/Data";
+import Table from"./components/Dashboard/Table"
 import { useState } from "react";
 
 
@@ -84,7 +85,7 @@ function App() {
         <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
         <Route path="/LoginAdmin" element={<Login />} />
         <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} cartItems={cartItems}/>} />
-
+        <Route path="/dashTable" element={<Table/>}/>
         
 
       </Routes>
