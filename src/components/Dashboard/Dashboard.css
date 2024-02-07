@@ -9,7 +9,6 @@
 
 .leftSideCol{
     border-style: solid;
-    height:100%;
     border-style: ridge;
     border-left: hidden;
     border-top: hidden;
@@ -17,7 +16,6 @@
 
 .rightSideCol{
     border-style: solid;
-    height:100%;
     border-style: ridge;
     border-right: hidden;
     border-top: hidden;
