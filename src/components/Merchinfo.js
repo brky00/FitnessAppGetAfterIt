@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Merchinfo.css'; // Importing the CSS styles
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 
 const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize,cartItems }) => {
+  const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
   const { id } = useParams()
   const totalPrice = cartItems.reduce(
@@ -29,7 +30,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
   const { name, price, image,description,sizes,selectionImages } = product;
 
 
- 
+
  
   const productDetails = {
     
@@ -52,12 +53,12 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
                     <p className="feedbackP">{`Product "${name}" is added to cart`}</p>
                     {totalPrice > 750 && (
                       <div className="bg-light d-flex justify-content-center">
-                        You have achieved free shipping
+                        You have achieved free shipping by using 700 NOK
                       </div>
                     )}
 
                     <div className="mt-3 d-flex justify-content-center align-items-center">
-                      <button type="button" class="btn btn-secondary">
+                      <button type="button" class="btn btn-secondary" onClick={() => navigate('/shopping')}>
                         Shopping card
                       </button>
                     </div>
