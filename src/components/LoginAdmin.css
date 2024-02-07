@@ -34,7 +34,7 @@ form h1{
     border-radius: 4px;
 }
 
-.btn-primary{
+.login .btn-primary{
     width: 100%;
     padding: 10px;
     border: 2px solid #C8B479;

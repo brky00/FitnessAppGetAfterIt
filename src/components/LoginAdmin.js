@@ -21,7 +21,7 @@ const Login = () => {
                 const adminUser = userCredential.user;
                 console.log('User logged in succesfully: ', adminUser.email);
                 // (implement kode for å sende bruker til admin panel)
-                navigate('/dashTable');      
+                navigate("/dashboard");      
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -44,7 +44,7 @@ const Login = () => {
                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
                 </div>
                 
-                <button type="submit" className="btn-primary">Login</button>
+                <button type="submit" className="login btn-primary">Login</button>
 
                 <a href="/" className='back-link'>&larr;Back to home page</a>
             </form>

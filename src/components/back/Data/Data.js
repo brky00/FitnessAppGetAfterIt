@@ -20,7 +20,7 @@ const data = {
     {
       id: "1",
       name: "Gti hoodie",
-      price: 220,
+      price: 320,
       image: hoodieImage,
       description: "Premium Cotton Training Hoodie",
       sizes: ["S", "M", "L", "XL"],
@@ -64,7 +64,7 @@ const data = {
   {
     id: "5",
     name: "Gti test-product",
-    price: 220,
+    price: 520,
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
@@ -74,7 +74,7 @@ const data = {
   {
     id: "6",
     name: "Gti test-product",
-    price: 220,
+    price: 420,
     image: jacketImage,
     description: "Premium Gti Jacket",
     sizes: ["M", "L", "XL"],
