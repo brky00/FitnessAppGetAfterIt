@@ -30,6 +30,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
   const { name, price, image,description,sizes,selectionImages } = product;
 
 
+
  
   const productDetails = {
     
