@@ -28,19 +28,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
   
   const { name, price, image,description,sizes,selectionImages } = product;
 
-   // selectionImages array'inin uzunluğuna göre column class'ını belirle
-   const getColumnClass = (imagesCount) => {
-    switch(imagesCount) {
-      case 2:
-        return "col-lg-6 d-flex justify-content-center";
-      case 3:
-        return "col-4 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center";
-      case 4:
-        return "col-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center";
-      default:
-        return "col-4 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center";
-    }
-  };
+
  
  
   const productDetails = {
