@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 
-const Table = ({productItems}) => {
+const Table = ({products}) => {
   return (
     <>
     <Header/>
@@ -21,7 +21,7 @@ const Table = ({productItems}) => {
             </tr>
           </thead>
           <tbody>
-            {productItems.map((product, index) => (
+            {products.map((product, index) => (
               <tr key={index}>
                 <td>{product.id}</td>
                 <td>{product.name}</td>
