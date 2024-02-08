@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize,cartItems }) => {
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
+
   const { id } = useParams()
   const totalPrice = cartItems.reduce(
     (price, item) => price + item.quantity * item.price,0
@@ -20,6 +21,16 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
       handleAddProduct({ product, selectedSize });
       setShowNotification(true); {/*it shows the box*/ }
       setTimeout(() => setShowNotification(false), 4000); {/* 4 seconds*/ }
+    }
+  };
+
+  const handleSizeClick = (size) => {
+    if (selectedSize === size) {
+      // If the clicked size is already selected, clear the selection
+      setSelectedSize(null); // Or an empty string, depending on your logic for no selection
+    } else {
+      // If it's a different size, select it
+      setSelectedSize(size);
     }
   };
 
@@ -102,7 +113,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
                   <div className="size-selector">
                     {sizes.map((size) => (
                       <button
-                        onClick={() => setSelectedSize(size)}
+                      onClick={() => handleSizeClick(size)}
                         key={size}
                         className={`size-button ${
                           selectedSize === size ? "size-button-selected" : ""
