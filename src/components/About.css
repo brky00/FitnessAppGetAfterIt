@@ -1,0 +1,52 @@
+.navbar-logo-about{
+    height: 280px;
+    width: auto;
+   
+}
+
+.backExercise-image{
+    height: 100%;
+    width: 100%;
+}
+
+.Dbells{
+    height: 400px;
+    width: auto;
+}
+
+.Dlift{
+    height: 100%;
+    width: 100%;
+}
+
+
+.AboutUsH1{
+    text-decoration: underline  #C8B479;
+    font-family: "Raleway", sans-serif; 
+}
+
+
+
+.aboutContainer{
+    margin-bottom: 100px;
+}
+.aboutContainer p{
+    font-family: "Raleway", sans-serif; 
+    font-size: 18px;
+}
+
+@media (max-width: 768px){
+    .navbar-logo-about{
+        height: 190px;
+        width: auto;
+    }
+
+    .aboutClientImg{
+        max-height:100% ;
+        max-width: 100%;
+    }
+    .aboutContainer p{
+        font-family: "Raleway", sans-serif; 
+        font-size: 12px;
+    }
+}

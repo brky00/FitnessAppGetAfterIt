@@ -8,10 +8,15 @@
   align-items: center; 
   padding: 0 30px; 
   border-bottom: 3px solid #C8B479; 
+  
+  
   }
   .navbar-lower {
     background-color: #FFF; /* Lys bakgrunn for nedre del av navbar */
-    color: #000;
+    font-family: 'Raleway', sans-serif;
+    border-bottom: 5px solid #C8B479; 
+    font-size: large;
+    
     
     
   }
@@ -20,7 +25,19 @@
   }
   .navbar-lower .nav-link {
     color: #000; /* Svart tekst for nedre navbar */
+    transition: color 0.5s, text-decoration-color 0.3s;
   }
+
+  
+  .navbar-lower .navbar-nav .nav-link:hover, 
+  .navbar-lower .navbar-nav .nav-link:focus { 
+    color: #392F5B; 
+    text-decoration: underline; 
+    text-decoration-color: #C8B479; 
+    transform: scale(1.1);
+  }
+
+
   .navbar-logo {
     
     height: 100px;
@@ -33,6 +50,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+   
     
 
   }
@@ -50,12 +68,24 @@
   }
   .adminLogo{
     font-size: 25px;
-   color:#C8B479;
-    
+   color:#C8B479; 
+   transition: color 0.5s,
+  }
+
+  .adminLogo:hover {
+    color: whitesmoke;
+    transform: scale(1.1);
   }
   .shopping{
     font-size: 25px;
     color:#C8B479;
+    transition: color 0.5s,
+    
+  }
+
+  .shopping:hover {
+    color: #392F5B; 
+    transform: scale(1.2);
   }
 
   .navbar-lower{
@@ -80,17 +110,39 @@
  }
 
  .navbar-lower .navbar-nav .nav-item {
-  margin-right: 20px; 
-  margin-left: 20px; 
+  margin-right: 25px; 
+  margin-left: 25px; 
 }
 
 .shoppingDiv{
-  margin-left: 60px; 
+ margin-left: 32px;
 
 }
 
+.NavbarBoth{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+}
+.shopping1{
+  
+    text-decoration: none; /* Underline'ı kaldırır */
+    color: inherit; /* Link'in rengini üst elementten alır */
+
+}
+.shopping2{
+  
+  text-decoration: none; /* Underline'ı kaldırır */
+  color: inherit; /* Link'in rengini üst elementten alır */
+
+}
+.cart-length{
+  font-size: 22px;
+  
+}
  
- 
+
 
   /*Dette er css for å gjøre det enda mer responsivt. Berkay...*/
   @media (max-width: 768px) {
@@ -102,7 +154,7 @@
     }
   
     .navbar-logo {
-      height: 80px; /* logo height for mindre skjerm */
+      height: 60px; /* logo height for mindre skjerm */
       margin-bottom: 10px;
       
    
@@ -127,6 +179,12 @@
     .shoppingDiv2{
       display: flex;
      }
+     .cart-length{
+      font-size: 20px;
+      }
+     
+
+    
    
   }
 
@@ -139,3 +197,13 @@
      }
   }
   
+  @media (max-width: 350px) 
+  {
+    .getAfterItTekst {
+      font-size: 20px;
+      margin: 0;
+  }
+  .cart-length{
+    font-size: 18px;
+    }
+  }

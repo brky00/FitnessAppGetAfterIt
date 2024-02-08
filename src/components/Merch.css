@@ -1,0 +1,82 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: left;
+    margin: 20px 0;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stock-availability {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.stockLabel{ 
+    font-size: 16px; /* Etiket font büyüklüğü artırıldı */
+    color: #333; /* Etiket rengi daha belirgin hale getirildi */
+    font-weight: bold; /* Etiket fontu kalınlaştırıldı */
+    
+  
+}
+
+
+.merchTitle{
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font-weight: 300;
+    font-size: 50px;
+}
+
+
+
+  /* Title style for whole page */
+  h1.merchTitle {
+    text-align: center;
+    color: #443850; 
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font-weight: bold; 
+    font-size: 50px;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .merchTitle{
+        margin-top: 20px;
+        margin-bottom: 2px;
+        font-size: 38px;
+    }
+
+    
+}
+

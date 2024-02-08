@@ -1,0 +1,121 @@
+.cardTitle-responsive{
+    display: none;
+}
+.card ul li{
+    margin-bottom: 1rem;
+}
+
+.packageimgDiv::after {
+    content: "";
+    display: block;
+    margin-top: 18px; 
+    margin-bottom: 2px;
+    width: 80%;
+    height: 3px; 
+    background: #C8B479; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+  
+  /* .PackakesTitle{
+    text-decoration: underline;
+  } */
+  .PackagesTitle {
+    position: relative; 
+    display: inline-block; 
+    font-weight: revert-layer;
+    font-size: 50px;
+  }
+  
+  .PackagesTitle::after {
+    content: ''; 
+    display: block; 
+    width: 100%; 
+    height: 4px; 
+    background-color: #C8B479; 
+    position: absolute; 
+    left: 0; 
+    bottom: -6px; 
+  }
+
+  .packagesRow::after {
+    content: "";
+    display: block;
+    margin-top: 0px; 
+    margin-bottom: 2px; 
+    width: 100%; 
+    height: 3px; 
+    background: #C8B479; 
+    margin-left: auto; 
+    margin-right: auto;
+  }
+
+  .pCard .card{
+    background-color: #392F5B;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 1rem;
+    
+  }
+  .pCard .card img{
+    border-radius: 1rem;
+  }
+  
+
+  .packageDescription{
+    background-color: #392F5B;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 1rem;
+  }
+  .packagesContainer{
+    margin-top: 100px;
+  }
+
+  .descriptionTitle{
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+
+@media (max-width: 767px) {
+  /* Card başlıklarının stilleri */
+  .cardTitle-no-responsive {
+      display: none;
+  }
+
+  .cardTitle-responsive {
+      display: flex;
+      justify-content: center;
+  }
+
+  
+  .pCard .card {
+      width: 15rem;
+      font-size: 15px;
+      
+  }
+
+  .PackagesTitle {
+      font-size: 35px; 
+  }
+  
+  .card-text {
+      
+  }
+
+  .packageDescription {
+      font-size: 12px; 
+      font-weight: 00;
+  }
+
+ 
+  .card-img-top {
+      width: 100%; 
+      height: auto; 
+  }
+  .descriptionTitle{
+    font-weight: 500;
+  }
+}
+
