@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 
 import Header from "./Header";
 import Table from "./Table";
+import { db } from "../firebase-config";
 
-import React from "react";
-
-const DashIndex = () => {
+const DashIndex = ({productItems}) => {
+ 
   return (
     <div className="container">
       <>
         <Header/>
-        <Table/>
+        <Table />
       </>
     </div>
   );
