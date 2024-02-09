@@ -8,7 +8,7 @@
     --aspect-ratio: 56.25%
 }
 
-body {
+/* body {
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
     font-size: 1rem;
     color: var(--text-color);
@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-}
+} */
 
 .instagram-section {
     width: 100%;
