@@ -98,23 +98,25 @@ const Add = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="product-sizes" className="form-label">Sizes</label>
-            <div id="product-sizes">
+            <div id="product-sizes" className="d-flex justify-content-center">
               {dbSizes.map((size) => (
                 <div key={size}>
                   <input
+                  className="ms-3"
                     type="checkbox"
                     id={`size-${size}`}
                     value={size}
                     checked={sizes.includes(size)}
                     onChange={handleSizeChange}
                   />
-                  <label htmlFor={`size-${size}`}>{size}</label>
+                  <label className="ms-3" htmlFor={`size-${size}`}>{size}</label>
                 </div>
               ))}
-              <button type="button" onClick={handleSelectAllSizes}>
+
+            </div>
+            <button type="button" onClick={handleSelectAllSizes}>
                 {sizes.length === dbsizesLength ? 'Unselect All Sizes' : 'Select All Sizes'}
               </button>
-            </div>
            
 
           </div>
@@ -140,7 +142,7 @@ const Add = () => {
        
         </form>
 
-        <div className="d-flex"><h4 className="me-2">Add a new size</h4><button onClick={addNewSizeHandle}>ADD a new size</button></div>
+        <div><h4 className="me-2">Add a new size</h4><button className="btn btn-primary" onClick={addNewSizeHandle} style={{height:"10%"}}>ADD a new size</button></div>
         {addNewSize &&        
         <div className="ms-5">
           <div className="d-flex bg-primary">
