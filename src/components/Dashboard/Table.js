@@ -13,7 +13,7 @@ const Table = ({dbProducts}) => {
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Price</th>
-              <th scope="col">Image</th>
+              <th scope="col">Main Image</th>
               <th scope="col">Description</th>
               <th scope="col">Sizes</th>
               <th scope="col">Selection Images</th>
@@ -27,19 +27,26 @@ const Table = ({dbProducts}) => {
             {dbProducts.map((product, index) => (
               <tr key={index}>
                 <td>{product.id}</td>
-                <td>{product.name}</td>
+                <td>{product.productName}</td>{" "}
+                {/* productName olarak güncellendi */}
                 <td>{product.price}</td>
                 <td>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{ width: "50px", height: "50px" }}
-                  />
+                  {/* İlk resmi ana resim olarak göster */}
+                  {product.images && product.images.length > 0 ? (
+                    <img
+                      src={product.images[0]}
+                      alt={product.productName || "Product Image"}
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  ) : (
+                    <span>No image available</span>
+                  )}
                 </td>
                 <td>{product.description}</td>
                 <td>{product.sizes?.join(", ")}</td>
                 <td>
-                  {product.selectionImages?.map((image, imgIndex) => (
+                  {/* İlk resmi hariç diğer resimleri göster */}
+                  {product.images?.slice(1).map((image, imgIndex) => (
                     <img
                       key={imgIndex}
                       src={image}
@@ -52,7 +59,6 @@ const Table = ({dbProducts}) => {
                     />
                   ))}
                 </td>
-
                 <td>{product.inStock ? "Yes" : "No"}</td>
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import {db,storage} from "../firebase-config"
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const Add = () => {
   const [dbSizes, setDbSizes] = useState(['S', 'M', 'L', 'XL', 'XXL']);
@@ -9,6 +12,12 @@ const Add = () => {
   const [sizes, setSizes] = useState([]);
   const [newSize, setNewSize] = useState("");
   const [productSelectionImgs, setProductSelectionImgs] = useState([]);
+  const [isInStock, setIsInStock] = useState(true); 
+  const [productMainImage, setProductMainImage] = useState(null); 
+  const [productName, setProductName] = useState(""); 
+  const [productDescription, setProductDescription] = useState(""); 
+
+  const types = ['image/png', 'image/jpeg']
 
   const handleSizeChange = (e) => {
     const value = e.target.value;
@@ -45,18 +54,95 @@ const Add = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+{/*Handle submit and firebase */}
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (error) {
       alert("Please fix the errors before submitting.");
       return;
     }
+ // Resimleri yükleme
+ let imageUrls = [];
+ if (productMainImage) {
+   try {
+     const mainImageUrl = await uploadImage(productMainImage);
+     imageUrls.push(mainImageUrl);
+   } catch (error) {
+     setError(error.message);
+     return;
+   }
+ }
+
+ // Tüm seçili resimleri yükle
+ for (let i = 0; i < productSelectionImgs.length; i++) {
+   try {
+     const url = await uploadImage(productSelectionImgs[i]);
+     imageUrls.push(url);
+   } catch (error) {
+     setError(error.message);
+     return;
+   }
+ }
+
+ // Firestore'a doküman ekleme
+ try {
+   const docRef = await addDoc(collection(db, "products"), {
+     productName: productName,
+     description: productDescription,
+     price: Number(productPrice), // String'i sayıya çevir
+     sizes: sizes,
+     inStock: isInStock,
+     images: imageUrls // Yüklenen resimlerin URL'leri
+   });
+   alert(`Product added successfully with ID: ${docRef.id}`);
+
+   console.log("Document written with ID: ", docRef.id);
+   // İşlem başarılı, formu temizle veya kullanıcıya bildir
+ } catch (error) {
+   console.error("Error adding document: ", error);
+   // Kullanıcıya hata bildir
+   alert("Error adding document: " + error.message);
+ }
     console.log("Submitted price:", productPrice);
+  };
+
+  
+const uploadImage = async (imageFile) => {
+  if (!imageFile) {
+    throw new Error('Resim dosyası bulunamadı!');
+  }
+  const storageRef = ref(storage, `images/${imageFile.name}`);
+  await uploadBytes(storageRef, imageFile);
+  return getDownloadURL(storageRef);
+};
+
+  const handleMainImageChange = (e) => {
+    let selectedFile = e.target.files[0];
+    if(selectedFile && types.includes(selectedFile.type)){
+      setProductMainImage(selectedFile);
+      setError("");
+    }
+    else{
+      setProductMainImage(null);
+      setError('please select a valid image type png or jpeg')
+    }
   };
 
   const handleImageChange = (e) => {
     // FileList'i bir diziye dönüştür ve state'i güncelle
     setProductSelectionImgs([...e.target.files]);
+  };
+
+  const handleInStockChange = (e) => {
+    setIsInStock(e.target.value === 'true');
+  };
+  const handleProductNameChange = (e) => {
+    setProductName(e.target.value);
+  };
+
+  // Ürün açıklaması değişikliklerini işleyen handler fonksiyonu
+  const handleProductDescriptionChange = (e) => {
+    setProductDescription(e.target.value);
   };
 
   // Form verileriyle ilgili işlemler...
@@ -68,6 +154,10 @@ const Add = () => {
   console.log("new size burada:",newSize);
   console.log("db sizes array burada:",dbSizes);
   console.log("sizes array burada:",sizes);
+  console.log("isInstock: ",isInStock);
+  console.log("productMainImage;",productMainImage);
+  console.log("productDescription add: ",productDescription);
+  console.log("productName add: ",productName);
 
   return (
     <>
@@ -78,11 +168,11 @@ const Add = () => {
           {/* Form içerikleri */}
           <div className="mb-3">
             <label htmlFor="product-name" className="form-label">Product Name</label>
-            <input type="text" className="form-control" id="product-name" required />
+            <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} className="form-control" id="product-name" required />
           </div>
           <div className="mb-3">
             <label htmlFor="product-description" className="form-label">Product Description</label>
-            <input type="text" className="form-control" id="product-description" required />
+            <input type="text" onChange={(e) => setProductDescription(e.target.value)} className="form-control" id="product-description" required />
           </div>
           <div className="mb-3">
             <label htmlFor="product-price" className="form-label">Product Price</label>
@@ -123,7 +213,7 @@ const Add = () => {
 
           <div className="mb-3">
             <label htmlFor="product-img" className="form-label">Product Image</label>
-            <input type="file" className="form-control" id="product-img" required />
+            <input type="file" className="form-control" id="product-img" onChange={handleMainImageChange} required />
           </div>
 
           <div className="mb-3">
@@ -136,6 +226,27 @@ const Add = () => {
           multiple
           required
         />
+      </div>
+      {/*In stock check true/false choose here*/}
+      <div className="mb-3">
+        <label className="form-label">Stock Status</label>
+        <div>
+          <input
+            type="radio"
+            value="true"
+            name="stockStatus"
+            checked={isInStock === true}
+            onChange={handleInStockChange}
+          /> In Stock
+          <input
+            type="radio"
+            value="false"
+            name="stockStatus"
+            checked={isInStock === false}
+            onChange={handleInStockChange}
+            className="ms-2"
+          /> Out of Stock
+        </div>
       </div>
       <button type="submit" className="btn btn-success btn-md mybtn">ADD</button>
 
@@ -150,11 +261,10 @@ const Add = () => {
               onChange={(e) => setNewSize(e.target.value)}
               value={newSize}
               type="text"
-              className="form-control"
               id="newSizes"
               required
             /> 
-            <button className="btn btn-primary mt-2 ms-2" onClick={saveSizeInSizes}>Save the size</button>
+            <button className="mt-2 btn" onClick={saveSizeInSizes}>Save the size</button>
           </div>
         </div>}
       </div>
