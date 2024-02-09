@@ -11,12 +11,42 @@ import Table from"./components/Dashboard/Table"
 import DashIndex from"./components/Dashboard/DashIndex"
 import Add from "./components/Dashboard/Add"
 import Dashboard from "./components/Dashboard/Dashboard"
-import {useState } from "react";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./components/firebase-config";
+
+
 
 
 
 
 function App() {
+      /*Database transaksjoner start*/
+      const[dbProducts, setDbProducts] =useState([]);
+      const getProducts = async () => {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const products = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+        // doc.data() is never undefined for query doc snapshots
+        // querySnapshot.forEach((doc) => {
+        
+        // console.log(doc.id, " => ", doc.data());
+        // });
+        setDbProducts(products);
+        console.log("products from firebase Table.js",products);
+   
+      
+  
+    
+      }
+  
+      console.log("dbProducts from firebase Table.js",dbProducts);
+      useEffect(() => {
+        getProducts(); 
+      }, []); 
+  
+  
+    
+      /*Database transaksjoner end*/
 
 
   
@@ -92,7 +122,7 @@ function App() {
         <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
         <Route path="/LoginAdmin" element={<Login />} />
         <Route path="/merchinfo/:id" element={<MerchInfo productItems={productItems} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} cartItems={cartItems}/>} />
-        <Route path="/dashTable" element={<Table/>}/>
+        <Route path="/dashTable" element={<Table dbProducts={dbProducts}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
