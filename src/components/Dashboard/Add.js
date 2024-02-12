@@ -61,7 +61,7 @@ const Add = () => {
       alert("Please fix the errors before submitting.");
       return;
     }
- // Resimleri yükleme
+ // load images
  let imageUrls = [];
  if (productMainImage) {
    try {
@@ -73,7 +73,7 @@ const Add = () => {
    }
  }
 
- // Tüm seçili resimleri yükle
+ // it adds all of the images whic is selected by the user
  for (let i = 0; i < productSelectionImgs.length; i++) {
    try {
      const url = await uploadImage(productSelectionImgs[i]);
@@ -84,15 +84,15 @@ const Add = () => {
    }
  }
 
- // Firestore'a doküman ekleme
+ // here the code add documents(product) in firestore
  try {
    const docRef = await addDoc(collection(db, "products"), {
      productName: productName,
      description: productDescription,
-     price: Number(productPrice), // String'i sayıya çevir
+     price: Number(productPrice), // covert string to integer
      sizes: sizes,
      inStock: isInStock,
-     images: imageUrls // Yüklenen resimlerin URL'leri
+     images: imageUrls // urls of images which is loaded
    });
    alert(`Product added successfully with ID: ${docRef.id}`);
 
@@ -109,7 +109,7 @@ const Add = () => {
   
 const uploadImage = async (imageFile) => {
   if (!imageFile) {
-    throw new Error('Resim dosyası bulunamadı!');
+    throw new Error('image file not found!');
   }
   const storageRef = ref(storage, `images/${imageFile.name}`);
   await uploadBytes(storageRef, imageFile);
@@ -136,18 +136,11 @@ const uploadImage = async (imageFile) => {
   const handleInStockChange = (e) => {
     setIsInStock(e.target.value === 'true');
   };
-  const handleProductNameChange = (e) => {
-    setProductName(e.target.value);
-  };
 
-  // Ürün açıklaması değişikliklerini işleyen handler fonksiyonu
-  const handleProductDescriptionChange = (e) => {
-    setProductDescription(e.target.value);
-  };
 
-  // Form verileriyle ilgili işlemler...
+  // Add Form data code to print out in the console to see and check the data as test...
   console.log("Submitted price:", productPrice);
-  // Seçilen resimleri göstermek için console'a log yapalım
+  // here we see the images i9n console
   productSelectionImgs.forEach((img, index) => {
     console.log(`Image ${index + 1}:`, img.name);
   });
@@ -165,7 +158,7 @@ const uploadImage = async (imageFile) => {
       <hr className="v-50" />
       <div className="container d-flex justify-content-center">
         <form onSubmit={handleSubmit}>
-          {/* Form içerikleri */}
+          {/* Form data*/}
           <div className="mb-3">
             <label htmlFor="product-name" className="form-label">Product Name</label>
             <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} className="form-control" id="product-name" required />

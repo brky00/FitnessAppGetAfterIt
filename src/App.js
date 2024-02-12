@@ -17,7 +17,7 @@ import { db } from "./components/firebase-config";
 
 
 function App() {
-      /*Database transaksjoner start*/
+      /*Database transactions start*/
       const[dbProducts, setDbProducts] =useState([]);
       const getProducts = async () => {
         const querySnapshot = await getDocs(collection(db, "products"));
@@ -37,7 +37,7 @@ function App() {
   
   
     
-      /*Database transaksjoner end*/
+      /*Database transactions end*/
 
 
   
