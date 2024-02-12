@@ -28,10 +28,10 @@ const Table = ({dbProducts}) => {
               <tr key={index}>
                 <td>{product.id}</td>
                 <td>{product.productName}</td>{" "}
-                {/* productName olarak güncellendi */}
+                {/* productName updated */}
                 <td>{product.price}</td>
                 <td>
-                  {/* İlk resmi ana resim olarak göster */}
+                  {/* Show first image as main */}
                   {product.images && product.images.length > 0 ? (
                     <img
                       src={product.images[0]}
@@ -45,7 +45,7 @@ const Table = ({dbProducts}) => {
                 <td>{product.description}</td>
                 <td>{product.sizes?.join(", ")}</td>
                 <td>
-                  {/* İlk resmi hariç diğer resimleri göster */}
+                  {/* show the other selected images except the first image */}
                   {product.images?.slice(1).map((image, imgIndex) => (
                     <img
                       key={imgIndex}

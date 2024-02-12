@@ -2,6 +2,7 @@ import React from "react";
 import "./ProductShoppingCard.css";
 
 const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) => {
+  console.log("item scard¤",item);
   // const {image, price,name,description ,handleAddProduct}=item;
   //
   return (
@@ -12,11 +13,11 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
           <div className="d-flex col-md-3 col-sm-12 productImgCol justify-content-center ">
            <div className="row d-flex d-flex justify ">
             <div className="col-sm-12 d-flex justify-content-center mb-1">
-            <span className="productTittel">{item.name}</span>
+            <span className="productTittel">{item.productName}</span>
             </div>
           <div className="col-sm-12 d-flex justify-content-center productImgDiv">
           <img
-              src={item.image}
+              src={item.images[0]}
               alt="product"
               className="img-thumbnail productImg mb-2"
             />

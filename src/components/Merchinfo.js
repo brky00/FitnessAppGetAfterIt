@@ -1,44 +1,49 @@
 import React, { useState } from 'react';
-import './Merchinfo.css'; // Importing the CSS styles
+import './Merchinfo.css';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
-
-const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize,cartItems }) => {
+const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize, cartItems }) => {
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
+  const { id } = useParams();
 
-  const { id } = useParams()
-  const totalPrice = cartItems.reduce(
-    (price, item) => price + item.quantity * item.price,0
-  );
+  const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
+
+  // try to find product
+  let product = dbProducts.find((product) => product.id === id);
+
+  // feed back product doesnt exist
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  // if exists destructuring 
+  const { productName, price, images, description, sizes } = product;
+
   const handleButtonClick = () => {
     if (!selectedSize) {
-      // alert if size not selected yet
       alert("Please select a size before adding to bag.");
     } else {
-      // If size is choosed so add to card
       handleAddProduct({ product, selectedSize });
-      setShowNotification(true); {/*it shows the box*/ }
-      setTimeout(() => setShowNotification(false), 4000); {/* 4 seconds*/ }
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 4000);
     }
   };
 
   const handleSizeClick = (size) => {
     if (selectedSize === size) {
-      // If the clicked size is already selected, clear the selection
-      setSelectedSize(null); // Or an empty string, depending on your logic for no selection
+      setSelectedSize(null);
     } else {
-      // If it's a different size, select it
       setSelectedSize(size);
     }
   };
 
   
 
-  let product = productItems.find((prdct) => parseInt(prdct.id) === parseInt(id)); 
+
   
-  const { name, price, image,description,sizes,selectionImages } = product;
+  
+  console.log("product her i merchinfo !!!!!#",product);
 
 
  
@@ -60,7 +65,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
                   }`}
                 >
                   <div className="align-items-center">
-                    <p className="feedbackP">{`Product "${name}" is added to cart`}</p>
+                    <p className="feedbackP">{`Product "${productName}" is added to cart`}</p>
                     {totalPrice > 750 && (
                       <div className="bg-light d-flex justify-content-center">
                         You have achieved free shipping by using 700 NOK
@@ -87,7 +92,7 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
               <div class="col-12 col-sm-12 col-md-6 col-lg-5"> {/* col for stort img*/}
                 <div className="merch-images">
                   <img
-                    src={image}
+                    src={images[0]}
                     alt="Hoodie"
                     className="img-fluid product-image-merchDetails"
                   />
@@ -95,21 +100,34 @@ const MerchInfo = ({ productItems, handleAddProduct,selectedSize,setSelectedSize
               </div>
               <div class= "col-12 col-sm-12 col-md-6 col-lg-7" >{/* col for  product details */}
                 <div className="merch-details ">
-                  <h1>{name}</h1>
+                  <h1>{productName}</h1>
                   <div className="col d-flex flex-wrap extra-product-image-container">
-                    {selectionImages.map((selectImg) => (
+                    {/* {selectionImages.map((selectImg) => (
                       <div >
                         <img
                           src={selectImg}
                           className="extra-product-image-merchDetails img-fluid"
                         />
                       </div>
-                    ))}
+                    ))} */}
+                    {images?.slice(1).map((image, imgIndex) => (
+                    <img
+                    className='extra-product-image-merchDetails img-fluid'
+                      key={imgIndex}
+                      src={image}
+                      alt={`Selection ${imgIndex}`}
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        marginRight: "5px",
+                      }}
+                    />
+                  ))}
                   </div>
 
                   {/*  */}
                   <p className="merch-price">{price}</p>
-                  <p className="merch-description">{name}</p>
+                  <p className="merch-description">{productName}</p>
                   <div className="size-selector">
                     {sizes.map((size) => (
                       <button
