@@ -117,8 +117,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       src={image}
                       alt={`Selection ${imgIndex}`}
                       style={{
-                        width: "30px",
-                        height: "30px",
+                        width: "auto",
+                        height: "100px",
                         marginRight: "5px",
                       }}
                     />

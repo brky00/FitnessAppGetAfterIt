@@ -6,7 +6,6 @@ import Login from "./components/LoginAdmin";
 import Contact from "./components/Contact";
 import Shopping from "./components/Shopping";
 import MerchInfo from "./components/Merchinfo";
-import data from "./components/back/Data/Data";
 import Table from"./components/Dashboard/Table"
 import DashIndex from"./components/Dashboard/DashIndex"
 import Add from "./components/Dashboard/Add"
@@ -14,6 +13,7 @@ import Dashboard from "./components/Dashboard/Dashboard"
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./components/firebase-config";
+// import data from "./components/back/Data/Data"; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
 
 function App() {
@@ -23,27 +23,14 @@ function App() {
         const querySnapshot = await getDocs(collection(db, "products"));
         const products = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})
         );
-
-       
-        // doc.data() is never undefined for query doc snapshots
-        // querySnapshot.forEach((doc) => {
-        
-        // console.log(doc.id, " => ", doc.data());
-        // });
         setDbProducts(products);
-        console.log("products from firebase inApp.js",products);
+        console.log("products from firebase firestore inn App.js",products);
    
-      
-  
     
       }
-      dbProducts.forEach(product => {
-        console.log("product skriveut",product); // Ürünün kendisini yazdırır
-        console.log("product id skriveut",product.id); // Ürünün ID'sini yazdırır
-      });
-      
-  
-      console.log("dbProducts from firebase Table.js",dbProducts);
+
+    
+      console.log("dbProducts app.js",dbProducts);
       useEffect(() => {
         getProducts(); 
       }, []); 
@@ -54,7 +41,7 @@ function App() {
 
 
   
-  const { productItems } = data;
+  // const { productItems } = data; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
   const [cartItems, setCartItems]=useState([]);
   const [selectedSize, setSelectedSize]=useState("");

@@ -181,11 +181,14 @@
     width: auto;
   }
 
-  .merch-details .extra-product-image-merchDetails {
+
+  
+  /* not in use now. we haw it in style in js
+  .merch-details .extra-product-image-merchDetails { 
     width:auto ; 
     height: 100px; 
    
-  }
+  } */
   .extra-product-image-container{
     justify-content: center;
   }
