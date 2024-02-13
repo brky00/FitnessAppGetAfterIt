@@ -3,6 +3,7 @@ import './LoginAdmin.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import './firebase-config';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -20,10 +21,40 @@ const Login = () => {
 
                 const adminUser = userCredential.user;
                 console.log('User logged in succesfully: ', adminUser.email);
+                Swal.fire({
+                    timer: 1500,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                      Swal.showLoading();
+                    },
+                    willClose: () => {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully logged in!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                    },
+                  });
                 // (implement kode for å sende bruker til admin panel)
                 navigate("/dashboard");      
             })
             .catch((error) => {
+                Swal.fire({
+                    timer: 1500,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                      Swal.showLoading();
+                    },
+                    willClose: () => {
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Incorrect email or password.',
+                        showConfirmButton: true,
+                      });
+                    },
+                  });
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error('Error logging in: ', errorCode, errorMessage);
