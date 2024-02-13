@@ -98,9 +98,14 @@ function App() {
     setCartItems([]);
   };
   
+  const handleDeleteProduct = (deleteId) => {
+    console.log("deleteId: ",deleteId)
+
+  };
   
   console.log("selectedSize",selectedSize);
   console.log("Appjs Cart items:",cartItems);
+
   
   return (
     <Router>
@@ -113,7 +118,7 @@ function App() {
         <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
         <Route path="/LoginAdmin" element={<Login />} />
         <Route path="/merchinfo/:id" element={<MerchInfo dbProducts={dbProducts} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} cartItems={cartItems}/>} />
-        <Route path="/dashTable" element={<Table dbProducts={dbProducts}/>}/>
+        <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>

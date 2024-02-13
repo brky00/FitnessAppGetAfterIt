@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 
-const Table = ({dbProducts}) => {
+const Table = ({dbProducts,handleDeleteProduct}) => {
 
   return (
     <>
@@ -67,7 +67,7 @@ const Table = ({dbProducts}) => {
                 </td>
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="btn btn-primary">Delete</button>
+                    <button onClick={()=>handleDeleteProduct(product.id)} className="btn btn-primary">Delete</button>
                   </div>
                 </td>
               </tr>
