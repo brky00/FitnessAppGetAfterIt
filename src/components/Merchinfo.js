@@ -47,10 +47,6 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
 
  
-  const productDetails = {
-    
-    sizes: ["S", "M", "L", "XL"]
-  };
 
   return (
     <>
