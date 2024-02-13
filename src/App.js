@@ -11,14 +11,17 @@ import DashIndex from"./components/Dashboard/DashIndex"
 import Add from "./components/Dashboard/Add"
 import Dashboard from "./components/Dashboard/Dashboard"
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "./components/firebase-config";
+import Swal from 'sweetalert2';
 // import data from "./components/back/Data/Data"; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
 
 function App() {
       /*Database transactions start*/
       const[dbProducts, setDbProducts] =useState([]);
+      const [cartItems, setCartItems]=useState([]);
+      const [selectedSize, setSelectedSize]=useState("");
       const getProducts = async () => {
         const querySnapshot = await getDocs(collection(db, "products"));
         const products = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})
@@ -43,8 +46,7 @@ function App() {
   
   // const { productItems } = data; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
-  const [cartItems, setCartItems]=useState([]);
-  const [selectedSize, setSelectedSize]=useState("");
+  
   console.log("APP.JS CARTITEMS ",cartItems);
 
   const handleAddProduct = ({product, selectedSize}) => {
@@ -100,6 +102,33 @@ function App() {
   
   const handleDeleteProduct = (deleteId) => {
     console.log("deleteId: ",deleteId)
+
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+    }).then(result => {
+      if (result.value) {
+        const [deletedProduct] = dbProducts.filter(prdct =>prdct.id === deleteId);
+        deleteDoc(doc(db, "products", deleteId));
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: `Product "${deletedProduct.productName}" with id " ${deletedProduct.id}"  has been deleted.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        const productsCopy = dbProducts.filter(prdct => prdct.id !== deleteId);
+        
+        setDbProducts(productsCopy);
+      }
+    });
 
   };
   
