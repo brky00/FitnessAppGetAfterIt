@@ -149,11 +149,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                           key={imgIndex}
                           src={image}
                           alt={`Selection ${imgIndex}`}
-                          style={{
-                            width: "auto",
-                            height: "100px",
-                            marginRight: "5px",
-                          }}
+
                           onClick={() => selectImage(image)}
                         />
                       ))}

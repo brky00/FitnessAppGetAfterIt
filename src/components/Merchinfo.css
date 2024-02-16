@@ -17,8 +17,17 @@
   
   .merch-details .extra-product-image-merchDetails {
     width:auto ; /* Adjust the width as needed */
-    height: 120px; /* Example fixed height */
     cursor: pointer;
+
+      height: 120px;
+      margin-right: 6px;
+      margin-bottom:6px;
+    
+  }
+
+  .merch-details .extra-product-image-merchDetails:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s;
   }
   
 
@@ -38,6 +47,8 @@
   .merch-description {
     color: #666;
     margin-bottom: 20px;
+    font-family: fantasy;
+   
   }
   
   .size-selector {
@@ -47,7 +58,7 @@
   
   .size-button {
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    border: 1px solid #000;
     padding: 5px 15px;
     margin-right: 10px;
     cursor: pointer;
@@ -77,6 +88,7 @@
   background-color: #392F5B; 
   color: #fff;
   border: 2px solid #C8B479; 
+  transform: scale(1.1);
 }
 
 .notification-box{
@@ -186,5 +198,9 @@
     padding: 3px 9px;
     margin-right: 8px;
     cursor: pointer;
+  }
+
+  .merch-details .extra-product-image-merchDetails {
+      height: 70px;
   }
 }
