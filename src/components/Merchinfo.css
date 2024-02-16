@@ -18,7 +18,7 @@
   .merch-details .extra-product-image-merchDetails {
     width:auto ; /* Adjust the width as needed */
     height: 120px; /* Example fixed height */
-    /* Ensure the width is auto or 100% if you want the image to be responsive */
+    cursor: pointer;
   }
   
 
@@ -29,12 +29,6 @@
     flex-direction: row;
   }
   
-  /* .merch-details {
-    flex: 1; 
-   
-    box-sizing: border-box; 
-    flex-direction: row;
-  } */
   
   .merch-price {
     color: #333;
@@ -121,14 +115,6 @@
   
 }
 
-/* .nBoxDiv{
- display: flex;
- justify-content: flex-start;
-
- 
-} */
-
-
 
 
 @keyframes fadeInOut {
@@ -177,19 +163,28 @@
   }
 
   .product-image-merchDetails{
-    height: 200px;
+    height: 180px;
     width: auto;
   }
 
 
-  
-  /* not in use now. we haw it in style in js
-  .merch-details .extra-product-image-merchDetails { 
-    width:auto ; 
-    height: 100px; 
-   
-  } */
   .extra-product-image-container{
     justify-content: center;
+  }
+
+  .merchInfoRow{
+    max-width: 100%;
+    
+
+  }
+  .merchinfoContainer{
+    width: 100%;
+  }
+  .size-button{
+
+ 
+    padding: 3px 9px;
+    margin-right: 8px;
+    cursor: pointer;
   }
 }
