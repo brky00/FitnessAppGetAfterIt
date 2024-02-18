@@ -185,22 +185,33 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       </div>
                     </div>
 
-                    <button
-                      className="add-to-bag-btn"
-                      onClick={handleButtonClick}
-                    >
-                      ADD TO BAG
-                    </button>
+                    <div className="d-flex justify-content-center">
+                      <button
+                        className="add-to-bag-btn"
+                        onClick={handleButtonClick}
+                      >
+                        ADD TO BAG
+                      </button>
+                    </div>
 
+                    <div className='product-description'>
+                      <div className='d-flex justify-content-center'>
+                        
+                        <p>Free 30-Day Return Policy!</p>
+                       
+                      </div>
+                    
 
-                    <p className="return-policy">
-                      {"Free 30-Day Return Policy!"}
-                    </p>
-                    <p className="delivery-info">
-                      {"Free Standard Delivery over 700 NOK"}
-                    </p>
+                      <div className='d-flex justify-content-center'>
+                        
+                      <p>Free Standard Delivery over 700 NOK</p>
+                       
+                      </div>
 
-                    <div>
+    
+                    </div>
+
+                    <div className='d-flex justify-content-center'>
                       <p>{description}</p>
                     </div>
                   </div>

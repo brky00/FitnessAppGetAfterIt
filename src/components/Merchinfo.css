@@ -75,31 +75,15 @@
   .add-to-bag-btn {
     background-color: #99c0e0;
     color: #000000;
-    padding: 10px 20px;
+    font-family: 'Raleway';
+    padding: 10px 85px;
     border: none;
     cursor: pointer;
-    width: 100%; /* Make button full width */
     box-sizing: border-box; /* Ensure padding doesn't affect overall width */
     margin-bottom: 20px;
     border-radius: 10px;
   }
-  /*Sans css*/
 
-  
-  .add-to-bag-btn {
-    background-color: #99c0e0;
-    color: #000000;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box; 
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
-
-  /*Sans css*/
-  
   .return-policy, .delivery-info {
     color: #333;
     margin-bottom: 10px;
@@ -145,6 +129,10 @@
 }
 .feedbackP{
   margin-top: 16px;
+  
+}
+
+.product-description{
   
 }
 
@@ -225,5 +213,12 @@
       height: 70px;
       margin-right: 6px;
       margin-bottom:6px;
+  }
+
+  .add-to-bag-btn {
+    
+    padding: 10px 20px;
+    width: 100%; /* Make button full width */
+
   }
 }
