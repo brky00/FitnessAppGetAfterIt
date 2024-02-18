@@ -17,7 +17,7 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
             </div>
           <div className="col-sm-12 d-flex justify-content-center productImgDiv">
           <img
-              src={item.images[0]}
+              src={item.selectedImage}
               alt="product"
               className="img-thumbnail productImg mb-2"
             />

@@ -20,8 +20,8 @@
     cursor: pointer;
 
       height: 120px;
-      margin-right: 6px;
-      margin-bottom:6px;
+      margin-right: 12px;
+      margin-bottom:8px;
     
   }
 
@@ -30,6 +30,10 @@
     transition: transform 0.5s;
   }
   
+  .productImage-selected{
+    transform: scale(1.08);
+    border: 4px solid #C8B479; 
+  }
 
 
   .merch-images {
@@ -202,5 +206,7 @@
 
   .merch-details .extra-product-image-merchDetails {
       height: 70px;
+      margin-right: 6px;
+      margin-bottom:6px;
   }
 }

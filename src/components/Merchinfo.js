@@ -3,13 +3,13 @@ import './Merchinfo.css';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize, cartItems }) => {
+const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize, cartItems, mainImage, setMainImage }) => {
   const navigate = useNavigate();
 
   const [showNotification, setShowNotification] = useState(false);
   const { id } = useParams();
   //Her oppretter jeg en state for å oppdatere mainImage etterhvert
-  const [mainImage, setMainImage] = useState(null);
+
   const [product,setProduct] = useState(null);
 
   useEffect(()=>{
@@ -33,8 +33,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
 
   
-  console.log("dbProducts:#",product);
-  console.log("current ptoduct#",product.images[0]);
+
   
 
   const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
@@ -54,11 +53,13 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     if (!selectedSize) {
       alert("Please select a size before adding to bag.");
     } else {
-      handleAddProduct({ product, selectedSize });
+      
+      handleAddProduct({product, selectedSize, mainImage});
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
   };
+  console.log("product in else:",product);
 
   const handleSizeClick = (size) => {
     if (selectedSize === size) {
@@ -70,6 +71,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
   const selectImage = (imgSrc) => {
     setMainImage(imgSrc);
+   
   };
 
   
@@ -142,47 +144,47 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                     
                       {images?.map((image, imgIndex) => (
                         <img
-                          className="extra-product-image-merchDetails img-fluid"
+                          className={`extra-product-image-merchDetails img-fluid
+                           ${
+                             mainImage === image
+                               ? "productImage-selected"
+                               : ""
+                           }`}
                           key={imgIndex}
                           src={image}
                           alt={`Selection ${imgIndex}`}
-
                           onClick={() => selectImage(image)}
                         />
                       ))}
                     </div>
                     <div className="col d-flex justify-content-center">
-                     <div>
-                   
-                      <p className="merch-description mb-2">{productName}</p>
-                     
-                     
-                      <p className="merch-price d-flex justify-content-center">{`NOK ${price}`}</p>
-                     </div>
+                      <div>
+                        {/* <p className="merch-description mb-2">{productName}</p> */}
+
+                        <p className="merch-price d-flex justify-content-center">{`NOK ${price}`}</p>
+                      </div>
                     </div>
 
                     {/*  */}
 
                     <div className="col-12 size-selectorCol">
-                        <div className='d-flex justify-content-center flex-wrap size-selector'>
-                          {sizes.map((size) => (
-                            <button
-                              onClick={() => handleSizeClick(size)}
-                              key={size}
-                              className={`size-button ${
-                                selectedSize === size
-                                  ? "size-button-selected"
-                                  : ""
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
-                        </div>
-                      
+                      <div className="d-flex justify-content-center flex-wrap size-selector">
+                        {sizes.map((size) => (
+                          <button
+                            onClick={() => handleSizeClick(size)}
+                            key={size}
+                            className={`size-button ${
+                              selectedSize === size
+                                ? "size-button-selected"
+                                : ""
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
                     <button
