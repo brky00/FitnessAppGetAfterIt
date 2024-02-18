@@ -148,9 +148,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                         <img
                           className={`extra-product-image-merchDetails img-fluid
                            ${
-                             mainImage === image
-                               ? "productImage-selected"
-                               : ""
+                             mainImage === image ? "productImage-selected" : ""
                            }`}
                           key={imgIndex}
                           src={image}
@@ -193,6 +191,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                     >
                       ADD TO BAG
                     </button>
+
 
                     <p className="return-policy">
                       {"Free 30-Day Return Policy!"}

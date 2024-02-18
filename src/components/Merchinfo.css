@@ -73,15 +73,32 @@
   }
   
   .add-to-bag-btn {
-    background-color: #000;
-    color: #fff;
+    background-color: #99c0e0;
+    color: #000000;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     width: 100%; /* Make button full width */
     box-sizing: border-box; /* Ensure padding doesn't affect overall width */
     margin-bottom: 20px;
+    border-radius: 10px;
   }
+  /*Sans css*/
+
+  
+  .add-to-bag-btn {
+    background-color: #99c0e0;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box; 
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  /*Sans css*/
   
   .return-policy, .delivery-info {
     color: #333;
