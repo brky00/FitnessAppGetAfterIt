@@ -1,0 +1,96 @@
+.container-contact {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "Raleway" sans-serif;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    text-decoration: underline #C8B479;
+    
+}
+
+.h1{
+    
+    text-align: center;
+}
+
+.Contact-title, h2, h4{
+    text-decoration: underline #C8B479;
+    font-family: "Raleway" sans-serif;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+
+.form-group label{
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+.form-group input[type="email"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.checkGoals{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+.checkActivity{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.checkExperience{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.checkImprove{
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-check-input{
+    margin-right: 10px
+    
+}
+
+.form-check-label{
+    font-weight: normal;
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.textBox{
+    margin-bottom: 20px;
+}
+
+.textBox label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.textBox textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}   
+
+button[type="submit"] {
+    background-color: #392F5B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: #BEAC7A;
+}

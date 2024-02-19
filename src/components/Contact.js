@@ -1,15 +1,16 @@
 import React from 'react'
+import './Contact.css'
 
 const Contact = () => {
   return (
     <div className='container-contact' >
-      <h1>Contact us</h1>
+      <h1 className=''>Contact us</h1>
       <form>
         <div class="form-group">
           <label for="exampleFormControlInput1">Write your Email address: </label>
           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
         </div>
-        <h2>Tell us more about your goals!</h2>
+        <h2>TELL US MORE ABOUT YOUR GOALS!</h2>
         
         <div class="checkGoals">
           <h4>What is your primary fitness goal?</h4>
@@ -103,6 +104,8 @@ const Contact = () => {
           <label for="exampleFormControlTextarea1">Specify your goals here:</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
         </div>
+
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
 
