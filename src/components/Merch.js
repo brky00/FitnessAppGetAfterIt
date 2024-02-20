@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Merch.css";
 import MerchItem from "./MerchItem";
 
-const Merch = ({ productItems }) => {
+const Merch = ({ dbProducts}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
@@ -38,9 +38,9 @@ const Merch = ({ productItems }) => {
 
 */
 
-  const filteredProducts = productItems
+  const filteredProducts = dbProducts
   .filter(
-    (product) => product.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
+    (product) => product.productName.toLowerCase().includes(searchTerm.toLowerCase().trim())
   )
    .filter(
     (product) => !inStockOnly || product.inStock

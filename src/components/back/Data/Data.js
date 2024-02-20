@@ -1,3 +1,9 @@
+/* 
+!!!WARNING!!!
+This file and code is now no longer used. 
+We used this code/file only to test during the development period with test data before we have connected 
+the project to the database we have used, i.e. Firebase. 
+But we have it here just to show what we have used before it even though it is not in use.*/ 
 import hoodieImage from "../../images/hoodie.png";
 import shortsImage from "../../images/shorts.png";
 import jacketImage from "../../images/jakke.png";
@@ -30,7 +36,7 @@ const data = {
     {
       id: "2",
       name: "Gti shorts",
-      price: 220,
+      price: 230,
       image: shortsImage,
       description: "Gti Cotton Shorts",
       sizes: ["S", "M", "XL"],
