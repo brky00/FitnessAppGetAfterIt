@@ -1,7 +1,7 @@
 .container-login{
     display: flex;
     justify-content: center;
-    align-items: center;
+   margin-top: 150px;
     min-height: 100vh;
 }
 
@@ -52,4 +52,16 @@ form h1{
     display: block;
     margin-top: 20px;
     text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+
+    .container-login{
+
+       margin-top: 80px;
+       
+    }
+
+    
 }
