@@ -129,7 +129,7 @@ const uploadImage = async (imageFile) => {
   };
 
   const handleImageChange = (e) => {
-    // FileList'i bir diziye dönüştür ve state'i güncelle
+    // FileList is civerted to a array and the state updated
     setProductSelectionImgs([...e.target.files]);
   };
 
@@ -140,7 +140,7 @@ const uploadImage = async (imageFile) => {
 
   // Add Form data code to print out in the console to see and check the data as test...
   console.log("Submitted price:", productPrice);
-  // here we see the images i9n console
+  // here we see the images in console
   productSelectionImgs.forEach((img, index) => {
     console.log(`Image ${index + 1}:`, img.name);
   });
