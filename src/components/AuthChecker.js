@@ -11,7 +11,7 @@ const AuthChecker = ({ children }) => {
     if (isLoggedIn !== 'true') {
       navigate("/LoginAdmin");
     }
-  }, [navigate]);
+  }, []);
 
   return children; 
 };
