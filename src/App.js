@@ -146,7 +146,7 @@ function App() {
   return (
     <Router>
       <Navbar cartItems={cartItems}/>
-      <AuthChecker />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/merch" element={<Merch productItems={productItems}/>} /> */}

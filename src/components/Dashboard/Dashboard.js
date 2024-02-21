@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css'
 import  { db, analytics } from '../firebase-config';
+import Logout from '../Logout';
+
 
 
 // Lage infoBox for å vise total antall  kategorier, produkter og brukere i dashboarden
@@ -48,6 +50,7 @@ const Dashboard = () => {
 
             <div className='col-8 col-sm-8 col-lg-10 SideCol '>
                 <h1>Dashboard</h1>
+                <Logout />
                 <div className='row'>
                     <div className='row'>
                       <div className='col-md-4 mb-4 '>
