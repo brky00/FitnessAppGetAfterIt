@@ -40,6 +40,10 @@ const Login = () => {
             });
 
                 const adminUser = userCredential.user;
+                //The code add user(admin) in local storage with the key 'user'.
+                localStorage.setItem('user', JSON.stringify(adminUser));
+                localStorage.setItem('isLoggedIn', 'true');
+
                 console.log('User logged in succesfully: ', adminUser.email);
 
                 navigate("/dashboard");      

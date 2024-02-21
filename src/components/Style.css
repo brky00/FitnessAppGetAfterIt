@@ -209,8 +209,16 @@ h2 {
 @media (max-width: 480px) {
     .instagram-feed {
         /* On very small screens, have only 1 column */
-        grid-template-columns: 1fr;
+        grid-template-columns: 4fr;
+        
     }
+    /* .instagram-video {
+      
+     
+        width: 50px;
+        height: 50px;
+        object-fit: cover;   
+    } */
 }
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css'
 import  { db, analytics } from '../firebase-config';
-/*Fortsett her Lui*/
+
 
 // Lage infoBox for å vise total antall  kategorier, produkter og brukere i dashboarden
 const InfoBox = ({ title, value}) => {

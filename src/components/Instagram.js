@@ -48,10 +48,10 @@ const Instagram = () => {
     { link: "https://www.instagram.com/p/CuWjUyWAvI9/", thumbnail: img20, alt: "bigger traps" }
   ];
 
-  const [videosToShow, setVideosToShow] = useState(4);
+  const [videosToShow, setVideosToShow] = useState(5);
 
   const loadVideos = () => {
-    setVideosToShow(prevVideosToShow => prevVideosToShow + 4);
+    setVideosToShow(prevVideosToShow => prevVideosToShow + 5);
   };
 
   return (
