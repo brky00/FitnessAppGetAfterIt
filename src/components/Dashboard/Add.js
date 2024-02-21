@@ -33,17 +33,7 @@ const Add = () => {
     }
   };
 
-  // const addNewSizeHandle = () => {
-  //   setAddNewSize(!addNewSize);
-  // };
 
-  // const saveSizeInSizes = () => {
-  //   if (newSize && !dbSizes.includes(newSize)) {
-  //     setDbSizes(prevSizes => [...prevSizes, newSize]);
-  //     setNewSize("");
-  //     setAddNewSize(false);
-  //   }
-  // };
 
   const handlePriceChange = (e) => {
     const value = e.target.value;
@@ -115,33 +105,6 @@ const Add = () => {
     showConfirmButton: false,
     timer: 2500,
   });
-  //  alert(`Product added successfully with ID: ${docRef.id}`);
-  //tester noe
-  // Swal.fire({
-  //   timer: 1500,
-  //   showConfirmButton: false,
-  //   willOpen: () => {
-  //     Swal.showLoading();
-  //   },
-  //   willClose: () => {
-  //     Swal.fire({
-  //       icon: 'success',
-  //       title: 'Added!',
-  //       text: `product with product id"${docRef.id}" has been Added.`,
-  //       showConfirmButton: false,
-  //     });
-  //   },
-  // });
-  //tester noe end
-
-  //old test down here(Berkay)
-  //  Swal.fire({
-  //   icon: 'success',
-  //   title: 'Added!',
-  //   text: `product with product id"${docRef.id}" has been Added.`,
-  //   showConfirmButton: false,
-  //   timer: 1500,
-  // });
 
    console.log("Document written with ID: ", docRef.id);
    // succes and we clean and give  response
@@ -328,29 +291,6 @@ const uploadImage = async (imageFile) => {
           {error && <div className="text-danger">{error}</div>}
         </form>
 
-        {/* <div>
-          <h4 className="me-2">Add a new size</h4>
-          <button
-            className="btn btn-primary"
-            onClick={addNewSizeHandle}
-            style={{ height: "10%" }}
-          >
-            ADD a new size
-          </button>
-        </div> */}
-        {/*         {addNewSize &&        
-        <div className="ms-5">
-          <div className="d-flex bg-primary">
-            <input
-              onChange={(e) => setNewSize(e.target.value)}
-              value={newSize}
-              type="text"
-              id="newSizes"
-              required
-            /> 
-            <button className="mt-2 btn" onClick={saveSizeInSizes}>Save the size</button>
-          </div>
-        </div>} */}
       </div>
     </>
   );

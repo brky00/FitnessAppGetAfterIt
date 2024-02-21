@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logoImage from "./images/lionGetAfterIt.png";
-import Login from "./LoginAdmin";
+
 
 const Navbar = ({cartItems}) => {
   const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);

@@ -3,6 +3,7 @@ import './LoginAdmin.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import './firebase-config';
 import { useNavigate } from 'react-router-dom';
+import logoImage from "./images/lionGetAfterIt.png";
 import Swal from 'sweetalert2';
 
 
@@ -14,47 +15,43 @@ const Login = () => {
     // funksjon for  å logge inn brukeren med epost og passord
     const handleLogin = (e) => {
         e.preventDefault();
+        Swal.fire({
+          title: "Logging in...",
+          text: "Please wait while we log you in.",
+          imageUrl: logoImage, // our logo is used here and fixed size under there.(with swal2)
+          imageWidth: 80, 
+          imageHeight: 80, 
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          willOpen: () => {
+            Swal.showLoading();
+          },
+        });
 
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+            
+              Swal.fire({
+                icon: 'success',
+                title: 'Successfully logged in!',
+                showConfirmButton: false,
+                timer: 1500,
+            });
 
                 const adminUser = userCredential.user;
                 console.log('User logged in succesfully: ', adminUser.email);
-                Swal.fire({
-                    timer: 1500,
-                    showConfirmButton: false,
-                    willOpen: () => {
-                      Swal.showLoading();
-                    },
-                    willClose: () => {
-                      Swal.fire({
-                        icon: 'success',
-                        title: 'Successfully logged in!',
-                        showConfirmButton: false,
-                        timer: 1500,
-                      });
-                    },
-                  });
-                // (implement kode for å sende bruker til admin panel)
+
                 navigate("/dashboard");      
             })
             .catch((error) => {
+
                 Swal.fire({
-                    timer: 1500,
-                    showConfirmButton: false,
-                    willOpen: () => {
-                      Swal.showLoading();
-                    },
-                    willClose: () => {
-                      Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'Incorrect email or password.',
-                        showConfirmButton: true,
-                      });
-                    },
-                  });
+                  icon: 'error',
+                  title: 'Error!',
+                  text: 'Incorrect email or password.',
+                  showConfirmButton: true,
+              });
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error('Error logging in: ', errorCode, errorMessage);
