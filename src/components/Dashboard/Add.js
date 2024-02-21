@@ -62,6 +62,18 @@ const Add = () => {
       alert("Please fix the errors before submitting.");
       return;
     }
+
+    Swal.fire({
+      title: 'Uploading...',
+      text: 'Please wait while the product is being added.',
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+
  // load images
  let imageUrls = [];
  if (productMainImage) {
@@ -95,23 +107,34 @@ const Add = () => {
      inStock: isInStock,
      images: imageUrls // urls of images which is loaded
    });
+
+   Swal.fire({
+    icon: 'success',
+    title: 'Added!',
+    text: `Product with product id "${docRef.id}" has been added.`,
+    showConfirmButton: false,
+    timer: 2500,
+  });
   //  alert(`Product added successfully with ID: ${docRef.id}`);
   //tester noe
-  Swal.fire({
-    timer: 1500,
-    showConfirmButton: false,
-    willOpen: () => {
-      Swal.showLoading();
-    },
-    willClose: () => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Added!',
-        text: `product with product id"${docRef.id}" has been Added.`,
-        showConfirmButton: false,
-      });
-    },
-  });
+  // Swal.fire({
+  //   timer: 1500,
+  //   showConfirmButton: false,
+  //   willOpen: () => {
+  //     Swal.showLoading();
+  //   },
+  //   willClose: () => {
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: 'Added!',
+  //       text: `product with product id"${docRef.id}" has been Added.`,
+  //       showConfirmButton: false,
+  //     });
+  //   },
+  // });
+  //tester noe end
+
+  //old test down here(Berkay)
   //  Swal.fire({
   //   icon: 'success',
   //   title: 'Added!',
@@ -220,7 +243,7 @@ const uploadImage = async (imageFile) => {
               onChange={handlePriceChange}
               required
             />
-            {error && <div className="text-danger">{error}</div>}
+           
           </div>
           <div className="mb-3">
             <label htmlFor="product-sizes" className="form-label">
@@ -302,6 +325,7 @@ const uploadImage = async (imageFile) => {
           <button type="submit" className="btn btn-success btn-md mybtn">
             ADD
           </button>
+          {error && <div className="text-danger">{error}</div>}
         </form>
 
         {/* <div>
