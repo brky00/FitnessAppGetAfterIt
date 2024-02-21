@@ -1,11 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logoImage from "./images/lionGetAfterIt.png";
 
 
 const Navbar = ({cartItems}) => {
+  const navigate = useNavigate();
   const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+
+  const handleAdminClick = () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn=='true') {
+      navigate('/dashboard');
+    } else {
+      navigate('/LoginAdmin');
+    }
+  };
 
   return (
     <>
@@ -17,9 +27,7 @@ const Navbar = ({cartItems}) => {
               <img src={logoImage} alt="Logo" className="navbar-logo" />
             </a>
             <span className="getAfterItTekst mx-auto">Get After It</span>
-            <Link to="/LoginAdmin">
-              <i className="fa-solid fa-user adminLogo"></i>
-            </Link>
+            <i className="fa-solid fa-user adminLogo" onClick={handleAdminClick}></i>
           </div>
         </nav>
 

@@ -30,6 +30,8 @@ const Dashboard = () => {
     <>
 
     <div className='container-fluid dashBoardContainer'>
+    <h1>Dashboard</h1> 
+    <div className='d-flex justify-content-end me-5'><Logout /></div>
         <div className='row dashBoardRow'>
             <div className='col-4 col-sm-4 col-lg-2 leftSideCol'>
               <div className='row'>
@@ -49,8 +51,8 @@ const Dashboard = () => {
             </div>
 
             <div className='col-8 col-sm-8 col-lg-10 SideCol '>
-                <h1>Dashboard</h1>
-                <Logout />
+                
+                
                 <div className='row'>
                     <div className='row'>
                       <div className='col-md-4 mb-4 '>
