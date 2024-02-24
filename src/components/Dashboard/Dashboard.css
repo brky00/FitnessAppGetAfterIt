@@ -42,4 +42,107 @@
     text-align: center;
     margin-bottom: 2rem;
 }
+  
+  .email-list{
+    margin-top: 40px;
+  }
+  .email-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    list-style-type: none;
+    padding: 10px;
+  }
 
+  .email-list ul{
+    padding: 10px;
+  }
+  
+  .email-list li:hover {
+    background-color: #efefef;
+  }
+  
+  form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .searchResult {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .searchResult p {
+    margin: 5px 0;
+    
+  }
+  
+.dashBoardProducts {
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .leftSideCol, .rightSideCol {
+        border: none; 
+    }
+
+    .dashBoardRow, .dashBoardContainer {
+        height: auto; 
+    }
+
+    .SideCol > h1 {
+        margin-top: 0.5rem; 
+        font-size: 24px; 
+    }
+
+    form input[type="email"], form button {
+        width: 100%;
+        margin: 10px 0; 
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+}
+@media (max-width: 480px) {
+
+    .SideCol, .dashBoardProductsCol, .email-list li {
+        width: 100%;
+    }
+
+    .dashBoardProducts {
+        font-size: 18px; 
+    }
+}
+
+@media (max-width: 768px) {
+    div.row{
+        justify-content: center;
+        
+        
+    }
+
+}
