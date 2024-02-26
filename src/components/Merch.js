@@ -59,12 +59,13 @@ const Merch = ({ dbProducts}) => {
             <div className="search-bar">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search of merch items"
                 style={{ width: "100%" }}
                 value={searchTerm}
                 onChange={handleSearchChange}
               />
-              <button type="submit">🔍</button>
+              <div className="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              
             </div>
             <div className="stock-availability">
               <label>

@@ -16,20 +16,15 @@ h1 {
 
 .search-bar input[type="text"] {
     padding: 10px;
-    margin-right: 10px;
+   
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    border-color: 	rgb(148,0,211);
+    margin-right: 2px;
 }
 
-.search-bar button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .stock-availability {
     text-align: left;
@@ -63,7 +58,23 @@ h1 {
     font-size: 50px;
 }
 
+.merchSearch{
+    width: 100%;
 
+  
+}
+
+ .searchIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: 	rgb(148,0,211);
+    width: 50px;
+    background-color: #ffffff;
+   
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
