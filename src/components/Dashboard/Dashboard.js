@@ -70,7 +70,7 @@ useEffect(() => {
                 </Link>
               </div>
               <div className='col-12 mt-5'>
-                <Link className='dashBoardProducts' to="#">
+                <Link className='Usercontact' to="/Usercontact">
                   <div className='d-flex justify-content-center align-items-center productLinkInnerDiv'>
                     <h2 className='me-3'>Contact</h2>
                     <div><i className="fa-solid fa-address-book"></i></div>
