@@ -76,7 +76,7 @@ const Login = () => {
                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
                 </div>
                 
-                <button type="submit" className="login btn-primary mt-2">Login</button>
+                <button type="submit" className="login btn-primary loginButton mt-2">Login</button>
 
                 <a href="/" className='back-link'>&larr;Back to home page</a>
             </form>

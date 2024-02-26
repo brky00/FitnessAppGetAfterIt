@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logoImage from "./images/lionGetAfterIt.png";
+import Logout from "./Logout";
+
+
 
 
 const Navbar = ({cartItems}) => {
+  const [login, setLogin]=useState(false);
   const navigate = useNavigate();
   const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
 
   const handleAdminClick = () => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn=='true') {
+    if (isLoggedIn==='true') {
       navigate('/dashboard');
     } else {
       navigate('/LoginAdmin');
     }
   };
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      setLogin(true);
+      console.log("setlogin true");
+    }
+    else{
+      setLogin(false);
+      console.log("setlogin false");
+    }
+  }, [navigate]);
 
   return (
     <>
@@ -100,6 +116,11 @@ const Navbar = ({cartItems}) => {
                 </div>
               </div>
             </div>
+            {login && (
+              <div>
+                <Logout />
+              </div>
+            )}
             <div className="shoppingDiv2">
               <Link className="shopping2" to="/shopping">
                 <div className="d-flex align-items-center justify-content-center">
@@ -110,6 +131,7 @@ const Navbar = ({cartItems}) => {
                 </div>
               </Link>
             </div>
+
           </div>
         </nav>
       </div>

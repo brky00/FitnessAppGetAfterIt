@@ -51,7 +51,7 @@ const Dashboard = () => {
             </div>
 
             <div className='col-8 col-sm-8 col-lg-10 SideCol '>
-            <div className='d-flex justify-content-between dashBoardHeader mt-3'><h1>Dashboard</h1><div className='me-5'>  <Logout /></div></div>
+            <div className='d-flex justify-content-between dashBoardHeader mt-3'><h1>Dashboard</h1><div className='me-5'>  </div></div>
                 
                 
                 <div className='row'>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import "./Logout.css";
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -27,7 +28,9 @@ const Logout = () => {
   };
 
   return (
-    <button onClick={handleLogout}>Logout</button>
+    // <button onClick={handleLogout}>Logout</button>
+   
+    <div className='logOutDiv' onClick={handleLogout}> <i  class="fa-solid fa-right-from-bracket"></i> <span>Logg Out</span></div>
   );
 };
 
