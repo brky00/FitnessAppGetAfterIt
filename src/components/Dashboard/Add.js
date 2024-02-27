@@ -5,11 +5,12 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import Swal from 'sweetalert2';
 
 const Add = () => {
-  const [dbSizes, setDbSizes] = useState(['S', 'M', 'L', 'XL', 'XXL']);
+  const [dbSizes, setDbSizes] = useState(['XXS','XS','S', 'M', 'L', 'XL', 'XXL']);
   const dbsizesLength = dbSizes.length;
   // const [addNewSize, setAddNewSize] = useState(false);
   const [error, setError] = useState('');
   const [productPrice, setProductPrice] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(0);
   const [sizes, setSizes] = useState([]);
   // const [newSize, setNewSize] = useState("");
   const [productSelectionImgs, setProductSelectionImgs] = useState([]);
@@ -42,6 +43,16 @@ const Add = () => {
       setError('');
     } else {
       setError('Please enter a valid number for the price');
+    }
+  };
+
+  const handleQuantity = (e) => {
+    const value = e.target.value;
+    if (!value || value.match(/^\d*\.?\d*$/)) {
+      setProductQuantity(value);
+      setError('');
+    } else {
+      setError('Please enter a valid number for the quantity');
     }
   };
 
@@ -89,10 +100,11 @@ const Add = () => {
 
  // here the code add documents(product) in firestore
  try {
-   const docRef = await addDoc(collection(db, "products"), {
+    const docRef = await addDoc(collection(db, "products"), {
      productName: productName,
      description: productDescription,
-     price: Number(productPrice), // covert string to integer
+     price: Number(productPrice), // converting string to integer
+     quantity:Number(productQuantity),
      sizes: sizes,
      inStock: isInStock,
      images: imageUrls // urls of images which is loaded
@@ -205,6 +217,21 @@ const uploadImage = async (imageFile) => {
               value={productPrice}
               onChange={handlePriceChange}
               required
+            />
+           
+          </div>
+          <div className="mb-3">
+            <label htmlFor="product-quantity" className="form-label">
+              Product Quantity
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="product-quantity"
+              value={productQuantity}
+              onChange={handleQuantity}
+              required
+            
             />
            
           </div>
