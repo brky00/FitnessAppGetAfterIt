@@ -8,7 +8,7 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
   return (
     <div className="productCardContainer">
       <div className="product">
-        <div className="row mb-3 mt-3 mb-3 productRow ">
+        <div className="row mb-1  productRow ">
           
           <div className="d-flex col-md-3 col-sm-12 productImgCol justify-content-center ">
            <div className="row d-flex d-flex justify ">

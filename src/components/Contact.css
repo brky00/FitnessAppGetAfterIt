@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.Contact-title, h2, h4{
+.Contact-title, .container-contact h2, .container-contact h4{
     text-decoration: underline #C8B479;
     font-family: "Raleway" sans-serif;
     text-align: left;

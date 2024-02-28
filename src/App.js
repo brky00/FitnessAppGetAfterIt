@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "./components/firebase-config";
 import Swal from 'sweetalert2';
+import AuthChecker from "./components/AuthChecker"
 // import data from "./components/back/Data/Data"; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
 
@@ -145,6 +146,7 @@ function App() {
   return (
     <Router>
       <Navbar cartItems={cartItems}/>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/merch" element={<Merch productItems={productItems}/>} /> */}
@@ -156,7 +158,8 @@ function App() {
         <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
+        
       </Routes>
     </Router>
   );

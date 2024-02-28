@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css'
 import  { db, analytics } from '../firebase-config';
-/*Fortsett her Lui*/
+import Logout from '../Logout';
+
+
 
 // Lage infoBox for å vise total antall  kategorier, produkter og brukere i dashboarden
 const InfoBox = ({ title, value}) => {
@@ -28,8 +30,10 @@ const Dashboard = () => {
     <>
 
     <div className='container-fluid dashBoardContainer'>
+    
+    <div className='d-flex justify-content-end me-5'></div>
         <div className='row dashBoardRow'>
-            <div className='col-4 col-sm-4 col-lg-2 leftSideCol'>
+            <div className='col-4 col-sm-4 col-lg-2 leftSideCol mt-3'>
               <div className='row'>
                 <div className='col-12 dashBoardProductsCol'>
                   <Link className='dashBoardProducts'  to="/dashTable">
@@ -47,7 +51,9 @@ const Dashboard = () => {
             </div>
 
             <div className='col-8 col-sm-8 col-lg-10 SideCol '>
-                <h1>Dashboard</h1>
+            <div className='d-flex justify-content-between dashBoardHeader mt-3'><h1>Dashboard</h1><div className='me-5'>  </div></div>
+                
+                
                 <div className='row'>
                     <div className='row'>
                       <div className='col-md-4 mb-4 '>
