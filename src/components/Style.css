@@ -212,19 +212,19 @@ h2 {
         grid-template-columns: 4fr;
         
     }
-    /* .instagram-video {
+     .instagram-video {
       
      
         width: 50px;
         height: 50px;
         object-fit: cover;   
-    } */
+    } 
 }
 
 
 
 @media (max-width: 768px) {
     .instagram-header {
-        flex-direction: column;
+     
     }
 }
