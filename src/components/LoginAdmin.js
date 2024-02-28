@@ -64,7 +64,7 @@ const Login = () => {
     };
     return(
         <div className="container-login">
-            <form onSubmit={handleLogin}>
+            <form className='loginForm' onSubmit={handleLogin}>
                 <h1>LOGIN AS ADMIN</h1>
                 <div className="form-group">
                     <label for="exampleInputEmail1">Email address</label>

@@ -3,6 +3,7 @@ import {db,storage} from "../firebase-config"
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import Swal from 'sweetalert2';
+import './Add.css'
 
 const Add = () => {
   const [dbSizes, setDbSizes] = useState(['XXS','XS','S', 'M', 'L', 'XL', 'XXL']);
@@ -177,9 +178,9 @@ const uploadImage = async (imageFile) => {
   return (
     <>
       <h2 className="d-flex justify-content-center mt-4">ADD PRODUCTS</h2>
-      <hr className="v-50" />
+      <hr className="addProduct" />
       <div className="container d-flex justify-content-center">
-        <form onSubmit={handleSubmit}>
+        <form className="addForm" onSubmit={handleSubmit}>
           {/* Form data*/}
           <div className="mb-3">
             <label htmlFor="product-name" className="form-label">

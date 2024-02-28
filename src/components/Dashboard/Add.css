@@ -1,0 +1,15 @@
+.addProductHr{
+    margin: 0;
+}
+.addForm{
+    width: fit-content;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.productSizes{
+    display: flex;
+    flex-direction: column;
+}

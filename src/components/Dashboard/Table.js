@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 
 const Table = ({dbProducts,handleDeleteProduct}) => {
+  console.log("d products management",dbProducts);
 
   return (
     <>
@@ -43,7 +44,7 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                   )}
                 </td>
                 <td>{product.description}</td>
-                <td>{product.sizes?.join(", ")}</td>
+                <td>{product.size}</td>
                 <td>
                   {/* show the other selected images except the first image */}
                   {product.images?.slice(1).map((image, imgIndex) => (
