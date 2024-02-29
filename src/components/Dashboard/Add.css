@@ -1,15 +1,45 @@
-.addProductHr{
-    margin: 0;
+.addProductHr {
+  margin: 0;
 }
-.addForm{
-    width: fit-content;
-    max-width: 500px;
-    padding: 40px;
-    border-radius: 8px;
-    text-align: center;
+.add-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+
+  padding: 20px;
+
+  justify-content: center;
 }
 
-.productSizes{
-    display: flex;
-    flex-direction: column;
+.addForm label {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px; /* input alanları ile etiketler arasında boşluk oluşturur */
+}
+.sizesLabel {
+  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.addForm .form-label {
+  width: 100%;
+}
+
+.productAddSizeDiv {
+  border: 1px solid;
+}
+
+@media (max-width: 767px) {
+  .add-container {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

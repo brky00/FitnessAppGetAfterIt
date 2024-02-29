@@ -14,13 +14,77 @@ const Add = () => {
   const [productQuantity, setProductQuantity] = useState(0);
   const [sizes, setSizes] = useState([]);
   // const [newSize, setNewSize] = useState("");
-  const [productSelectionImgs, setProductSelectionImgs] = useState([]);
+  const [productSelectionImgs, setProductSelectionImgs] = useState({});
   const [isInStock, setIsInStock] = useState(true); 
   const [productMainImage, setProductMainImage] = useState(null); 
   const [productName, setProductName] = useState(""); 
   const [productDescription, setProductDescription] = useState(""); 
+  const [sizeQuantities, setSizeQuantities] = useState({});
+  
+
 
   const types = ['image/png', 'image/jpeg']
+
+  const handleQuantityChange = (size, quantity) => {
+    setSizeQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [size]: {
+        ...prevQuantities[size],
+        quantity: Number(quantity)
+      }
+    }));
+  };
+  
+  const handleImageChangeForSize = async (size, files) => {
+    const uploadedImageUrls = await Promise.all(
+      Array.from(files).map(async (file) => {
+        const storageRef = ref(storage, `images/${file.name}`);
+        await uploadBytes(storageRef, file);
+        return await getDownloadURL(storageRef);
+      })
+    );
+  
+    setSizeQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [size]: {
+        ...prevQuantities[size],
+        images: [...(prevQuantities[size]?.images || []), ...uploadedImageUrls]
+      }
+    }));
+  };
+  
+  
+  
+  console.log("sizeQuantities::: ",sizeQuantities);
+  
+
+  const handleMainImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file && types.includes(file.type)) {
+      setError(""); // Hata durumunu temizle
+      try {
+        const uploadedImageUrl = await uploadImage(file); // Dosyayı yükleyin ve URL'yi alın
+        setProductMainImage(uploadedImageUrl); // URL'yi state'e kaydedin
+      } catch (error) {
+        console.error("Error uploading main image: ", error);
+        setError("Error uploading main image: " + error.message);
+      }
+    } else {
+      setProductMainImage(null);
+      setError('Please select a valid image type (png or jpeg)');
+    }
+  };
+  
+  const uploadImage = async (imageFile) => {
+    if (!imageFile) {
+      throw new Error('Image file not found!');
+    }
+    const storageRef = ref(storage, `images/${imageFile.name}`);
+    const uploadTask = await uploadBytes(storageRef, imageFile);
+    const imageUrl = await getDownloadURL(uploadTask.ref); // Ref alındıktan sonra URL alınır
+    return imageUrl;
+  };
+
 
   const handleSizeChange = (e) => {
     const value = e.target.value;
@@ -36,125 +100,77 @@ const Add = () => {
   };
 
 
-
   const handlePriceChange = (e) => {
+
     const value = e.target.value;
+
     if (!value || value.match(/^\d*\.?\d*$/)) {
+
       setProductPrice(value);
+
       setError('');
+
     } else {
+
       setError('Please enter a valid number for the price');
-    }
-  };
 
-  const handleQuantity = (e) => {
-    const value = e.target.value;
-    if (!value || value.match(/^\d*\.?\d*$/)) {
-      setProductQuantity(value);
-      setError('');
-    } else {
-      setError('Please enter a valid number for the quantity');
     }
-  };
+  }
 
-{/*Handle submit and firebase */}
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (error) {
       alert("Please fix the errors before submitting.");
       return;
     }
-
-    Swal.fire({
-      title: 'Uploading...',
-      text: 'Please wait while the product is being added.',
-      allowOutsideClick: false,
-      showConfirmButton: false,
-      willOpen: () => {
-        Swal.showLoading();
-      },
-    });
-
-
- // load images
- let imageUrls = [];
- if (productMainImage) {
-   try {
-     const mainImageUrl = await uploadImage(productMainImage);
-     imageUrls.push(mainImageUrl);
-   } catch (error) {
-     setError(error.message);
-     return;
-   }
- }
-
- // it adds all of the images whic is selected by the user
- for (let i = 0; i < productSelectionImgs.length; i++) {
-   try {
-     const url = await uploadImage(productSelectionImgs[i]);
-     imageUrls.push(url);
-   } catch (error) {
-     setError(error.message);
-     return;
-   }
- }
-
- // here the code add documents(product) in firestore
- try {
-    const docRef = await addDoc(collection(db, "products"), {
-     productName: productName,
-     description: productDescription,
-     price: Number(productPrice), // converting string to integer
-     quantity:Number(productQuantity),
-     sizes: sizes,
-     inStock: isInStock,
-     images: imageUrls // urls of images which is loaded
-   });
-
-   Swal.fire({
-    icon: 'success',
-    title: 'Added!',
-    text: `Product with product id "${docRef.id}" has been added.`,
-    showConfirmButton: false,
-    timer: 2500,
-  });
-
-   console.log("Document written with ID: ", docRef.id);
-   // succes and we clean and give  response
- } catch (error) {
-   console.error("Error adding document: ", error);
-   // response
-   alert("Error adding document: " + error.message);
- }
-    console.log("Submitted price:", productPrice);
-  };
-
   
-const uploadImage = async (imageFile) => {
-  if (!imageFile) {
-    throw new Error('image file not found!');
-  }
-  const storageRef = ref(storage, `images/${imageFile.name}`);
-  await uploadBytes(storageRef, imageFile);
-  return getDownloadURL(storageRef);
-};
-
-  const handleMainImageChange = (e) => {
-    let selectedFile = e.target.files[0];
-    if(selectedFile && types.includes(selectedFile.type)){
-      setProductMainImage(selectedFile);
-      setError("");
+    // imageMain alanının bir URL string olup olmadığını kontrol edin.
+    if (!productMainImage || typeof productMainImage !== 'string') {
+      console.error('Main image is not uploaded properly or URL is missing:', productMainImage);
+      setError('Main image is not uploaded properly or URL is missing.');
+      return;
     }
-    else{
-      setProductMainImage(null);
-      setError('please select a valid image type png or jpeg')
+  
+    try {
+      // Firestore'a veri ekleyin.
+      const docRef = await addDoc(collection(db, "products"), {
+        productName,
+        description: productDescription,
+        price: Number(productPrice),
+        sizeDetails: sizeQuantities,
+        imageMain: productMainImage // URL burada Firestore'a kaydedilir.
+      });
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Added!',
+        text: `Product with ID "${docRef.id}" has been added.`,
+        showConfirmButton: false,
+        timer: 2500
+      });
+      // Başarıyla eklendikten sonra formu temizleyin veya state'i sıfırlayın.
+      // ...
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      setError(error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'There was an error adding the product.',
+        showConfirmButton: true
+      });
     }
   };
+  
 
-  const handleImageChange = (e) => {
-    // FileList is civerted to a array and the state updated
-    setProductSelectionImgs([...e.target.files]);
-  };
+
+
+
+
+
+  // const handleImageChange = (e) => {
+  //   setProductSelectionImgs([...e.target.files]);
+  // };
 
   const handleInStockChange = (e) => {
     setIsInStock(e.target.value === 'true');
@@ -164,9 +180,7 @@ const uploadImage = async (imageFile) => {
   // Add Form data code to print out in the console to see and check the data as test...
   console.log("Submitted price:", productPrice);
   // here we see the images in console
-  productSelectionImgs.forEach((img, index) => {
-    console.log(`Image ${index + 1}:`, img.name);
-  });
+
   // console.log("new size hre:",newSize);
   console.log("db sizes here:",dbSizes);
   console.log("sizes array here:",sizes);
@@ -176,11 +190,12 @@ const uploadImage = async (imageFile) => {
   console.log("productName add: ",productName);
 
   return (
-    <>
-      <h2 className="d-flex justify-content-center mt-4">ADD PRODUCTS</h2>
-      <hr className="addProduct" />
-      <div className="container d-flex justify-content-center">
-        <form className="addForm" onSubmit={handleSubmit}>
+    <div className="add-container">
+      <div>
+        <h2 className="d-flex justify-content-center mt-4">ADD PRODUCTS</h2>
+        <hr className="v-50" />
+
+        <form className="addForm mb-3" onSubmit={handleSubmit}>
           {/* Form data*/}
           <div className="mb-3">
             <label htmlFor="product-name" className="form-label">
@@ -212,61 +227,84 @@ const uploadImage = async (imageFile) => {
               Product Price
             </label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               id="product-price"
               value={productPrice}
               onChange={handlePriceChange}
               required
             />
-           
           </div>
+          <div className="mb-3"></div>
           <div className="mb-3">
-            <label htmlFor="product-quantity" className="form-label">
-              Product Quantity
+            <label htmlFor="product-sizes" className="form-label sizesLabel">
+              Sizes and quantity(Select size to add quantity)
             </label>
-            <input
-              type="number"
-              className="form-control"
-              id="product-quantity"
-              value={productQuantity}
-              onChange={handleQuantity}
-              required
-            
-            />
-           
-          </div>
-          <div className="mb-3">
-            <label htmlFor="product-sizes" className="form-label">
-              Sizes
-            </label>
-            <div id="product-sizes" className="d-flex justify-content-center">
+            <div
+              id="product-sizes"
+              className="d-flex flex-column justify-content-center"
+            >
               {dbSizes.map((size) => (
-                <div key={size}>
+                <div className="productAddSizeDiv" key={size}>
                   <input
-                    className="ms-3"
                     type="checkbox"
                     id={`size-${size}`}
                     value={size}
                     checked={sizes.includes(size)}
                     onChange={handleSizeChange}
                   />
-                  <label className="ms-3" htmlFor={`size-${size}`}>
+                  <label className="mt-3" htmlFor={`size-${size}`}>
                     {size}
                   </label>
+                  {sizes.includes(size) && (
+                    <>
+                      <input
+                        type="number"
+                        placeholder="Quantity"
+                        value={sizeQuantities[size]?.quantity || ""}
+                        onChange={(e) =>
+                          handleQuantityChange(size, e.target.value)
+                        }
+                      />
+                      <label
+                        htmlFor="product-imgs"
+                        className="form-label d-flex justify-content-start mt-2 mb-0"
+                      >
+                        Choose selection images for size "{size}"
+                      </label>
+                      
+        {/*Product images  */}
+                      <input
+                        type="file"
+                        className="form-control mb-3"
+                        id="product-imgs"
+                        multiple
+                        required
+                        onChange={(e) =>
+                          handleImageChangeForSize(size, e.target.files)
+                        }
+                      />
+                    </>
+                  )}
                 </div>
               ))}
             </div>
-            <button type="button" onClick={handleSelectAllSizes}>
-              {sizes.length === dbsizesLength
-                ? "Unselect All Sizes"
-                : "Select All Sizes"}
-            </button>
+            <div className="d-flex justify-content-center">
+              <button
+                className="mt-3"
+                type="button"
+                onClick={handleSelectAllSizes}
+              >
+                {sizes.length === dbsizesLength
+                  ? "Unselect All Sizes"
+                  : "Select All Sizes"}
+              </button>
+            </div>
           </div>
 
           <div className="mb-3">
             <label htmlFor="product-img" className="form-label">
-              Product Image
+              Product Main Image
             </label>
             <input
               type="file"
@@ -278,17 +316,17 @@ const uploadImage = async (imageFile) => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="product-imgs" className="form-label">
-              Selection Images
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="product-imgs"
-              onChange={handleImageChange}
-              multiple
-              required
-            />
+            {/* <label htmlFor="product-imgs" className="form-label">
+           Selection Images
+         </label> */}
+            {/* <input
+           type="file"
+           className="form-control"
+           id="product-imgs"
+           onChange={handleImageChange}
+           multiple
+           required
+         /> */}
           </div>
           {/*In stock check true/false choose here*/}
           <div className="mb-3">
@@ -318,9 +356,8 @@ const uploadImage = async (imageFile) => {
           </button>
           {error && <div className="text-danger">{error}</div>}
         </form>
-
       </div>
-    </>
+    </div>
   );
 };
 

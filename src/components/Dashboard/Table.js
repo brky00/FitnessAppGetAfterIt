@@ -28,14 +28,13 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
             {dbProducts.map((product, index) => (
               <tr key={index}>
                 <td>{product.id}</td>
-                <td>{product.productName}</td>{" "}
-                {/* productName updated */}
+                <td>{product.productName}</td> {/* productName updated */}
                 <td>{product.price}</td>
                 <td>
                   {/* Show first image as main */}
-                  {product.images && product.images.length > 0 ? (
+                  {product.imageMain ? (
                     <img
-                      src={product.images[0]}
+                      src={product.imageMain}
                       alt={product.productName || "Product Image"}
                       style={{ width: "50px", height: "50px" }}
                     />
@@ -44,10 +43,40 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                   )}
                 </td>
                 <td>{product.description}</td>
-                <td>{product.size}</td>
+                <td>
+                  {" "}
+                  {/* `sizeDetails` nesnesinin varlığını kontrol ediyoruz */}
+                  {product.sizeDetails
+                    ? // `sizeDetails` converted to a array to use map
+                      Object.entries(product.sizeDetails).map(
+                        ([sizeKey, sizeDetail]) => (
+                          <div key={sizeKey} className="size-quantity">
+                            {/*key value */}
+                            {`${sizeKey}: ${sizeDetail.quantity}`}
+                            {sizeDetail.images.map((image, index) => (
+                              <img
+                                key={index}
+                                src={image}
+                                alt={`${
+                                  product.productName || "Product Image"
+                                } - ${sizeKey}`}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  marginRight: "10px",
+                                }}
+                              />
+                            ))}
+                          </div>
+                        )
+                      )
+                    : // if not exists showing this
+                      "No sizes"}
+                </td>
                 <td>
                   {/* show the other selected images except the first image */}
-                  {product.images?.slice(1).map((image, imgIndex) => (
+
+                  {/* {product.images?.slice(1).map((image, imgIndex) => (
                     <img
                       key={imgIndex}
                       src={image}
@@ -58,7 +87,7 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                         marginRight: "5px",
                       }}
                     />
-                  ))}
+                  ))} */}
                 </td>
                 <td>{product.inStock ? "Yes" : "No"}</td>
                 <td>
@@ -68,7 +97,12 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                 </td>
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button onClick={()=>handleDeleteProduct(product.id)} className="btn btn-primary">Delete</button>
+                    <button
+                      onClick={() => handleDeleteProduct(product.id)}
+                      className="btn btn-primary"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>

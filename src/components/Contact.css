@@ -5,7 +5,7 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     justify-content: center;
-    text-decoration: underline #C8B479;
+   
     
 }
 
@@ -14,11 +14,12 @@
     text-align: center;
 }
 
-.Contact-title, .container-contact h2, .container-contact h4{
+.container-contact h1{
     text-decoration: underline #C8B479;
     font-family: "Raleway" sans-serif;
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
+    text-decoration: underline #C8B479;
 }
 
 
