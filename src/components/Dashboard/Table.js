@@ -16,8 +16,8 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
               <th scope="col">Price</th>
               <th scope="col">Main Image</th>
               <th scope="col">Description</th>
-              <th scope="col">Sizes</th>
-              <th scope="col">Selection Images</th>
+              <th scope="col">Stock and selection images of each size</th>
+              {/* <th scope="col">Selection Images</th> */}
               <th scope="col">In Stock</th>
               <th className="text-center" colSpan={2} scope="col">
                 Actions
@@ -73,22 +73,9 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                     : // if not exists showing this
                       "No sizes"}
                 </td>
-                <td>
-                  {/* show the other selected images except the first image */}
+                {/* <td>
 
-                  {/* {product.images?.slice(1).map((image, imgIndex) => (
-                    <img
-                      key={imgIndex}
-                      src={image}
-                      alt={`Selection ${imgIndex}`}
-                      style={{
-                        width: "30px",
-                        height: "30px",
-                        marginRight: "5px",
-                      }}
-                    />
-                  ))} */}
-                </td>
+                </td> */}
                 <td>{product.inStock ? "Yes" : "No"}</td>
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>
