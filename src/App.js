@@ -12,6 +12,8 @@ import DashIndex from"./components/Dashboard/DashIndex"
 import Add from "./components/Dashboard/Add"
 import Dashboard from "./components/Dashboard/Dashboard"
 import { useState } from "react";
+import CheckoutForm from "./components/Checkout";
+
 
 
 
@@ -92,6 +94,8 @@ function App() {
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/checkout" element={<CheckoutForm/>}/>
+        
         
 
       </Routes>
