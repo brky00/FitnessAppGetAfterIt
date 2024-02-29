@@ -1,8 +1,8 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 
-const Table = ({dbProducts,handleDeleteProduct}) => {
-  console.log("d products management",dbProducts);
+const Table = ({ dbProducts, handleDeleteProduct }) => {
+  console.log("d products management", dbProducts);
 
   return (
     <>
@@ -44,34 +44,94 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
                 </td>
                 <td>{product.description}</td>
                 <td>
-                  {" "}
-                  {/* `sizeDetails` nesnesinin varlığını kontrol ediyoruz */}
                   {product.sizeDetails
-                    ? // `sizeDetails` converted to a array to use map
-                      Object.entries(product.sizeDetails).map(
-                        ([sizeKey, sizeDetail]) => (
+                    ? Object.entries(product.sizeDetails).map(
+                        ([sizeKey, sizeDetail], sizeIndex) => (
                           <div key={sizeKey} className="size-quantity">
-                            {/*key value */}
+                            {/* Key value */}
                             {`${sizeKey}: ${sizeDetail.quantity}`}
-                            {sizeDetail.images.map((image, index) => (
-                              <img
-                                key={index}
-                                src={image}
-                                alt={`${
-                                  product.productName || "Product Image"
-                                } - ${sizeKey}`}
-                                style={{
-                                  width: "50px",
-                                  height: "50px",
-                                  marginRight: "10px",
-                                }}
-                              />
-                            ))}
+                            {/* Carousel start */}
+                            {sizeDetail.images &&
+                              sizeDetail.images.length > 0 && (
+                                <div
+                                  id={`carousel${sizeKey}-${sizeIndex}`}
+                                  className="carousel slide"
+                                  data-bs-ride="carousel"
+                                  style={{ width: "100px" }} // Carousel'in genişliğini buradan ayarlayabilirsiniz
+                                >
+                                  <div className="carousel-indicators">
+                                    {sizeDetail.images.map((_, index) => (
+                                      <button
+                                        key={index}
+                                        type="button"
+                                        data-bs-target={`#carousel${sizeKey}-${sizeIndex}`}
+                                        data-bs-slide-to={index}
+                                        className={index === 0 ? "active" : ""}
+                                        aria-current={index === 0 ? "true" : ""}
+                                        aria-label={`Slide ${index + 1}`}
+                                      ></button>
+                                    ))}
+                                  </div>
+                                  <div className="carousel-inner">
+                                    {sizeDetail.images.map((image, index) => (
+                                      <div
+                                        key={index}
+                                        className={`carousel-item ${
+                                          index === 0 ? "active" : ""
+                                        }`}
+                                      >
+                                        <img
+                                          src={image}
+                                          className="d-block w-100"
+                                          alt={`${
+                                            product.productName ||
+                                            "Product Image"
+                                          } - ${sizeKey}`}
+                                        />
+                                        {/* Slide sırasını ve toplam sayıyı göster */}
+                                        <div className="carousel-caption d-none d-md-block">
+                                          <h5>{`${index + 1} / ${
+                                            sizeDetail.images.length
+                                          }`}</h5>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <button
+                                    className="carousel-control-prev"
+                                    type="button"
+                                    data-bs-target={`#carousel${sizeKey}-${sizeIndex}`}
+                                    data-bs-slide="prev"
+                                  >
+                                    <span
+                                      className="carousel-control-prev-icon"
+                                      aria-hidden="true"
+                                    ></span>
+                                    <span className="visually-hidden">
+                                      Previous
+                                    </span>
+                                  </button>
+                                  <button
+                                    className="carousel-control-next"
+                                    type="button"
+                                    data-bs-target={`#carousel${sizeKey}-${sizeIndex}`}
+                                    data-bs-slide="next"
+                                  >
+                                    <span
+                                      className="carousel-control-next-icon"
+                                      aria-hidden="true"
+                                    ></span>
+                                    <span className="visually-hidden">
+                                      Next
+                                    </span>
+                                  </button>
+                                </div>
+                              )}
+                            {/* Carousel end */}
                           </div>
                         )
                       )
-                    : // if not exists showing this
-                      "No sizes"}
+                    : "No sizes"}
                 </td>
                 {/* <td>
 
@@ -99,6 +159,6 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
       </div>
     </>
   );
-}
+};
 
-export default Table
+export default Table;
