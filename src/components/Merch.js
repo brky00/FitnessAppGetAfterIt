@@ -6,7 +6,7 @@ const Merch = ({ dbProducts}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
 
-     // selectionImages array'inin uzunluğuna göre column class'ını belirle
+     // Based on selectionImages arrays length determine we column amount(col from bootstrap 5 grid system.)
      const getColumnClass = (filteredProductsCount) => {
       switch(filteredProductsCount) {
         case 1:
@@ -17,8 +17,7 @@ const Merch = ({ dbProducts}) => {
           return "col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center";
       }
     };
-  
-  // Arama işlemi için olay işleyici
+  //searc function
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -45,6 +44,7 @@ const Merch = ({ dbProducts}) => {
    .filter(
     (product) => !inStockOnly || product.inStock
   );
+  console.log("merch dbProducts",dbProducts);
 
    
     // dette bruker jeg for å sjekke og se filtrede prdukter i konsolen 

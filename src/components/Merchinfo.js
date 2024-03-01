@@ -13,11 +13,12 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const [product,setProduct] = useState(null);
 
   useEffect(()=>{
+    console.log("merchInfo dbProducts: ",dbProducts);
 
     let productFound = dbProducts.find((prdtc) => prdtc.id === id);
     setProduct(productFound);
     if (productFound) {
-      setMainImage(productFound.images[0]);
+      setMainImage(productFound.imageMain);
     }
     else {
       // Hvis product ikke finnes markerer koden mainImage som null...
@@ -47,7 +48,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   }
 
   // if exists destructuring 
-  const { productName, price, images, description, sizes } = product;
+  const { productName, price, sizeDetails, description } = product;
 
   const handleButtonClick = () => {
     if (!selectedSize) {
@@ -144,7 +145,25 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                      {images?.map((image, imgIndex) => (
+                      {Object.entries(sizeDetails).map(
+                        ([sizeKey, sizeDetail]) => (
+                          <div key={sizeKey} className="size-quantity">
+                            {/*key value */}
+                           
+                            {sizeDetail.images.map((image, index) => (
+                              <img
+                                key={index}
+                                src={image}
+                                alt={`${
+                                  productName || "Product Image"
+                                } - ${sizeKey}`}
+                     
+                              />
+                            ))}
+                          </div>
+                        )
+                      )}
+                      {/* {images?.map((image, imgIndex) => (
                         <img
                           className={`extra-product-image-merchDetails img-fluid
                            ${
@@ -155,7 +174,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                           alt={`Selection ${imgIndex}`}
                           onClick={() => selectImage(image)}
                         />
-                      ))}
+                      ))} */}
                     </div>
                     <div className="col d-flex justify-content-center">
                       <div>
@@ -169,7 +188,37 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
                     <div className="col-12 size-selectorCol">
                       <div className="d-flex justify-content-center flex-wrap size-selector">
-                        {sizes.map((size) => (
+                      {Object.entries(sizeDetails).map(
+                        ([sizeKey, sizeDetail]) => (
+                          <button
+                          onClick={() => handleSizeClick(sizeKey)}
+                          key={sizeKey}
+                          className={`size-button ${
+                            selectedSize === sizeKey
+                              ? "size-button-selected"
+                              : ""
+                          }`}
+                        >
+                          {sizeKey}
+                        </button>
+                          
+                          // <div key={sizeKey} className="size-quantity">
+                          //   {/*key value */}
+                           
+                          //   {sizeDetail.images.map((image, index) => (
+                          //     <img
+                          //       key={index}
+                          //       src={image}
+                          //       alt={`${
+                          //         productName || "Product Image"
+                          //       } - ${sizeKey}`}
+                     
+                          //     />
+                          //   ))}
+                          // </div>
+                        )
+                      )}
+                        {/* {sizeDetails.map((size) => (
                           <button
                             onClick={() => handleSizeClick(size)}
                             key={size}
@@ -181,7 +230,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                           >
                             {size}
                           </button>
-                        ))}
+                        ))} */}
                       </div>
                     </div>
 
@@ -194,24 +243,17 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       </button>
                     </div>
 
-                    <div className='product-description'>
-                      <div className='d-flex justify-content-center'>
-                        
+                    <div className="product-description">
+                      <div className="d-flex justify-content-center">
                         <p>Free 30-Day Return Policy!</p>
-                       
-                      </div>
-                    
-
-                      <div className='d-flex justify-content-center'>
-                        
-                      <p>Free Standard Delivery over 700 NOK</p>
-                       
                       </div>
 
-    
+                      <div className="d-flex justify-content-center">
+                        <p>Free Standard Delivery over 700 NOK</p>
+                      </div>
                     </div>
 
-                    <div className='d-flex justify-content-center'>
+                    <div className="d-flex justify-content-center">
                       <p>{description}</p>
                     </div>
                   </div>
