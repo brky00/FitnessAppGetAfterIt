@@ -11,11 +11,12 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   //Her oppretter jeg en state for å oppdatere mainImage etterhvert
 
   const [product,setProduct] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(()=>{
-    console.log("merchInfo dbProducts: ",dbProducts);
 
     let productFound = dbProducts.find((prdtc) => prdtc.id === id);
+    console.log("product found:",productFound);
     setProduct(productFound);
     if (productFound) {
       setMainImage(productFound.imageMain);
@@ -48,18 +49,21 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   }
 
   // if exists destructuring 
-  const { productName, price, sizeDetails, description } = product;
+  const { productName, price, imageMain, description, sizeDetails } = product;
+  console.log("product inni merchInfo",product);
 
-  const handleButtonClick = () => {
-    if (!selectedSize) {
-      alert("Please select a size before adding to bag.");
-    } else {
+
+
+  // const handleButtonClick = () => {
+  //   if ((!selectedSize)&&(!selectedImage)) {
+  //     alert("Please select a size before adding to bag.");
+  //   } else {
       
-      handleAddProduct({product, selectedSize, mainImage});
-      setShowNotification(true);
-      setTimeout(() => setShowNotification(false), 4000);
-    }
-  };
+  //     handleAddProduct({product, selectedSize, mainImage});
+  //     setShowNotification(true);
+  //     setTimeout(() => setShowNotification(false), 4000);
+  //   }
+  // };
   console.log("product in else:",product);
 
   const handleSizeClick = (size) => {
@@ -71,9 +75,25 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   };
 
   const selectImage = (imgSrc) => {
-    setMainImage(imgSrc);
-   
+    setMainImage(imgSrc); 
+    setSelectedImage(imgSrc); 
   };
+  
+  const handleButtonClick = () => {
+    if (!selectedSize || !selectedImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
+      alert("Please select a size and an image before adding to bag.");
+    } else {
+      handleAddProduct({ product, selectedSize, selectedImage }); // selectedImage olarak güncellenmiş
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 4000);
+    }
+  };
+  
+
+  console.log("MAIN image; ",mainImage);
+   
+   
+  ;
 
   
 
@@ -132,7 +152,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                 <div class="col-12 col-sm-12 col-md-6 col-lg-5">
                   {" "}
                   {/* col for stort img*/}
-                  <div className="merch-images">
+                  <div className="main-image">
                     <img
                       src={mainImage}
                       alt="Hoodie"
@@ -145,36 +165,22 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                      {Object.entries(sizeDetails).map(
-                        ([sizeKey, sizeDetail]) => (
-                          <div key={sizeKey} className="size-quantity">
-                            {/*key value */}
-                           
-                            {sizeDetail.images.map((image, index) => (
-                              <img
-                                key={index}
-                                src={image}
-                                alt={`${
-                                  productName || "Product Image"
-                                } - ${sizeKey}`}
-                     
-                              />
-                            ))}
-                          </div>
-                        )
+                      {Object.entries(product.sizeDetails).map(
+                        ([sizeKey, sizeDetail]) =>
+                          sizeDetail.images?.map((image, imgIndex) => (
+                            <img
+                              className={`extra-product-image-merchDetails img-fluid ${
+                                mainImage === image
+                                  ? "productImage-selected"
+                                  : ""
+                              }`}
+                              key={imgIndex}
+                              src={image}
+                              alt={`Selection ${imgIndex}`}
+                              onClick={() => selectImage(image)}
+                            />
+                          ))
                       )}
-                      {/* {images?.map((image, imgIndex) => (
-                        <img
-                          className={`extra-product-image-merchDetails img-fluid
-                           ${
-                             mainImage === image ? "productImage-selected" : ""
-                           }`}
-                          key={imgIndex}
-                          src={image}
-                          alt={`Selection ${imgIndex}`}
-                          onClick={() => selectImage(image)}
-                        />
-                      ))} */}
                     </div>
                     <div className="col d-flex justify-content-center">
                       <div>
@@ -184,53 +190,36 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       </div>
                     </div>
 
-                    {/*  */}
+                    {/*orginal test  */}
 
                     <div className="col-12 size-selectorCol">
                       <div className="d-flex justify-content-center flex-wrap size-selector">
-                      {Object.entries(sizeDetails).map(
-                        ([sizeKey, sizeDetail]) => (
-                          <button
-                          onClick={() => handleSizeClick(sizeKey)}
-                          key={sizeKey}
-                          className={`size-button ${
-                            selectedSize === sizeKey
-                              ? "size-button-selected"
-                              : ""
-                          }`}
-                        >
-                          {sizeKey}
-                        </button>
-                          
-                          // <div key={sizeKey} className="size-quantity">
-                          //   {/*key value */}
-                           
-                          //   {sizeDetail.images.map((image, index) => (
-                          //     <img
-                          //       key={index}
-                          //       src={image}
-                          //       alt={`${
-                          //         productName || "Product Image"
-                          //       } - ${sizeKey}`}
-                     
-                          //     />
-                          //   ))}
-                          // </div>
-                        )
-                      )}
-                        {/* {sizeDetails.map((size) => (
-                          <button
-                            onClick={() => handleSizeClick(size)}
-                            key={size}
-                            className={`size-button ${
-                              selectedSize === size
-                                ? "size-button-selected"
-                                : ""
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))} */}
+
+                        {product.sizes.map((size) =>
+                          product.sizeDetails[size] ? (
+                            <button
+                              onClick={() =>
+                                product.sizeDetails[size].quantity > 0
+                                  ? handleSizeClick(size)
+                                  : null
+                              }
+                              key={size}
+                              disabled={product.sizeDetails[size].quantity < 1}
+                              className={`size-button ${
+                                selectedSize === size
+                                  ? "size-button-selected"
+                                  : ""
+                              } ${
+                                product.sizeDetails[size].quantity < 1
+                                  ? "size-button-out-of-stock"
+                                  : ""
+                              }`}
+                            >
+                              {size}
+                            </button>
+                          ) : null
+                        )}
+
                       </div>
                     </div>
 

@@ -135,6 +135,13 @@
 .product-description{
   
 }
+.size-button-out-of-stock {
+  color: #ccc;
+  background-color: #f8f8f8;
+  border-color: #ccc;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
 
 
 

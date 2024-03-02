@@ -21,6 +21,7 @@ const Add = () => {
   const [productDescription, setProductDescription] = useState(""); 
   const [sizeQuantities, setSizeQuantities] = useState({});
   
+  
 
 
   const types = ['image/png', 'image/jpeg']
@@ -30,7 +31,7 @@ const Add = () => {
       ...prevQuantities,
       [size]: {
         ...prevQuantities[size],
-        quantity: Number(quantity)
+        quantity: quantity
       }
     }));
   };
@@ -55,7 +56,7 @@ const Add = () => {
   
   
   
-  console.log("sizeQuantities::: ",sizeQuantities);
+
   
 
   const handleMainImageChange = async (e) => {
@@ -124,21 +125,30 @@ const Add = () => {
       return;
     }
   
-    // imageMain alanının bir URL string olup olmadığını kontrol edin.
+    // check imageMain.
     if (!productMainImage || typeof productMainImage !== 'string') {
       console.error('Main image is not uploaded properly or URL is missing:', productMainImage);
       setError('Main image is not uploaded properly or URL is missing.');
       return;
     }
+
+        // Sipariş edilen boyutları dbSizes dizisine göre sırala
+        // const orderedSizeQuantities = {};
+        // dbSizes.forEach(size => {
+        //   if (sizeQuantities[size]) {
+        //     orderedSizeQuantities[size] = sizeQuantities[size];
+        //   }
+        // });
   
     try {
-      // Firestore'a veri ekleyin.
+      // Firestore add the product as object.
       const docRef = await addDoc(collection(db, "products"), {
         productName,
         description: productDescription,
         price: Number(productPrice),
         sizeDetails: sizeQuantities,
-        imageMain: productMainImage // URL burada Firestore'a kaydedilir.
+        imageMain: productMainImage, // URL burada Firestore'a kaydedilir.
+        sizes:sizes
       });
       
       Swal.fire({
@@ -261,10 +271,13 @@ const Add = () => {
                       <input
                         type="number"
                         placeholder="Quantity"
-                        value={sizeQuantities[size]?.quantity || ""}
+                        value={sizeQuantities[size]?.quantity ?? ""}
+
                         onChange={(e) =>
                           handleQuantityChange(size, e.target.value)
                         }
+                        required
+                       
                       />
                       <label
                         htmlFor="product-imgs"
