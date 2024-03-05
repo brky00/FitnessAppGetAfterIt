@@ -39,56 +39,49 @@ const Add = () => {
 
   
   const handleImageChangeForSize = async (size, files) => {
-    // Dosyaların yüklenmesi ve URL'lerin alınması
-    const uploadPromises = Array.from(files).map(async (file) => {
+    const uploads = Array.from(files).map(async (file) => {
       const storageRef = ref(storage, `images/${size}/${file.name}`);
       await uploadBytes(storageRef, file);
       const url = await getDownloadURL(storageRef);
-      const quantity = fileQuantities[file.name] || 0; // Varsayılan miktarı 0 al
-      return { fileName: file.name, url, quantity };
+      return { fileName: file.name, url, quantity: 0 }; // Başlangıçta miktar 0 olarak ayarlanır
     });
   
-    const uploadedFiles = await Promise.all(uploadPromises);
+    const uploadedFiles = await Promise.all(uploads);
   
     // `sizeQuantities` state'ini güncelle
     setSizeQuantities(prev => ({
       ...prev,
-      [size]: [...(prev[size] || []), ...uploadedFiles]
+      [size]: [...(prev[size] || []), ...uploadedFiles],
     }));
   };
   
-
-
-
-    //QUANTITY HERE
-    const handleQuantityChange = (fileName, quantity) => {
-      setFileQuantities(prev => ({
-        ...prev,
-        [fileName]: quantity
-      }));
-    };
+  const updateQuantityForFile = (size, fileName, quantity) => {
+    setSizeQuantities(prev => ({
+      ...prev,
+      [size]: prev[size].map(file => 
+        file.fileName === fileName ? { ...file, quantity: parseInt(quantity, 10) } : file
+      ),
+    }));
+  };
+  
+  
     
 
-    // Miktar girişi için form alanlarını render edecek fonksiyon
-  const renderQuantityInputs = () => (
-    <>
-     {fileNames.map((fileName) => (
-  <div key={fileName}>
-    <label>{fileName} için miktar:</label>
-    <input
-      type="number"
-      value={fileQuantities[fileName] || ''}
-      onChange={(e) => handleQuantityChange(fileName, e.target.value)}
-      required
-    />
-  </div>
-))}
-
-    </>
-  );
+    const renderQuantityInputsForSize = (size) => (
+      sizeQuantities[size]?.map(file => (
+        <div key={file.fileName}>
+          <label>{file.fileName} için miktar:</label>
+          <input
+            type="number"
+            value={file.quantity}
+            onChange={(e) => updateQuantityForFile(size, file.fileName, e.target.value)}
+            required
+          />
+        </div>
+      ))
+    );
+    
   
-  
-
   
 
   const handleMainImageChange = async (e) => {
@@ -165,47 +158,24 @@ const Add = () => {
     }
 
     try {
-      // Firestore add the product as object.
+      // Firestore'a kaydet
       const docRef = await addDoc(collection(db, "products"), {
-        productName,
+        productName:productName,
         description: productDescription,
         price: Number(productPrice),
-        images: uploadedFilesInfo,
-        sizeDetails: sizeQuantities,
-        imageMain: productMainImage, // URL burada Firestore'a kaydedilir.
-        sizes:sizes
+        sizeDetails: sizeQuantities, // Her `size` için yüklenen dosyalar ve miktarlar
+        imageMain: productMainImage,
       });
-      
-      Swal.fire({
-        icon: 'success',
-        title: 'Added!',
-        text: `Product with ID "${docRef.id}" has been added.`,
-        showConfirmButton: false,
-        timer: 2500
-      });
-      // Başarıyla eklendikten sonra formu temizleyin veya state'i sıfırlayın.
-      // ...
+  
+      Swal.fire("Başarılı!", "Ürün başarıyla eklendi.", "success");
+      // Formu sıfırla veya başka bir eylem gerçekleştir
     } catch (error) {
-      console.error("Error adding document: ", error);
-      setError(error.message);
-      Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: 'There was an error adding the product.',
-        showConfirmButton: true
-      });
+      console.error("Ürün eklenirken hata oluştu: ", error);
+      Swal.fire("Hata!", "Ürün eklenirken bir hata oluştu.", "error");
     }
   };
   
 
-
-
-
-
-
-  // const handleImageChange = (e) => {
-  //   setProductSelectionImgs([...e.target.files]);
-  // };
 
   const handleInStockChange = (e) => {
     setIsInStock(e.target.value === 'true');
@@ -231,6 +201,7 @@ const Add = () => {
   console.log("selectedFiles: ",selectedFiles);
   console.log("uploadedFilesInfo",uploadedFilesInfo);
   console.log("fileQuantities",fileQuantities);
+  console.log("sizeQuantities herr:", sizeQuantities);
   
   return (
     <div className="add-container">
@@ -288,7 +259,7 @@ const Add = () => {
               className="d-flex flex-column justify-content-center"
             >
               {dbSizes.map((size) => (
-                <div className="productAddSizeDiv" key={size}>
+                <div key={size} className="size-section">
                   <input
                     type="checkbox"
                     id={`size-${size}`}
@@ -296,39 +267,36 @@ const Add = () => {
                     checked={sizes.includes(size)}
                     onChange={handleSizeChange}
                   />
-                  <label className="mt-3" htmlFor={`size-${size}`}>
-                    {size}
-                  </label>
+                  <label htmlFor={`size-${size}`}>{size}</label>
+
+                  {/* Eğer bu boyut seçildiyse, ilgili dosyalar için miktar giriş alanlarını render et */}
                   {sizes.includes(size) && (
-                <>
- {fileNames.length > 0 && renderQuantityInputs()}
+                    <>
+                      <div className="file-upload-container">
+                        <label
+                          htmlFor={`file-upload-${size}`}
+                          className="file-upload-label"
+                        >
+                          {`Dosyaları seç (${size}):`}
+                        </label>
+                        <input
+                          type="file"
+                          id={`file-upload-${size}`}
+                          multiple
+                          onChange={(e) =>
+                            handleImageChangeForSize(size, e.target.files)
+                          }
+                        />
+                      </div>
 
-                  <label
-                    htmlFor="product-imgs"
-                    className="form-label d-flex justify-content-start mt-2 mb-0"
-                  >
-                    Choose selection images for size "{size}"
-                  </label>
-
-                  {/*Product images  */}
-
-                  <input
-                    type="file"
-                    className="form-control mb-3"
-                    id="product-imgs"
-                    multiple
-                    required
-                    onChange={(e) =>
-                      handleImageChangeForSize(size, e.target.files)
-                    }
-                  />
-                </>
-              )}
-
-                  
+                      {/* Seçilen dosyalar için miktar giriş alanlarını render et */}
+                      <div className="quantity-inputs-container">
+                        {renderQuantityInputsForSize(size)}
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
-              
             </div>
             <div className="d-flex justify-content-center">
               <button

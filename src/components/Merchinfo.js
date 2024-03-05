@@ -99,18 +99,6 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const { productName, price, imageMain, description, sizeDetails } = product;
   console.log("product inni merchInfo",product);
 
-
-
-  // const handleButtonClick = () => {
-  //   if ((!selectedSize)&&(!selectedImage)) {
-  //     alert("Please select a size before adding to bag.");
-  //   } else {
-      
-  //     handleAddProduct({product, selectedSize, mainImage});
-  //     setShowNotification(true);
-  //     setTimeout(() => setShowNotification(false), 4000);
-  //   }
-  // };
   console.log("product in else:",product);
 
   const handleSizeClick = (size) => {
@@ -258,26 +246,7 @@ console.log("unique array: ",uniqueArray);
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                      {/* {Object.entries(product.sizeDetails).map(
-                         
-                        ([sizeKey, sizeDetail]) =>
-                       
-                          sizeDetail.images?.map((image, imgIndex) => (
-                      
-                            
-                            <img
-                              className={`extra-product-image-merchDetails img-fluid ${
-                                mainImage === image
-                                  ? "productImage-selected"
-                                  : ""
-                              }`}
-                              key={imgIndex}
-                              src={image}
-                              alt={`Selection ${imgIndex}`}
-                              onClick={() => selectImage(image)}
-                            />
-                          ))
-                      )} */}
+
                       {renderImages()}
                     </div>
                     <div className="col d-flex justify-content-center">

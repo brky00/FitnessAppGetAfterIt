@@ -25,75 +25,36 @@ const Table = ({dbProducts,handleDeleteProduct}) => {
             </tr>
           </thead>
           <tbody>
-            {dbProducts.map((product, index) => (
-              <tr key={index}>
-                <td>{product.id}</td>
-                <td>{product.productName}</td> {/* productName updated */}
-                <td>{product.price}</td>
-                <td>
-                  {/* Show first image as main */}
-                  {product.imageMain ? (
-                    <img
-                      src={product.imageMain}
-                      alt={product.productName || "Product Image"}
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  ) : (
-                    <span>No image available</span>
-                  )}
-                </td>
-                <td>{product.description}</td>
-                <td>
-                  {" "}
-                  {/* `sizeDetails` nesnesinin varlığını kontrol ediyoruz */}
-                  {product.sizeDetails
-                    ? // `sizeDetails` converted to a array to use map
-                      Object.entries(product.sizeDetails).map(
-                        ([sizeKey, sizeDetail]) => (
-                          <div key={sizeKey} className="size-quantity">
-                            {/*key value */}
-                            {`${sizeKey}: ${sizeDetail.quantity}`}
-                            {sizeDetail.images.map((image, index) => (
-                              <img
-                                key={index}
-                                src={image}
-                                alt={`${
-                                  product.productName || "Product Image"
-                                } - ${sizeKey}`}
-                                style={{
-                                  width: "50px",
-                                  height: "50px",
-                                  marginRight: "10px",
-                                }}
-                              />
-                            ))}
-                          </div>
-                        )
-                      )
-                    : // if not exists showing this
-                      "No sizes"}
-                </td>
-                {/* <td>
+          {dbProducts.map((product, index) => (
+  <tr key={index}>
+    {/* ... diğer TD'ler */}
+    <td>
+      {/* Her size için size detaylarını göster */}
+      {product.sizeDetails
+        ? Object.entries(product.sizeDetails).map(([sizeKey, details]) => (
+            <div key={sizeKey} className="size-quantity">
+              {/* Size adı ve toplam miktarı göster */}
+              <div>{`${sizeKey}: Total Quantity`}</div>
+              {/* Bu size'a ait resimleri ve miktarları listele */}
+              {details.map((detail, detailIndex) => (
+                <div key={detailIndex} className="mb-2">
+                  <img
+                    src={detail.url}
+                    alt={`${product.productName || "Product Image"} - ${sizeKey}`}
+                    style={{ width: "50px", height: "50px", marginRight: "10px" }}
+                  />
+                  {/* Resim adı ve miktarı */}
+                  <span>{`${detail.fileName}: ${detail.quantity}`}</span>
+                </div>
+              ))}
+            </div>
+          ))
+        : "No sizes"}
+    </td>
+    {/* ... diğer TD'ler */}
+  </tr>
+))}
 
-                </td> */}
-                <td>{product.inStock ? "Yes" : "No"}</td>
-                <td>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="btn btn-primary">Edit</button>
-                  </div>
-                </td>
-                <td>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button
-                      onClick={() => handleDeleteProduct(product.id)}
-                      className="btn btn-primary"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
           </tbody>
         </table>
       </div>
