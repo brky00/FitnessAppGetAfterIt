@@ -7,11 +7,16 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const navigate = useNavigate();
 
   const [showNotification, setShowNotification] = useState(false);
+ 
   const { id } = useParams();
   //Her oppretter jeg en state for å oppdatere mainImage etterhvert
 
   const [product,setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [availableSizes, setAvailableSizes] = useState({});
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [uniqueArray, setUniqueArray] = useState([]);
+
 
   useEffect(()=>{
 
@@ -28,6 +33,48 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     
 
   }, [dbProducts, id])
+
+
+  useEffect(() => {
+    if (product) {
+      // Tüm boyutlardan resimleri bir araya getir
+      const allImages = Object.values(product.sizeDetails).flatMap(detail => detail.images);
+      // Yeni bir Set oluşturarak benzersiz resimleri al
+      const uniqueSet = new Set(allImages);
+      console.log("uniqueSet::; ",uniqueSet);
+      // 'selectedImages' ve 'uniqueArray' state'lerini güncelle
+      setSelectedImages(allImages);
+      setUniqueArray(Array.from(uniqueSet));
+    }
+  }, [product]);
+  
+  
+  const renderImages = () => {
+    // selectedImages state'ini kullanarak benzersiz resimleri render et
+    return selectedImages.map((image, index) => (
+      <img
+        className={`extra-product-image-merchDetails img-fluid ${
+          mainImage === image ? "productImage-selected" : ""
+        }`}
+        key={index}
+        src={image}
+        alt={`Product ${index}`}
+        onClick={() => selectImage(image)}
+      />
+    ));
+  };
+  
+
+  const updateAvailableSizes = (selectedImg) => {
+    const sizes = {};
+    Object.entries(product.sizeDetails).forEach(([sizeKey, sizeDetail]) => {
+      if (sizeDetail.images.includes(selectedImg)) {
+        sizes[sizeKey] = sizeDetail.quantity > 0;
+      }
+    });
+    setAvailableSizes(sizes);
+  };
+
 
   if (!mainImage) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
@@ -77,6 +124,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const selectImage = (imgSrc) => {
     setMainImage(imgSrc); 
     setSelectedImage(imgSrc); 
+    updateAvailableSizes(imgSrc);
   };
   
   const handleButtonClick = () => {
@@ -87,6 +135,24 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
+  };
+  console.log("selectedImage2:", selectedImage);
+  console.log("AVAIBLE SIZES:",availableSizes);
+  const renderSizeButtons = () => {
+    return product.sizes.map((size) => (
+      <button
+        onClick={() => handleSizeClick(size)}
+        key={size}
+        disabled={!availableSizes[size]} // Eğer boyut mevcut değilse butonu pasifleştir
+        className={`size-button ${
+          selectedSize === size ? "size-button-selected" : ""
+        } ${
+          !availableSizes[size] ? "size-button-out-of-stock" : ""
+        }`}
+      >
+        {size}
+      </button>
+    ));
   };
   
 
@@ -102,6 +168,33 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   
   console.log("product her i merchinfo !!!!!#",product);
 
+
+
+  //new test selected images array
+  {Object.entries(product.sizeDetails).map(
+    ([sizeKey, sizeDetail]) =>
+      sizeDetail.images?.map((image, imgIndex) => (
+        <img
+          className={`extra-product-image-merchDetails img-fluid ${
+            mainImage === image
+              ? "productImage-selected"
+              : ""
+          }`}
+          key={imgIndex}
+          src={image}
+          alt={`Selection ${imgIndex}`}
+          onClick={() => selectImage(image)}
+        />
+      ))
+  )}
+
+
+  
+
+
+  //new test selected images array
+console.log("selectedImages are here: ",selectedImages);
+console.log("unique array: ",uniqueArray);
 
  
 
@@ -165,9 +258,13 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                      {Object.entries(product.sizeDetails).map(
+                      {/* {Object.entries(product.sizeDetails).map(
+                         
                         ([sizeKey, sizeDetail]) =>
+                       
                           sizeDetail.images?.map((image, imgIndex) => (
+                      
+                            
                             <img
                               className={`extra-product-image-merchDetails img-fluid ${
                                 mainImage === image
@@ -180,7 +277,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                               onClick={() => selectImage(image)}
                             />
                           ))
-                      )}
+                      )} */}
+                      {renderImages()}
                     </div>
                     <div className="col d-flex justify-content-center">
                       <div>
@@ -195,31 +293,9 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                     <div className="col-12 size-selectorCol">
                       <div className="d-flex justify-content-center flex-wrap size-selector">
 
-                        {product.sizes.map((size) =>
-                          product.sizeDetails[size] ? (
-                            <button
-                              onClick={() =>
-                                product.sizeDetails[size].quantity > 0
-                                  ? handleSizeClick(size)
-                                  : null
-                              }
-                              key={size}
-                              disabled={product.sizeDetails[size].quantity < 1}
-                              className={`size-button ${
-                                selectedSize === size
-                                  ? "size-button-selected"
-                                  : ""
-                              } ${
-                                product.sizeDetails[size].quantity < 1
-                                  ? "size-button-out-of-stock"
-                                  : ""
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ) : null
-                        )}
-
+                      <div className="size-selector">
+    {renderSizeButtons()}
+  </div>
                       </div>
                     </div>
 
