@@ -18,58 +18,42 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const [uniqueArray, setUniqueArray] = useState([]);
 
 
-  useEffect(()=>{
-
-    let productFound = dbProducts.find((prdtc) => prdtc.id === id);
-    console.log("product found:",productFound);
+  // İlk yükleme ve ürün bulma işlemleri
+  useEffect(() => {
+    let productFound = dbProducts.find((product) => product.id === id);
     setProduct(productFound);
     if (productFound) {
       setMainImage(productFound.imageMain);
     }
-    else {
-      // Hvis product ikke finnes markerer koden mainImage som null...
-      setMainImage(null);
-    }
-    
+  }, [dbProducts, id]);
 
-  }, [dbProducts, id])
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
 
-  useEffect(() => {
-    if (product) {
-      // Tüm boyutlardan resimleri bir araya getir
-      const allImages = Object.values(product.sizeDetails).flatMap(detail => detail.images);
-      // Yeni bir Set oluşturarak benzersiz resimleri al
-      const uniqueSet = new Set(allImages);
-      console.log("uniqueSet::; ",uniqueSet);
-      // 'selectedImages' ve 'uniqueArray' state'lerini güncelle
-      setSelectedImages(allImages);
-      setUniqueArray(Array.from(uniqueSet));
-    }
-  }, [product]);
-  
-  
-  const renderImages = () => {
-    // selectedImages state'ini kullanarak benzersiz resimleri render et
-    return selectedImages.map((image, index) => (
-      <img
-        className={`extra-product-image-merchDetails img-fluid ${
-          mainImage === image ? "productImage-selected" : ""
-        }`}
-        key={index}
-        src={image}
-        alt={`Product ${index}`}
-        onClick={() => selectImage(image)}
-      />
-    ));
+  // Unique image fileNames'i almak için fonksiyon
+  const getUniqueFileNames = (sizeDetails) => {
+    const fileNames = new Set();
+    Object.values(sizeDetails).forEach(sizes =>
+      sizes.forEach(size =>
+        fileNames.add(size.fileName)
+      )
+    );
+    return Array.from(fileNames);
   };
+
+  
+ 
   
 
-  const updateAvailableSizes = (selectedImg) => {
+  // Seçili image'e göre availableSizes güncelleyen fonksiyon
+  const updateAvailableSizes = (imageFileName) => {
     const sizes = {};
-    Object.entries(product.sizeDetails).forEach(([sizeKey, sizeDetail]) => {
-      if (sizeDetail.images.includes(selectedImg)) {
-        sizes[sizeKey] = sizeDetail.quantity > 0;
+    Object.entries(product.sizeDetails).forEach(([sizeKey, sizeArray]) => {
+      // Eğer bu boyuttaki bir veya daha fazla ürün imageFileName ile eşleşiyorsa ve stokta varsa
+      if (sizeArray.some(sizeDetail => sizeDetail.fileName === imageFileName && sizeDetail.quantity > 0)) {
+        sizes[sizeKey] = true;
       }
     });
     setAvailableSizes(sizes);
@@ -80,6 +64,49 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
   }
 
+    // Görüntülerin render edildiği fonksiyon
+    const renderImages = () => {
+      if (!product || !product.sizeDetails) return null;
+  
+      const fileNames = getUniqueFileNames(product.sizeDetails);
+      return fileNames.map((fileName, index) => {
+        const imageUrl = Object.values(product.sizeDetails).flatMap(sizes =>
+          sizes.find(size => size.fileName === fileName)?.url
+        )[0];
+  
+        return (
+          <img
+            className={`extra-product-image-merchDetails img-fluid ${
+              mainImage === imageUrl ? "productImage-selected" : ""
+            }`}
+            key={index}
+            src={imageUrl}
+            alt={`Product ${index}`}
+            onClick={() => selectImage(imageUrl, fileName)}
+          />
+        );
+      });
+    };
+
+      // Boyut butonlarının render edildiği fonksiyon
+  const renderSizeButtons = () => {
+    if (!selectedImage || !product || !product.sizeDetails) return null;
+
+    const sizesWithSelectedImage = Object.keys(availableSizes);
+    return sizesWithSelectedImage.map(size => (
+      <button
+        onClick={() => handleSizeClick(size)}
+        key={size}
+        disabled={!availableSizes[size]}
+        className={`size-button ${selectedSize === size ? "size-button-selected" : ""} ${
+          !availableSizes[size] ? "size-button-out-of-stock" : ""
+        }`}
+      >
+        {size}
+      </button>
+    ));
+  };
+
 
   
 
@@ -87,33 +114,31 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
   const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
 
-  // try to find product
+
  
 
-  // feed back product doesnt exist
-  if (!product) {
-    return <div>Product not found</div>;
-  }
 
-  // if exists destructuring 
-  const { productName, price, imageMain, description, sizeDetails } = product;
   console.log("product inni merchInfo",product);
+
+
+  
 
   console.log("product in else:",product);
 
+    // Görüntü seçimi yapıldığında çalışacak fonksiyon
+    const selectImage = (imageUrl, imageFileName) => {
+      setMainImage(imageUrl);
+      setSelectedImage(imageFileName);
+      updateAvailableSizes(imageFileName);
+    };
+  
+
+  // Size butonu tıklama olayını işleyen fonksiyon
   const handleSizeClick = (size) => {
-    if (selectedSize === size) {
-      setSelectedSize(null);
-    } else {
-      setSelectedSize(size);
-    }
+    setSelectedSize(size);
   };
 
-  const selectImage = (imgSrc) => {
-    setMainImage(imgSrc); 
-    setSelectedImage(imgSrc); 
-    updateAvailableSizes(imgSrc);
-  };
+
   
   const handleButtonClick = () => {
     if (!selectedSize || !selectedImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
@@ -124,68 +149,15 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       setTimeout(() => setShowNotification(false), 4000);
     }
   };
-  console.log("selectedImage2:", selectedImage);
-  console.log("AVAIBLE SIZES:",availableSizes);
-  const renderSizeButtons = () => {
-    return product.sizes.map((size) => (
-      <button
-        onClick={() => handleSizeClick(size)}
-        key={size}
-        disabled={!availableSizes[size]} // Eğer boyut mevcut değilse butonu pasifleştir
-        className={`size-button ${
-          selectedSize === size ? "size-button-selected" : ""
-        } ${
-          !availableSizes[size] ? "size-button-out-of-stock" : ""
-        }`}
-      >
-        {size}
-      </button>
-    ));
-  };
-  
 
-  console.log("MAIN image; ",mainImage);
-   
-   
-  ;
-
-  
-
-
-  
-  
-  console.log("product her i merchinfo !!!!!#",product);
-
-
-
-  //new test selected images array
-  {Object.entries(product.sizeDetails).map(
-    ([sizeKey, sizeDetail]) =>
-      sizeDetail.images?.map((image, imgIndex) => (
-        <img
-          className={`extra-product-image-merchDetails img-fluid ${
-            mainImage === image
-              ? "productImage-selected"
-              : ""
-          }`}
-          key={imgIndex}
-          src={image}
-          alt={`Selection ${imgIndex}`}
-          onClick={() => selectImage(image)}
-        />
-      ))
-  )}
-
-
-  
-
-
-  //new test selected images array
-console.log("selectedImages are here: ",selectedImages);
-console.log("unique array: ",uniqueArray);
-
+    // feed back product doesnt exist
+    if (!product) {
+      return <div>Product not found</div>;
+    }
+    // if exists destructuring 
+    const { productName, price, imageMain, description, sizeDetails } = product;
  
-
+ 
   return (
     <>
       <div className="container">
