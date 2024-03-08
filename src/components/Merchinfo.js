@@ -17,19 +17,26 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const [selectedImages, setSelectedImages] = useState([]);
   const [uniqueArray, setUniqueArray] = useState([]);
 
-
+//org org
   // İlk yükleme ve ürün bulma işlemleri
+  console.log("dbproducts:",dbProducts);
   useEffect(() => {
     let productFound = dbProducts.find((product) => product.id === id);
+    console.log("productfound:",productFound);
     setProduct(productFound);
     if (productFound) {
       setMainImage(productFound.imageMain);
     }
+    else {
+      // Hvis product ikke finnes markerer koden mainImage som null...
+      setMainImage(null);
+    }
   }, [dbProducts, id]);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return <div>Loading</div>;
   }
+  const { productName, price, imageMain, description, sizeDetails } = product;
 
 
   // Unique image fileNames'i almak için fonksiyon
@@ -66,14 +73,28 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
     // Görüntülerin render edildiği fonksiyon
     const renderImages = () => {
-      if (!product || !product.sizeDetails) return null;
-  
+      if (!product || !product.sizeDetails) return;
+    
       const fileNames = getUniqueFileNames(product.sizeDetails);
+      console.log("product", product);
+      console.log("fileNames", fileNames);
       return fileNames.map((fileName, index) => {
-        const imageUrl = Object.values(product.sizeDetails).flatMap(sizes =>
-          sizes.find(size => size.fileName === fileName)?.url
-        )[0];
-  
+        // Tüm boyutlardaki eşleşen fileName'leri filtrele ve bunların URL'lerini al.
+        const imageUrls = Object.values(product.sizeDetails).flatMap(sizes =>
+          sizes.filter(size => size.fileName === fileName).map(size => size.url)
+        );
+        console.log("imageUrls",imageUrls);
+    
+        // İlk geçerli URL'yi seç veya hiçbiri yoksa undefined döndür.
+        const imageUrl = imageUrls.find(url => url != null);
+        console.log("imageUrl",imageUrl);
+    
+        if (!imageUrl) {
+          console.error(`No URL found for fileName: ${fileName}`);
+          return null; // Eğer URL bulunamazsa, bu dosya adı için hiçbir şey render etme.
+        }
+    
+        // imageUrl bulunduysa img tag'ını render et.
         return (
           <img
             className={`extra-product-image-merchDetails img-fluid ${
@@ -87,6 +108,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
         );
       });
     };
+    
+    
 
       // Boyut butonlarının render edildiği fonksiyon
   const renderSizeButtons = () => {
@@ -155,7 +178,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       return <div>Product not found</div>;
     }
     // if exists destructuring 
-    const { productName, price, imageMain, description, sizeDetails } = product;
+    
  
  
   return (
