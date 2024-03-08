@@ -29,6 +29,7 @@ const Add = () => {
   const [uploadedFilesInfo, setUploadedFilesInfo] = useState({}); // Yüklenen dosyaların bilgilerini tutacak state
 
   const [selectedFiles, setSelectedFiles] = useState(null);
+  const [mainFileName, setMainFileName] = useState(null);
  
   
   
@@ -43,12 +44,12 @@ const Add = () => {
       const storageRef = ref(storage, `images/${size}/${file.name}`);
       await uploadBytes(storageRef, file);
       const url = await getDownloadURL(storageRef);
-      return { fileName: file.name, url, quantity: 0 }; // Başlangıçta miktar 0 olarak ayarlanır
+      return { fileName: file.name, url, quantity: 0 }; // quanty 0 in start
     });
   
     const uploadedFiles = await Promise.all(uploads);
   
-    // `sizeQuantities` state'ini güncelle
+    // `sizeQuantities` state update here
     setSizeQuantities(prev => ({
       ...prev,
       [size]: [...(prev[size] || []), ...uploadedFiles],
@@ -86,6 +87,8 @@ const Add = () => {
 
   const handleMainImageChange = async (e) => {
     const file = e.target.files[0];
+    const mainName=file.name;
+    setMainFileName(mainName)
     if (file && types.includes(file.type)) {
       setError(""); // Hata durumunu temizle
       try {
@@ -100,6 +103,7 @@ const Add = () => {
       setError('Please select a valid image type (png or jpeg)');
     }
   };
+  console.log("MainFileName:",mainFileName);
   
   const uploadImage = async (imageFile) => {
     if (!imageFile) {
@@ -158,13 +162,14 @@ const Add = () => {
     }
 
     try {
-      // Firestore'a kaydet
+      // Firestore saving 
       const docRef = await addDoc(collection(db, "products"), {
         productName:productName,
         description: productDescription,
         price: Number(productPrice),
-        sizeDetails: sizeQuantities, // Her `size` için yüklenen dosyalar ve miktarlar
+        sizeDetails: sizeQuantities, 
         imageMain: productMainImage,
+        productMainName:mainFileName
       });
   
       Swal.fire("Sucsess!", "The new product is added.", "success");
@@ -202,6 +207,7 @@ const Add = () => {
   console.log("uploadedFilesInfo",uploadedFilesInfo);
   console.log("fileQuantities",fileQuantities);
   console.log("sizeQuantities herr:", sizeQuantities);
+  console.log("mainName:::",mainFileName);
   
   return (
     <div className="add-container">

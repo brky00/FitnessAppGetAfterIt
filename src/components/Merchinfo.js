@@ -70,14 +70,26 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   if (!mainImage) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
   }
-
+  const fileNames = getUniqueFileNames(product.sizeDetails);
+  console.log("fileNames before",fileNames);
     // Görüntülerin render edildiği fonksiyon
     const renderImages = () => {
       if (!product || !product.sizeDetails) return;
     
       const fileNames = getUniqueFileNames(product.sizeDetails);
+     
+      fileNames.sort((a, b) => {
+        // 'dbHoodie.png' her zaman ilk sırada olmalı.
+        if (a === product.productMainName) return -1;
+        if (b === product.productMainName) return 1;
+      
+        // Diğer değerler alfabetik olarak sıralanmalı.
+        return a.localeCompare(b);
+      });
+      
+     
       console.log("product", product);
-      console.log("fileNames", fileNames);
+      console.log("fileNames after", fileNames);
       return fileNames.map((fileName, index) => {
         // Tüm boyutlardaki eşleşen fileName'leri filtrele ve bunların URL'lerini al.
         const imageUrls = Object.values(product.sizeDetails).flatMap(sizes =>
