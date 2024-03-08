@@ -169,7 +169,8 @@ const Add = () => {
         price: Number(productPrice),
         sizeDetails: sizeQuantities, 
         imageMain: productMainImage,
-        productMainName:mainFileName
+        productMainName:mainFileName,
+        allSizes:dbSizes
       });
   
       Swal.fire("Sucsess!", "The new product is added.", "success");
