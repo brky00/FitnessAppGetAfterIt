@@ -7,29 +7,128 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const navigate = useNavigate();
 
   const [showNotification, setShowNotification] = useState(false);
+ 
   const { id } = useParams();
   //Her oppretter jeg en state for å oppdatere mainImage etterhvert
 
   const [product,setProduct] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [availableSizes, setAvailableSizes] = useState({});
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [uniqueArray, setUniqueArray] = useState([]);
 
-  useEffect(()=>{
-
-    let productFound = dbProducts.find((prdtc) => prdtc.id === id);
+//org org
+  // İlk yükleme ve ürün bulma işlemleri
+  console.log("dbproducts:",dbProducts);
+  useEffect(() => {
+    let productFound = dbProducts.find((product) => product.id === id);
+    console.log("productfound:",productFound);
     setProduct(productFound);
     if (productFound) {
-      setMainImage(productFound.images[0]);
+      setMainImage(productFound.imageMain);
     }
     else {
       // Hvis product ikke finnes markerer koden mainImage som null...
       setMainImage(null);
     }
-    
+  }, [dbProducts, id]);
 
-  }, [dbProducts, id])
+  if (!product) {
+    return <div>Loading</div>;
+  }
+  const { productName, price, imageMain, description, sizeDetails } = product;
+
+
+  // Unique image fileNames'i almak için fonksiyon
+  const getUniqueFileNames = (sizeDetails) => {
+    const fileNames = new Set();
+    Object.values(sizeDetails).forEach(sizes =>
+      sizes.forEach(size =>
+        fileNames.add(size.fileName)
+      )
+    );
+    return Array.from(fileNames);
+  };
+
+  
+ 
+  
+
+  // Seçili image'e göre availableSizes güncelleyen fonksiyon
+  const updateAvailableSizes = (imageFileName) => {
+    const sizes = {};
+    Object.entries(product.sizeDetails).forEach(([sizeKey, sizeArray]) => {
+      // Eğer bu boyuttaki bir veya daha fazla ürün imageFileName ile eşleşiyorsa ve stokta varsa
+      if (sizeArray.some(sizeDetail => sizeDetail.fileName === imageFileName && sizeDetail.quantity > 0)) {
+        sizes[sizeKey] = true;
+      }
+    });
+    setAvailableSizes(sizes);
+  };
+
 
   if (!mainImage) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
   }
+
+    // Görüntülerin render edildiği fonksiyon
+    const renderImages = () => {
+      if (!product || !product.sizeDetails) return;
+    
+      const fileNames = getUniqueFileNames(product.sizeDetails);
+      console.log("product", product);
+      console.log("fileNames", fileNames);
+      return fileNames.map((fileName, index) => {
+        // Tüm boyutlardaki eşleşen fileName'leri filtrele ve bunların URL'lerini al.
+        const imageUrls = Object.values(product.sizeDetails).flatMap(sizes =>
+          sizes.filter(size => size.fileName === fileName).map(size => size.url)
+        );
+        console.log("imageUrls",imageUrls);
+    
+        // İlk geçerli URL'yi seç veya hiçbiri yoksa undefined döndür.
+        const imageUrl = imageUrls.find(url => url != null);
+        console.log("imageUrl",imageUrl);
+    
+        if (!imageUrl) {
+          console.error(`No URL found for fileName: ${fileName}`);
+          return null; // Eğer URL bulunamazsa, bu dosya adı için hiçbir şey render etme.
+        }
+    
+        // imageUrl bulunduysa img tag'ını render et.
+        return (
+          <img
+            className={`extra-product-image-merchDetails img-fluid ${
+              mainImage === imageUrl ? "productImage-selected" : ""
+            }`}
+            key={index}
+            src={imageUrl}
+            alt={`Product ${index}`}
+            onClick={() => selectImage(imageUrl, fileName)}
+          />
+        );
+      });
+    };
+    
+    
+
+      // Boyut butonlarının render edildiği fonksiyon
+  const renderSizeButtons = () => {
+    if (!selectedImage || !product || !product.sizeDetails) return null;
+
+    const sizesWithSelectedImage = Object.keys(availableSizes);
+    return sizesWithSelectedImage.map(size => (
+      <button
+        onClick={() => handleSizeClick(size)}
+        key={size}
+        disabled={!availableSizes[size]}
+        className={`size-button ${selectedSize === size ? "size-button-selected" : ""} ${
+          !availableSizes[size] ? "size-button-out-of-stock" : ""
+        }`}
+      >
+        {size}
+      </button>
+    ));
+  };
 
 
   
@@ -38,52 +137,50 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
   const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
 
-  // try to find product
+
  
 
-  // feed back product doesnt exist
-  if (!product) {
-    return <div>Product not found</div>;
-  }
 
-  // if exists destructuring 
-  const { productName, price, images, description, sizes } = product;
+  console.log("product inni merchInfo",product);
 
+
+  
+
+  console.log("product in else:",product);
+
+    // Görüntü seçimi yapıldığında çalışacak fonksiyon
+    const selectImage = (imageUrl, imageFileName) => {
+      setMainImage(imageUrl);
+      setSelectedImage(imageFileName);
+      updateAvailableSizes(imageFileName);
+    };
+  
+
+  // Size butonu tıklama olayını işleyen fonksiyon
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
+
+  
   const handleButtonClick = () => {
-    if (!selectedSize) {
-      alert("Please select a size before adding to bag.");
+    if (!selectedSize || !selectedImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
+      alert("Please select a size and an image before adding to bag.");
     } else {
-      
-      handleAddProduct({product, selectedSize, mainImage});
+      handleAddProduct({ product, selectedSize, selectedImage }); // selectedImage olarak güncellenmiş
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
   };
-  console.log("product in else:",product);
 
-  const handleSizeClick = (size) => {
-    if (selectedSize === size) {
-      setSelectedSize(null);
-    } else {
-      setSelectedSize(size);
+    // feed back product doesnt exist
+    if (!product) {
+      return <div>Product not found</div>;
     }
-  };
-
-  const selectImage = (imgSrc) => {
-    setMainImage(imgSrc);
-   
-  };
-
-  
-
-
-  
-  
-  console.log("product her i merchinfo !!!!!#",product);
-
-
+    // if exists destructuring 
+    
  
-
+ 
   return (
     <>
       <div className="container">
@@ -131,7 +228,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                 <div class="col-12 col-sm-12 col-md-6 col-lg-5">
                   {" "}
                   {/* col for stort img*/}
-                  <div className="merch-images">
+                  <div className="main-image">
                     <img
                       src={mainImage}
                       alt="Hoodie"
@@ -144,18 +241,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                   <div className="row merch-details ">
                     <h1>{productName}</h1>
                     <div className="col-12 d-flex justify-content-center mb-2 flex-wrap extra-product-image-container">
-                      {images?.map((image, imgIndex) => (
-                        <img
-                          className={`extra-product-image-merchDetails img-fluid
-                           ${
-                             mainImage === image ? "productImage-selected" : ""
-                           }`}
-                          key={imgIndex}
-                          src={image}
-                          alt={`Selection ${imgIndex}`}
-                          onClick={() => selectImage(image)}
-                        />
-                      ))}
+
+                      {renderImages()}
                     </div>
                     <div className="col d-flex justify-content-center">
                       <div>
@@ -165,23 +252,14 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       </div>
                     </div>
 
-                    {/*  */}
+                    {/*orginal test  */}
 
                     <div className="col-12 size-selectorCol">
                       <div className="d-flex justify-content-center flex-wrap size-selector">
-                        {sizes.map((size) => (
-                          <button
-                            onClick={() => handleSizeClick(size)}
-                            key={size}
-                            className={`size-button ${
-                              selectedSize === size
-                                ? "size-button-selected"
-                                : ""
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
+
+                      <div className="size-selector">
+    {renderSizeButtons()}
+  </div>
                       </div>
                     </div>
 
@@ -194,24 +272,17 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                       </button>
                     </div>
 
-                    <div className='product-description'>
-                      <div className='d-flex justify-content-center'>
-                        
+                    <div className="product-description">
+                      <div className="d-flex justify-content-center">
                         <p>Free 30-Day Return Policy!</p>
-                       
-                      </div>
-                    
-
-                      <div className='d-flex justify-content-center'>
-                        
-                      <p>Free Standard Delivery over 700 NOK</p>
-                       
                       </div>
 
-    
+                      <div className="d-flex justify-content-center">
+                        <p>Free Standard Delivery over 700 NOK</p>
+                      </div>
                     </div>
 
-                    <div className='d-flex justify-content-center'>
+                    <div className="d-flex justify-content-center">
                       <p>{description}</p>
                     </div>
                   </div>
