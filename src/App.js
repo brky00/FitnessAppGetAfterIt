@@ -17,6 +17,10 @@ import Swal from 'sweetalert2';
 import AuthChecker from "./components/AuthChecker"
 // import data from "./components/back/Data/Data"; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
+import CheckoutForm from "./components/Checkout";
+
+
+
 
 function App() {
       /*Database transactions start*/
@@ -159,6 +163,9 @@ function App() {
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
+      
+        <Route path="/checkout" element={<CheckoutForm/>}/>
+        
         
       </Routes>
     </Router>

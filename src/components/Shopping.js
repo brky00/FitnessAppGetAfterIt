@@ -3,6 +3,7 @@ import ProductShoppingCard from "./elements/ProductShoppingCard";
 import "./Shopping.css";
 import Footer from "./Footer";
 import shoppingCardIsEmpity from "./images/shoppingCardEmpty.png";
+import { Link } from "react-router-dom";
 //Neworginal origin Neworginalo+ nEWWWWWW New
 //Hello
 
@@ -103,7 +104,9 @@ const Shopping = ({
             <div className="row">
               <div className="col-md-12 col-lg-12 col-sm-12 button-container d-flex justify-content-center">
                 <button className="contiuneButton">Continue Shopping</button>
-                <button className="checkoutButton">Checkout</button>
+                <Link to="/checkout" className="checkoutButton">Checkout</Link>
+                
+                
               </div>
             </div>
           </div>
