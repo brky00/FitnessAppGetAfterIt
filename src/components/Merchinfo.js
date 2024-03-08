@@ -34,7 +34,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   }, [dbProducts, id]);
 
   if (!product) {
-    return <div>Loading</div>;
+    return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading</div>;
   }
   const { productName, price, imageMain, description, sizeDetails } = product;
 
@@ -240,7 +240,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
                 <div class="col-12 col-sm-12 col-md-6 col-lg-5">
                   {" "}
                   {/* col for stort img*/}
-                  <div className="main-image">
+                  <div className="main-image d-flex justify-content-center">
                     <img
                       src={mainImage}
                       alt="Hoodie"
