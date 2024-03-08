@@ -167,11 +167,11 @@ const Add = () => {
         imageMain: productMainImage,
       });
   
-      Swal.fire("Başarılı!", "Ürün başarıyla eklendi.", "success");
+      Swal.fire("Sucsess!", "The new product is added.", "success");
       // Formu sıfırla veya başka bir eylem gerçekleştir
     } catch (error) {
-      console.error("Ürün eklenirken hata oluştu: ", error);
-      Swal.fire("Hata!", "Ürün eklenirken bir hata oluştu.", "error");
+      console.error("error when you try to add: ", error);
+      Swal.fire("Error!", "Error occurs when you try to add a product.", "error");
     }
   };
   
@@ -324,19 +324,7 @@ const Add = () => {
             />
           </div>
 
-          <div className="mb-3">
-            {/* <label htmlFor="product-imgs" className="form-label">
-           Selection Images
-         </label> */}
-            {/* <input
-           type="file"
-           className="form-control"
-           id="product-imgs"
-           onChange={handleImageChange}
-           multiple
-           required
-         /> */}
-          </div>
+
           {/*In stock check true/false choose here*/}
           <div className="mb-3">
             <label className="form-label">Stock Status</label>
