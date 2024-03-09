@@ -17,6 +17,10 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const [selectedImages, setSelectedImages] = useState([]);
   const [uniqueArray, setUniqueArray] = useState([]);
 
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+
+
 //org org
   // İlk yükleme ve ürün bulma işlemleri
   console.log("dbproducts:",dbProducts);
@@ -24,14 +28,45 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     let productFound = dbProducts.find((product) => product.id === id);
     console.log("productfound:",productFound);
     setProduct(productFound);
-    if (productFound) {
-      setMainImage(productFound.imageMain);
-    }
-    else {
-      // Hvis product ikke finnes markerer koden mainImage som null...
-      setMainImage(null);
-    }
+    // if (productFound) {
+    //   setMainImage(productFound.imageMain);
+    // }
+    // else {
+    //   // Hvis product ikke finnes markerer koden mainImage som null...
+    //   setMainImage(null);
+    // }
   }, [dbProducts, id]);
+
+  // new useffect test
+
+  //org
+  useEffect(() => {
+    if (product) {
+      // Varsayılan ana resmi ve adını ayarla
+      let mainImageUrl, mainImageName;
+      for (const sizes of Object.values(product.sizeDetails)) {
+        for (const size of sizes) {
+          if (size.fileName === product.productMainName) {
+            mainImageUrl = size.url;
+            mainImageName = size.fileName;
+            break;
+          }
+        }
+        if (mainImageUrl) break;
+      }
+  
+      if (mainImageUrl) {
+        setMainImage(mainImageUrl);
+        setSelectedImage(mainImageName);
+        updateAvailableSizes(mainImageName); // Ana resme ait boyutları güncelle
+      }
+    }
+  }, [product]);
+  
+
+  
+  
+  
 
   if (!product) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading</div>;
@@ -67,6 +102,9 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   };
 
 
+
+
+
   if (!mainImage) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
   }
@@ -79,18 +117,22 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       const fileNames = getUniqueFileNames(product.sizeDetails);
      
       fileNames.sort((a, b) => {
-        // 'dbHoodie.png' her zaman ilk sırada olmalı.
+       
         if (a === product.productMainName) return -1;
         if (b === product.productMainName) return 1;
       
-        // Diğer değerler alfabetik olarak sıralanmalı.
+        // sorted alfebatic and main image allways first.
         return a.localeCompare(b);
       });
+
+
+  
       
      
       console.log("product", product);
       console.log("fileNames after", fileNames);
       return fileNames.map((fileName, index) => {
+      
         // Tüm boyutlardaki eşleşen fileName'leri filtrele ve bunların URL'lerini al.
         const imageUrls = Object.values(product.sizeDetails).flatMap(sizes =>
           sizes.filter(size => size.fileName === fileName).map(size => size.url)
@@ -99,18 +141,24 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     
         // İlk geçerli URL'yi seç veya hiçbiri yoksa undefined döndür.
         const imageUrl = imageUrls.find(url => url != null);
-        console.log("imageUrl",imageUrl);
+      
+      
+    
     
         if (!imageUrl) {
           console.error(`No URL found for fileName: ${fileName}`);
           return null; // Eğer URL bulunamazsa, bu dosya adı için hiçbir şey render etme.
+        }
+        else{
+        
+
         }
     
         // imageUrl bulunduysa img tag'ını render et.
         return (
           <img
             className={`extra-product-image-merchDetails img-fluid ${
-              mainImage === imageUrl ? "productImage-selected" : ""
+              (mainImage === imageUrl || (!selectedImage && imageUrl === product.imageMain)) ? "productImage-selected" : ""
             }`}
             key={index}
             src={imageUrl}
@@ -127,8 +175,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const renderSizeButtons = () => {
     if (!selectedImage || !product || !product.sizeDetails) return null;
 
-    const sizesWithSelectedImage = Object.keys(availableSizes);
-    return sizesWithSelectedImage.map(size => (
+    // const sizesWithSelectedImage = Object.keys(availableSizes);
+    return product.allSizes.map(size => (
       <button
         onClick={() => handleSizeClick(size)}
         key={size}
@@ -190,6 +238,13 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       return <div>Product not found</div>;
     }
     // if exists destructuring 
+
+
+
+
+    console.log("main image last",mainImage);
+    console.log("selectedImage",selectedImage);
+    console.log("avaible sizes",availableSizes);
     
  
  
