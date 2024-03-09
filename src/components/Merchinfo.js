@@ -61,7 +61,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   
 
   if (!product) {
-    return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading</div>;
+    return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>;
   }
   const { productName, price, imageMain, description, sizeDetails } = product;
 
