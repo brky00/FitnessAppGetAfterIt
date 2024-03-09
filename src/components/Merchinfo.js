@@ -17,7 +17,6 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   const [selectedImages, setSelectedImages] = useState([]);
   const [uniqueArray, setUniqueArray] = useState([]);
 
-  const [selectedName, setSelectedName] = useState("");
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
 
 
@@ -28,13 +27,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     let productFound = dbProducts.find((product) => product.id === id);
     console.log("productfound:",productFound);
     setProduct(productFound);
-    // if (productFound) {
-    //   setMainImage(productFound.imageMain);
-    // }
-    // else {
-    //   // Hvis product ikke finnes markerer koden mainImage som null...
-    //   setMainImage(null);
-    // }
+    
   }, [dbProducts, id]);
 
   // new useffect test
@@ -59,13 +52,12 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
         setMainImage(mainImageUrl);
         setSelectedImage(mainImageName);
         updateAvailableSizes(mainImageName); // Ana resme ait boyutları güncelle
+        setSelectedImageUrl(mainImageUrl)
       }
     }
   }, [product]);
   
 
-  
-  
   
 
   if (!product) {
@@ -211,7 +203,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     // Görüntü seçimi yapıldığında çalışacak fonksiyon
     const selectImage = (imageUrl, imageFileName) => {
       setMainImage(imageUrl);
-      setSelectedImage(imageFileName);
+      // setSelectedImage(imageFileName);
       updateAvailableSizes(imageFileName);
     };
   
@@ -227,7 +219,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
     if (!selectedSize || !selectedImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
       alert("Please select a size and an image before adding to bag.");
     } else {
-      handleAddProduct({ product, selectedSize, selectedImage }); // selectedImage olarak güncellenmiş
+      handleAddProduct({ product, selectedSize,mainImage }); // selectedImage olarak güncellenmiş
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
