@@ -43,7 +43,15 @@ const Navbar = ({cartItems}) => {
               <img src={logoImage} alt="Logo" className="navbar-logo" />
             </a>
             <span className="getAfterItTekst mx-auto">Get After It</span>
-            <i className="fa-solid fa-user adminLogo" onClick={handleAdminClick}></i>
+            <div className="loggInAndOut d-flex flex-column justify-content-center">
+           <div> <i className="fa-solid fa-user adminLogo d-flex justify-content-center mb-2" onClick={handleAdminClick}></i></div>
+            {login && (
+              <div>
+                <Logout />
+              </div>
+            )}
+            </div>
+          
           </div>
         </nav>
 
@@ -116,11 +124,7 @@ const Navbar = ({cartItems}) => {
                 </div>
               </div>
             </div>
-            {login && (
-              <div>
-                <Logout />
-              </div>
-            )}
+
             <div className="shoppingDiv2">
               <Link className="shopping2" to="/shopping">
                 <div className="d-flex align-items-center justify-content-center">
