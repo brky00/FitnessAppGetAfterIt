@@ -1,10 +1,11 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import "./Checkout.css"
 
 
-const CheckoutForm = ({cartItems,totalQuantity}) => {
+const CheckoutForm = ({cartItems,totalQuantity,totalPrice}) => {
     console.log("CHECKOUT CARTITEMS: ",cartItems);
     console.log("totalQuantity checkout: ",totalQuantity);
+   
 
    return (
     <div className="checkout-container">
@@ -37,7 +38,7 @@ const CheckoutForm = ({cartItems,totalQuantity}) => {
 
             <div className="form-group">
                 <label htmlFor="totalPrice">Total Price</label>
-                <input type="text" id="totalPrice" name="totalPrice" value="Calculated Total Price" readOnly/>
+                <input type="text" id="totalPrice" name="totalPrice" value={totalPrice} readOnly/>
             </div>
 
             <div className="form-group">

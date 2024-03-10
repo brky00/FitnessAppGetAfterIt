@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductShoppingCard from "./elements/ProductShoppingCard";
 import "./Shopping.css";
 import Footer from "./Footer";
@@ -7,15 +7,23 @@ import { Link } from "react-router-dom";
 //Neworginal origin Neworginalo+ nEWWWWWW New
 //Hello
 
+
 const Shopping = ({
   cartItems,
   handleAddProduct,
   handleRemoveQuantity,
   handleAddQuantity,
   handleRemoveAllProducts,
+  handleTotalPrice
 }) => {
   const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
   const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price,0);
+
+  useEffect(() => {
+    if (totalPrice) {
+      handleTotalPrice({ totalPrice }); 
+    }
+  }, [totalPrice]);
   
 
   return (

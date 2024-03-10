@@ -21,6 +21,7 @@ import CheckoutForm from "./components/Checkout";
 function App() {
       const[dbProducts, setDbProducts] =useState([]);
       const[totalQuantity, setTotalQuantity] =useState(null);
+      const[totalPrice, setTotalPrice] =useState(null);
       const [cartItems, setCartItems] = useState(() => {
         // Get cart items from local storage if available
         const savedCartItems = localStorage.getItem('cartItems');
@@ -117,6 +118,13 @@ function App() {
 
     }
   }
+
+  const handleTotalPrice = ({totalPrice}) => {
+    if (totalPrice){
+      setTotalPrice(totalPrice);
+
+    }
+  }
   
   
   const handleDeleteProduct = (deleteId) => {
@@ -164,14 +172,14 @@ function App() {
         {/* <Route path="/merch" element={<Merch productItems={productItems}/>} /> */}
         <Route path="/merch" element={<Merch dbProducts={dbProducts}/>} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/shopping" element={<Shopping cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
+        <Route path="/shopping" element={<Shopping handleTotalPrice={handleTotalPrice} cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
         <Route path="/LoginAdmin" element={<Login />} />
         <Route path="/merchinfo/:id" element={<MerchInfo dbProducts={dbProducts} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} mainImage={mainImage} setMainImage={setMainImage} cartItems={cartItems}/>} />
         <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
-        <Route path="/checkout" element={<CheckoutForm totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
+        <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
       </Routes>
     </Router>
   );
