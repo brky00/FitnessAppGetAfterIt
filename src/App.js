@@ -15,17 +15,17 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "./components/firebase-config";
 import Swal from 'sweetalert2';
 import AuthChecker from "./components/AuthChecker"
-// import data from "./components/back/Data/Data"; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
-
 import CheckoutForm from "./components/Checkout";
 
 
-
-
 function App() {
-      /*Database transactions start*/
       const[dbProducts, setDbProducts] =useState([]);
-      const [cartItems, setCartItems]=useState([]);
+      const [cartItems, setCartItems] = useState(() => {
+        // Get cart items from local storage if available
+        const savedCartItems = localStorage.getItem('cartItems');
+        return savedCartItems ? JSON.parse(savedCartItems) : [];
+      });
+      
       const [selectedSize, setSelectedSize]=useState("");
       const [mainImage, setMainImage] = useState(null);
       const getProducts = async () => {
@@ -43,14 +43,12 @@ function App() {
       useEffect(() => {
         getProducts(); 
       }, []); 
+      useEffect(() => {
+        // Save cart items to local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }, [cartItems]);
+      
   
-  
-    
-      /*Database transactions end*/
-
-
-  
-  // const { productItems } = data; //THIS CODE WAS USED WITH DATA.JS TEST DATA. WE JUST SHOW HERE IN COMMENT WHAT WI DID BEFORE THE DATABASE
 
   //orginal 17.04.2024
   console.log("APP.JS CARTITEMS ",cartItems);
@@ -109,7 +107,9 @@ function App() {
 
   const handleRemoveAllProducts = () => {
     setCartItems([]);
+    localStorage.removeItem('cartItems'); // Clear the cart in local storage
   };
+  
   
   const handleDeleteProduct = (deleteId) => {
     console.log("deleteId: ",deleteId)
@@ -163,10 +163,7 @@ function App() {
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
-      
-        <Route path="/checkout" element={<CheckoutForm/>}/>
-        
-        
+        <Route path="/checkout" element={<CheckoutForm cartItems={cartItems} />}/>  
       </Routes>
     </Router>
   );

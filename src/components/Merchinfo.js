@@ -199,6 +199,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   
 
   console.log("product in else:",product);
+  
+  console.log("Avaible sizes:",availableSizes);
 
     // Görüntü seçimi yapıldığında çalışacak fonksiyon
     const selectImage = (imageUrl, imageFileName) => {

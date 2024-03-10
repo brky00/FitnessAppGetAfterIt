@@ -2,7 +2,8 @@ import React, { useState} from "react";
 import "./Checkout.css"
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({cartItems}) => {
+    console.log("CHECKOUT CARTITEMS: ",cartItems);
    return (
     <div className="checkout-container">
         <h1>Checkout</h1>
