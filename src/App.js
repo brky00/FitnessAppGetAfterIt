@@ -20,6 +20,7 @@ import CheckoutForm from "./components/Checkout";
 
 function App() {
       const[dbProducts, setDbProducts] =useState([]);
+      const[totalQuantity, setTotalQuantity] =useState(null);
       const [cartItems, setCartItems] = useState(() => {
         // Get cart items from local storage if available
         const savedCartItems = localStorage.getItem('cartItems');
@@ -109,6 +110,13 @@ function App() {
     setCartItems([]);
     localStorage.removeItem('cartItems'); // Clear the cart in local storage
   };
+
+  const handleTotalQuantityOfProduct = ({totalItems}) => {
+    if (totalItems){
+      setTotalQuantity(totalItems);
+
+    }
+  }
   
   
   const handleDeleteProduct = (deleteId) => {
@@ -149,7 +157,7 @@ function App() {
   
   return (
     <Router>
-      <Navbar cartItems={cartItems}/>
+      <Navbar handleTotalQuantityOfProduct={handleTotalQuantityOfProduct} cartItems={cartItems}/>
       
       <Routes>
         <Route path="/" element={<Home />} />
@@ -163,7 +171,7 @@ function App() {
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
-        <Route path="/checkout" element={<CheckoutForm cartItems={cartItems} />}/>  
+        <Route path="/checkout" element={<CheckoutForm totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
       </Routes>
     </Router>
   );

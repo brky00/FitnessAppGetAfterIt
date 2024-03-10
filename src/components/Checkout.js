@@ -2,12 +2,14 @@ import React, { useState} from "react";
 import "./Checkout.css"
 
 
-const CheckoutForm = ({cartItems}) => {
+const CheckoutForm = ({cartItems,totalQuantity}) => {
     console.log("CHECKOUT CARTITEMS: ",cartItems);
+    console.log("totalQuantity checkout: ",totalQuantity);
+
    return (
     <div className="checkout-container">
         <h1>Checkout</h1>
-        <form className="checkout-form">
+        <form  className="checkout-form">
             <div className="form-group">
                 <label htmlFor="fullName">Full Name</label>
                 <input type="text" id="fullname" name="fullName" title="First and Last Name" required/>
@@ -40,16 +42,14 @@ const CheckoutForm = ({cartItems}) => {
 
             <div className="form-group">
                 <label htmlFor="totalProducts">Amount of Products</label>
-                <input type="text" id="totalProducts" name="totalProducts" value="Product Amount" readOnly/>
+                <input style={{border: "2px solid"}} type="text" id="totalProducts" name="totalProducts" value={totalQuantity} readOnly />
             </div>
             
             <div className="form-group">
                 <button type="submit" className="submit-button">Complete Order</button>
             </div>
 
-            
-
-
+        
         </form>
     </div>
    )

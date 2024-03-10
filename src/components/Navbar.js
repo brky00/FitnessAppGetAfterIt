@@ -7,10 +7,15 @@ import Logout from "./Logout";
 
 
 
-const Navbar = ({cartItems}) => {
+const Navbar = ({cartItems,handleTotalQuantityOfProduct}) => {
   const [login, setLogin]=useState(false);
   const navigate = useNavigate();
   const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  useEffect(() => {
+    if (totalItems) {
+      handleTotalQuantityOfProduct({ totalItems }); 
+    }
+  }, [totalItems]);
 
   const handleAdminClick = () => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
