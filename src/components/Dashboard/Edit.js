@@ -38,62 +38,92 @@ const Edit = ({selectedProduct}) => {
 
 
 
-  const handleUpdate = async (e) =>{
+  // const handleUpdate = async (e) =>{
 
 
+  //   e.preventDefault();
+  //   if (!productName || !productDescription || !productPrice|| !sizeQuantities || !productMainImage) {
+  //       return Swal.fire({
+  //         icon: 'error',
+  //         title: 'Error!',
+  //         text: 'All fields are required.',
+  //         showConfirmButton: true,
+  //       });
+  //     }
+  //     const thisProduct= doc(db,"product", id);
+
+
+  //     try {
+  //       await updateDoc(thisProduct, {
+  //       productName:productName,
+  //       description: productDescription,
+  //       price: Number(productPrice),
+  //       sizeDetails: sizeQuantities, 
+  //       imageMain: productMainImage,
+  //       productMainName:mainFileName,
+  //       allSizes:dbSizes
+  //         // Güncellenecek alanlar
+  //       });
+  //       Swal.fire({
+  //         icon: 'success',
+  //         // Başarılı güncelleme mesajı
+  //       });
+  //     } catch (error) {
+  //       console.error("Update error: ", error);
+  //       Swal.fire({
+  //         icon: 'error',
+  //         // Hata mesajı
+  //       });
+  //     }
+      
+  
+  //     console.log('thisPorudct in handleupdate ',thisProduct) 
+
+  // }
+
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    if (!productName || !productDescription || !productPrice|| !sizeQuantities || !productMainImage) {
-        return Swal.fire({
-          icon: 'error',
-          title: 'Error!',
-          text: 'All fields are required.',
-          showConfirmButton: true,
-        });
-      }
-      const thisProduct= doc(db,"product", id);
-
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(thisProduct, {
-        productName:productName,
-        description: productDescription,
-        price: Number(productPrice),
-        sizeDetails: sizeQuantities, 
-        imageMain: productMainImage,
-        productMainName:mainFileName,
-        allSizes:dbSizes
-      }) .then(() => {
+  
+    // Güncellenecek alanları toplayan bir obje oluştur.
+    let updatePayload = {};
+  
+    if (productName) updatePayload.productName = productName;
+    if (productDescription) updatePayload.description = productDescription;
+    if (productPrice) updatePayload.price = Number(productPrice);
+    if (Object.keys(sizeQuantities).length) updatePayload.sizeDetails = sizeQuantities;
+    if (productMainImage) updatePayload.imageMain = productMainImage;
+    if (mainFileName) updatePayload.productMainName = mainFileName;
+    // allSizes her zaman dolu varsayılarak ekleniyor, bu durumu projenize göre düzenleyebilirsiniz.
+    updatePayload.allSizes = dbSizes;
+  
+    // Güncellenecek alanların olduğundan emin ol (updatePayload objesi boş değilse).
+    if (Object.keys(updatePayload).length > 0) {
+      try {
+        const thisProduct = doc(db, "product", id);
+        await updateDoc(thisProduct, updatePayload);
         Swal.fire({
           icon: 'success',
           title: 'Updated!',
-          text: `${productName} with id "${id}" has been updated.`,
-          showConfirmButton: false,
-          timer: 1500,
+          text: 'Product has been updated successfully.',
         });
-      })
-      .catch(error => {
+      } catch (error) {
         console.error("Update error: ", error);
         Swal.fire({
           icon: 'error',
           title: 'Update failed!',
           text: 'Please try again.',
-          showConfirmButton: true,
         });
+      }
+    } else {
+      // Güncellenecek bir alan yoksa kullanıcıya bildir.
+      Swal.fire({
+        icon: 'info',
+        title: 'No changes',
+        text: 'No changes to save.',
       });
-
-      
-      console.log('thisPorudct in handleupdate ',thisProduct)
-
-
-
-
-     
-    
-      
-
-
-    
-
-  }
+    }
+  };
+  
 
 
 
