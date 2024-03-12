@@ -266,7 +266,8 @@ const Add = () => {
               className="d-flex flex-column justify-content-center"
             >
               {dbSizes.map((size) => (
-                <div key={size} className="size-section">
+             <div key={size} className="size-section mb-4">
+
                   <input
                     type="checkbox"
                     id={`size-${size}`}
@@ -284,7 +285,7 @@ const Add = () => {
                           htmlFor={`file-upload-${size}`}
                           className="file-upload-label"
                         >
-                          {`Dosyaları seç (${size}):`}
+                          {`Choose files for product images (${size}):`}
                         </label>
                         <input
                           type="file"

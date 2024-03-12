@@ -11,11 +11,12 @@ import DashIndex from"./components/Dashboard/DashIndex"
 import Add from "./components/Dashboard/Add"
 import Dashboard from "./components/Dashboard/Dashboard"
 import { useEffect, useState } from "react";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc,setDoc } from "firebase/firestore";
 import { db } from "./components/firebase-config";
 import Swal from 'sweetalert2';
 import AuthChecker from "./components/AuthChecker"
 import CheckoutForm from "./components/Checkout";
+import Edit from "./components/Dashboard/Edit";
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
       
       const [selectedSize, setSelectedSize]=useState("");
       const [mainImage, setMainImage] = useState(null);
+      const[selectedProduct, setSelectedProduct] =useState(null);
+
       const getProducts = async () => {
         const querySnapshot = await getDocs(collection(db, "products"));
         const products = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})
@@ -125,6 +128,12 @@ function App() {
 
     }
   }
+
+  const handleEditProduct = editId => {
+    const [editProduct] = dbProducts.filter(employee => employee.id === editId);
+    setSelectedProduct(editProduct);
+ 
+  };
   
   
   const handleDeleteProduct = (deleteId) => {
@@ -175,8 +184,9 @@ function App() {
         <Route path="/shopping" element={<Shopping handleTotalPrice={handleTotalPrice} cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveQuantity={handleRemoveQuantity} handleAddQuantity={handleAddQuantity} handleRemoveAllProducts={handleRemoveAllProducts}/>} /> 
         <Route path="/LoginAdmin" element={<Login />} />
         <Route path="/merchinfo/:id" element={<MerchInfo dbProducts={dbProducts} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} mainImage={mainImage} setMainImage={setMainImage} cartItems={cartItems}/>} />
-        <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct}/>}/>
+        <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct} handleEditProduct={handleEditProduct}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
+        <Route path="/editProduct" element={<Edit selectedProduct={selectedProduct} />}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
         <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} />}/>  

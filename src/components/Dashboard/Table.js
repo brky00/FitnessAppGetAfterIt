@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
-const Table = ({ dbProducts, handleDeleteProduct }) => {
+const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
   console.log("db products management", dbProducts);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,7 +21,9 @@ const Table = ({ dbProducts, handleDeleteProduct }) => {
               <th scope="col">Stock and selection images of each size</th>
               {/* <th scope="col">Selection Images</th> */}
               <th scope="col">In Stock</th>
-              <th className="text-center" colSpan={2} scope="col">Actions</th>
+              <th className="text-center" colSpan={2} scope="col">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +37,7 @@ const Table = ({ dbProducts, handleDeleteProduct }) => {
                     <img
                       src={product.imageMain}
                       alt={product.productName || "Product Image"}
-                      style={{ width: "50px", height: "50px" }}
+                      style={{ width: "90px", height: "auto" }}
                     />
                   ) : (
                     <span>No image available</span>
@@ -42,27 +46,48 @@ const Table = ({ dbProducts, handleDeleteProduct }) => {
                 <td>{product.description}</td>
                 <td>
                   {product.sizeDetails
-                    ? Object.entries(product.sizeDetails).map(([sizeKey, details]) => (
-                        <div key={sizeKey} className="size-quantity">
-                          <div>{`Size: ${sizeKey}`}</div>
-                          {Array.isArray(details) ? details.map((detail, detailIndex) => (
-                            <div key={detailIndex} className="mb-2">
-                              <img
-                                src={detail.url}
-                                alt={`${product.productName || "Product Image"} - ${sizeKey}`}
-                                style={{ width: "50px", height: "50px", marginRight: "10px" }}
-                              />
-                              <span>{`${detail.fileName}: ${detail.quantity}`}</span>
-                            </div>
-                          )) : <span>Details not available as an array</span>}
-                        </div>
-                      ))
+                    ? Object.entries(product.sizeDetails).map(
+                        ([sizeKey, details]) => (
+                          <div key={sizeKey} className="size-quantity">
+                            <div>{`Size: ${sizeKey}`}</div>
+                            {Array.isArray(details) ? (
+                              details.map((detail, detailIndex) => (
+                                <div key={detailIndex} className="mb-2">
+                                  <img
+                                    src={detail.url}
+                                    alt={`${
+                                      product.productName || "Product Image"
+                                    } - ${sizeKey}`}
+                                    style={{
+                                      width: "50px",
+                                      height: "auto",
+                                      marginRight: "10px",
+                                    }}
+                                  />
+                                  <span>{`${detail.fileName}: ${detail.quantity}`}</span>
+                                </div>
+                              ))
+                            ) : (
+                              <span>Details not available as an array</span>
+                            )}
+                          </div>
+                        )
+                      )
                     : "No sizes"}
                 </td>
                 <td>{product.inStock ? "Yes" : "No"}</td>
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="btn btn-primary">Edit</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        handleEditProduct(product.id);
+                        navigate("/editProduct");
+                       
+                      }}
+                    >
+                      Edit
+                    </button>
                   </div>
                 </td>
                 <td>

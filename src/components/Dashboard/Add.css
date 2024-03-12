@@ -43,3 +43,8 @@
     margin-bottom: 0;
   }
 }
+
+.add-container .size-section{
+  border: solid 1px;
+  padding: 10px;
+}
