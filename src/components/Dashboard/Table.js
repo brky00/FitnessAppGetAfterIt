@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
+import './Table.css'
 
 const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
   console.log("db products management", dbProducts);

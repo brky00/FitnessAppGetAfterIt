@@ -7,9 +7,14 @@ import deadliftImage from "./images/deadlift.jpg";
 
 const About = () => {
   return (
+    
     <div className='container aboutContainer'>
+              <div className="d-flex justify-content-center mb-4">
+          {" "}
+          <h1 className="aboutTitle">About us</h1>
+        </div>
       <div className='d-flex justify-content-center mt-3'>
-      <h1 className='AboutUsH1'>About us</h1>
+     
       </div>
       
 

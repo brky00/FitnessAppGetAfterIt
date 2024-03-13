@@ -58,24 +58,25 @@ function App() {
   //orginal 17.04.2024
   console.log("APP.JS CARTITEMS ",cartItems);
 
-  const handleAddProduct = ({product, selectedSize,mainImage}) => {
-    const productExist = cartItems.find((item) => (item.id === product.id) && (item.productSize === selectedSize) &&(item.selectedImage===mainImage));
+  const handleAddProduct = ({product, selectedSize,mainImage,selectedImageName}) => {
+    console.log("selectedImageName ",selectedImageName);
+    const productExist = cartItems.find((item) => (item.id === product.id) && (item.productSize === selectedSize) &&(item.selectedImgName===selectedImageName));
     if (productExist) {
       // hvis produk finnes allerede(med samme size) quantity økes.
       setCartItems(
         cartItems.map((item) =>
-          (item.id === product.id) && (item.productSize === selectedSize)&&(item.selectedImage===mainImage)
+          (item.id === product.id) && (item.productSize === selectedSize)&&(item.selectedImgName===selectedImageName)
             ? { ...productExist, quantity: productExist.quantity + 1 }
             : item
         )
       );
     } else {
       // Det blir added som en ny produkt hvis det ikke finnes fra før
-      setCartItems([...cartItems, { ...product, quantity: 1, productSize: selectedSize, selectedImage: mainImage }]);
+      setCartItems([...cartItems, { ...product, quantity: 1, productSize: selectedSize, selectedImgName: selectedImageName, selectedImage:mainImage }]);
     }
 
   };
-  console.log("selectedImage app.js:",cartItems.selectedImage);
+
 
   console.log("nye cart items",cartItems);
   

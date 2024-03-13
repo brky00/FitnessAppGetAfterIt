@@ -2,6 +2,9 @@
 .table-responsive {
     padding: 1rem;
   }
+  .size-quantity{
+    border-bottom: solid 1px;
+  }
   
   @media (max-width: 768px) {
     .table-responsive {

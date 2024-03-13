@@ -12,12 +12,9 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   //Her oppretter jeg en state for å oppdatere mainImage etterhvert
 
   const [product,setProduct] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageName, setSelectedImageName] = useState(null);
   const [availableSizes, setAvailableSizes] = useState({});
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [uniqueArray, setUniqueArray] = useState([]);
-
-  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+  // const [selectedImageUrl, setSelectedImageUrl] = useState(null);
 
 
 //org org
@@ -50,12 +47,14 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
   
       if (mainImageUrl) {
         setMainImage(mainImageUrl);
-        setSelectedImage(mainImageName);
+        setSelectedImageName(mainImageName);
         updateAvailableSizes(mainImageName); // Ana resme ait boyutları güncelle
-        setSelectedImageUrl(mainImageUrl)
+        // setSelectedImageUrl(mainImageUrl)
       }
     }
   }, [product]);
+
+  console.log("product exist:",product);
   
 
   
@@ -95,9 +94,9 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
 
 
+console.log("mainimage exist",mainImage);
 
-
-  if (!mainImage) {
+  if (!product.imageMain) {
     return <div className='d-flex justify-content-center mt-5' style={{fontSize:"50px"}}>Loading...</div>; // Loading før bildet kommer(Når image/bilde ikke er null)
   }
   const fileNames = getUniqueFileNames(product.sizeDetails);
@@ -124,6 +123,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       console.log("product", product);
       console.log("fileNames after", fileNames);
       return fileNames.map((fileName, index) => {
+       
       
         // Tüm boyutlardaki eşleşen fileName'leri filtrele ve bunların URL'lerini al.
         const imageUrls = Object.values(product.sizeDetails).flatMap(sizes =>
@@ -141,6 +141,10 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
           console.error(`No URL found for fileName: ${fileName}`);
           return null; // Eğer URL bulunamazsa, bu dosya adı için hiçbir şey render etme.
         }
+        if (imageUrl) {
+          console.log(` URL found for fileName: ${fileName}`,imageUrl);
+          
+        }
         else{
         
 
@@ -150,22 +154,23 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
         return (
           <img
             className={`extra-product-image-merchDetails img-fluid ${
-              (mainImage === imageUrl || (!selectedImage && imageUrl === product.imageMain)) ? "productImage-selected" : ""
+              (mainImage === imageUrl || (mainImage && imageUrl ===mainImage)) ? "productImage-selected" : ""
             }`}
             key={index}
             src={imageUrl}
             alt={`Product ${index}`}
-            onClick={() => selectImage(imageUrl, fileName)}
+            onClick={() => selectImage(imageUrl, fileName) }
           />
         );
       });
     };
+    console.log("product: ",product,"selectedImage Name: ",selectedImageName,"product.sizeDetails",product.sizeDetails);
     
     
 
       // Boyut butonlarının render edildiği fonksiyon
   const renderSizeButtons = () => {
-    if (!selectedImage || !product || !product.sizeDetails) return null;
+    if (!mainImage || !product || !product.sizeDetails) return null;
 
     // const sizesWithSelectedImage = Object.keys(availableSizes);
     return product.allSizes.map(size => (
@@ -194,6 +199,7 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
 
   console.log("product inni merchInfo",product);
+  console.log("product.imageMain::::",product.imageMain);
 
 
   
@@ -207,6 +213,8 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
       setMainImage(imageUrl);
       // setSelectedImage(imageFileName);
       updateAvailableSizes(imageFileName);
+      setSelectedImageName(imageFileName)
+      // setSelectedImageUrl(imageUrl);
     };
   
 
@@ -218,10 +226,10 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
   
   const handleButtonClick = () => {
-    if (!selectedSize || !selectedImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
+    if (!product || !selectedSize|| !mainImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
       alert("Please select a size and an image before adding to bag.");
     } else {
-      handleAddProduct({ product, selectedSize,mainImage }); // selectedImage olarak güncellenmiş
+      handleAddProduct({ product, selectedSize,mainImage,selectedImageName }); // selectedImage olarak güncellenmiş
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
@@ -235,9 +243,9 @@ const MerchInfo = ({ dbProducts, handleAddProduct, selectedSize, setSelectedSize
 
 
 
-
+    console.log("++++++selected size ",selectedSize)
     console.log("main image last",mainImage);
-    console.log("selectedImage",selectedImage);
+    console.log("selectedImage",selectedImageName);
     console.log("avaible sizes",availableSizes);
     
  

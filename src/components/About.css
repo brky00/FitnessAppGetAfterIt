@@ -19,11 +19,11 @@
     width: 100%;
 }
 
-
+/* 
 .AboutUsH1{
     text-decoration: underline  #C8B479;
     font-family: "Raleway", sans-serif; 
-}
+} */
 
 
 
@@ -34,6 +34,24 @@
     font-family: "Raleway", sans-serif; 
     font-size: 18px;
 }
+.aboutTitle {
+    position: relative; 
+    display: inline-block; 
+    font-weight: revert-layer;
+    font-size: 50px;
+  }
+
+.aboutTitle::after {
+    content: ''; 
+    display: block; 
+    width: 100%; 
+    height: 4px; 
+    background-color: #C8B479; 
+    position: absolute; 
+    left: 0; 
+    bottom: 2px; 
+  }
+
 
 @media (max-width: 768px){
     .navbar-logo-about{
