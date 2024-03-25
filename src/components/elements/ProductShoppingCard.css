@@ -46,18 +46,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* margin: 10px; */
 }
+
+
 
 .size-box {
 padding: 10px 10px;
-  background-color: #d9d9d9;
+
   font-family: "Raleway", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid;
+
   font-size: 20px;
-  border-radius: 3px;
+ 
 }
 
 .quantity-btn-plus {
@@ -70,9 +73,13 @@ padding: 10px 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   transition: background-color 0.5s ease;
+  margin-right: 4px;
+
+
+  
 }
 
 .quantity-btn-plus:hover {
@@ -80,12 +87,14 @@ padding: 10px 10px;
   transform: scale(1.1);
 }
 .plus {
-  font-size: 4rem;
+  font-size: 30px;
   font-family: emoji;
   color: #c8b479;
+  font-weight: 900;
 }
 
 .quantity-btn-minus {
+  margin-left: 4px;
   background-color: #392f5b;
   border: none;
   color: white;
@@ -94,8 +103,8 @@ padding: 10px 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   border: 1px solid black;
   transition: background-color 0.5s ease;
 }
@@ -105,9 +114,10 @@ padding: 10px 10px;
 }
 
 .minus {
-  font-size: 4rem;
+  font-size: 35px;
   font-family: math;
   color: #c8b479;
+
 
   transform: scale(
     2.2,
@@ -118,30 +128,40 @@ padding: 10px 10px;
 
 .quantity-div{
   border: solid #c8b479;
-  padding: 7px 18px 7px 18px;
-  font-size: 28px;
+  padding: 1.2px 10px 1.2px 10px;
+
   background-color: #F3E8E8;
  
 }
 .productPrice {
   font-size: 25px;
   font-family: sans-serif;
-  background-color: #d9d9d9;
+ 
   
   width: auto;
-  border: 1px solid;
+ 
   margin-bottom: 10px;
-  border-radius: 3px;
+
   padding: 5px;
  
 }
 
 
-.productImg{
-  height: 90px;
+.productImg {
+ 
   width: auto;
+
 }
 
+.productImgDiv{
+  width: 50px;
+  height: auto;
+}
+
+.productTittel{
+width: 50px;
+margin-left: 9px;
+}
 
 /*responsive kode kommer til å bli fjernet på større skjerm her.*/
 
@@ -155,7 +175,7 @@ padding: 10px 10px;
   .size-box {
 
     padding: 1px 6px;
-    border: 1px solid;
+  
     font-size: 1rem;
   }
 
@@ -164,40 +184,40 @@ padding: 10px 10px;
     font-family: "Times New Roman", Times, serif;
   }
 
-  .quantity-btn-plus {
-    width: 35px;
-    height: 35px;
-  }
+
 
   .plus {
-    font-size: 3rem;
+    font-size: 25px;
   
  
   }
-  .quantity-btn-minus {
-    width: 35px;
-    height: 35px;
-    
-  }
+
   .minus{
-    font-size: 3rem;
+    font-size: 28px;
    
   }
 
 
   .quantity-div{
     border: solid #c8b479;
-    padding: 1px 10px 1px 10px;
-    font-size: 18px;
+    padding: 0.8px 9px 0.8px 9px;
+    font-size: 15px;
+
     background-color: #F3E8E8;
    
+  }
+
+  .quantity-btn-minus,.quantity-btn-plus{
+    width: 30px;
+    height: 30px;
+
   }
 
   .productPrice {
     font-size: 18px;
     
     font-family: "Times New Roman, Times, serif";
-    background-color: #d9d9d9;
+  
     max-height: 50px;
     padding: 0px 5px;
     
@@ -211,10 +231,7 @@ padding: 10px 10px;
   .responsiveSizeTitteltt{
     display:flex;
   }
-  .productImg{
-    height: 65px;
-    width: auto;
-  }
+
 
 
   .productRow {
@@ -238,6 +255,7 @@ padding: 10px 10px;
 
  .productTittel{
   font-size: 15px;
+  width: 50px;
 
 }
  

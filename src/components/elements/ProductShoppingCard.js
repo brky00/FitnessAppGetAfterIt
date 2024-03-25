@@ -12,16 +12,22 @@ const ProductShoppingCard = ({ item, handleRemoveQuantity,handleAddQuantity}) =>
           
           <div className="d-flex col-md-3 col-sm-12 productImgCol justify-content-center ">
            <div className="row d-flex d-flex justify ">
-            <div className="col-sm-12 d-flex justify-content-center mb-1">
+            {/* <div className="col-sm-12 d-flex justify-content-center mb-1">
             <span className="productTittel">{item.productName}</span>
-            </div>
-          <div className="col-sm-12 d-flex justify-content-center productImgDiv">
+            </div> */}
+            <div className="imgAndTitle d-flex">
+            <div className="col-sm-12 d-flex justify-content-center productImgDiv">
           <img
               src={item.selectedImage}
               alt="product"
               className="img-thumbnail productImg mb-2"
             />
+             
           </div>
+          <span className="productTittel">{item.productName}</span>
+
+            </div>
+
            </div>
           </div>
           <div className="col-md-3 col-sm-6 d-flex align-items-center justify-content-center mb-1">
