@@ -12,18 +12,20 @@ const ProductShoppingCard = ({
   return (
     <div className="container">
       <div className="row mb-1 d-flex justify-content-center sCardProductRow">
-        <div className="col-4 col-md-4 col-lg-4 d-flex justify-content-center ">
+        <div className="col-4 col-md-4 col-lg-4 d-flex justify-content-center  ">
           {/* İçerik */}
+          <div className="sCardImageDiv">
           <img
             src={item.selectedImage}
             alt="product"
             className="img-thumbnail productImg mb-2 img-fluid sCardProductImg me-2"
           />
-          <div>
-          <div>{item.productName}</div>
-          <div>
+          </div>
+          <div className="NameAndSizeDiv">
+          <div className="productName">{item.productName}</div>
+          <div className="productSize">
             <span>Size:</span>
-            <span>{item.productSize}</span>
+            <span >{item.productSize}</span>
           </div>
 
           </div>

@@ -167,58 +167,61 @@ margin-left: 9px;
   border-bottom: 2px solid #dee2e6!important;
 }
 
-/*responsive kode kommer til å bli fjernet på større skjerm her.*/
+.sCardImageDiv{
+  display: flex;
+  justify-content: start;
+  width: 60px;
+}
+
+.NameAndSizeDiv{
+
+  justify-content: start;
+  width: 90px;
+
+}
 
 
 @media (max-width: 768px) {
  
-  .responsiveTittel{
-    display:flex;
-  }
 
-  .size-box {
 
-    padding: 1px 6px;
-  
-    font-size: 1rem;
-  }
 
   .sCardTitler {
-    font-size: 15px;
+    font-size: 10px;
     font-family: "Times New Roman", Times, serif;
   }
 
 
 
   .plus {
-    font-size: 25px;
+    font-size: 15px;
   
  
   }
 
   .minus{
-    font-size: 28px;
+    font-size: 18px;
    
   }
 
 
   .quantity-div{
-    border: solid #c8b479;
-    padding: 0.8px 9px 0.8px 9px;
-    font-size: 15px;
+    border: solid 1px #c8b479;
+    padding: 0.2px 9px 0.8px 9px;
+    font-size: 12px;
 
     background-color: #F3E8E8;
    
   }
 
   .quantity-btn-minus,.quantity-btn-plus{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 
   }
 
   .productPrice {
-    font-size: 18px;
+    font-size: 13px;
     
     font-family: "Times New Roman, Times, serif";
   
@@ -261,8 +264,83 @@ margin-left: 9px;
   font-size: 15px;
   width: 50px;
 
+  
+
+}
+
+.sCardImageDiv{
+  display: flex;
+  justify-content: start;
+  width: 50px;
+  margin-right: 3px;
+}
+
+.NameAndSizeDiv{
+
+  justify-content: start;
+  width: 50px;
+
 }
  
+.NameAndSizeDiv .productName{
+  font-size: 12px;
+
+}
+
+.NameAndSizeDiv .productSize{
+  font-size: 12px;
+}
+
+}
+
+
+@media (max-width: 300px) {
+
+  .sCardImageDiv{
+    display: flex;
+    justify-content: start;
+    width: 25px;
+  }
+  
+  .NameAndSizeDiv{
+  
+    justify-content: start;
+    width: 35px;
+  
+  }
+
+  .NameAndSizeDiv .productName{
+    font-size: 10px;
+  
+  }
+  
+  .NameAndSizeDiv .productSize{
+    font-size: 10px;
+  }
+
+  .quantity-div{
+ 
+    padding: 0.2px 6px 0.8px 6px;
+    font-size: 10px;
+
+    background-color: #F3E8E8;
+   
+  }
+
+  .quantity-btn-minus,.quantity-btn-plus{
+    width: 16px;
+    height: 16px;
+
+  }
+
+  .productPrice {
+    font-size: 11px;
+    
+    
+  }
+
+  
+
 
 }
 
