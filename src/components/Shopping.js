@@ -48,17 +48,17 @@ const Shopping = ({
           <div>
             <h1>Shopping Card</h1>
             <div className="row">
-              <div className="col">
+              <div className="col-12">
                 <div className="onlyProducterContainer ">
                   {/* Product */}
                   <div className="row text-center mb-2 sCardTitler">
-                    <div className="col-md-3 col-lg-3">Product</div>
-                    <div className="col-md-3 col-lg-3">Size</div>
-                    <div className="col-md-3 col-lg-3">Quantity</div>
-                    <div className="col-md-3 col-lg-3">Price</div>
+                    <div className="col-4 col-md-4 col-lg-4">Product</div>
+                   
+                    <div className="col-4 col-md-4 col-lg-4">Quantity</div>
+                    <div className="col-4 col-md-4 col-lg-4">Price</div>
                   </div>
 
-                  <div>
+                 
                     {/*id,name, price,, image, description, sizes, selectionImages:*/}
                     {cartItems.map((item) => (
                       <ProductShoppingCard
@@ -69,7 +69,7 @@ const Shopping = ({
                         key={item.id}
                       />
                     ))}
-                  </div>
+                 
                 </div>
               </div>
             </div>

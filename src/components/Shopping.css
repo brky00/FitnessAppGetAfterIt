@@ -103,7 +103,8 @@
 
 @media (max-width: 768px) {
     .sCardTitler{
-        display: none;
+      font-size: 22px;
+        
     }
     .sCardContainer {
       margin-top: 10px;
