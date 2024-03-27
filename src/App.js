@@ -172,6 +172,11 @@ function App() {
   console.log("selectedSize",selectedSize);
   console.log("Appjs Cart items:",cartItems);
 
+  console.log("totalQuantity APP.JS: ",totalQuantity);
+  console.log("totalPrice APP.JS: ",totalPrice);
+  
+
+
   
   return (
     <Router>

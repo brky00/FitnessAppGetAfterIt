@@ -45,6 +45,6 @@
 }
 
 .add-container .size-section{
-  border: solid 1px;
+ width: 100%;
   padding: 10px;
 }

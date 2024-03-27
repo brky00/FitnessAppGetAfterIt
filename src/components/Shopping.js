@@ -4,6 +4,7 @@ import "./Shopping.css";
 import Footer from "./Footer";
 import shoppingCardIsEmpity from "./images/shoppingCardEmpty.png";
 import { Link } from "react-router-dom";
+import CheckoutForm from "./Checkout";
 //Neworginal origin Neworginalo+ nEWWWWWW New
 //Hello
 
@@ -24,8 +25,11 @@ const Shopping = ({
       handleTotalPrice({ totalPrice }); 
     }
   }, [totalPrice]);
-  
 
+
+  console.log("totalQuantity/Items SHOPPING.JS: ",totalItems);
+  console.log("totalPrice SHOPPING.JS: ",totalPrice);
+  
   return (
     <div>
       {cartItems.length === 0 && (

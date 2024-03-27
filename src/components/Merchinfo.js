@@ -150,7 +150,7 @@ console.log("mainimage exist",mainImage);
 
         }
     
-        // imageUrl bulunduysa img tag'ını render et.
+        // imageUrl found.
         return (
           <img
             className={`extra-product-image-merchDetails img-fluid ${
