@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductShoppingCard from "./elements/ProductShoppingCard";
 import "./Shopping.css";
 import Footer from "./Footer";
 import shoppingCardIsEmpity from "./images/shoppingCardEmpty.png";
 import { Link } from "react-router-dom";
 import CheckoutForm from "./Checkout";
+
 //Neworginal origin Neworginalo+ nEWWWWWW New
 //Hello
 
@@ -17,18 +18,32 @@ const Shopping = ({
   handleRemoveAllProducts,
   handleTotalPrice
 }) => {
-  const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
-  const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price,0);
+  const [totalItems, setTotalItems] = useState(() =>
+  parseInt(localStorage.getItem("totalItems")) ||
+  cartItems.reduce((total, item) => total + (item.quantity || 1), 0)
+);
+const [totalPrice, setTotalPrice] = useState(() =>
+  parseFloat(localStorage.getItem("totalPrice")) ||
+  cartItems.reduce((price, item) => price + item.quantity * item.price, 0)
+);
 
-  useEffect(() => {
-    if (totalPrice) {
-      handleTotalPrice({ totalPrice }); 
-    }
-  }, [totalPrice]);
+useEffect(() => {
+  // Recalculate totals based on the current cartItems
+  const newTotalItems = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  const newTotalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
 
+  // Update localStorage and state
+  localStorage.setItem("totalItems", newTotalItems.toString());
+  localStorage.setItem("totalPrice", newTotalPrice.toString());
+  setTotalItems(newTotalItems);
+  setTotalPrice(newTotalPrice);
 
-  console.log("totalQuantity/Items SHOPPING.JS: ",totalItems);
-  console.log("totalPrice SHOPPING.JS: ",totalPrice);
+  // Call handleTotalPrice with newTotalPrice if needed
+  if (newTotalPrice) {
+    handleTotalPrice({ totalPrice: newTotalPrice });
+  }
+}, [cartItems, handleTotalPrice]);
+
   
   return (
     <div>

@@ -2,32 +2,24 @@ import React, { useEffect, useState} from "react";
 import "./Checkout.css"
 
 
-const CheckoutForm = ({cartItems,totalQuantity,totalPrice}) => {
-    useEffect(() => {
-      
-      
-        // Only save to localStorage if the values are not null
-        if (cartItems && totalQuantity != null && totalPrice != null) {
-          localStorage.setItem('totalQuantityCheckOut', totalQuantity.toString());
-          localStorage.setItem('totalPriceCheckOut', totalPrice.toString());
-        }
-      }, [cartItems, totalQuantity, totalPrice]);
-      
-      
+const CheckoutForm = ({cartItems}) => {
 
-    // Retrieve the stored values when the component mounts
 
-        const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-        const storedTotalQuantity = parseInt(localStorage.getItem('totalQuantityCheckOut'), 10);
-        const storedTotalPrice = parseInt(localStorage.getItem('totalPriceCheckOut'), 10);
-      
+    const [totalItems, setTotalItems] = useState(() =>
+    parseInt(localStorage.getItem("totalItems")) ||
+    cartItems.reduce((total, item) => total + (item.quantity || 1), 0)
+  );
+  const [totalPrice, setTotalPrice] = useState(() =>
+    parseFloat(localStorage.getItem("totalPrice")) ||
+    cartItems.reduce((price, item) => price + item.quantity * item.price, 0)
+  );
 
-        // You can set these values in the state or use them directly
-        console.log("storedCartItems:",storedCartItems, );
-        console.log(" storedTotalQuantity: ",storedTotalQuantity);
-        console.log("storedTotalPrice: ",storedTotalPrice);
+  console.log("total item test;:", totalItems);
+  console.log("total pris test;:", totalPrice);
+  console.log("cartItems checkOut: ", cartItems);
    
 
+       
    
 
    return (
@@ -61,11 +53,11 @@ const CheckoutForm = ({cartItems,totalQuantity,totalPrice}) => {
 
             <div className="form-group">
                     <label htmlFor="totalPrice">Total Price</label>
-                    <input type="text" id="totalPrice" name="totalPrice" value={storedTotalPrice} readOnly/>
+                    <input style={{border: "2px solid"}} type="text" id="totalPrice" name="totalPrice" value={totalPrice} readOnly/>
                 </div>
             <div className="form-group">
                     <label htmlFor="totalProducts">Amount of Products</label>
-                    <input style={{border: "2px solid"}} type="text" id="totalProducts" name="totalProducts" value={storedTotalQuantity} readOnly />
+                    <input style={{border: "2px solid"}} type="text" id="totalProducts" name="totalProducts" value={totalItems} readOnly />
                 </div>
             
             <div className="form-group">
