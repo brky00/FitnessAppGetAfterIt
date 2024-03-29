@@ -133,8 +133,8 @@ const CheckoutForm = ({cartItems}) => {
             outline: "none"}}  type="text" id="totalProducts" name="totalProducts" value={totalItems} readOnly />
                 </div>
             
-            <div className="form-group">
-                <button type="submit" className="submit-button" onClick={handleCheckout}>Complete Order</button>
+            <div className="form-group ">
+                <button type="submit" className="submit-button submit-button-checkOut" onClick={handleCheckout}>Complete Order</button>
             </div>
 
         

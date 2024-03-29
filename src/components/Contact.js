@@ -162,7 +162,9 @@ const Contact = () => {
             onChange={(e) => setSpecification(e.target.value)}></textarea>
         </div>
 
-        <button type="submit" className="submit-button">Submit</button>
+       <div className='submit-contact-div'>
+       <button type="submit" className="submit-button-contact">Submit</button>
+       </div>
       </form>
     </div>
 

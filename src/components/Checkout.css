@@ -52,7 +52,7 @@
   }
   
   /* Submit button styling */
-  .submit-button {
+  .submit-button-checkOut{
     width: 100%;
     max-width: 400px; /* Maximum width for the button */
     padding: 12px;
@@ -68,7 +68,7 @@
   }
   
   /* Hover effect for the submit button */
-  .submit-button:hover {
+  .submit-button-checkout:hover {
     background-color: #2e2454; /* A slightly darker purple on hover */
   }
 
