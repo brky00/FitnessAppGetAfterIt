@@ -1,5 +1,7 @@
 import React, { useEffect, useState} from "react";
 import "./Checkout.css"
+import { db } from "./firebase-config";
+import { doc, getDoc, writeBatch } from "firebase/firestore"; 
 
 
 const CheckoutForm = ({cartItems}) => {
@@ -17,6 +19,67 @@ const CheckoutForm = ({cartItems}) => {
   console.log("total item test;:", totalItems);
   console.log("total pris test;:", totalPrice);
   console.log("cartItems checkOut: ", cartItems);
+
+
+
+  const handleCheckout = async (e) => {
+    e.preventDefault(); // This Formun yeniden yüklenmesini önler
+    
+    const batch = writeBatch(db);
+  
+    try {
+      const productUpdates = {}; // Object for all updates
+  
+      for (const cartItem of cartItems) {
+        const { id, productSize, selectedImgName, quantity } = cartItem;
+  
+        if (!productUpdates[id]) {
+          // get the document from firestore
+          const docRef = doc(db, "products", id);
+          const docSnap = await getDoc(docRef);
+  
+          if (!docSnap.exists()) {
+            console.error(`Document is not found: ${id}`);
+            continue;
+          }
+  
+          productUpdates[id] = { docRef, sizeDetails: { ...docSnap.data().sizeDetails } };
+        }
+  
+        // sizeDetailArray which we need
+        const sizeDetailArray = productUpdates[id].sizeDetails[productSize];
+  
+        // find right fileName and updated the quantity
+        const fileIndex = sizeDetailArray.findIndex(detail => detail.fileName === selectedImgName);
+        if (fileIndex === -1) {
+          console.error(`fileName doesnt exist: ${selectedImgName} in the size ${productSize}`);
+          continue;
+        }
+  
+        const newQuantity = sizeDetailArray[fileIndex].quantity - quantity;
+        if (newQuantity < 0) {
+          console.error(`Not enough in the stock: ${selectedImgName}, quantity: ${quantity}`);
+          continue;
+        }
+  
+        // update the quantity here
+        sizeDetailArray[fileIndex] = { ...sizeDetailArray[fileIndex], quantity: newQuantity };
+      }
+  
+      // all updates is added to batch.
+      Object.values(productUpdates).forEach(({ docRef, sizeDetails }) => {
+        batch.update(docRef, { sizeDetails });
+      });
+  
+      // commited all batchs
+      await batch.commit();
+      console.log('Your order has been ordered successfully.');
+    } catch (error) {
+      console.error('An error occurred during batch processing: ', error);
+    }
+  };
+  
+  
    
 
        
@@ -61,7 +124,7 @@ const CheckoutForm = ({cartItems}) => {
                 </div>
             
             <div className="form-group">
-                <button type="submit" className="submit-button">Complete Order</button>
+                <button type="submit" className="submit-button" onClick={handleCheckout}>Complete Order</button>
             </div>
 
         
