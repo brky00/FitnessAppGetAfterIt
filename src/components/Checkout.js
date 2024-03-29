@@ -16,6 +16,7 @@ const CheckoutForm = ({cartItems}) => {
     cartItems.reduce((price, item) => price + item.quantity * item.price, 0)
   );
 
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   console.log("total item test;:", totalItems);
   console.log("total pris test;:", totalPrice);
   console.log("cartItems checkOut: ", cartItems);
@@ -74,6 +75,8 @@ const CheckoutForm = ({cartItems}) => {
       // commited all batchs
       await batch.commit();
       console.log('Your order has been ordered successfully.');
+      setShowSuccessMessage(true); // success message
+      setTimeout(() => setShowSuccessMessage(false), 3000); // hidding after 3 seconds
     } catch (error) {
       console.error('An error occurred during batch processing: ', error);
     }
@@ -87,6 +90,11 @@ const CheckoutForm = ({cartItems}) => {
 
    return (
     <div className="checkout-container">
+      {showSuccessMessage && (
+        <div className="order-success-notification">
+          Your order has been placed successfully!
+        </div>
+      )}
         <h1>Checkout</h1>
         <form  className="checkout-form">
             <div className="form-group">
@@ -115,12 +123,14 @@ const CheckoutForm = ({cartItems}) => {
             </div>
 
             <div className="form-group">
-                    <label htmlFor="totalPrice">Total Price</label>
-                    <input style={{border: "2px solid"}} type="text" id="totalPrice" name="totalPrice" value={totalPrice} readOnly/>
+                    <label className="total-price-label" htmlFor="totalPrice">Total Price</label>
+                    <input className="read-only-input" style={{border: "2px solid #ced4da", backgroundColor: "#e9ecef",pointerEvents: "none", 
+            outline: "none"}}  type="text" id="totalPrice" name="totalPrice" value={totalPrice} readOnly/>
                 </div>
             <div className="form-group">
-                    <label htmlFor="totalProducts">Amount of Products</label>
-                    <input style={{border: "2px solid"}} type="text" id="totalProducts" name="totalProducts" value={totalItems} readOnly />
+                    <label className="total-products-label" htmlFor="totalProducts">Amount of Products</label>
+                    <input className="read-only-input" style={{border: "2px solid #ced4da", backgroundColor: "#e9ecef",pointerEvents: "none", 
+            outline: "none"}}  type="text" id="totalProducts" name="totalProducts" value={totalItems} readOnly />
                 </div>
             
             <div className="form-group">

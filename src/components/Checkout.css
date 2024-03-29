@@ -71,6 +71,41 @@
   .submit-button:hover {
     background-color: #2e2454; /* A slightly darker purple on hover */
   }
+
+
+  /* Checkout.css içine ekleyebileceğiniz stil tanımları */
+
+  /* org */
+.order-success-notification {
+  position: fixed;
+  left: 50%;
+  bottom: 120px;
+  transform: translateX(-50%);
+  background-color: #392F5B; ; /* bc color */
+  color: white; /* Bfont color */
+  padding: 15px 30px;
+  border-radius: 25px; 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); 
+  z-index: 1000; /* dominant font*/
+  font-size: 16px; 
+  font-weight: bold; 
+  opacity: 1; /* you can see it in the start */
+  transition: opacity 0.5s ease-in-out; /* Opacity animation */
+}
+
+
+.read-only-input {
+
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.2em; /* Increase the font size */
+  color: #212529; /* Bootstrap's default text color for contrast */
+  text-align: center; /* Center the text */
+}
+
+
+
+
+
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
