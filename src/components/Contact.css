@@ -84,7 +84,7 @@
     border-radius: 5px;
 }   
 
-button[type="submit"] {
+.submit-button-contact{
     background-color: #392F5B;
     color: white;
     border: none;
@@ -92,7 +92,7 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"]:hover{
+.submit-button-contact:hover{
     background-color: #BEAC7A;
 }
 

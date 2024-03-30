@@ -24,7 +24,7 @@ const CheckoutForm = ({cartItems}) => {
 
 
   const handleCheckout = async (e) => {
-    e.preventDefault(); // This Formun yeniden yüklenmesini önler
+    e.preventDefault(); 
     
     const batch = writeBatch(db);
   
@@ -37,7 +37,10 @@ const CheckoutForm = ({cartItems}) => {
         if (!productUpdates[id]) {
           // get the document from firestore
           const docRef = doc(db, "products", id);
+          console.log("docRef: ",docRef);
+
           const docSnap = await getDoc(docRef);
+          console.log("docSnap: ",docSnap);
   
           if (!docSnap.exists()) {
             console.error(`Document is not found: ${id}`);
@@ -45,10 +48,12 @@ const CheckoutForm = ({cartItems}) => {
           }
   
           productUpdates[id] = { docRef, sizeDetails: { ...docSnap.data().sizeDetails } };
+          console.log(` productUpdates for ${[id]} : ${productUpdates[id]} `);
         }
   
         // sizeDetailArray which we need
         const sizeDetailArray = productUpdates[id].sizeDetails[productSize];
+        console.log("sizeDetailArray: ",sizeDetailArray);
   
         // find right fileName and updated the quantity
         const fileIndex = sizeDetailArray.findIndex(detail => detail.fileName === selectedImgName);
@@ -66,6 +71,7 @@ const CheckoutForm = ({cartItems}) => {
         // update the quantity here
         sizeDetailArray[fileIndex] = { ...sizeDetailArray[fileIndex], quantity: newQuantity };
       }
+      console.log("productUpdates: ",productUpdates);
   
       // all updates is added to batch.
       Object.values(productUpdates).forEach(({ docRef, sizeDetails }) => {

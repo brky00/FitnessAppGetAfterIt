@@ -83,7 +83,7 @@
   transform: translateX(-50%);
   background-color: #392F5B; ; /* bc color */
   color: white; /* Bfont color */
-  padding: 15px 30px;
+  padding: 20px 45px;
   border-radius: 25px; 
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); 
   z-index: 1000; /* dominant font*/
@@ -102,6 +102,9 @@
   text-align: center; /* Center the text */
 }
 
+
+.submit-button-checkOut{background-color: blue;
+border-radius: 15px;}
 
 
 
