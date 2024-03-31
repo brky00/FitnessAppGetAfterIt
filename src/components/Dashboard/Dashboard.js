@@ -39,8 +39,14 @@ const Dashboard = () => {
                   <Link className='dashBoardProducts'  to="/dashTable">
                      <div className='d-flex justify-content-center align-items-center productLinkInnerDiv'> <h2 className='me-3'>  Products </h2><div><i class="fa-solid fa-bag-shopping"></i></div></div>
                   </Link>
-
                 </div>
+                
+                <div className='col-12 dashBoardProductsCol'>
+                  <Link className='dashBoardProducts'  to="/dashOrder">
+                     <div className='d-flex justify-content-center align-items-center productLinkInnerDiv'> <h2 className='me-3'>  Order </h2><div><i class="fa-solid fa-bag-shopping"></i></div></div>
+                  </Link>
+                </div>
+
                 <div className='col-12 mt-5 '>
                   <Link className='dashBoardProducts'  to="#">
                      <div className='d-flex justify-content-center align-items-center productLinkInnerDiv'> <h2 className='me-3 '> contact </h2> <div><i class="fa-solid fa-address-book"></i></div></div> 

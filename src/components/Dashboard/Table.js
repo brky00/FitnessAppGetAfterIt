@@ -9,7 +9,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
 
   return (
     <>
-      <Header />
+      <Header title={"Merch Product Management Software"} />
       <div className="table-responsive ms-4 me-4">
         <table className="table">
           <thead>

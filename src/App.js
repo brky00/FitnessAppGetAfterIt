@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 import AuthChecker from "./components/AuthChecker"
 import CheckoutForm from "./components/Checkout";
 import Edit from "./components/Dashboard/Edit";
+import Order from "./components/Dashboard/Order";
 
 
 function App() {
@@ -192,6 +193,7 @@ function App() {
         <Route path="/merchinfo/:id" element={<MerchInfo dbProducts={dbProducts} handleAddProduct={handleAddProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} mainImage={mainImage} setMainImage={setMainImage} cartItems={cartItems}/>} />
         <Route path="/dashTable" element={<Table dbProducts={dbProducts} handleDeleteProduct={handleDeleteProduct} handleEditProduct={handleEditProduct}/>}/>
         <Route path="/addProduct" element={<Add/>}/>
+        <Route path="/dashOrder" element={<Order/>}/>
         <Route path="/editProduct" element={<Edit selectedProduct={selectedProduct} />}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>

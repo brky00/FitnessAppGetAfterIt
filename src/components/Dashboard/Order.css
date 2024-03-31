@@ -1,0 +1,12 @@
+/* Custom styles for the responsive table */
+.table-responsive {
+    padding: 1rem;
+  }
+
+  
+  @media (max-width: 768px) {
+    .table-responsive {
+      margin-top: 40px; /* value based on navbar's height */
+    }
+  }
+  
