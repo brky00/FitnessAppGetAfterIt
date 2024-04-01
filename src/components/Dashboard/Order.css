@@ -3,10 +3,115 @@
     padding: 1rem;
   }
 
+
+.table {
+    border-collapse: separate; /* CSS border-radius ile uyumlu hale getirir */
+    border-spacing: 0; /* Kenar boşluklarını kaldırır */
+}
+
+.table thead tr:first-child th:first-child {
+    border-top-left-radius: 8px; /* Sol üst köşeye border-radius ekler */
+
+}
+
+
+.table thead tr:first-child th:last-child {
+    border-top-right-radius: 8px; /* Sağ üst köşeye border-radius ekler */
+}
+
+.orderTable thead th {
+  background-color: blue; /* Bootstrap'in birincil mavi rengi */
+  color: white; /* Metin rengini beyaz yapar */
+}
+
+
+/*status edit css start*/
+
+.orderBackButtonDiv{
+  display: flex;
+justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 18px;
+}
+
+.idOrderStatus{
+  font-weight: bold;
+}
+
+.orderEdit{
+  transition: color 0.5s;
+}
+  .orderEdit:hover {
+    color: #C8B479;
+    transform: scale(1.1);
+  }
+
+  .orderDetails{
+    transition: color 0.5s;
+  }
+
+  .orderDetails:hover {
+    color: #C8B479;
+    transform: scale(1.1);
+  }
+
+
+.status-update-modal {
+ 
+  
+  right: 50px;
+  z-index: 100;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.status-update-modal-div {
+ display: flex;
+ justify-content: end;
+ margin-right: 50px;
+}
+
+/*status edit css end*/
+
   
   @media (max-width: 768px) {
     .table-responsive {
-      margin-top: 40px; /* value based on navbar's height */
+      margin-top: 10px; /* value based on navbar's height */
     }
-  }
+
+    .orderBackButtonDiv{
+   display: flex;
+   justify-content: center;
+   margin-left:0; 
+   
+    }
+
+    .status-update-modal-div {
+    
+      justify-content: center;
+      margin-right: 0;
+     }
+
+     
+.status-update-modal {
+ 
+  
+  right: 50px;
+  z-index: 100;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: smaller;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+     
+    
+
+
+
+}
   

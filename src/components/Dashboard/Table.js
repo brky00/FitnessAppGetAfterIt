@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+
 import { useNavigate } from 'react-router-dom';
 import './Table.css'
 
@@ -9,7 +9,13 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
 
   return (
     <>
-      <Header title={"Merch Product Management Software"} />
+           <header className='mt-4 product-table-header'>
+        <h1>Merch Product Managament</h1>
+        <div className='d-flex ms-4' style={{ marginTop: '30px', marginBottom: '18px' }}>
+          <button className='btn btn-primary' onClick={() => navigate('/addProduct')  }>Add Merch-product</button>
+          <button className='btn btn-secondary ms-3' onClick={() => navigate('/dashboard')  }>Back to Dashboard</button>
+        </div>
+      </header>
       <div className="table-responsive ms-4 me-4">
         <table className="table">
           <thead>
