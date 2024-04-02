@@ -132,7 +132,8 @@ const Order = () => {
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order.id}>
+             
+                <tr className={` ${order.status === "completed" ? "order-completed" : ""} `} key={order.id}>
                   <td>{order.id}</td>
                   <td>{order.name}</td>
                   <td>{order.adress}</td>

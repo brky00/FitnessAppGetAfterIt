@@ -81,6 +81,12 @@ right: 40px;
  
 }
 
+.orderTable .order-completed {
+  background-color: #ced4da !important; /* !important kullanarak Bootstrap stilini geçersiz kılın */
+  --bs-table-bg: #ced4da !important; /* Eğer Bootstrap değişkeniyle çakışma varsa */
+}
+
+
 /*status edit css end*/
 
   
