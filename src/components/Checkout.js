@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import "./Checkout.css"
 import { db } from "./firebase-config";
 import { doc, getDoc, writeBatch } from "firebase/firestore"; 
+import Swal from 'sweetalert2';
 
 
 const CheckoutForm = ({cartItems}) => {
@@ -16,7 +17,7 @@ const CheckoutForm = ({cartItems}) => {
     cartItems.reduce((price, item) => price + item.quantity * item.price, 0)
   );
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   console.log("total item test;:", totalItems);
   console.log("total pris test;:", totalPrice);
   console.log("cartItems checkOut: ", cartItems);
@@ -25,6 +26,17 @@ const CheckoutForm = ({cartItems}) => {
 
   const handleCheckout = async (e) => {
     e.preventDefault(); 
+      // Loading
+  Swal.fire({
+    title: 'Processing your order...',
+    text: 'Please wait.',
+    didOpen: () => {
+      Swal.showLoading()
+    },
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false
+  });
     
     const batch = writeBatch(db);
   
@@ -81,10 +93,11 @@ const CheckoutForm = ({cartItems}) => {
       // commited all batchs
       await batch.commit();
       console.log('Your order has been ordered successfully.');
-      setShowSuccessMessage(true); // success message
-      setTimeout(() => setShowSuccessMessage(false), 3000); // hidding after 3 seconds
+      Swal.fire("Success!", "Your order has been placed successfully.", "success");
+      
     } catch (error) {
       console.error('An error occurred during batch processing: ', error);
+      Swal.fire("Error", "An error occurred during the checkout process.", "error");
     }
   };
   
@@ -96,11 +109,8 @@ const CheckoutForm = ({cartItems}) => {
 
    return (
     <div className="checkout-container">
-      {showSuccessMessage && (
-        <div className="order-success-notification">
-          Your order has been placed successfully!
-        </div>
-      )}
+
+    
         <h1>Checkout</h1>
         <form  className="checkout-form">
             <div className="form-group">
