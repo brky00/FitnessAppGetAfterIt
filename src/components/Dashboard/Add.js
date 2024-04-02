@@ -266,7 +266,7 @@ const Add = () => {
               className="d-flex flex-column justify-content-center"
             >
               {dbSizes.map((size) => (
-             <div key={size} className="size-section mb-4">
+             <div key={size} className="size-section ">
 
                   <input
                     type="checkbox"

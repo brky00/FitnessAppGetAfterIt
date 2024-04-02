@@ -18,6 +18,7 @@ import AuthChecker from "./components/AuthChecker"
 import CheckoutForm from "./components/Checkout";
 import Edit from "./components/Dashboard/Edit";
 import Order from "./components/Dashboard/Order";
+import OrderDetails from "./components/Dashboard/OrderDetails";
 
 
 function App() {
@@ -198,6 +199,7 @@ function App() {
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
         <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
+        <Route path="/orderDetails" element={<OrderDetails/>}/>
       </Routes>
     </Router>
   );

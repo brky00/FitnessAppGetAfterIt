@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config";
 import { collection, getDocs, Timestamp,  doc, updateDoc  } from "firebase/firestore";
 import { useEffect, useState } from 'react';
+import OrderDetails from './OrderDetails';
 
 const Order = () => {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ const Order = () => {
 
   const [showStatusUpdate, setShowStatusUpdate] = useState(false);
   const [currentOrder, setCurrentOrder] = useState(null);
+
+
 
   const openStatusUpdate = (order) => {
     setCurrentOrder(order);
@@ -25,11 +28,16 @@ const Order = () => {
     }
   };
 
+  const showOrderDetails = (order) => {
+    navigate("/orderDetails", { state: { order: order } });
+  };
+  
 
 
   const fetchOrders = async () => {
     const querySnapshot = await getDocs(collection(db, "orders"));
     const orderList = querySnapshot.docs.map((doc) => ({
+     
       id: doc.id,
       ...doc.data(),
       // Converting Timestamp to a readable date string.
@@ -41,55 +49,76 @@ const Order = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+  console.log("orders from database: ", orders);
+  console.log("currentOrder:", currentOrder); // Bu, geçerli ve beklenen bir string olmalı.
+
+
+  
 
   
     return (
       <>
-        <header className="mt-4">
-          <h1>Order Managament</h1>
-          <div className=" orderBackButtonDiv">
-            <button
-              className="btn btn-primary orderBackButton"
-              onClick={() => navigate("/dashboard")}
-            >
-              Back to Dashboard
-            </button>
-          </div>
-        </header>
+      <header>
+      <h1 className='mt-5'>Order Managament</h1>
+      </header>
+        
+        <div className="d-flex ms-5 align-items-center ">
+        
 
-        {showStatusUpdate && (
-          <div className="status-update-modal-div">
-            <div className="status-update-modal">
-              <h5>Change order status</h5>
-              <div className="d-flex">
-                <h6 className="idOrderStatus">ID:</h6>
+          
+            <div className=" orderBackButtonDiv">
+              <button
+                className="btn btn-primary orderBackButton"
+                onClick={() => navigate("/dashboard")}
+              >
+                Back to Dashboard
+              </button>
+            </div>
 
-                <h6>{currentOrder.id}</h6>
-              </div>
+        </div>  
+         
+         
 
-              <div className='d-flex justify-content-between'>
-                <select
-                  value={currentOrder.status}
-                  onChange={(e) => updateOrderStatus(e.target.value)}
-                >
-                  <option value="pending">Pending</option>
-                  <option value="shipped">Shipped</option>
-                  <option value="completed">Completed</option>
-                </select>
-                
-                <button className='btn btn-primary' onClick={() => setShowStatusUpdate(false)}>
-                  Cancel
-                </button>
+          {showStatusUpdate && currentOrder &&(
+            <div>
+              <div className="status-update-modal-div">
+                <div className="status-update-modal">
+                  <h5>Change order status</h5>
+                  <div className="d-flex">
+                    <h6 className="idOrderStatus">ID:</h6>
+
+                    <h6>{currentOrder.id}</h6>
+                  </div>
+
+                  <div className="d-flex justify-content-between">
+                    <select
+                      value={currentOrder.status}
+                      onChange={(e) => updateOrderStatus(e.target.value)}
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="shipped">Shipped</option>
+                      <option value="completed">Completed</option>
+                    </select>
+
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => setShowStatusUpdate(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+
+    
 
         <div className="table-responsive ms-4 me-4">
           <table className="table orderTable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col">Order ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Adress</th>
                 <th scope="col">Date</th>
@@ -123,6 +152,7 @@ const Order = () => {
                       <i
                         className="fa-solid fa-circle-info orderDetails"
                         alt="Order details"
+                        onClick={() => showOrderDetails(order)}
                       ></i>
                     </div>
                   </td>
