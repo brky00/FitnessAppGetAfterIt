@@ -119,11 +119,11 @@ const Order = () => {
             <thead>
               <tr>
                 <th scope="col">Order ID</th>
-                <th scope="col">Name</th>
+                <th scope="col">Customer Name</th>
                 <th scope="col">Adress</th>
-                <th scope="col">Date</th>
+                <th scope="col">Order Date</th>
                 <th scope="col">Price</th>
-                <th scope="col">status</th>
+                <th scope="col">Status</th>
 
                 <th className="text-center" colSpan={2} scope="col">
                   Actions
