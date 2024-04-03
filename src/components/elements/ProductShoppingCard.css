@@ -134,7 +134,7 @@ padding: 10px 10px;
  
 }
 .productPrice {
-  font-size: 25px;
+  font-size: 17px;
   font-family: sans-serif;
  
   
@@ -155,7 +155,7 @@ padding: 10px 10px;
 
 .sCardProductImg{
   width: 50px;
-  height: auto;
+  height: 50px;
 }
 
 .productTittel{
@@ -271,7 +271,7 @@ margin-left: 9px;
 .sCardImageDiv{
   display: flex;
   justify-content: start;
-  width: 50px;
+  /* width: 50px; */
   margin-right: 3px;
 }
 
@@ -299,7 +299,7 @@ margin-left: 9px;
   .sCardImageDiv{
     display: flex;
     justify-content: start;
-    width: 25px;
+    /* width: 25px; */
   }
   
   .NameAndSizeDiv{
@@ -337,6 +337,11 @@ margin-left: 9px;
     font-size: 11px;
     
     
+  }
+
+  .sCardProductImg{
+    width: 35px;
+    height: 35px;
   }
 
   
