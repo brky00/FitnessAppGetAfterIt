@@ -42,7 +42,7 @@ const OrderDetails = () => {
          
 
 
-        <div className="table-responsive ms-4 me-4">
+        <div className="table-responsive orderDetails-table-responsive ms-4 me-4">
           <table className="table orderDetailsTable">
             <thead className='firstThead'>
               <tr>

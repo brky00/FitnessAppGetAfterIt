@@ -114,7 +114,7 @@ const Order = () => {
 
     
 
-        <div className="table-responsive ms-4 me-4">
+        <div className="table-responsive order-table-responsive ms-4 me-4">
           <table className="table orderTable">
             <thead>
               <tr>

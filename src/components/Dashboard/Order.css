@@ -1,9 +1,14 @@
 /* Custom styles for the responsive table */
 .table-responsive {
-    padding: 1rem;
-    margin-top: 100px;
+
  
 
+  }
+
+  .order-table-responsive{
+    padding: 1rem;
+    /* margin-top: 100px; */
+    margin-top: 10px
   }
 
 
