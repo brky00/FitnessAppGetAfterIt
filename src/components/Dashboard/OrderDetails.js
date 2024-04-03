@@ -14,32 +14,6 @@ const OrderDetails = () => {
  
     const navigate = useNavigate();
 
-  // const [orders, setOrders] = useState([]);
-  // const [currentOrder, setCurrentOrder] = useState(null);
-
-
-
-
-
-
-
-
-  // const fetchOrders = async () => {
-  //   const querySnapshot = await getDocs(collection(db, "orders"));
-  //   const orderList = querySnapshot.docs.map((doc) => ({
-     
-  //     id: doc.data().telNo,
-  //     ...doc.data(),
-  //     // Converting Timestamp to a readable date string.
-  //     date: doc.data().date ? new Timestamp(doc.data().date.seconds, doc.data().date.nanoseconds).toDate().toLocaleString() : 'No date',
-  //   }));
-  //   setOrders(orderList);
-  // };
-  // // Using useEffect to call fetchOrders when the component mounts.
-  // useEffect(() => {
-  //   fetchOrders();
-  // }, []);
-  // console.log("orders from database: ", orders);
 
   
     return (
@@ -90,9 +64,9 @@ const OrderDetails = () => {
                   <td>{order.id}</td>
                   <td>{order.name}</td>
                   <td>{order.telNo}</td>
-                  <td>{order.adress}</td>
+                  <td>{order.address}</td>
                   <td>{order.date}</td>
-                  <td>4</td>
+                  <td>{order.totalItems}</td>
                   <td>{`NOK ${order.totalPrice}`}</td>
                   <td>{order.status}</td>
   

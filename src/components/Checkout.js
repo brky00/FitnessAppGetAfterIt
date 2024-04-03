@@ -1,11 +1,17 @@
 import React, { useEffect, useState} from "react";
 import "./Checkout.css"
 import { db } from "./firebase-config";
-import { doc, getDoc, writeBatch } from "firebase/firestore"; 
+import { doc, getDoc, writeBatch,Timestamp,collection,addDoc } from "firebase/firestore"; 
 import Swal from 'sweetalert2';
 
 
 const CheckoutForm = ({cartItems}) => {
+  // State hooks for form inputs
+  const [fullName, setFullName] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [birthDate, setBirthDate] = useState('');
 
 
     const [totalItems, setTotalItems] = useState(() =>
@@ -89,9 +95,40 @@ const CheckoutForm = ({cartItems}) => {
       Object.values(productUpdates).forEach(({ docRef, sizeDetails }) => {
         batch.update(docRef, { sizeDetails });
       });
+
+      //start for adding order to collection "orders"
+
+
+      // Constructing order data from cartItems and form inputs. 
+      //And we use traditional DOM method on js here.
+      const orderData = {
+        name: fullName,
+        email: email,
+        address: address,
+        date: Timestamp.now(),
+        status: "Pending",
+        telNo: parseInt(mobileNumber),
+        totalItems: totalItems,
+        totalPrice: totalPrice,
+        cartItems: cartItems.map(item => ({
+          id: item.id,
+          price: item.price,
+          productName: item.productName,
+          productSize: item.productSize,
+          quantity: item.quantity,
+          selectedImgName: item.selectedImgName
+        }))
+      };
+    
+ 
   
       // commited all batchs
       await batch.commit();
+
+      const ordersRef = collection(db, "orders");
+      await addDoc(ordersRef, orderData);
+
+      // Alerting the user that the order has been placed
       console.log('Your order has been ordered successfully.');
       Swal.fire("Success!", "Your order has been placed successfully.", "success");
       
@@ -100,6 +137,10 @@ const CheckoutForm = ({cartItems}) => {
       Swal.fire("Error", "An error occurred during the checkout process.", "error");
     }
   };
+
+
+
+  console.log("fullName,address,email,mobileNumber,birthDate: ",fullName,address,email,mobileNumber,birthDate);
   
   
    
@@ -115,27 +156,29 @@ const CheckoutForm = ({cartItems}) => {
         <form  className="checkout-form">
             <div className="form-group">
                 <label htmlFor="fullName">Full Name</label>
-                <input type="text" id="fullname" name="fullName" title="First and Last Name" required/>
+                <input type="text" id="fullname" name="fullName" title="First and Last Name"  value={fullName} onChange={(e) => setFullName(e.target.value)} required />
             </div>
 
             <div className="form-group">
                 <label htmlFor="adress">Address</label>
-                <input type="text" id="address" name="address" title="Shipping Address Details" required/>
+                <input type="text" id="address" name="address" title="Shipping Address Details"  value={address} onChange={(e) => setAddress(e.target.value)} required />
             </div>
 
             <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" required/>
+                <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label htmlFor="mobileNumber">Mobile Number</label>
-                <input type="tel" id="mobileNumber" name="mobile" pattern="[0-9]{8}" title="Mobile number should be 8 digits long without any dashes or spaces" required/>
+                <input type="tel" id="mobileNumber" name="mobile" pattern="[0-9]{8}" title="Mobile number should be 8 digits long without any dashes or spaces"  
+                value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} required/>
             </div>
 
             <div className="form-group">
                 <label htmlFor="dob">Date of Birth </label>
-                <input type="date" id="dob" name="dob" required/>
+                <input type="date" id="dob" name="dob"  value={birthDate} 
+                onChange={(e) => setBirthDate(e.target.value)}  required/>
             </div>
 
             <div className="form-group">

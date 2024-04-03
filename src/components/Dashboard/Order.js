@@ -120,7 +120,7 @@ const Order = () => {
               <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Customer Name</th>
-                <th scope="col">Adress</th>
+                <th scope="col">Address</th>
                 <th scope="col">Order Date</th>
                 <th scope="col">Price</th>
                 <th scope="col">Status</th>
@@ -136,7 +136,7 @@ const Order = () => {
                 <tr className={` ${order.status === "completed" ? "order-completed" : ""} `} key={order.id}>
                   <td>{order.id}</td>
                   <td>{order.name}</td>
-                  <td>{order.adress}</td>
+                  <td>{order.address}</td>
                   <td>{order.date}</td>
                   <td>{`NOK ${order.totalPrice}`}</td>
                   <td>{order.status}</td>
