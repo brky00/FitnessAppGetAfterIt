@@ -78,7 +78,7 @@ const OrderDetails = () => {
                 <th scope="col">Adress</th>
                 <th scope="col">Order-Date</th>
                 <th scope="col">Total Item Quantity</th>
-                <th scope="col">Price</th>
+                <th scope="col">Total Price</th>
                 <th scope="col">status</th>
 
 
@@ -101,7 +101,10 @@ const OrderDetails = () => {
             </tbody>
             <thead className='secondThead'>
               <tr>
-                <th scope="col">ProductName</th>
+              <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+               
+                <th scope="col">Selected Product Name</th>
                
                 <th scope="col">Product Size</th>
                 <th scope="col">Product Quantity</th>
@@ -111,7 +114,9 @@ const OrderDetails = () => {
             <tbody>
        
        <tr key={order.id}>
-         <td>caps4.jpg</td>
+       <td>AdB7JhdsksJSDKJa</td>
+       <td>Caps</td>
+         <td>caps-red-color.jpg</td>
         
          <td>L</td>
          <td>13</td>
