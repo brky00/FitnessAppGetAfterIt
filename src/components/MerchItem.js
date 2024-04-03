@@ -10,7 +10,7 @@ const MerchItem = ({ product }) => {
     <div className="merchItemDiv">
        <Link className="merchItemLink" to={`/merchinfo/${product.id}` }>
         {/* <img className="img-fluid merchItemImg " src={image} alt="item image" /> */}
-        {product.imageMain && product.imageMain.length>0 ? ( <img className="merchItemImg img-fluid" src={product.imageMain} alt={product.productName || "Product Image"} /> ) : ( <span>No image available</span> )}
+        {product.imageMain ? ( <img className="merchItemImg img-fluid" src={product.imageMain} alt={product.productName || "Product Image"} /> ) : ( <span>No image available</span> )}
         <p className="d-flex justify-content-center mt-2 merchItemName">{product.productName}</p>
         <p className="d-flex justify-content-center merchPrice">{`NOK ${product.price}`}</p>
       </Link>
