@@ -112,16 +112,19 @@ const OrderDetails = () => {
               </tr>
             </thead>
             <tbody>
-       
-       <tr key={order.id}>
-       <td>AdB7JhdsksJSDKJa</td>
-       <td>Caps</td>
-         <td>caps-red-color.jpg</td>
-        
-         <td>L</td>
-         <td>13</td>
-         <td>{`NOK ${order.totalPrice}`}</td>
-       </tr>
+            {order.cartItems.map((item, index) => (
+                <tr key={index}>
+                <td>{item.id}</td>
+                <td>{item.productName}</td>
+                  <td>{item.selectedImgName}</td>
+                 
+                  <td>{item.productSize}</td>
+                  <td>{item.quantity}</td>
+                  <td>{`NOK ${item.price}`}</td>
+                </tr>
+        ))}
+    
+
    
    </tbody>
           </table>
