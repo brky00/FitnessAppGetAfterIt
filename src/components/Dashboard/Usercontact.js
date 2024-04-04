@@ -41,8 +41,8 @@ const  Usercontact = () => {
       
     return (
       <div>
+        <h3 className='titlemail'>Email addresses that have submitted a form</h3>
         <div className="email-list">
-            <h3>Email addresses that have submitted a form</h3>
             <ul>
               {emailList.map((email, index) => (
                 <li key={index}>{email}</li>
@@ -77,11 +77,9 @@ const  Usercontact = () => {
                 ))}
               </div>
             ) : (
-              <p>Ingen resultater funnet</p>
+              <p className='ingenresultat'></p>
             )}
             </div>
-  
-  
       </div>
     );
   };
