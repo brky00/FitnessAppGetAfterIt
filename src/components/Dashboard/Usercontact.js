@@ -77,7 +77,7 @@ const  Usercontact = () => {
                 ))}
               </div>
             ) : (
-              <p className='ingenresultat'></p>
+              <p className='ingenresultat'>Ingen resultater funnet</p>
             )}
             </div>
       </div>
