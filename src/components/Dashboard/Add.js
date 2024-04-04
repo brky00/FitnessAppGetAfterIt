@@ -71,7 +71,7 @@ const Add = () => {
     const renderQuantityInputsForSize = (size) => (
       sizeQuantities[size]?.map(file => (
         <div key={file.fileName}>
-          <label>{file.fileName} için miktar:</label>
+          <label>{file.fileName} quantity:</label>
           <input
             type="number"
             value={file.quantity}
@@ -277,7 +277,7 @@ const Add = () => {
                   />
                   <label htmlFor={`size-${size}`}>{size}</label>
 
-                  {/* Eğer bu boyut seçildiyse, ilgili dosyalar için miktar giriş alanlarını render et */}
+                  {/* rednder quantity for this files */}
                   {sizes.includes(size) && (
                     <>
                       <div className="file-upload-container">
@@ -297,7 +297,7 @@ const Add = () => {
                         />
                       </div>
 
-                      {/* Seçilen dosyalar için miktar giriş alanlarını render et */}
+                      {/* quantity */}
                       <div className="quantity-inputs-container">
                         {renderQuantityInputsForSize(size)}
                       </div>
