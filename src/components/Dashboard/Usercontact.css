@@ -2,13 +2,22 @@
     text-decoration: none;
 }
 
-.productLinkInnerDiv{
- 
-    
+p.ingenresultat{
+  max-width: 200px; /* or any other value */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h3.titlemail{
+  justify-content: center;
+  max-width: 600px; /* or any other value */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .leftSideCol{
     border-style: solid;
+    height:100%;
     border-style: ridge;
     border-left: hidden;
     border-top: hidden;
@@ -16,6 +25,7 @@
 
 .rightSideCol{
     border-style: solid;
+    height:100%;
     border-style: ridge;
     border-right: hidden;
     border-top: hidden;
@@ -43,6 +53,15 @@
   
   .email-list{
     margin-top: 40px;
+    justify-content: center;
+    max-width: 600px; /* or any other value */
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 300px; /* Adjust this value to your preference */
+    overflow-y: auto;
+    border: 1px solid #ccc; /* Optional: adds a border around the email list */
+    margin: 0 auto; /* Centers the list if the parent is also centered */
+    width: 90%; /* Adjust the width as necessary */
   }
   .email-list li {
     background-color: #f9f9f9;
@@ -53,18 +72,22 @@
     transition: background-color 0.2s;
     list-style-type: none;
     padding: 10px;
+    justify-content: center;
   }
-
-/* .dashBoardHeader{
-    width: 100%;
-} */
 
   .email-list ul{
     padding: 10px;
+    
   }
   
   .email-list li:hover {
     background-color: #efefef;
+  }
+
+  form {
+    max-width: 600px; /* or any other value */
+    margin-left: auto;
+    margin-right: auto;
   }
   
   form input[type="email"] {
@@ -72,19 +95,25 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 250px;
+    justify-content: center;
   }
   
   form button {
-    padding: 10px 20px;
-    border: none;
     background-color: #007bff;
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    max-width: 600px; /* or any other value */
+    margin-left: auto;
+    margin-right: auto;
   }
   
   form button:hover {
     background-color: #0056b3;
+    justify-content: center;
+    max-width: 600px; /* or any other value */
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .searchResult {
@@ -93,6 +122,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #f9f9f9;
+    max-width: 600px; /* or any other value */
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .searchResult p {
@@ -122,10 +154,16 @@
     form input[type="email"], form button {
         width: 100%;
         margin: 10px 0; 
+        max-width: 600px; /* or any other value */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     form {
         flex-direction: column;
+        max-width: 600px; /* or any other value */
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }

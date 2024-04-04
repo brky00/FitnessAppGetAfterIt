@@ -20,6 +20,10 @@ import Edit from "./components/Dashboard/Edit";
 import Order from "./components/Dashboard/Order";
 import OrderDetails from "./components/Dashboard/OrderDetails";
 
+import Usercontact from "./components/Dashboard/Usercontact";
+
+
+
 
 function App() {
       const[dbProducts, setDbProducts] =useState([]);
@@ -200,6 +204,10 @@ function App() {
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
         <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
         <Route path="/orderDetails" element={<OrderDetails/>}/>
+     
+        <Route path="/Usercontact" element={<Usercontact/>}/>
+        
+
       </Routes>
     </Router>
   );
