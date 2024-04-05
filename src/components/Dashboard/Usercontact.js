@@ -1,95 +1,105 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Usercontact.css';
 import { db } from '../firebase-config';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
+import './Usercontact.css';
 
-const  Usercontact = () => {
+const Usercontact = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearchMade, setIsSearchMade] = useState(false);
+  const [emailList, setEmailList] = useState([]);
+  const [statusFilter, setStatusFilter] = useState('all');
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-    const [emailList, setEmailList] = useState([]);
-
-    const fetchContacts = async () => {
-        const querySnapshot = await getDocs(collection(db, 'contacts'));
-        const contactsArray = [];
-        const emails = []; // Ny liste for å lagre e-postadresser
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          contactsArray.push({ id: doc.id, ...data });
-          if (data.email) { // Sjekk om dokumentet inneholder en e-postadresse
-            emails.push(data.email); // Legg til e-postadressen i listen
-          }
-        });
-        setEmailList(emails); // Oppdater tilstanden med listen av e-postadresser
-    };
-
-    useEffect(() => {
-        fetchContacts();
-      }, []);
-      
-      
-        const searchFormsByEmail = async (email) => {
-          const q = query(collection(db, 'contacts'), where('email', '==', email));
-          const querySnapshot = await getDocs(q);
-          const results = [];
-          querySnapshot.forEach((doc) => {
-            results.push({ id: doc.id, ...doc.data() });
-          });
-          setSearchResults(results);
-        };
-      
-    return (
-      <div>
-        <h3 className='titlemail'>Email addresses that have submitted a form</h3>
-        <div className="email-list">
-            <ul>
-              {emailList.map((email, index) => (
-                <li key={index}>{email}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div className='email-search'>
-
-              
-            <form className='email-search-form' onSubmit={(e) => {
-                e.preventDefault();
-                searchFormsByEmail(searchQuery);
-              }}>
-                <div>
-                <input
-                  type="email"
-                  placeholder="Search Email"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button type="submit">search</button>
-                </div>
-              </form>
-
-
-            </div>
-
-              {searchResults.length > 0 ? (
-              <div>
-                {searchResults.map((form) => (
-                  <div key={form.id} className="searchResult">
-                    <p>Email: {form.email}</p>
-                    <p>Goal: {form.goals}</p>
-                    <p>Activity level: {form.activity}</p>
-                    <p>Experience: {form.experience}</p>
-                    <p>Improve: {form.improve}</p>
-                    <p>Spesification: {form.specification}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className='ingenresultat'>No results found</p>
-            )}
-            </div>
-      </div>
-    );
+  const fetchContacts = async (filter = 'all') => {
+    let q;
+    if (filter === 'unread') {
+      q = query(collection(db, 'contacts'), where('status', '==', 'notRead'));
+    } else {
+      q = query(collection(db, 'contacts'));
+    }
+    const querySnapshot = await getDocs(q);
+    const contactsArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    setEmailList(contactsArray);
   };
-  
-  export default Usercontact;
+
+  useEffect(() => {
+    fetchContacts(statusFilter);
+  }, [statusFilter]);
+
+  const searchFormsByEmail = async (email) => {
+    setIsSearchMade(true);
+    const q = query(collection(db, 'contacts'), where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+    const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    setSearchResults(results);
+    if (results.length === 0) {
+      Swal.fire('No results found', `No contact form for the email: ${email}`, 'info');
+    }
+  };
+
+  const updateStatusToRead = async (id) => {
+    try {
+      const contactRef = doc(db, 'contacts', id);
+      await updateDoc(contactRef, { status: 'read' });
+      Swal.fire('Updated!', 'The status has been updated to read.', 'success');
+      setEmailList(emailList.map((contact) => contact.id === id ? { ...contact, status: 'read' } : contact));
+      setSearchResults(searchResults.map((contact) => contact.id === id ? { ...contact, status: 'read' } : contact));
+    } catch (error) {
+      Swal.fire('Error!', 'There was an issue updating the status.', 'error');
+    }
+  };
+
+  return (
+    <div>
+      <h3 className='titlemail mt-4'>Email addresses that have submitted a form</h3>
+      <div className='d-flex justify-content-center mt-5 mb-4'>
+        <button className='me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
+        <button onClick={() => setStatusFilter('unread')}>Unread Emails</button>
+      </div>
+      <div className="email-list">
+        <ul>
+          {emailList.map((contact, index) => (
+            <li key={index} onClick={() => searchFormsByEmail(contact.email)}>
+              {contact.email} - {contact.status}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className='email-search'>
+        <form className='email-search-form' onSubmit={(e) => {
+            e.preventDefault();
+            searchFormsByEmail(searchQuery);
+          }}>
+          <div>
+            <input
+              type="email"
+              placeholder="Search Email"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        {searchResults.map((form) => (
+          <div key={form.id} className="searchResult">
+            <p>Email: {form.email}</p>
+            <p>Goal: {form.goals}</p>
+            <p>Activity level: {form.activity}</p>
+            <p>Experience: {form.experience}</p>
+            <p>Improve: {form.improve}</p>
+            <p>Specification: {form.specification}</p>
+            <p>Status: {form.status}</p>
+            {form.status === 'notRead' && (
+              <button onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Usercontact;
