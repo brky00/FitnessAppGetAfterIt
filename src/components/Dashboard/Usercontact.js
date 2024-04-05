@@ -9,7 +9,7 @@ const Usercontact = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchMade, setIsSearchMade] = useState(false);
   const [emailList, setEmailList] = useState([]);
-  const [statusFilter, setStatusFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('unread');
 
   const fetchContacts = async (filter = 'all') => {
     let q;
@@ -50,9 +50,14 @@ const Usercontact = () => {
     }
   };
 
+  emailList.map((contact, index) => (
+    console.log("contact in user contact: ",contact)
+  ));
+
   return (
     <div>
-      <h3 className='titlemail mt-4'>Email addresses that have submitted a form</h3>
+      {statusFilter ==='unread' ?  <h3 className='titlemail mt-4'>Unread Email addresses that have submitted a form</h3> :  <h3 className='titlemail mt-4'>All Email addresses that have submitted a form</h3> }
+     
       <div className='d-flex justify-content-center mt-5 mb-4'>
         <button className='me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
         <button onClick={() => setStatusFilter('unread')}>Unread Emails</button>
@@ -60,8 +65,10 @@ const Usercontact = () => {
       <div className="email-list">
         <ul>
           {emailList.map((contact, index) => (
-            <li key={index} onClick={() => searchFormsByEmail(contact.email)}>
+            <li style={(contact.status)==="notRead" ? {backgroundColor:'beige'}: {backgroundColor:'gray'}} key={index} onClick={() => searchFormsByEmail(contact.email)}>
+               {(contact.status)==="notRead" ? <i class="fa-solid fa-envelope me-2"></i>: ""}
               {contact.email} - {contact.status}
+             
             </li>
           ))}
         </ul>

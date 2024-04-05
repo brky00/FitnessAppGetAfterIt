@@ -145,7 +145,8 @@ h3.titlemail{
   margin-top: 10px;
 }
 
-
+.readContact
+{background-color: #007bff;}
 @media (max-width: 768px) {
     .leftSideCol, .rightSideCol {
         border: none; 
