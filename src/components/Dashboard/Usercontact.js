@@ -68,7 +68,7 @@ const Usercontact = () => {
 
   return (
     <div>
-      {statusFilter ==='unread' ?  <h3 style={{textAlign:"center"}} className='titlemail mt-4'>Unread Email addresses that have submitted a form</h3> :  <h3 style={{textAlign:"center"}} className='titlemail mt-4'>All Email addresses that have submitted a form</h3> }
+      {statusFilter ==='unread' ?  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>Unread Email addresses that have submitted a form</h3> :  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>All Email addresses that have submitted a form</h3> }
      
       <div className='d-flex justify-content-center mt-5 mb-4'>
         <button className='btn btn-info me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
@@ -112,7 +112,7 @@ const Usercontact = () => {
             <p>Specification: {form.specification}</p>
             <p>Status: {form.status}</p>
             {form.status === 'notRead' && (
-              <button onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
+              <button className='btn btn-danger' onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
             )}
           </div>
         ))}
