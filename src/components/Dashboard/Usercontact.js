@@ -104,13 +104,15 @@ const Usercontact = () => {
       <div>
         {searchResults.map((form) => (
           <div key={form.id} className="searchResult">
-            <p>Email: {form.email}</p>
-            <p>Goal: {form.goals}</p>
-            <p>Activity level: {form.activity}</p>
-            <p>Experience: {form.experience}</p>
-            <p>Improve: {form.improve}</p>
-            <p>Specification: {form.specification}</p>
-            <p>Status: {form.status}</p>
+            
+            <span className='d-flex'><p className='me-1 formProperties'>Email:</p> <p>{form.email}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Goal:</p> <p>{form.goals}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Activity level:</p> <p>{form.activity}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Experience:</p> <p>{form.experience}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Improve:</p> <p>{form.improve}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Specification:</p> <p>{form.specification}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Status:</p> <p>{form.status}</p></span>
+          
             {form.status === 'notRead' && (
               <button className='btn btn-danger' onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
             )}
