@@ -50,10 +50,14 @@ const  Usercontact = () => {
             </ul>
           </div>
           <div>
-              <form onSubmit={(e) => {
+            <div className='email-search'>
+
+              
+            <form className='email-search-form' onSubmit={(e) => {
                 e.preventDefault();
                 searchFormsByEmail(searchQuery);
               }}>
+                <div>
                 <input
                   type="email"
                   placeholder="Search Email"
@@ -61,7 +65,11 @@ const  Usercontact = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <button type="submit">search</button>
+                </div>
               </form>
+
+
+            </div>
 
               {searchResults.length > 0 ? (
               <div>

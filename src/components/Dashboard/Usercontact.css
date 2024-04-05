@@ -136,6 +136,15 @@ h3.titlemail{
     text-decoration: none;
 }
 
+.email-search-form{
+  display: flex;
+  justify-content: center;
+}
+
+.email-search{
+  margin-top: 10px;
+}
+
 
 @media (max-width: 768px) {
     .leftSideCol, .rightSideCol {
