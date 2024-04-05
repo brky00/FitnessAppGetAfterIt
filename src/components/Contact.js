@@ -22,7 +22,8 @@ const Contact = () => {
         activity:activity,
         experience:experience,
         improve:improve,
-        specification:specification
+        specification:specification,
+        status:"notRead"
       });
       alert('Form has been submitted!');
     } catch (error) {
