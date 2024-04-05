@@ -22,7 +22,7 @@ const Usercontact = () => {
     if (filter === 'all') {
       // first notRead'
       const notReadContacts = contactsArray.filter(contact => contact.status === 'notRead');
-      
+
       // after that geetting we 'read' 
       const readContacts = contactsArray.filter(contact => contact.status === 'read');
 
@@ -56,6 +56,7 @@ const Usercontact = () => {
       Swal.fire('Updated!', 'The status has been updated to read.', 'success');
       setEmailList(emailList.map((contact) => contact.id === id ? { ...contact, status: 'read' } : contact));
       setSearchResults(searchResults.map((contact) => contact.id === id ? { ...contact, status: 'read' } : contact));
+      fetchContacts(statusFilter);
     } catch (error) {
       Swal.fire('Error!', 'There was an issue updating the status.', 'error');
     }
