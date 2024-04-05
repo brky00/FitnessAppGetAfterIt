@@ -12,16 +12,27 @@ const Usercontact = () => {
   const [statusFilter, setStatusFilter] = useState('unread');
 
   const fetchContacts = async (filter = 'all') => {
-    let q;
+    let q = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
     if (filter === 'unread') {
       q = query(collection(db, 'contacts'), where('status', '==', 'notRead'), orderBy('createdAt', 'desc'));
-    } else {
-      q = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
     }
     const querySnapshot = await getDocs(q);
-    const contactsArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    let contactsArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    
+    if (filter === 'all') {
+      // first notRead'
+      const notReadContacts = contactsArray.filter(contact => contact.status === 'notRead');
+      
+      // after that geetting we 'read' 
+      const readContacts = contactsArray.filter(contact => contact.status === 'read');
+
+      // merged both lists/arrays here.
+      contactsArray = [...notReadContacts, ...readContacts];
+    }
+  
     setEmailList(contactsArray);
   };
+  
 
   useEffect(() => {
     fetchContacts(statusFilter);
