@@ -221,6 +221,7 @@
 
   .merch-details .extra-product-image-merchDetails {
       height: 70px;
+      width: 70px;
       margin-right: 6px;
       margin-bottom:6px;
   }
@@ -241,7 +242,11 @@
    
 }
 .product-image-merchDetails{
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
 }
+
+.merch-details .extra-product-image-merchDetails {
+  height: 50px;
+  width: 50px;}
 }
