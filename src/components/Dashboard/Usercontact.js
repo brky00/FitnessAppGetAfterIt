@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase-config';
-import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc,orderBy } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import './Usercontact.css';
 
@@ -14,9 +14,9 @@ const Usercontact = () => {
   const fetchContacts = async (filter = 'all') => {
     let q;
     if (filter === 'unread') {
-      q = query(collection(db, 'contacts'), where('status', '==', 'notRead'));
+      q = query(collection(db, 'contacts'), where('status', '==', 'notRead'), orderBy('createdAt', 'desc'));
     } else {
-      q = query(collection(db, 'contacts'));
+      q = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
     }
     const querySnapshot = await getDocs(q);
     const contactsArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -59,8 +59,8 @@ const Usercontact = () => {
       {statusFilter ==='unread' ?  <h3 className='titlemail mt-4'>Unread Email addresses that have submitted a form</h3> :  <h3 className='titlemail mt-4'>All Email addresses that have submitted a form</h3> }
      
       <div className='d-flex justify-content-center mt-5 mb-4'>
-        <button className='me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
-        <button onClick={() => setStatusFilter('unread')}>Unread Emails</button>
+        <button className='btn btn-info me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
+        <button className='btn btn-warning' onClick={() => setStatusFilter('unread')}>Unread Emails</button>
       </div>
       <div className="email-list">
         <ul>

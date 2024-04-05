@@ -23,7 +23,8 @@ const Contact = () => {
         experience:experience,
         improve:improve,
         specification:specification,
-        status:"notRead"
+        status:"notRead",
+        createdAt: new Date() //new sate object for to MARK the created time/date timestampt
       });
       alert('Form has been submitted!');
     } catch (error) {
