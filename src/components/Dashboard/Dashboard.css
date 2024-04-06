@@ -30,11 +30,24 @@
   border: solid 1px;
   padding: 25px 1px 25px 1px;
   border-radius: 20px;
+  background-color: #392F5B;
   
   
 }
 
+.bodyColTitles{
+  font-weight: revert-layer;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+  color: #FFFFFF;
+}
+
 @media (max-width: 768px) {
+  .dashBodyCols{
+    padding: 20px 1px 20px 1px;
+    font-size: 12px;
+
+  }
 
   .DashBoardBody{
     margin-top: 50px;

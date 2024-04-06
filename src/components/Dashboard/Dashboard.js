@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { db } from "../firebase-config";
 import "./Dashboard.css";
-
-import "./Dashboard.css";
+import { collection, getDocs } from "firebase/firestore";
 
 const Dashboard = () => {
-  const [userContacts, setUserContacts] = useState(0);
   const [orders, setOrders] = useState(0);
+  const [userContacts, setUserContacts] = useState(0);
+
+  useEffect(() => {
+    const fetchContactFormsCount = async () => {
+      const contactCollectionRef = collection(db, "contacts");
+      const snapshot = await getDocs(contactCollectionRef);
+      setUserContacts(snapshot.docs.length);
+    };
+    fetchContactFormsCount();
+  }, []);
 
   return (
     <>
@@ -56,11 +65,19 @@ const Dashboard = () => {
           </div>
           <div className="col-8 col-sm-8 col-md-8 col-lg-8">
             <h1 className="DashBoardTitle mt-3">Dashboard</h1>
-            <div class="container text-center DashBoardBody">
-              <div class="row align-items-start d-flex justify-content-center">
-                <div class="col-8 col-sm-2 col-md-2 col-lg-2 dashBodyCols ms-5 me-5">Users visited</div>
-                <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5">Total orderes</div>
-                <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5">Users contacted</div>
+            <div className="container text-center DashBoardBody">
+              <div className="row align-items-start d-flex justify-content-center">
+                <div className="col-8 col-sm-2 col-md-2 col-lg-2 dashBodyCols ms-5 me-5 mb-3 d-flex flex-column">
+                  <span className="bodyColTitles mb-2">Users Visits</span>30 <span> </span>
+                </div>
+                <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5 mb-3 d-flex flex-column">
+                  {" "}
+                  <span className="bodyColTitles mb-2">Total Orders</span>30 <span> </span>
+                </div>
+                <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5 d-flex flex-column">
+                  {" "}
+                  <span className="bodyColTitles mb-2">Users contacted</span>30 <span> </span>
+                </div>
               </div>
             </div>
           </div>
