@@ -6,16 +6,39 @@ import { collection, getDocs } from "firebase/firestore";
 
 const Dashboard = () => {
   const [orders, setOrders] = useState(0);
-  const [userContacts, setUserContacts] = useState(0);
-
+  const [userContactsLength, setUserContactsLength] = useState(0);
+  const [userContacts, setUserContacts] = useState(null);
+  const [unreadUserContactsLength, setUnreadUserContactsLength] = useState(0);
+  const [unreadUserContacts, setUnreadUserContacts] = useState([]);
   useEffect(() => {
     const fetchContactFormsCount = async () => {
       const contactCollectionRef = collection(db, "contacts");
       const snapshot = await getDocs(contactCollectionRef);
-      setUserContacts(snapshot.docs.length);
+      setUserContactsLength(snapshot.docs.length);
     };
     fetchContactFormsCount();
   }, []);
+
+  useEffect(() => {
+    const fetchContactForms = async () => {
+      const contactCollectionRef = collection(db, "contacts");
+      const snapshot = await getDocs(contactCollectionRef);
+      const contacts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setUserContacts(contacts);
+  
+      // Filter contacts to count only those with status "notRead"
+      const unreadContactsCount = contacts.filter(contact => contact.status === "notRead").length;
+      const unreadContactst = contacts.filter(contact => contact.status === "notRead");
+      setUnreadUserContacts(unreadContactst);
+      setUnreadUserContactsLength(unreadContactsCount);
+    };
+  
+    fetchContactForms();
+  }, []);
+  
+
+  console.log("userContacts: ", userContacts);
+  console.log("unreadUerContacts: ", unreadUserContacts);
 
   return (
     <>
@@ -68,15 +91,30 @@ const Dashboard = () => {
             <div className="container text-center DashBoardBody">
               <div className="row align-items-start d-flex justify-content-center">
                 <div className="col-8 col-sm-2 col-md-2 col-lg-2 dashBodyCols ms-5 me-5 mb-3 d-flex flex-column">
-                  <span className="bodyColTitles mb-2">Users Visits</span>30 <span> </span>
+                  <span className="bodyColTitles mb-2">
+                    Unread Contact Forms{" "}
+                  </span>{" "}
+                  <span className="bodyColValue">{unreadUserContactsLength}</span>
+                </div>
+
+                <div className="col-8 col-sm-2 col-md-2 col-lg-2 dashBodyCols ms-5 me-5 mb-3 d-flex flex-column">
+                  <span className="bodyColTitles mb-2">
+                    Total Contact Forms{" "}
+                  </span>{" "}
+                  <span className="bodyColValue">{userContactsLength}</span>
                 </div>
                 <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5 mb-3 d-flex flex-column">
                   {" "}
-                  <span className="bodyColTitles mb-2">Total Orders</span>30 <span> </span>
+                  <span className="bodyColTitles mb-2">
+                    Total Orders</span>{" "}
+                  <span className="bodyColValue"> 30</span>
                 </div>
                 <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5 d-flex flex-column">
                   {" "}
-                  <span className="bodyColTitles mb-2">Users contacted</span>30 <span> </span>
+                  <span className="bodyColTitles mb-2">
+                   Total Sales
+                  </span>{" "}
+                  <span className="bodyColValue">{` ${"500000"} NOK `}</span>
                 </div>
               </div>
             </div>

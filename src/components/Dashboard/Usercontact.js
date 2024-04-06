@@ -24,6 +24,7 @@ const Usercontact = () => {
     if (filter === 'all') {
       // first notRead'
       const notReadContacts = contactsArray.filter(contact => contact.status === 'notRead');
+      console.log("notReadContacts",notReadContacts);
 
       // after that geetting we 'read' 
       const readContacts = contactsArray.filter(contact => contact.status === 'read');
