@@ -3,6 +3,7 @@ import "./Checkout.css"
 import { db } from "./firebase-config";
 import { doc, getDoc, writeBatch,Timestamp,collection,addDoc } from "firebase/firestore"; 
 import Swal from 'sweetalert2';
+import emailjs from "emailjs-com";
 
 
 const CheckoutForm = ({cartItems}) => {
@@ -43,6 +44,18 @@ const CheckoutForm = ({cartItems}) => {
     allowEscapeKey: false,
     allowEnterKey: false
   });
+
+  // Send e-post via EmailJS
+  emailjs.send('service_8mmmjwo', 'template_f9jml1b', {
+    to_email: email,
+    name: fullName,
+  }).then(function(response) {
+    console.log('Email sent successfully:', response);
+  }, function(error) {
+    console.error('Error sending email:', error);
+  });
+
+
     
     const batch = writeBatch(db);
   
