@@ -3,8 +3,10 @@ import { db } from '../firebase-config';
 import { collection, query, where, getDocs, updateDoc, doc,orderBy } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import './Usercontact.css';
+import { useNavigate } from 'react-router-dom';
 
 const Usercontact = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchMade, setIsSearchMade] = useState(false);
@@ -69,7 +71,21 @@ const Usercontact = () => {
   return (
     <div>
       {statusFilter ==='unread' ?  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>Unread Email addresses that have submitted a form</h3> :  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>All Email addresses that have submitted a form</h3> }
-     
+             
+      <div className="d-flex ms-5 align-items-center ">
+        
+
+          
+        <div className=" orderBackButtonDiv">
+          <button
+            className="btn btn-primary orderBackButton"
+            onClick={() => navigate("/dashboard")}
+          >
+            Back to Dashboard
+          </button>
+        </div>
+
+    </div>  
       <div className='d-flex justify-content-center mt-5 mb-4'>
         <button className='btn btn-info me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
         <button className='btn btn-warning' onClick={() => setStatusFilter('unread')}>Unread Emails</button>
