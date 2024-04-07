@@ -48,6 +48,18 @@
     font-size: 25px;
 }
 
+.sales-chart-container {
+  width: 100%;
+  height: 400px; 
+}
+
+ @media screen and (max-width: 768px) {
+  .sales-chart-container {
+    height: 200px;
+  } 
+} 
+
+
 @media (max-width: 768px) {
   .dashBodyCols{
     padding: 20px 1px 20px 1px;
@@ -75,6 +87,32 @@ margin-bottom: 50px;
 .dashBodyCols.ms-5 {
   margin-left: 0 !important;
 }
+
+.sales-chart-container {
+  width: 100%;
+  height: 400px; /* veya ihtiyacınıza göre başka bir değer */
+}
+
+.bodyColTitles{
+
+  font-size: 10px;
+  font-family: "Raleway", sans-serif;
+  color: #FFFFFF;
+}
+
+.bodyColValue{
+  color: #FFD700;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+/* 
+  .sales-chart-container {
+    height: 200px; 
+  } */
+
+
 
 
 }

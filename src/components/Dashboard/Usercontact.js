@@ -108,13 +108,13 @@ const Usercontact = () => {
             searchFormsByEmail(searchQuery);
           }}>
           <div>
-            <input
+            <input className='me-1'
               type="email"
               placeholder="Search Email"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <button className='btn btn-primary' type="submit">Search</button>
           </div>
         </form>
       </div>
