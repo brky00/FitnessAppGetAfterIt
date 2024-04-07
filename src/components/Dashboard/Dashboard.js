@@ -10,6 +10,8 @@ const Dashboard = () => {
   const [userContacts, setUserContacts] = useState(null);
   const [unreadUserContactsLength, setUnreadUserContactsLength] = useState(0);
   const [unreadUserContacts, setUnreadUserContacts] = useState([]);
+  const [totalOrders, setTotalOrders] = useState(0);
+  const [totalSalesPrice, setTotalSalesPrice] = useState(0);
   useEffect(() => {
     const fetchContactFormsCount = async () => {
       const contactCollectionRef = collection(db, "contacts");
@@ -34,6 +36,29 @@ const Dashboard = () => {
     };
   
     fetchContactForms();
+  }, []);
+
+   // useEffect hook for fetching the total number of orders
+   useEffect(() => {
+    const fetchOrders = async () => {
+      const ordersCollectionRef = collection(db, "orders");
+      const snapshot = await getDocs(ordersCollectionRef);
+      setTotalOrders(snapshot.docs.length); // Set the number of orders
+    };
+
+    fetchOrders();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const ordersCollectionRef = collection(db, "orders");
+      const snapshot = await getDocs(ordersCollectionRef);
+      const total = snapshot.docs
+        .map(doc => doc.data().totalPrice)
+        .reduce((acc, price) => acc + Number(price), 0);
+      setTotalSalesPrice(total);
+    };
+    fetchOrders();
   }, []);
   
 
@@ -107,14 +132,14 @@ const Dashboard = () => {
                   {" "}
                   <span className="bodyColTitles mb-2">
                     Total Orders</span>{" "}
-                  <span className="bodyColValue"> 30</span>
+                  <span className="bodyColValue"> {totalOrders}</span>
                 </div>
                 <div class="col-8 col-sm-2 col-md-2 col-lg-2  dashBodyCols me-5 d-flex flex-column">
                   {" "}
                   <span className="bodyColTitles mb-2">
                    Total Sales
                   </span>{" "}
-                  <span className="bodyColValue">{` ${"500000"} NOK `}</span>
+                  <span className="bodyColValue">{`${totalSalesPrice} NOK`}</span>
                 </div>
               </div>
             </div>
