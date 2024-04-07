@@ -119,19 +119,32 @@ function App() {
   
 
   const handleAddQuantity = (product) => {
-    console.log("handleadd quantity product(item)",product);
-    const productExist = cartItems.find((item) =>  (item.id === product.id) && (item.productSize === product.productSize) &&(item.selectedImage===product.selectedImage));
+    // vi finfing products stock quantity here
+    const productInDb = dbProducts.find(p => p.id === product.id);
+    const sizeDetail = productInDb.sizeDetails[product.productSize].find(
+      detail => detail.fileName === product.selectedImgName
+    );
+    const availableStock = sizeDetail ? sizeDetail.quantity : 0;
+  
+    // s card quantity finding
+    const productExist = cartItems.find((item) => item.id === product.id && item.productSize === product.productSize && item.selectedImgName === product.selectedImgName);
+  
     if (productExist) {
-      setCartItems(
-        cartItems.map((item) =>
-        (item.id === product.id) && (item.productSize === product.productSize) &&(item.selectedImage===product.selectedImage)
+      // if its in stok 
+      if (productExist.quantity < availableStock) {
+        setCartItems(
+          cartItems.map((item) => item.id === product.id && item.productSize === product.productSize && item.selectedImgName === product.selectedImgName
             ? { ...productExist, quantity: productExist.quantity + 1 }
             : item
-        )
-      );
+          )
+        );
+      } else {
+        // if not
+        alert("Cannot add more than the available stock.");
+      }
     }
   };
-
+  
   const handleRemoveAllProducts = () => {
     setCartItems([]);
     localStorage.removeItem('cartItems'); // Clear the cart in local storage
