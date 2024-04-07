@@ -3,8 +3,10 @@ import { db } from '../firebase-config';
 import { collection, query, where, getDocs, updateDoc, doc,orderBy } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import './Usercontact.css';
+import { useNavigate } from 'react-router-dom';
 
 const Usercontact = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchMade, setIsSearchMade] = useState(false);
@@ -22,6 +24,7 @@ const Usercontact = () => {
     if (filter === 'all') {
       // first notRead'
       const notReadContacts = contactsArray.filter(contact => contact.status === 'notRead');
+      console.log("notReadContacts",notReadContacts);
 
       // after that geetting we 'read' 
       const readContacts = contactsArray.filter(contact => contact.status === 'read');
@@ -68,8 +71,22 @@ const Usercontact = () => {
 
   return (
     <div>
-      {statusFilter ==='unread' ?  <h3 style={{textAlign:"center"}} className='titlemail mt-4'>Unread Email addresses that have submitted a form</h3> :  <h3 style={{textAlign:"center"}} className='titlemail mt-4'>All Email addresses that have submitted a form</h3> }
-     
+      {statusFilter ==='unread' ?  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>Unread Email addresses that have submitted a form</h3> :  <h3 style={{textAlign:"center"}} className='titlemail mt-5'>All Email addresses that have submitted a form</h3> }
+             
+      <div className="d-flex ms-5 align-items-center ">
+        
+
+          
+        <div className=" orderBackButtonDiv">
+          <button
+            className="btn btn-primary orderBackButton"
+            onClick={() => navigate("/dashboard")}
+          >
+            Back to Dashboard
+          </button>
+        </div>
+
+    </div>  
       <div className='d-flex justify-content-center mt-5 mb-4'>
         <button className='btn btn-info me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
         <button className='btn btn-warning' onClick={() => setStatusFilter('unread')}>Unread Emails</button>
@@ -91,28 +108,30 @@ const Usercontact = () => {
             searchFormsByEmail(searchQuery);
           }}>
           <div>
-            <input
+            <input className='me-1'
               type="email"
               placeholder="Search Email"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <button className='btn btn-primary' type="submit">Search</button>
           </div>
         </form>
       </div>
       <div>
         {searchResults.map((form) => (
           <div key={form.id} className="searchResult">
-            <p>Email: {form.email}</p>
-            <p>Goal: {form.goals}</p>
-            <p>Activity level: {form.activity}</p>
-            <p>Experience: {form.experience}</p>
-            <p>Improve: {form.improve}</p>
-            <p>Specification: {form.specification}</p>
-            <p>Status: {form.status}</p>
+            
+            <span className='d-flex'><p className='me-1 formProperties'>Email:</p> <p>{form.email}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Goal:</p> <p>{form.goals}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Activity level:</p> <p>{form.activity}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Experience:</p> <p>{form.experience}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Improve:</p> <p>{form.improve}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Specification:</p> <p>{form.specification}</p></span>
+            <span className='d-flex'><p className='me-1 formProperties'>Status:</p> <p>{form.status}</p></span>
+          
             {form.status === 'notRead' && (
-              <button onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
+              <button className='btn btn-danger' onClick={() => updateStatusToRead(form.id)}>Mark as Read</button>
             )}
           </div>
         ))}

@@ -1,32 +1,9 @@
-.dashBoardProducts{
-    text-decoration: none;
-}
-
-.productLinkInnerDiv{
- 
-    
-}
-
 .leftSideCol{
     border-style: solid;
     border-style: ridge;
     border-left: hidden;
     border-top: hidden;
-}
-
-.rightSideCol{
-    border-style: solid;
-    border-style: ridge;
-    border-right: hidden;
-    border-top: hidden;
-}
-
-.dashBoardRow{
-    height: 100%;
-
-}
-.dashBoardContainer{
-    height: 100vh;
+    border-bottom: none;
 }
 
 .SideCol{
@@ -35,116 +12,117 @@
     align-items: center;
 }
 
-.SideCol > h1 {
-    margin-top: 1rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-  
-  .email-list{
-    margin-top: 40px;
-  }
-  .email-list li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-top: -1px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    list-style-type: none;
-    padding: 10px;
-  }
-
-/* .dashBoardHeader{
-    width: 100%;
-} */
-
-  .email-list ul{
-    padding: 10px;
-  }
-  
-  .email-list li:hover {
-    background-color: #efefef;
-  }
-  
-  form input[type="email"] {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 250px;
-  }
-  
-  form button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .searchResult {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .searchResult p {
-    margin: 5px 0;
-    
-  }
-  
-.dashBoardProducts {
+.dashBoardProducts , .dashBoardOrder, .dashBoardUserContact{
     text-decoration: none;
+   font-family: system-ui;
 }
+.DashBoardTitle{
+  display: flex;
+  
+    font-weight: revert-layer;
+    font-size: 50px;
+}
+
+.DashBoardBody{
+  margin-top: 100px;
+}
+
+.dashBodyCols{
+  border: solid 1px;
+  padding: 25px 2px 25px 2px;
+  border-radius: 20px;
+  background-color: #392F5B;
+  
+  
+}
+
+.bodyColTitles{
+  font-weight: revert-layer;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+  color: #FFFFFF;
+}
+
+.bodyColValue{
+  color: #FFD700;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.sales-chart-container {
+  width: 100%;
+  height: 400px; 
+}
+
+ @media screen and (max-width: 768px) {
+  .sales-chart-container {
+    height: 200px;
+  } 
+} 
 
 
 @media (max-width: 768px) {
-    .leftSideCol, .rightSideCol {
-        border: none; 
-    }
+  .dashBodyCols{
+    padding: 20px 1px 20px 1px;
+    font-size: 12px;
 
-    .dashBoardRow, .dashBoardContainer {
-        height: auto; 
-    }
+  }
 
-    .SideCol > h1 {
-        margin-top: 0.5rem; 
-        font-size: 24px; 
-    }
+  .DashBoardBody{
+    margin-top: 50px;
+  }
 
-    form input[type="email"], form button {
-        width: 100%;
-        margin: 10px 0; 
-    }
-
-    form {
-        flex-direction: column;
-    }
+  .dashBoardProducts h2, .dashBoardOrder h2, .dashBoardUserContact h2{
+    font-size: 12px;
 
 }
-@media (max-width: 480px) {
 
-    .SideCol, .dashBoardProductsCol, .email-list li {
-        width: 100%;
-    }
-
-    .dashBoardProducts {
-        font-size: 18px; 
-    }
+.dashBoardProducts , .dashBoardOrder, .dashBoardUserContact{
+font-size: 14px;
+margin-bottom: 50px;
 }
 
-@media (max-width: 768px) {
-    div.row{
-        justify-content: center;
-        
-        
-    }
+.DashBoardTitle{
+  font-size: 30px;
+}
+.dashBodyCols.ms-5 {
+  margin-left: 0 !important;
+}
+
+.sales-chart-container {
+  width: 100%;
+  height: 400px; /* veya ihtiyacınıza göre başka bir değer */
+}
+
+.bodyColTitles{
+
+  font-size: 10px;
+  font-family: "Raleway", sans-serif;
+  color: #FFFFFF;
+
+}
+
+.bodyColValue{
+  color: #FFD700;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.dashBodyCols {
+  margin-right: 0 !important;
+}
+
+.leftSideCol {
+border-bottom: none;
+}
+
+
+/* 
+  .sales-chart-container {
+    height: 200px; 
+  } */
+
+
+
 
 }
