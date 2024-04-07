@@ -343,11 +343,11 @@ console.log("mainimage exist",mainImage);
 
                     <div className="product-description">
                       <div className="d-flex justify-content-center">
-                        <p>Free 30-Day Return Policy!</p>
+                        <p> <span style={{ marginRight: '10px' }}>&#11148;</span>Free 30-Day Return Policy!</p>
                       </div>
 
                       <div className="d-flex justify-content-center">
-                        <p>Free Standard Delivery over 700 NOK</p>
+                        <p> <span style={{ marginRight: '10px' }}><i className="fas fa-box"></i></span>Free Standard Delivery over 700 NOK</p>
                       </div>
                     </div>
 
