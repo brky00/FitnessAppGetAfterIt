@@ -64,24 +64,39 @@ function App() {
   //orginal 17.04.2024
   console.log("APP.JS CARTITEMS ",cartItems);
 
-  const handleAddProduct = ({product, selectedSize,mainImage,selectedImageName}) => {
-    console.log("selectedImageName ",selectedImageName);
-    const productExist = cartItems.find((item) => (item.id === product.id) && (item.productSize === selectedSize) &&(item.selectedImgName===selectedImageName));
+  const handleAddProduct = ({ product, selectedSize, mainImage, selectedImageName, quantity }) => {
+    const productExist = cartItems.find((item) => item.id === product.id && item.productSize === selectedSize && item.selectedImgName === selectedImageName);
+  
+    // Stoktaki mevcut ürün miktarını bul
+    const sizeDetail = product.sizeDetails[selectedSize].find(
+      detail => detail.fileName === selectedImageName
+    );
+    const availableStock = sizeDetail ? sizeDetail.quantity : 0;
+  
     if (productExist) {
-      // hvis produk finnes allerede(med samme size) quantity økes.
-      setCartItems(
-        cartItems.map((item) =>
-          (item.id === product.id) && (item.productSize === selectedSize)&&(item.selectedImgName===selectedImageName)
-            ? { ...productExist, quantity: productExist.quantity + 1 }
+      // Eğer ürün zaten sepete eklenmiş ve istenen miktar stok miktarını aşmıyorsa, miktarı güncelle
+      if (productExist.quantity + quantity <= availableStock) {
+        setCartItems(
+          cartItems.map((item) => item.id === product.id && item.productSize === selectedSize && item.selectedImgName === selectedImageName
+            ? { ...productExist, quantity: productExist.quantity + quantity }
             : item
-        )
-      );
+          )
+        );
+      } else {
+        // Stokta yeterli ürün yoksa kullanıcıya uyarı ver
+        alert("Not enough stock available");
+      }
     } else {
-      // Det blir added som en ny produkt hvis det ikke finnes fra før
-      setCartItems([...cartItems, { ...product, quantity: 1, productSize: selectedSize, selectedImgName: selectedImageName, selectedImage:mainImage }]);
+      // Eğer ürün sepete daha önce eklenmemişse ve stokta varsa yeni ürünü ekle
+      if (quantity <= availableStock) {
+        setCartItems([...cartItems, { ...product, quantity, productSize: selectedSize, selectedImgName: selectedImageName, selectedImage: mainImage }]);
+      } else {
+        // Stokta yeterli ürün yoksa kullanıcıya uyarı ver
+        alert("Not enough stock available");
+      }
     }
-
   };
+  
 
 
   console.log("nye cart items",cartItems);

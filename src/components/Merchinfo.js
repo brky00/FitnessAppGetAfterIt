@@ -229,11 +229,15 @@ console.log("mainimage exist",mainImage);
     if (!product || !selectedSize|| !mainImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
       alert("Please select a size and an image before adding to bag.");
     } else {
-      handleAddProduct({ product, selectedSize,mainImage,selectedImageName }); // selectedImage olarak güncellenmiş
+      handleAddProduct({ product, selectedSize,mainImage,selectedImageName , quantity: 1 }); // selectedImage olarak güncellenmiş
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
     }
   };
+
+  // MerchInfo.js içinde handleButtonClick fonksiyonu
+
+
 
     // feed back product doesnt exist
     if (!product) {
