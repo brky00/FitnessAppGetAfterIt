@@ -13,6 +13,10 @@ const Order = () => {
   const [currentOrder, setCurrentOrder] = useState(null);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [showPendingOnly, setShowPendingOnly] = useState(false);
+  const [searchTelNo, setSearchTelNo] = useState('');
+  const [seacrhNumberExist, setseacrhNumberExist] = useState(false);
+
+ 
 
 
 
@@ -68,7 +72,38 @@ const Order = () => {
     }
   };
   console.log("orders from database: ", orders);
-  console.log("currentOrder:", currentOrder); // Bu, geçerli ve beklenen bir string olmalı.
+  console.log("currentOrder:", currentOrder); 
+
+
+  const handleSearchChange = (e) => {
+    setseacrhNumberExist(false);
+    setSearchTelNo(e.target.value);
+   
+  };
+
+  const handleSearch = () => {
+    // normalize the search term to ensure consistency
+    const normalizedSearchTerm = searchTelNo.trim();
+  
+    // Log existing telNos for debug purposes
+    console.log("Existing telNos in orders:", orders.map(order => order.telNo));
+  
+    if (normalizedSearchTerm) {
+      // Filtreren basert på tel no
+      const filtered = orders.filter(order => String(order.telNo).trim() === normalizedSearchTerm);
+      console.log("Filtered results:", filtered);
+      setFilteredOrders(filtered);
+      setseacrhNumberExist(true);
+    } else {
+      // Hvis det er tomt i search hvis alle
+      setFilteredOrders(orders);
+      setseacrhNumberExist(false);
+    }
+  };
+  
+
+  console.log("telNo: ",filteredOrders);
+  console.log("searchTelNo ", searchTelNo);
 
 
   
@@ -97,10 +132,23 @@ const Order = () => {
         </div>  
         <div className="d-flex ms-5 align-items-center">
         <button
-          className="btn btn-secondary"
+          className="btn btn-info"
           onClick={togglePendingOrders}
         >
           {showPendingOnly ? 'Show All Orders' : 'Show Only New Orders'}
+        </button>
+      </div>
+       {/* Arama çubuğu ve buton */}
+       <div className="search-bar-order d-flex justify-content-end me-5">
+        <input
+          type="text"
+          placeholder="Search by Tel no..."
+          value={searchTelNo}
+          onChange={handleSearchChange}
+          className='me-1'
+        />
+        <button className="btn btn-danger" onClick={handleSearch}>
+          Search
         </button>
       </div>
          
@@ -137,6 +185,9 @@ const Order = () => {
                 </div>
               </div>
             </div>
+          )}
+          {seacrhNumberExist&&(
+           <div className='d-flex justify-content-center'> <h3>{`Orders For Tel No  " ${searchTelNo} "`}</h3></div>
           )}
 
     
