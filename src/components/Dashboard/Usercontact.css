@@ -95,18 +95,10 @@
   }
 
 @media (max-width: 768px) {
-    .leftSideCol, .rightSideCol {
-        border: none; 
-    }
 
-    .dashBoardRow, .dashBoardContainer {
-        height: auto; 
-    }
 
-    .SideCol > h1 {
-        margin-top: 0.5rem; 
-        font-size: 24px; 
-    }
+
+
 
     form input[type="email"], form button {
         width: 100%;

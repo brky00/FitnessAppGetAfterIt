@@ -3,6 +3,7 @@
     border-style: ridge;
     border-left: hidden;
     border-top: hidden;
+    border-bottom: none;
 }
 
 .SideCol{
@@ -98,12 +99,21 @@ margin-bottom: 50px;
   font-size: 10px;
   font-family: "Raleway", sans-serif;
   color: #FFFFFF;
+
 }
 
 .bodyColValue{
   color: #FFD700;
     font-weight: bold;
     font-size: 12px;
+}
+
+.dashBodyCols {
+  margin-right: 0 !important;
+}
+
+.leftSideCol {
+border-bottom: none;
 }
 
 
