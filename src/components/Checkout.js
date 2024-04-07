@@ -106,7 +106,7 @@ const CheckoutForm = ({cartItems}) => {
         email: email,
         address: address,
         date: Timestamp.now(),
-        status: "Pending",
+        status: "pending",
         telNo: parseInt(mobileNumber),
         totalItems: totalItems,
         totalPrice: totalPrice,

@@ -27,7 +27,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
               <th scope="col">Description</th>
               <th scope="col">Stock and selection images of each size</th>
               {/* <th scope="col">Selection Images</th> */}
-              <th scope="col">In Stock</th>
+             
               <th className="text-center" colSpan={2} scope="col">
                 Actions
               </th>
@@ -51,7 +51,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
                   )}
                 </td>
                 <td>{product.description}</td>
-                <td>
+                <td className='d-flex'>
                   {product.sizeDetails
                     ? Object.entries(product.sizeDetails).map(
                         ([sizeKey, details]) => (
@@ -66,7 +66,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
                                       product.productName || "Product Image"
                                     } - ${sizeKey}`}
                                     style={{
-                                      width: "50px",
+                                      width: "35px",
                                       height: "auto",
                                       marginRight: "10px",
                                     }}
@@ -82,7 +82,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
                       )
                     : "No sizes"}
                 </td>
-                <td>{product.inStock ? "Yes" : "No"}</td>
+            
                 <td>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <button

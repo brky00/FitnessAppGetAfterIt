@@ -5,12 +5,17 @@ import { collection, getDocs, Timestamp,  doc, updateDoc  } from "firebase/fires
 import { useEffect, useState } from 'react';
 import OrderDetails from './OrderDetails';
 
+
 const Order = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
-
   const [showStatusUpdate, setShowStatusUpdate] = useState(false);
   const [currentOrder, setCurrentOrder] = useState(null);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [showPendingOnly, setShowPendingOnly] = useState(false);
+
+
+
 
 
 
@@ -37,18 +42,31 @@ const Order = () => {
   const fetchOrders = async () => {
     const querySnapshot = await getDocs(collection(db, "orders"));
     const orderList = querySnapshot.docs.map((doc) => ({
-     
       id: doc.id,
       ...doc.data(),
-      // Converting Timestamp to a readable date string.
       date: doc.data().date ? new Timestamp(doc.data().date.seconds, doc.data().date.nanoseconds).toDate().toLocaleString() : 'No date',
-    }));
+    })).sort((a, b) => {
+      if (a.status === 'completed' && b.status !== 'completed') return 1;
+      if (b.status === 'completed' && a.status !== 'completed') return -1;
+      return b.date.localeCompare(a.date); // Assuming 'date' is a string. Adjust sorting if it's a Date object.
+    });
     setOrders(orderList);
+    setFilteredOrders(orderList);
   };
-  // Using useEffect to call fetchOrders when the component mounts.
+
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  // Function to toggle the display of pending orders
+  const togglePendingOrders = () => {
+    setShowPendingOnly(!showPendingOnly);
+    if (!showPendingOnly) {
+      setFilteredOrders(orders.filter(order => order.status === 'pending'));
+    } else {
+      setFilteredOrders(orders);
+    }
+  };
   console.log("orders from database: ", orders);
   console.log("currentOrder:", currentOrder); // Bu, geçerli ve beklenen bir string olmalı.
 
@@ -74,8 +92,17 @@ const Order = () => {
                 Back to Dashboard
               </button>
             </div>
+            
 
         </div>  
+        <div className="d-flex ms-5 align-items-center">
+        <button
+          className="btn btn-secondary"
+          onClick={togglePendingOrders}
+        >
+          {showPendingOnly ? 'Show All Orders' : 'Show Only New Orders'}
+        </button>
+      </div>
          
          
 
@@ -131,7 +158,7 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              {filteredOrders.map((order) => (
              
                 <tr className={` ${order.status === "completed" ? "order-completed" : ""} `} key={order.id}>
                   <td>{order.id}</td>
