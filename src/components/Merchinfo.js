@@ -337,7 +337,7 @@ console.log("mainimage exist",mainImage);
                         className="add-to-bag-btn"
                         onClick={handleButtonClick}
                       >
-                        ADD TO BAG
+                         <i className="fa-solid fa-bag-shopping me-1"></i> <span>ADD TO BAG</span>
                       </button>
                     </div>
 

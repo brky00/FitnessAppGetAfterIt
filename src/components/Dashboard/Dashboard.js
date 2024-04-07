@@ -152,7 +152,7 @@ const Dashboard = () => {
     <>
     
       <div className="container-fluid dashBoardContainer">
-      <h1 className="DashBoardTitle mt-3">Dashboard</h1>
+    
         <div className="d-flex justify-content-end me-5"></div>
         <div className="row dashBoardRow">
           <div className="col-4 col-sm-4 col-md-4 col-lg-2 leftSideCol mt-3">
@@ -198,6 +198,7 @@ const Dashboard = () => {
           </div>
           
           <div className="col-8 col-sm-8 col-md-8 col-lg-8">
+          <h1 className="DashBoardTitle mt-3">Dashboard</h1>
            
             <div className="container text-center DashBoardBody">
               <div className="row align-items-start d-flex justify-content-center">
