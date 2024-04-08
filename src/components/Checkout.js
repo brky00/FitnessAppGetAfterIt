@@ -5,7 +5,7 @@ import { doc, getDoc, writeBatch,Timestamp,collection,addDoc } from "firebase/fi
 import Swal from 'sweetalert2';
 
 
-const CheckoutForm = ({cartItems}) => {
+const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
   // State hooks for form inputs
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
@@ -130,7 +130,12 @@ const CheckoutForm = ({cartItems}) => {
 
       // Alerting the user that the order has been placed
       console.log('Your order has been ordered successfully.');
-      Swal.fire("Success!", "Your order has been placed successfully.", "success");
+      handleRemoveAllProducts()
+      Swal.fire("Success!", "Your order has been placed successfully.", "success")
+      .then(() => {
+        // refreshing the page
+        window.location.reload();
+      });;
       
     } catch (error) {
       console.error('An error occurred during batch processing: ', error);

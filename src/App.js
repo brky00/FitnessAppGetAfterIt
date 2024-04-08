@@ -230,7 +230,7 @@ function App() {
         <Route path="/editProduct" element={<Edit selectedProduct={selectedProduct} />}/>
         <Route path="/dashIndex" element={<DashIndex/>}/>
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
-        <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} />}/>  
+        <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} handleRemoveAllProducts={handleRemoveAllProducts} />}/>  
         <Route path="/orderDetails" element={<OrderDetails/>}/>
      
         <Route path="/Usercontact" element={<Usercontact/>}/>
