@@ -123,9 +123,16 @@
   }
   .descriptionTitle{
     font-weight: 500;
+    font-size: 30px;
   }
 
+  @media (max-width: 767px) {
+    /* Card başlıklarının stilleri */
+    .packagecontact {
+        font-size: 15px;
+    }
 
+}
 
 }
 
