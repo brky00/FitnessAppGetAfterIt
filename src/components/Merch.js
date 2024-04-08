@@ -67,7 +67,7 @@ const Merch = ({ dbProducts}) => {
               <div className="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
               
             </div>
-            <div className="stock-availability">
+            {/* <div className="stock-availability">
               <label>
                 <input
                   type="checkbox"
@@ -78,7 +78,7 @@ const Merch = ({ dbProducts}) => {
                 />
               </label>
               <span className="stockLabel"> IN STOCK</span>
-            </div>
+            </div> */}
           </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-9 d-flex">
             <div className="row gx-2 gy-0">
