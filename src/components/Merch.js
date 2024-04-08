@@ -27,28 +27,8 @@ const Merch = ({ dbProducts}) => {
     setInStockOnly(event.target.checked);
   };
 
-  // funskjoner for å filtrere produktene
-  /*man kunne brukt denne funksjonen også for å filtrere searc isteden men dette ville ikke ta med produkter som ikke starter med det ordet
-  hvis du søker for eks shorts men det heter gti shorts da hadde det ikke funka med startswith den tar med produkter som kun starter med oppgitte bokstav:
-    .filter(
-    (product) => (searchTerm === "" || product.name.toLowerCase().trim().startsWith(searchTerm.toLowerCase().trim())) &&
-    (!inStockOnly || product.inStock)
-  ) 
 
-*/
-
-  const filteredProducts = dbProducts
-  .filter(
-    (product) => product.productName.toLowerCase().includes(searchTerm.toLowerCase().trim())
-  )
-   .filter(
-    (product) => !inStockOnly || product.inStock
-  );
-  console.log("merch dbProducts",dbProducts);
-
-   
-    // dette bruker jeg for å sjekke og se filtrede prdukter i konsolen 
-    console.log("filtrede produkter:",filteredProducts);
+    console.log("db produkter:",dbProducts);
 
   return (
     <>
@@ -67,23 +47,12 @@ const Merch = ({ dbProducts}) => {
               <div className="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
               
             </div>
-            {/* <div className="stock-availability">
-              <label>
-                <input
-                  type="checkbox"
-                  name="in-stock"
-                  id="in-stock"
-                  checked={inStockOnly}
-                  onChange={handleStockChange}
-                />
-              </label>
-              <span className="stockLabel"> IN STOCK</span>
-            </div> */}
+
           </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-9 d-flex">
             <div className="row gx-2 gy-0">
-              {filteredProducts.map((prdct) => (
-                <div className={getColumnClass(filteredProducts.length)}>
+              {dbProducts.map((prdct) => (
+                <div className={getColumnClass(dbProducts.length)}>
                   <MerchItem product={prdct} key={prdct.id} />
                 </div>
               ))}

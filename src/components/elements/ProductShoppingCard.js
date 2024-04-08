@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductShoppingCard.css";
+import { Link } from "react-router-dom";
 
 const ProductShoppingCard = ({
   item,
@@ -8,28 +9,29 @@ const ProductShoppingCard = ({
 }) => {
   console.log("item scard¤", item);
   // const {image, price,name,description ,handleAddProduct}=item;
-  //
+  // 
+  
   return (
     <div className="container">
       <div className="row mb-1 d-flex justify-content-center sCardProductRow">
         <div className="col-4 col-md-4 col-lg-4 d-flex justify-content-center  ">
           {/* İçerik */}
           <div className="sCardImageDiv">
-          <img
-            src={item.selectedImage}
-            alt="product"
-            className="img-thumbnail productImg mb-2 img-fluid sCardProductImg me-2"
-          />
+            <Link to={`/merchinfo/${item.id}`} >
+              <img
+                src={item.selectedImage}
+                alt="product"
+                className="img-thumbnail productImg mb-2 img-fluid sCardProductImg me-2"
+              />
+            </Link>
           </div>
           <div className="NameAndSizeDiv">
-          <div className="productName">{item.productName}</div>
-          <div className="productSize">
-            <span>Size:</span>
-            <span >{item.productSize}</span>
+            <div className="productName">{item.productName}</div>
+            <div className="productSize">
+              <span>Size:</span>
+              <span>{item.productSize}</span>
+            </div>
           </div>
-
-          </div>
-   
         </div>
         <div className="col-4 col-md-4 col-lg-4 d-flex align-items-center justify-content-center mt-1 mb-2">
           {/* İçerik */}

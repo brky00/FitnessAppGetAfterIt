@@ -4,8 +4,8 @@
 }
 
 .merchItemLink {
-    text-decoration: none; /* Underline'ı kaldırır */
-    color: inherit; /* Link'in rengini üst elementten alır */
+    text-decoration: none; 
+    color: inherit; 
 }
 .merchItemDiv{
     font-family: 'Raleway', sans-serif;
@@ -20,6 +20,24 @@
     transform: scale(1.05);
     transition: transform 0.5s;
   }
+
+  .soldOut {
+    /* not touchble */
+    pointer-events: none;
+    /*sold out etikett on the product */
+    position: relative;
+  }
+  
+  .soldOut::after {
+    content: 'Sold out';
+    color: white;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+  }
+  
 
 @media (max-width: 768px) {
     .merchItemImg{
