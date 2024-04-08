@@ -3,6 +3,7 @@ import "./Packages.css";
 import image1 from "./images/image1gti.png"
 import image2 from "./images/image2gti.png"
 import image3backup from "./images/image3bulking.png"
+import { Colors } from "chart.js";
 
 
 const Packages = () => {
@@ -15,13 +16,13 @@ const Packages = () => {
         </div>
         <div className="row">
           <div className="col-md-4 col-lg-4 col-sm-12 d-flex justify-content-center">
-            <h1 className="cardTitle-no-responsive">Meal plan</h1>
+            <h1 className="cardTitle-no-responsive">Meal program</h1>
           </div>
           <div className="col-md-4 col-lg-4 col-sm-12">
-            <h1 className="cardTitle-no-responsive">Bulking plan</h1>
+            <h1 className="cardTitle-no-responsive">Workout program</h1>
           </div>
           <div className="col-md-4 col-lg-4 col-sm-12 d-flex justify-content-center">
-            <h1 className="cardTitle-no-responsive">Ultimate plan</h1>
+            <h1 className="cardTitle-no-responsive">Ultimate program</h1>
           </div>
         </div>
 
@@ -62,11 +63,11 @@ const Packages = () => {
                   {/* Card title */}
                 </h5>
                 <ul class="card-text">
-                  <li> High-calorie meal plans for muscle growth.</li>
+                  <li>Tailored fitness routines for your personal goals, level.</li>
 
                   <li>Tools for progress (muscle and weight gain) tracking.</li>
 
-                  <li>Guidance on bulking cycles.</li>
+                  <li>Strength, endurance, and flexibility training for balance.</li>
 
                   <li>Recovery tips and supplement guidance.</li>
                 </ul>
@@ -103,18 +104,23 @@ const Packages = () => {
           </div>
         </div>
 
-        {/*Description start*/}
+        <h1>Take <a href="/contact">contact</a> for further continuation of your package choice, we will directly take contact with you after you have submitted a form</h1>
+
         <div className="d-flex justify-content-center mb-3"><h1 className="descriptionTitle"><strong>PACKAGE DESCRIPTION</strong></h1></div>
         <div className="row">
           <div className="col-md-12 col-lg-12 packageDescription ">
-          <p className="p-3">
-          <h2>Ultimate Plan Overview</h2>
-          <p class="ultimate-plan-description">Dive into our most comprehensive offering designed for those who accept no compromises. The Ultimate Plan merges the worlds of advanced physical exercise, precise nutrition, and holistic mental wellness. You'll receive personalized workout routines that span strength training, cardio, flexibility exercises, and high-octane HIIT sessions. Nutritionally, we'll guide you with custom meal plans that cater to a variety of dietary needs, ensuring every bite aligns with your fitness ambitions. We've also woven in the essence of mental well-being, offering meditation and yoga sessions to balance your journey.</p>
-          <p>And because we understand the value of continuous support, this plan grants you exclusive access to our certified fitness coaches and nutritionists. Track your transformative journey with our integrated digital tools and partake in monthly check-ins to refine your path. Plus, become part of our exclusive community, where like-minded individuals share, inspire, and grow together.</p>
-          <h3>Comprehensive Support & Tools</h3>
-          <p>Welcome to the Ultimate Plan, where every facet of your fitness and well-being is our priority. Embark on this elite journey and immerse yourself in a regime that not only reshapes your body but also renews your mind and spirit. With the Ultimate Plan, you gain access to the latest in fitness technology, including state-of-the-art wearable devices that monitor every aspect of your physical activity, sleep patterns, and even your nutritional intake.</p>
-          <p>Our team of experts analyzes this data to continuously fine-tune your personalized regimen, ensuring that every workout, every meal, and every mindful practice is optimized for your unique needs.</p>
-          </p>
+          <div className="p-3">
+          <h3 style={{ color: '#C8B479' }}>Meal Program</h3>
+          <p className="meal-plan-description">Our Meal Plan is meticulously designed to fuel your fitness journey with nutritionally balanced, delicious meals tailored to your dietary preferences and goals. Whether you aim to lose weight, gain muscle, or simply maintain a healthy lifestyle, our dietitians craft each meal to ensure you receive the optimal balance of macros and micronutrients. Enjoy a variety of recipes that are as satisfying as they are beneficial to your health.</p>
+          
+          <h3 style={{ color: '#C8B479' }}>Workout Program</h3>
+          <p className="workout-plan-description">The Workout Plan provides a personalized fitness regimen based on your goals, fitness level, and preferences. From dynamic strength training and endurance building to flexibility exercises and recovery practices, our certified trainers ensure your routine is varied, engaging, and effective. Get ready to challenge yourself and achieve noticeable results with workouts designed just for you.</p>
+          
+          <h3 style={{ color: '#C8B479' }}>Ultimate Program</h3>
+          <p className="ultimate-plan-description">The Ultimate Plan combines the best of both worlds: comprehensive nutritional guidance and a bespoke fitness regimen, enriched with mental wellness support. This all-encompassing package includes personalized meal and workout plans, one-on-one sessions with our fitness coaches and nutritionists, and exclusive access to wellness workshops focusing on meditation and mindfulness. Embrace a holistic approach to health and well-being, crafted to transform you from the inside out.</p>
+          
+          <p>With the Ultimate Plan, you're not just signing up for a program; you're committing to a lifestyle change. Gain access to our supportive community and digital tools for tracking progress, ensuring every aspect of your journey is aligned with your ultimate health and wellness goals.</p>
+        </div>
           </div>
         </div>
       </div>
