@@ -55,7 +55,7 @@ const Footer = () => {
         </ul>
         <ul className="box">
           <li className="link_name" style={{ color: 'white' }}>Email:</li>
-          <li>GetAfterIt@GAI.com</li>
+          <li>getafterit_response@hotmail.com</li>
         </ul>
         <ul className="box">
           <li className="link_name" style={{ color: 'white' }}>Tlf:</li>
