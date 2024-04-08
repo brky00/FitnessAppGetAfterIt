@@ -104,40 +104,19 @@ const Packages = () => {
         </div>
 
         {/*Description start*/}
-        <h1 className="descriptionTitle">Description about the packs</h1>
+        <div className="d-flex justify-content-center mb-3"><h1 className="descriptionTitle"><strong>PACKAGE DESCRIPTION</strong></h1></div>
         <div className="row">
           <div className="col-md-12 col-lg-12 packageDescription ">
-            <p className="p-3">
-              Dive into our most comprehensive offering designed for those who
-              accept no compromises. The Ultimate Plan merges the worlds of
-              advanced physical exercise, precise nutrition, and holistic mental
-              wellness. You'll receive personalized workout routines that span
-              strength training, cardio, flexibility exercises, and high-octane
-              HIIT sessions. Nutritionally, we'll guide you with custom meal
-              plans that cater to a variety of dietary needs, ensuring every
-              bite aligns with your fitness ambitions. We've also woven in the
-              essence of mental well-being, offering meditation and yoga
-              sessions to balance your journey. And because we understand the
-              value of continuous support, this plan grants you exclusive access
-              to our certified fitness coaches and nutritionists. Track your
-              transformative journey with our integrated digital tools and
-              partake in monthly check-ins to refine your path. Plus, become
-              part of our exclusive community, where like-minded individuals
-              share, inspire, and grow together. Welcome to the Ultimate Plan,
-              where every facet of your fitness and well-being is our priority.
-              Embark on this elite journey and immerse yourself in a regime that
-              not only reshapes your body but also renews your mind and spirit.
-              With the Ultimate Plan, you gain access to the latest in fitness
-              technology, including state-of-the-art wearable devices that
-              monitor every aspect of your physical activity, sleep patterns,
-              and even your nutritional intake. Our team of experts analyzes
-              this data to continuously fine-tune your personalized regimen,
-              ensuring that every workout, every meal, and every mindful
-              practice is optimized for your unique needs.
-            </p>
+          <p className="p-3">
+          <h2>Ultimate Plan Overview</h2>
+          <p class="ultimate-plan-description">Dive into our most comprehensive offering designed for those who accept no compromises. The Ultimate Plan merges the worlds of advanced physical exercise, precise nutrition, and holistic mental wellness. You'll receive personalized workout routines that span strength training, cardio, flexibility exercises, and high-octane HIIT sessions. Nutritionally, we'll guide you with custom meal plans that cater to a variety of dietary needs, ensuring every bite aligns with your fitness ambitions. We've also woven in the essence of mental well-being, offering meditation and yoga sessions to balance your journey.</p>
+          <p>And because we understand the value of continuous support, this plan grants you exclusive access to our certified fitness coaches and nutritionists. Track your transformative journey with our integrated digital tools and partake in monthly check-ins to refine your path. Plus, become part of our exclusive community, where like-minded individuals share, inspire, and grow together.</p>
+          <h3>Comprehensive Support & Tools</h3>
+          <p>Welcome to the Ultimate Plan, where every facet of your fitness and well-being is our priority. Embark on this elite journey and immerse yourself in a regime that not only reshapes your body but also renews your mind and spirit. With the Ultimate Plan, you gain access to the latest in fitness technology, including state-of-the-art wearable devices that monitor every aspect of your physical activity, sleep patterns, and even your nutritional intake.</p>
+          <p>Our team of experts analyzes this data to continuously fine-tune your personalized regimen, ensuring that every workout, every meal, and every mindful practice is optimized for your unique needs.</p>
+          </p>
           </div>
         </div>
-        {/*Description end*/}
       </div>
     </>
   );
