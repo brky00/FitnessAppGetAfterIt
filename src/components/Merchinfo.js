@@ -355,8 +355,8 @@ console.log("mainimage exist",mainImage);
                       </div>
                     </div>
 
-                    <div className="d-flex justify-content-center">
-                      <p>{description}</p>
+                    <div className="d-flex justify-content-center" >
+                      <p style={{fontFamily:"raleway"}}>{description}</p>
                     </div>
                   </div>
                 </div>
