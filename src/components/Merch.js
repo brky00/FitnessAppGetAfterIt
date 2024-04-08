@@ -4,7 +4,7 @@ import MerchItem from "./MerchItem";
 
 const Merch = ({ dbProducts}) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);
+  
 
      // Based on selectionImages arrays length determine we column amount(col from bootstrap 5 grid system.)
      const getColumnClass = (filteredProductsCount) => {
@@ -22,13 +22,16 @@ const Merch = ({ dbProducts}) => {
     setSearchTerm(event.target.value);
   };
 
-  // Stok durumu için olay işleyici
-  const handleStockChange = (event) => {
-    setInStockOnly(event.target.checked);
-  };
+  const filteredProducts = dbProducts
+  .filter(
+    (product) => product.productName.toLowerCase().includes(searchTerm.toLowerCase().trim())
+  )
+   
+  console.log("merch dbProducts",dbProducts);
 
-
-    console.log("db produkter:",dbProducts);
+   
+    // dette bruker jeg for å sjekke og se filtrede prdukter i konsolen 
+    console.log("filtrede produkter:",filteredProducts);
 
   return (
     <>
@@ -47,12 +50,12 @@ const Merch = ({ dbProducts}) => {
               <div className="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
               
             </div>
-
+            
           </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-9 d-flex">
             <div className="row gx-2 gy-0">
-              {dbProducts.map((prdct) => (
-                <div className={getColumnClass(dbProducts.length)}>
+              {filteredProducts.map((prdct) => (
+                <div className={getColumnClass(filteredProducts.length)}>
                   <MerchItem product={prdct} key={prdct.id} />
                 </div>
               ))}
