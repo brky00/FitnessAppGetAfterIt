@@ -24,7 +24,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
               <th scope="col">Name</th>
               <th scope="col">Price</th>
               <th scope="col">Main Image</th>
-              <th scope="col">Description</th>
+            
               <th scope="col">Stock and selection images of each size</th>
               {/* <th scope="col">Selection Images</th> */}
              
@@ -50,7 +50,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
                     <span>No image available</span>
                   )}
                 </td>
-                <td>{product.description}</td>
+             
                 <td className='d-flex'>
                   {product.sizeDetails
                     ? Object.entries(product.sizeDetails).map(
