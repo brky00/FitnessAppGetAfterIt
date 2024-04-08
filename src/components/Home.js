@@ -23,7 +23,12 @@ const Home = () => {
                 Merch
               </Link>
             </button>
-            <button className="btn-home">Packages</button>
+            <button className="btn-home">
+              {" "}
+              <a className="nav-link" href="/#packages">
+                Packages
+              </a>
+            </button>
           </div>
         </div>
       </section>
@@ -42,9 +47,9 @@ const Home = () => {
       <section id="packages">
         <Packages />
       </section>
-     
+
       {/*Footer */}
-      <Footer/>
+      <Footer />
     </>
   );
 };

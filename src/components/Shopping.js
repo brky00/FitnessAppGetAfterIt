@@ -130,7 +130,8 @@ useEffect(() => {
             {/* Action Buttons */}
             <div className="row">
               <div className="col-md-12 col-lg-12 col-sm-12 button-container d-flex justify-content-center">
-                <button className="contiuneButton">Continue Shopping</button>
+               
+                <Link to="/merch" className="contiuneButton">Continue Shopping</Link>
                 <Link to="/checkout" className="checkoutButton">Checkout</Link>
                 
                 
