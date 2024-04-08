@@ -56,6 +56,9 @@ form h1{
 .loginButton{
     padding: 5px 15px 5px 15px;
 }
+.loginButton{
+    width: 100;
+} 
 
 
 @media (max-width: 768px) {
