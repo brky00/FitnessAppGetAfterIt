@@ -1,7 +1,7 @@
 .container-login{
     display: flex;
     justify-content: center;
-   margin-top: 150px;
+   margin-top: 50px;
     min-height: 100vh;
 }
 
@@ -57,7 +57,7 @@ form h1{
     padding: 5px 15px 5px 15px;
 }
 .loginButton{
-    width: 100;
+    width: 100px;
 } 
 
 
