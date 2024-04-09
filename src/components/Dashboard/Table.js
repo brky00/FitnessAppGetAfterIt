@@ -36,9 +36,9 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
           <tbody>
             {dbProducts.map((product, index) => (
               <tr key={index}>
-                <td>{product.id}</td>
-                <td>{product.productName}</td>
-                <td>{product.price}</td>
+                <td className='TableTd'>{product.id}</td>
+                <td className='TableTd'>{product.productName}</td>
+                <td >{product.price}</td>
                 <td>
                   {product.imageMain ? (
                     <img
@@ -56,7 +56,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
                     ? Object.entries(product.sizeDetails).map(
                         ([sizeKey, details]) => (
                           <div key={sizeKey} className="size-quantity">
-                            <div>{`Size: ${sizeKey}`}</div>
+                            <div className='sizeTitleOnTable'>{`Size: ${sizeKey}`}</div>
                             {Array.isArray(details) ? (
                               details.map((detail, detailIndex) => (
                                 <div key={detailIndex} className="mb-2">

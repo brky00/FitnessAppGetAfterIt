@@ -3,7 +3,14 @@
     padding: 1rem;
   }
   .size-quantity{
-    border-bottom: solid 1px;
+ 
+    border-right: groove 1px;
+margin-right: 2px;
+
+  }
+  .sizeTitleOnTable, .TableTd{
+    font-family: 
+    raleway;
   }
   
   .product-table-header{
