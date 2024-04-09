@@ -4,6 +4,14 @@
   }
   .size-quantity{
   
+ 
+    border-right: groove 1px;
+margin-right: 2px;
+
+  }
+  .sizeTitleOnTable, .TableTd{
+    font-family: 
+    raleway;
   }
   
   .product-table-header{

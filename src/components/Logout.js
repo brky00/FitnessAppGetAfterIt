@@ -21,7 +21,7 @@ const Logout = () => {
     navigate('/LoginAdmin'); // we send user to login back
     Swal.fire({
         icon: 'success',
-        title: 'You are logged out from DashBoard!!',
+        title: 'You are logged out!',
         showConfirmButton: false,
         timer: 1500,
     });
