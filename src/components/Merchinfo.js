@@ -226,12 +226,13 @@ console.log("mainimage exist",mainImage);
 
   
   const handleButtonClick = () => {
-    if (!product || !selectedSize|| !mainImage) { // Hem boyut hem de resim seçilmiş mi kontrol et
+    if (!product || !selectedSize|| !mainImage) { //
       alert("Please select a size and an image before adding to bag.");
     } else {
-      handleAddProduct({ product, selectedSize,mainImage,selectedImageName , quantity: 1 }); // selectedImage olarak güncellenmiş
+      handleAddProduct({ product, selectedSize,mainImage,selectedImageName , quantity: 1 }); 
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 4000);
+
     }
   };
 
