@@ -48,15 +48,19 @@ const Order = () => {
     const orderList = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-      date: doc.data().date ? new Timestamp(doc.data().date.seconds, doc.data().date.nanoseconds).toDate().toLocaleString() : 'No date',
+      // Doğrudan bir Date objesini string'e çeviriyoruz
+      date: doc.data().date ? new Timestamp(doc.data().date.seconds, doc.data().date.nanoseconds).toDate().toLocaleString() : 'No Date',
     })).sort((a, b) => {
+      // Sıralama mantığınız doğru görünüyor, burada bir değişiklik yapmaya gerek yok.
       if (a.status === 'completed' && b.status !== 'completed') return 1;
       if (b.status === 'completed' && a.status !== 'completed') return -1;
-      return b.date.localeCompare(a.date); // Assuming 'date' is a string. Adjust sorting if it's a Date object.
+      // Tarih sıralamasını yaparken, zaten string tarihler üzerinde çalışıyoruz
+      return b.date ? new Date(b.date).getTime() - (a.date ? new Date(a.date).getTime() : 0) : 0;
     });
     setOrders(orderList);
     setFilteredOrders(orderList);
   };
+  
 
   useEffect(() => {
     fetchOrders();
