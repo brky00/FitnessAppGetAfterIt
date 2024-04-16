@@ -22,12 +22,14 @@ const Footer = () => {
         </div>
         <div className="link-boxes">
           <ul className="box">
+            
             <li className="link_name">Customer Service</li>
             <li><Link to="/contact-us">Contact Us</Link></li>
             <li><Link to="/returns">Returns & Exchanges</Link></li>
             <li><Link to="/terms">Terms of Service</Link></li>
             <li><Link to="/faq">FAQ</Link></li>
           </ul>
+
           <ul className="box">
             <li className="link_name">Company</li>
             <li><Link to="/about">About Us</Link></li>
@@ -38,6 +40,8 @@ const Footer = () => {
             <li className="link_name">Follow Us</li>
             <li><a href="https://www.instagram.com">Instagram</a></li>
             <li><a href="https://www.facebook.com">Facebook</a></li>
+
+            
             <li><a href="https://www.twitter.com">Twitter</a></li>
           </ul>
           <ul className="box">
@@ -50,7 +54,7 @@ const Footer = () => {
       <div className="finish">
         <ul className="box">
           <li className="link_name" style={{ color: 'white' }}>Adresse:</li>
-          <li>Get it St 558</li>
+          <li>Get it St 331</li>
           <li>Norway</li>
         </ul>
         <ul className="box">
@@ -59,7 +63,7 @@ const Footer = () => {
         </ul>
         <ul className="box">
           <li className="link_name" style={{ color: 'white' }}>Tlf:</li>
-          <li>+4744422333</li>
+          <li>+4744422344</li>
         </ul>
       </div>
       <div className="footer-bottom">
