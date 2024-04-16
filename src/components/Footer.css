@@ -50,6 +50,8 @@ footer .content .top{
     font-size: 17px;
     text-decoration: none;
     transition: all 0.5s ease;
+
+    
 }
 .top .media-icons a:nth-child(1){
     background:#4267b2
@@ -62,8 +64,8 @@ footer .content .top{
     background:#1da1f2
 }
 .top .media-icons a:nth-child(2):hover{
-    color:#1da1f2;
-    background: #fff;
+    color:#1d60f2;
+    background: #f5f5f5 ;
 }
 .top .media-icons a:nth-child(3){
     background:#E1306c
