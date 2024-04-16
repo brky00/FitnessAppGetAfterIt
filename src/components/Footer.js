@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faInstagram, faLinkedinIn, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF,faTwitter, faInstagram,faLinkedinIn,faTiktok } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
             <a href="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></a>
             <a href="https://www.twitter.com"><FontAwesomeIcon icon={faTwitter} /></a>
             <a href="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></a>
-            <a href="https://www.linkedin.com"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+          
             <a href="https://www.tiktok.com"><FontAwesomeIcon icon={faTiktok} /></a>
           </div>
         </div>
