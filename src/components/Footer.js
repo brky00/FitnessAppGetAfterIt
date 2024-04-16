@@ -10,19 +10,18 @@ const Footer = () => {
       <div className="content">
         <div className="top">
           <div className="logo-details">
-            <span className="logo_name">GetAfterIt</span>
+            <span className="logo_name">Get After It</span>
           </div>
           <div className="media-icons">
             <a href="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></a>
             <a href="https://www.twitter.com"><FontAwesomeIcon icon={faTwitter} /></a>
             <a href="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></a>
-          
+            <a href="https://www.linkedin.com"><FontAwesomeIcon icon={faLinkedinIn} /></a>
             <a href="https://www.tiktok.com"><FontAwesomeIcon icon={faTiktok} /></a>
           </div>
         </div>
         <div className="link-boxes">
-          <ul className="box">
-            
+          <ul className="box"> 
             <li className="link_name">Customer Service</li>
             <li><Link to="/contact-us">Contact Us</Link></li>
             <li><Link to="/returns">Returns & Exchanges</Link></li>
@@ -40,8 +39,6 @@ const Footer = () => {
             <li className="link_name">Follow Us</li>
             <li><a href="https://www.instagram.com">Instagram</a></li>
             <li><a href="https://www.facebook.com">Facebook</a></li>
-
-            
             <li><a href="https://www.twitter.com">Twitter</a></li>
           </ul>
           <ul className="box">
