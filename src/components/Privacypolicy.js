@@ -8,8 +8,8 @@ const Privacypolicy = () => {
                 <div className="container text-center">
                     <div class="px-lg-5 pt-5">
                 
-                    <h1 className="h2">Privacy</h1>
-                        <p>Privacy Policy</p>
+                    <h1 className="privacyH1">Privacy Policy</h1>
+                       
                     </div>
                 </div>
                 <div className="container text-center pb-5"></div>
