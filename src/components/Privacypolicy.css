@@ -26,13 +26,3 @@ body {
     font-weight: bold;
     margin-top: -40px;
 }
-
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
