@@ -50,41 +50,20 @@ footer .content .top{
     font-size: 17px;
     text-decoration: none;
     transition: all 0.5s ease;
+}
 
-    
-}
 .top .media-icons a:nth-child(1){
-    background:#4267b2
-}
-.top .media-icons a:nth-child(1):hover{
-    color:#4267b2;
-    background: #ffffff;
-}
-.top .media-icons a:nth-child(2){
-    background:#1da1f2
-}
-.top .media-icons a:nth-child(2):hover{
-    color:#1d60f2;
-    background: #f5f5f5 ;
-}
-.top .media-icons a:nth-child(3){
     background:#E1306c
 }
-.top .media-icons a:nth-child(3):hover{
+.top .media-icons a:nth-child(1):hover{
     color:#E1306c;
     background: #fff;
 }
-.top .media-icons a:nth-child(4){
-    background:#0077b5
-}
-.top .media-icons a:nth-child(4):hover{
-    color:#0077b5;
-    background: #fff;
-}
-.top .media-icons a:nth-child(5){
+
+.top .media-icons a:nth-child(2){
     background:#ff0000
 }
-.top .media-icons a:nth-child(5):hover{
+.top .media-icons a:nth-child(2):hover{
     color:#ff0000;
     background: #fff;
 }
@@ -93,6 +72,7 @@ footer .content .link-boxes{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-left: 30px;
 }
 
 footer .content .link-boxes .box{
@@ -294,7 +274,7 @@ footer::before {
     top: 160px; /* Adjust as needed */
     }
     footer .content .link-boxes .box {
-    width: calc(100% / 3 - 10px);
+    width: calc(100% / 1 - 10px);
     display: grid;
     }
     footer .content .link-boxes .input-box {
@@ -305,8 +285,19 @@ footer::before {
     }
 
     footer .content .link_name{
-        padding-bottom: 20px;
+        padding-bottom: 28px;
     }
+
+    .link-boxes .box .link_name::before{
+        bottom: 18px;
+    }
+
+    .content .link-boxes .box li{
+        bottom: -20px;
+        line-height: 12px;
+    }
+    
+    
 
 }
 

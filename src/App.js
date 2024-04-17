@@ -22,6 +22,9 @@ import OrderDetails from "./components/Dashboard/OrderDetails";
 
 import Usercontact from "./components/Dashboard/Usercontact";
 
+// Privacy Policy
+import Privacypolicy from "./components/Privacypolicy"; 
+
 
 
 
@@ -234,6 +237,8 @@ function App() {
         <Route path="/orderDetails" element={<OrderDetails/>}/>
      
         <Route path="/Usercontact" element={<Usercontact/>}/>
+        
+        <Route path="/privacypolicy" element={<Privacypolicy/>}/>
         
 
       </Routes>
