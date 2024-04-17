@@ -351,7 +351,7 @@ const Edit = ({selectedProduct}) => {
 
 
           {/*In stock check true/false choose here*/}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label className="form-label">Stock Status</label>
             <div>
               <input
@@ -372,7 +372,7 @@ const Edit = ({selectedProduct}) => {
               />{" "}
               Out of Stock
             </div>
-          </div>
+          </div> */}
           <button type="submit" className="btn btn-success btn-md mybtn">
             Save edit
           </button>

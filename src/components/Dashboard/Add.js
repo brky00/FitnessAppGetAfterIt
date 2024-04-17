@@ -89,9 +89,9 @@ const Add = () => {
     const mainName = file.name;
     setMainFileName(mainName);
     if (file && types.includes(file.type)) {
-      setError(""); // Hata durumunu temizle
+      setError(""); // clear error
       try {
-        const uploadedImageUrl = await uploadImage(file); // Dosyayı yükleyin ve URL'yi alın
+        const uploadedImageUrl = await uploadImage(file); 
         setProductMainImage(uploadedImageUrl); // URL'yi state'e kaydedin
       } catch (error) {
         console.error("Error uploading main image: ", error);
@@ -173,7 +173,7 @@ const Add = () => {
       });
 
       Swal.fire("Sucsess!", "The new product is added.", "success");
-      // Formu sıfırla veya başka bir eylem gerçekleştir
+      
     } catch (error) {
       console.error("error when you try to add: ", error);
       Swal.fire(
@@ -184,9 +184,9 @@ const Add = () => {
     }
   };
 
-  const handleInStockChange = (e) => {
-    setIsInStock(e.target.value === "true");
-  };
+  // const handleInStockChange = (e) => {
+  //   setIsInStock(e.target.value === "true");
+  // };
 
   // Add Form data code to print out in the console to see and check the data as test...
   console.log("Submitted price:", productPrice);
@@ -337,7 +337,7 @@ const Add = () => {
 
             {/*In stock check true/false choose here*/}
             <div className="mb-3">
-              <label className="form-label">Stock Status</label>
+              {/* <label className="form-label">Stock Status</label>
               <div>
                 <input
                   type="radio"
@@ -356,7 +356,7 @@ const Add = () => {
                   className="ms-2"
                 />{" "}
                 Out of Stock
-              </div>
+              </div> */}
             </div>
             <button type="submit" className="btn btn-success btn-md mybtn">
               ADD

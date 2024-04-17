@@ -1,51 +1,83 @@
-.addProductHr {
-  margin: 0;
-}
+ /* body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}  */
+
 .add-container {
-
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 60px;
-  padding: 40px;
-  border-radius: 8px;
-  text-align: center;
-
+  max-width: 1500px;
+  margin: 0 auto;
   padding: 20px;
+}
 
-  justify-content: center;
+
+
+
+.addForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .addForm label {
-  display: inline-block;
-  width: 40px;
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px; /* input alanları ile etiketler arasında boşluk oluşturur */
-}
-.sizesLabel {
-  margin-left: 0;
-  display: flex;
-  justify-content: center;
-  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
 }
 
-.addForm .form-label {
+.addForm input[type="text"],
+.addForm select {
   width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
+
+.addForm button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addForm button:hover {
+  background-color: #0056b3;
+}
+
 
 .productAddSizeDiv {
-  border: 1px solid;
-}
-
-
-@media (max-width: 767px) {
-  .add-container {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.add-container .size-section{
- width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 10px;
+  margin-top: 20px;
+}
+
+.productAddSizeDiv h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.size-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.size-section label {
+  margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+
+  .addForm input[type="text"],
+  .addForm select {
+    width: calc(100% - 20px);
+  }
 }
