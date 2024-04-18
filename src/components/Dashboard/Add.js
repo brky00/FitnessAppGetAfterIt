@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Swal from "sweetalert2";
 import "./Add.css";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
   const [dbSizes, setDbSizes] = useState([
@@ -207,11 +208,14 @@ const Add = () => {
   console.log("fileQuantities", fileQuantities);
   console.log("sizeQuantities herr:", sizeQuantities);
   console.log("mainName:::", mainFileName);
+  const navigate = useNavigate();
+  
 
   return (
     <div className="container-fluid add-container">
       <h2 className="d-flex justify-content-center mt-4">ADD PRODUCTS</h2>
       <hr className="v-50" />
+      <button className='btn btn-secondary ms-3' onClick={() => navigate('/dashboard')  }>Back to Dashboard</button>
       <form className="addForm mb-3" onSubmit={handleSubmit}>
 
       <div className="row">

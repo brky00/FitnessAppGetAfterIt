@@ -41,7 +41,7 @@ const Edit = ({selectedProduct}) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
   
-    // Güncellenecek alanları toplayan bir obje oluştur.
+    // object for updated
     let updatePayload = {};
   
     if (productName) updatePayload.productName = productName;
@@ -50,10 +50,10 @@ const Edit = ({selectedProduct}) => {
     if (Object.keys(sizeQuantities).length) updatePayload.sizeDetails = sizeQuantities;
     if (productMainImage) updatePayload.imageMain = productMainImage;
     if (mainFileName) updatePayload.productMainName = mainFileName;
-    // allSizes her zaman dolu varsayılarak ekleniyor, bu durumu projenize göre düzenleyebilirsiniz.
+ 
     updatePayload.allSizes = dbSizes;
   
-    // Güncellenecek alanların olduğundan emin ol (updatePayload objesi boş değilse).
+   
     if (Object.keys(updatePayload).length > 0) {
       try {
         const thisProduct = doc(db, "products", id);
@@ -294,7 +294,7 @@ const Edit = ({selectedProduct}) => {
                   />
                   <label htmlFor={`size-${size}`}>{size}</label>
 
-                  {/* Eğer bu boyut seçildiyse, ilgili dosyalar için miktar giriş alanlarını render et */}
+            
                   {sizes.includes(size) && (
                     <>
                       <div className="file-upload-container">
@@ -314,7 +314,7 @@ const Edit = ({selectedProduct}) => {
                         />
                       </div>
 
-                      {/* Seçilen dosyalar için miktar giriş alanlarını render et */}
+                    
                       <div className="quantity-inputs-container">
                         {renderQuantityInputsForSize(size)}
                       </div>
@@ -350,29 +350,7 @@ const Edit = ({selectedProduct}) => {
           </div>
 
 
-          {/*In stock check true/false choose here*/}
-          {/* <div className="mb-3">
-            <label className="form-label">Stock Status</label>
-            <div>
-              <input
-                type="radio"
-                value="true"
-                name="stockStatus"
-                checked={isInStock === true}
-                onChange={handleInStockChange}
-              />{" "}
-              In Stock
-              <input
-                type="radio"
-                value="false"
-                name="stockStatus"
-                checked={isInStock === false}
-                onChange={handleInStockChange}
-                className="ms-2"
-              />{" "}
-              Out of Stock
-            </div>
-          </div> */}
+        
           <button type="submit" className="btn btn-success btn-md mybtn">
             Save edit
           </button>
