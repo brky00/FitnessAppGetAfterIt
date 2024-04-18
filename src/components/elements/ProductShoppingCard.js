@@ -14,8 +14,8 @@ const ProductShoppingCard = ({
   return (
     <div className="container">
       <div className="row mb-1 d-flex justify-content-center sCardProductRow">
-        <div className="col-4 col-md-4 col-lg-4 d-flex justify-content-center  ">
-          {/* İçerik */}
+        <div className="col-4 col-md-4 col-lg-4 d-flex justify-content-end  ">
+          {/* content */}
           <div className="sCardImageDiv">
             <Link to={`/merchinfo/${item.id}`} >
               <img
