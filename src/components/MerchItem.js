@@ -25,7 +25,7 @@ const MerchItem = ({ product }) => {
   ) : (
     <Link className="merchItemLink" to={`/merchinfo/${product.id}` }>
       {product.imageMain ? (
-        <img className="merchItemImg img-fluid" src={product.imageMain} alt={product.productName || "Product Image"} />
+      <div className="d-flex justify-content-center">  <img className="merchItemImg img-fluid" src={product.imageMain} alt={product.productName || "Product Image"} /></div>
       ) : (
         <span>No image available</span>
       )}
