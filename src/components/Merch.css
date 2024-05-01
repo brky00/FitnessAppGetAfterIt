@@ -36,9 +36,9 @@ h1 {
     margin-bottom: 20px;
 }
 .stockLabel{ 
-    font-size: 16px; /* Etiket font büyüklüğü artırıldı */
-    color: #333; /* Etiket rengi daha belirgin hale getirildi */
-    font-weight: bold; /* Etiket fontu kalınlaştırıldı */
+    font-size: 16px; 
+    color: #333; 
+    font-weight: bold; 
     
   
 }

@@ -72,7 +72,7 @@ const Edit = ({selectedProduct}) => {
         });
       }
     } else {
-      // Güncellenecek bir alan yoksa kullanıcıya bildir.
+      // response
       Swal.fire({
         icon: 'info',
         title: 'No changes',
@@ -144,8 +144,8 @@ const Edit = ({selectedProduct}) => {
     if (file && types.includes(file.type)) {
       setError(""); // Hata durumunu temizle
       try {
-        const uploadedImageUrl = await uploadImage(file); // Dosyayı yükleyin ve URL'yi alın
-        setProductMainImage(uploadedImageUrl); // URL'yi state'e kaydedin
+        const uploadedImageUrl = await uploadImage(file); 
+        setProductMainImage(uploadedImageUrl); 
       } catch (error) {
         console.error("Error uploading main image: ", error);
         setError("Error uploading main image: " + error.message);
@@ -163,7 +163,7 @@ const Edit = ({selectedProduct}) => {
     }
     const storageRef = ref(storage, `images/${imageFile.name}`);
     const uploadTask = await uploadBytes(storageRef, imageFile);
-    const imageUrl = await getDownloadURL(uploadTask.ref); // Ref alındıktan sonra URL alınır
+    const imageUrl = await getDownloadURL(uploadTask.ref); 
     return imageUrl;
   };
 
@@ -182,23 +182,7 @@ const Edit = ({selectedProduct}) => {
   };
 
 
-  // const handlePriceChange = (e) => {
-
-  //   const value = e.target.value;
-
-  //   if (!value || value.match(/^\d*\.?\d*$/)) {
-
-  //     setProductPrice(value);
-
-  //     setError('');
-
-  //   } else {
-
-  //     setError('Please enter a valid number for the price');
-
-  //   }
-  // }
-
+ 
   
 
 
