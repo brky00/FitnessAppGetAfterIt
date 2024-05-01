@@ -14,7 +14,7 @@ const Home = () => {
       {/* Home delen */}
       <section id="home">
         <div className="background-video">
-          <video autoPlay loop muted>
+          <video autoPlay loop muted playsinline>
             <source src={getAfterItAnimation} type="video/mp4" />
           </video>
           <div className="buttons-container">

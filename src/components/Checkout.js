@@ -33,6 +33,16 @@ const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
 
   const handleCheckout = async (e) => {
     e.preventDefault(); 
+    
+  // Check if all required fields are filled
+  if (!fullName || !address || !email || !mobileNumber || !birthDate) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Incomplete Form',
+      text: 'Please fill out all fields in the form before submitting your order.'
+    });
+    return; // Stop the function if any field is empty
+  }
       // Loading
   Swal.fire({
     title: 'Processing your order...',

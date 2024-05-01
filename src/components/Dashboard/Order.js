@@ -42,19 +42,19 @@ const Order = () => {
   };
   
 
-
+//org
   const fetchOrders = async () => {
     const querySnapshot = await getDocs(collection(db, "orders"));
     const orderList = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-      // Doğrudan bir Date objesini string'e çeviriyoruz
+    
       date: doc.data().date ? new Timestamp(doc.data().date.seconds, doc.data().date.nanoseconds).toDate().toLocaleString() : 'No Date',
     })).sort((a, b) => {
-      // Sıralama mantığınız doğru görünüyor, burada bir değişiklik yapmaya gerek yok.
+   
       if (a.status === 'completed' && b.status !== 'completed') return 1;
       if (b.status === 'completed' && a.status !== 'completed') return -1;
-      // Tarih sıralamasını yaparken, zaten string tarihler üzerinde çalışıyoruz
+
       return b.date ? new Date(b.date).getTime() - (a.date ? new Date(a.date).getTime() : 0) : 0;
     });
     setOrders(orderList);
