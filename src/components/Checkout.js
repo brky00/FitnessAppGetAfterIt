@@ -4,9 +4,11 @@ import { db } from "./firebase-config";
 import { doc, getDoc, writeBatch,Timestamp,collection,addDoc } from "firebase/firestore"; 
 import Swal from 'sweetalert2';
 import emailjs from "emailjs-com";
+import { useNavigate } from 'react-router-dom';
 
 
 const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
+  const navigate = useNavigate();
   // State hooks for form inputs
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
@@ -35,7 +37,7 @@ const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
     e.preventDefault(); 
     
   // Check if all required fields are filled
-  if (!fullName || !address || !email || !mobileNumber || !birthDate) {
+  if (!fullName || !address || !email || !mobileNumber || !birthDate || !totalItems ) {
     Swal.fire({
       icon: 'error',
       title: 'Incomplete Form',
@@ -154,11 +156,19 @@ const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
       // Alerting the user that the order has been placed
       console.log('Your order has been ordered successfully.');
       handleRemoveAllProducts()
+      setTotalPrice(0);
+      setTotalItems(0);
       Swal.fire("Success!", "Your order has been placed successfully.", "success")
+   
       .then(() => {
         // refreshing the page
-        window.location.reload();
-      });;
+        setAddress("");
+        setBirthDate("");
+        setFullName("")
+        setMobileNumber("");
+        setEmail("");
+      });
+
       
     } catch (error) {
       console.error('An error occurred during batch processing: ', error);
@@ -222,6 +232,16 @@ const CheckoutForm = ({cartItems, handleRemoveAllProducts}) => {
             
             <div className="form-group ">
                 <button type="submit" className="submit-button submit-button-checkOut" onClick={handleCheckout}>Complete Order</button>
+            </div>
+
+                      
+            <div className=" sCardBackButtonDiv">
+              <button
+                className="btn btn-info "
+                onClick={() => navigate("/shopping")}
+              >
+                Back to Shopping card
+              </button>
             </div>
 
         

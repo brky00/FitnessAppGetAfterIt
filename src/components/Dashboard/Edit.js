@@ -5,8 +5,10 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import Swal from 'sweetalert2';
 import './Edit.css'
+import { useNavigate } from "react-router-dom";
 
 const Edit = ({selectedProduct}) => {
+  const navigate = useNavigate();
     const id= selectedProduct.id;
     console.log("Selected product id: ",id);
 
@@ -217,6 +219,7 @@ const Edit = ({selectedProduct}) => {
       <div>
         <h2 className="d-flex justify-content-center mt-4">EDIT PRODUCTS</h2>
         <hr className="v-50" />
+        <button className='btn btn-secondary ms-3' onClick={() => navigate('/dashboard')  }>Back to Dashboard</button>
 
         <form className="addForm mb-3" onSubmit={handleUpdate}>
           {/* Form data*/}
