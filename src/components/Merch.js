@@ -17,7 +17,7 @@ const Merch = ({ dbProducts}) => {
           return "col-6 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center";
       }
     };
-  //searc function
+  //search function
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };

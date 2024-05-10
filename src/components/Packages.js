@@ -3,9 +3,9 @@ import "./Packages.css";
 import image1 from "./images/image1gti.png"
 import image2 from "./images/image2gti.png"
 import image3backup from "./images/image3bulking.png"
-import { Colors } from "chart.js";
 
 
+//Packges section(on home page) code
 const Packages = () => {
   return (
     <>

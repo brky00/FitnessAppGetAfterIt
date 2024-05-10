@@ -28,7 +28,7 @@ const Logout = () => {
   };
 
   return (
-    // <button onClick={handleLogout}>Logout</button>
+   
    
     <div className='logOutDiv' onClick={handleLogout}> <i  class="fa-solid fa-right-from-bracket"></i> <span>Logg Out</span></div>
   );

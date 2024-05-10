@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 import Shopping from "./components/Shopping";
 import MerchInfo from "./components/Merchinfo";
 import Table from"./components/Dashboard/Table"
-import DashIndex from"./components/Dashboard/DashIndex"
+
 import Add from "./components/Dashboard/Add"
 import Dashboard from "./components/Dashboard/Dashboard"
 import { useEffect, useState } from "react";
@@ -70,14 +70,14 @@ function App() {
   const handleAddProduct = ({ product, selectedSize, mainImage, selectedImageName, quantity }) => {
     const productExist = cartItems.find((item) => item.id === product.id && item.productSize === selectedSize && item.selectedImgName === selectedImageName);
   
-    // Stoktaki mevcut ürün miktarını bul
+    // finding the stock quantity for avaible stock state.
     const sizeDetail = product.sizeDetails[selectedSize].find(
       detail => detail.fileName === selectedImageName
     );
     const availableStock = sizeDetail ? sizeDetail.quantity : 0;
   
     if (productExist) {
-      // Eğer ürün zaten sepete eklenmiş ve istenen miktar stok miktarını aşmıyorsa, miktarı güncelle
+      // If products is allready added in the s card and quantity is not over the stock updating the quantity here.
       if (productExist.quantity + quantity <= availableStock) {
         setCartItems(
           cartItems.map((item) => item.id === product.id && item.productSize === selectedSize && item.selectedImgName === selectedImageName
@@ -86,15 +86,15 @@ function App() {
           )
         );
       } else {
-        // Stokta yeterli ürün yoksa kullanıcıya uyarı ver
+        // if stock is not enought.
         alert("Not enough stock available");
       }
     } else {
-      // Eğer ürün sepete daha önce eklenmemişse ve stokta varsa yeni ürünü ekle
+      // If the product has not been added to the cart before and is in stock, it adds the new product.
       if (quantity <= availableStock) {
         setCartItems([...cartItems, { ...product, quantity, productSize: selectedSize, selectedImgName: selectedImageName, selectedImage: mainImage }]);
       } else {
-        // Stokta yeterli ürün yoksa kullanıcıya uyarı ver
+        // allert of stock
         alert("Not enough stock available");
       }
     }
@@ -122,7 +122,7 @@ function App() {
   
 
   const handleAddQuantity = (product) => {
-    // vi finfing products stock quantity here
+    //We finding products stock quantity here
     const productInDb = dbProducts.find(p => p.id === product.id);
     const sizeDetail = productInDb.sizeDetails[product.productSize].find(
       detail => detail.fileName === product.selectedImgName
@@ -147,10 +147,10 @@ function App() {
       }
     }
   };
-  
+  //other handle functions
   const handleRemoveAllProducts = () => {
     setCartItems([]);
-    localStorage.removeItem('cartItems'); // Clear the cart in local storage
+    localStorage.removeItem('cartItems'); // Clear the cart in local storage too.
   };
 
   const handleTotalQuantityOfProduct = ({totalItems}) => {
@@ -214,7 +214,7 @@ function App() {
   
 
 
-  
+  //React Router codes for render and navigate.
   return (
     <Router>
       <Navbar handleTotalQuantityOfProduct={handleTotalQuantityOfProduct} cartItems={cartItems}/>
@@ -231,7 +231,7 @@ function App() {
         <Route path="/addProduct" element={<Add/>}/>
         <Route path="/dashOrder" element={<Order/>}/>
         <Route path="/editProduct" element={<Edit selectedProduct={selectedProduct} />}/>
-        <Route path="/dashIndex" element={<DashIndex/>}/>
+       
         <Route path="/dashboard" element={ <AuthChecker> <Dashboard /> </AuthChecker>}/>
         <Route path="/checkout" element={<CheckoutForm totalPrice={totalPrice} totalQuantity={totalQuantity} cartItems={cartItems} handleRemoveAllProducts={handleRemoveAllProducts} />}/>  
         <Route path="/orderDetails" element={<OrderDetails/>}/>

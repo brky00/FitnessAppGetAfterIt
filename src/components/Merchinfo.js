@@ -218,7 +218,7 @@ console.log("mainimage exist",mainImage);
     };
   
 
-  // Size butonu tıklama olayını işleyen fonksiyon
+  // Calling tis function after click on a size and update the selected size.
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
@@ -236,7 +236,7 @@ console.log("mainimage exist",mainImage);
     }
   };
 
-  // MerchInfo.js içinde handleButtonClick fonksiyonu
+
 
 
 
@@ -247,7 +247,7 @@ console.log("mainimage exist",mainImage);
     // if exists destructuring 
 
 
-
+//This is codes we used under deleoping to test on console.
     console.log("++++++selected size ",selectedSize)
     console.log("main image last",mainImage);
     console.log("selectedImage",selectedImageName);
@@ -320,8 +320,7 @@ console.log("mainimage exist",mainImage);
                     </div>
                     <div className="col d-flex justify-content-center">
                       <div>
-                        {/* <p className="merch-description mb-2">{productName}</p> */}
-
+                      
                         <p className="merch-price d-flex justify-content-center">{`NOK ${price}`}</p>
                       </div>
                     </div>

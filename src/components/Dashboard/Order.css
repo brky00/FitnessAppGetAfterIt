@@ -13,8 +13,8 @@
 
 
 .table {
-    border-collapse: separate; /* CSS border-radius ile uyumlu hale getirir */
-    border-spacing: 0; /* Kenar boşluklarını kaldırır */
+    border-collapse: separate; /* CSS tilpasser border-radius  */
+    border-spacing: 0; /* removing the spaces */
 }
 
 .table thead tr:first-child th:first-child {
@@ -24,12 +24,12 @@
 
 
 .table thead tr:first-child th:last-child {
-    border-top-right-radius: 8px; /* Sağ üst köşeye border-radius ekler */
+    border-top-right-radius: 8px; /*  adding border-radius right corner up there   */
 }
 
 .orderTable thead th {
-  background-color: blue; /* Bootstrap'in birincil mavi rengi */
-  color: white; /* Metin rengini beyaz yapar */
+  background-color: blue; /* blue color*/
+  color: white; /* Making text white */
 }
 
 
@@ -87,8 +87,8 @@ right: 40px;
 }
 
 .orderTable .order-completed {
-  background-color: #ced4da !important; /* !important kullanarak Bootstrap stilini geçersiz kılın */
-  --bs-table-bg: #ced4da !important; /* Eğer Bootstrap değişkeniyle çakışma varsa */
+  background-color: #ced4da !important; 
+  --bs-table-bg: #ced4da !important; 
 }
 
 

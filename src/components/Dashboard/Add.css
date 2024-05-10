@@ -1,9 +1,4 @@
- /* body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}  */
-
+/*This is the container for the add page*/
 .add-container {
   max-width: 1500px;
   margin: 0 auto;
@@ -12,7 +7,7 @@
 
 
 
-
+/*style/css for form*/
 .addForm {
   background-color: #fff;
   border-radius: 8px;
@@ -25,6 +20,7 @@
   margin-bottom: 10px;
 }
 
+/*Styling input here*/
 .addForm input[type="text"],
 .addForm select {
   width: 100%;
@@ -34,6 +30,7 @@
   border-radius: 4px;
 }
 
+/*stylign form add button here*/
 .addForm button {
   background-color: #007bff;
   color: #fff;
@@ -43,6 +40,7 @@
   cursor: pointer;
 }
 
+/*this is hover*/
 .addForm button:hover {
   background-color: #0056b3;
 }
@@ -60,6 +58,7 @@
   margin-bottom: 10px;
 }
 
+/*code for size selections*/
 .size-section {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +69,7 @@
   margin-right: 10px;
 }
 
-/* Responsive */
+/* Responsive code */
 @media (max-width: 767px) {
   .container {
     padding: 10px;

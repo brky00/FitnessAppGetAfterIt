@@ -7,7 +7,7 @@ import deadliftImage from "./images/deadlift.jpg";
 import clientImage1 from "./images/aboutUsIMGs/clientImage1.jpg";
 import clientImage2 from "./images/aboutUsIMGs/clientImage2.jpg";
 
-
+//This is the code of about us section on the home page. It will be called from parent File/Page.
 
 const About = () => {
   return (

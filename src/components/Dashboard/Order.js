@@ -22,7 +22,7 @@ const Order = () => {
 
 
 
-
+//Update of products function
   const openStatusUpdate = (order) => {
     setCurrentOrder(order);
     setShowStatusUpdate(true);
@@ -42,7 +42,7 @@ const Order = () => {
   };
   
 
-//org
+//Fetching orders from the database and sort dem after date to show them in the order table.
   const fetchOrders = async () => {
     const querySnapshot = await getDocs(collection(db, "orders"));
     const orderList = querySnapshot.docs.map((doc) => ({
@@ -61,7 +61,7 @@ const Order = () => {
     setFilteredOrders(orderList);
   };
   
-
+//Useffect to calling fetchorders automatic.
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -78,7 +78,7 @@ const Order = () => {
   console.log("orders from database: ", orders);
   console.log("currentOrder:", currentOrder); 
 
-
+//searched order customer tel number state is updated here
   const handleSearchChange = (e) => {
     setseacrhNumberExist(false);
     setSearchTelNo(e.target.value);
@@ -93,7 +93,7 @@ const Order = () => {
     console.log("Existing telNos in orders:", orders.map(order => order.telNo));
   
     if (normalizedSearchTerm) {
-      // Filtreren basert på tel no
+      // Filter based on tel no.
       const filtered = orders.filter(order => String(order.telNo).trim() === normalizedSearchTerm);
       console.log("Filtered results:", filtered);
       setFilteredOrders(filtered);
@@ -105,12 +105,9 @@ const Order = () => {
     }
   };
   
-
+//Code for test the data on console under developing.
   console.log("telNo: ",filteredOrders);
   console.log("searchTelNo ", searchTelNo);
-
-
-  
 
   
     return (
@@ -142,7 +139,7 @@ const Order = () => {
           {showPendingOnly ? 'Show All Orders' : 'Show Only New Orders'}
         </button>
       </div>
-       {/* Arama çubuğu ve buton */}
+       {/* search input and button */}
        <div className="search-bar-order d-flex justify-content-end me-5">
         <input
           type="text"
@@ -157,7 +154,7 @@ const Order = () => {
       </div>
          
          
-
+        {/*The code after click on the gear icon to update/action.This click will make the showStatusUpdate state true and update the currentOrder  */}
           {showStatusUpdate && currentOrder &&(
             <div>
               <div className="status-update-modal-div">
@@ -195,7 +192,7 @@ const Order = () => {
           )}
 
     
-
+     {/*Table and collons here */}
         <div className="table-responsive order-table-responsive ms-4 me-4">
           <table className="table orderTable">
             <thead>

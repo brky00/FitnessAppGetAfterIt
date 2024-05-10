@@ -1,3 +1,4 @@
+/*left side of the page*/
 .leftSideCol{
     border-style: solid;
     border-style: ridge;
@@ -53,6 +54,8 @@
   width: 100%;
   height: 400px; 
 }
+
+/*responsive code is here*/
 
  @media screen and (max-width: 768px) {
   .sales-chart-container {
@@ -117,10 +120,7 @@ border-bottom: none;
 }
 
 
-/* 
-  .sales-chart-container {
-    height: 200px; 
-  } */
+
 
 
 

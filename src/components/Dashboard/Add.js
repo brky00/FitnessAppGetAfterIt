@@ -32,7 +32,7 @@ const Add = () => {
   const [sizeQuantities, setSizeQuantities] = useState({});
   const [imagesName, setImagesName] = useState(null);
 
-  //new
+  // important usestates
   const [fileQuantities, setFileQuantities] = useState({});
   const [fileNames, setFileNames] = useState([]);
   const [uploadedFilesInfo, setUploadedFilesInfo] = useState({}); // Yüklenen dosyaların bilgilerini tutacak state
@@ -41,6 +41,8 @@ const Add = () => {
   const [mainFileName, setMainFileName] = useState(null);
 
   const types = ["image/png", "image/jpeg"];
+
+  //handle funcyiones are down here for adding of product
 
   const handleImageChangeForSize = async (size, files) => {
     const uploads = Array.from(files).map(async (file) => {
@@ -59,6 +61,7 @@ const Add = () => {
     }));
   };
 
+  //Update quantity function here
   const updateQuantityForFile = (size, fileName, quantity) => {
     setSizeQuantities((prev) => ({
       ...prev,
@@ -69,7 +72,7 @@ const Add = () => {
       ),
     }));
   };
-
+//when the size state is updated whith sizes which are in the stock will the code render them here.
   const renderQuantityInputsForSize = (size) =>
     sizeQuantities[size]?.map((file) => (
       <div key={file.fileName}>
@@ -85,6 +88,7 @@ const Add = () => {
       </div>
     ));
 
+    //the code calling this function after adding main image 
   const handleMainImageChange = async (e) => {
     const file = e.target.files[0];
     const mainName = file.name;
@@ -115,6 +119,7 @@ const Add = () => {
     return imageUrl;
   };
 
+  //If the size(value) is in our standards(sizes) wil the code update this size.
   const handleSizeChange = (e) => {
     const value = e.target.value;
     setSizes(
@@ -124,6 +129,7 @@ const Add = () => {
     );
   };
 
+  //function to select all of the sizes
   const handleSelectAllSizes = () => {
     if (sizes.length === dbsizesLength) {
       setSizes([]);
@@ -132,6 +138,7 @@ const Add = () => {
     }
   };
 
+  //this is for to get valid  price 100%
   const handlePriceChange = (e) => {
     const value = e.target.value;
 
@@ -162,7 +169,7 @@ const Add = () => {
     }
 
     try {
-      // Firestore saving
+      // Firestore saving code
       const docRef = await addDoc(collection(db, "products"), {
         productName: productName,
         description: productDescription,
@@ -172,7 +179,7 @@ const Add = () => {
         productMainName: mainFileName,
         allSizes: dbSizes,
       });
-
+//if it's succesfully added(try in this case) will we het a feedback on the browser. If not catch will get the error and give the feedback about this too.
       Swal.fire("Sucsess!", "The new product is added.", "success");
       
     } catch (error) {
@@ -185,13 +192,10 @@ const Add = () => {
     }
   };
 
-  // const handleInStockChange = (e) => {
-  //   setIsInStock(e.target.value === "true");
-  // };
 
   // Add Form data code to print out in the console to see and check the data as test...
   console.log("Submitted price:", productPrice);
-  // here we see the images in console
+  // here we see the price in console. (f12) . For testing.
 
   // console.log("new size hre:",newSize);
   console.log("db sizes here:", dbSizes);
@@ -305,7 +309,7 @@ const Add = () => {
                           />
                         </div>
 
-                        {/* quantity */}
+                        {/* quantity inputs come here when that calling the function*/}
                         <div className="quantity-inputs-container">
                           {renderQuantityInputsForSize(size)}
                         </div>
@@ -339,28 +343,9 @@ const Add = () => {
               />
             </div>
 
-            {/*In stock check true/false choose here*/}
+          
             <div className="mb-3">
-              {/* <label className="form-label">Stock Status</label>
-              <div>
-                <input
-                  type="radio"
-                  value="true"
-                  name="stockStatus"
-                  checked={isInStock === true}
-                  onChange={handleInStockChange}
-                />{" "}
-                In Stock
-                <input
-                  type="radio"
-                  value="false"
-                  name="stockStatus"
-                  checked={isInStock === false}
-                  onChange={handleInStockChange}
-                  className="ms-2"
-                />{" "}
-                Out of Stock
-              </div> */}
+             
             </div>
             <button type="submit" className="btn btn-success btn-md mybtn">
               ADD

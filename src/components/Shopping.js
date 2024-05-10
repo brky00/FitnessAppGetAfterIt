@@ -6,10 +6,8 @@ import shoppingCardIsEmpity from "./images/shoppingCardEmpty.png";
 import { Link } from "react-router-dom";
 import CheckoutForm from "./Checkout";
 
-//Neworginal origin Neworginalo+ nEWWWWWW New
-//Hello
 
-
+//In this file we have the shopping card container and rest of the s card components(frontend).And we call the children(ProductShoppingCard) here for each product which is added to s card dynamically.
 const Shopping = ({
   cartItems,
   handleAddProduct,
@@ -94,7 +92,7 @@ useEffect(() => {
             </div>
             {/* Summary Row start*/}
             <div className="remove-all-div">
-              {/* Sepetten tüm ürünleri kaldır butonu */}
+              {/* remove all of the products from s card button */}
               <button
                 onClick={handleRemoveAllProducts}
                 className="remove-all-btn"

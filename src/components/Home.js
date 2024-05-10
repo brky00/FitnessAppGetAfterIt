@@ -33,22 +33,22 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About section delen */}
+      {/* About section calling we here */}
       <section id="about">
         <About />
       </section>
 
-      {/* Instagram */}
+      {/* Instagram called*/}
       <section id="instagram">
         <Instagram />
       </section>
 
-      {/* Packages  */}
+      {/* Packages called  */}
       <section id="packages">
         <Packages />
       </section>
 
-      {/*Footer */}
+      {/*Footer called */}
       <Footer />
     </>
   );

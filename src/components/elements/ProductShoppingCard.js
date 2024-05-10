@@ -8,9 +8,8 @@ const ProductShoppingCard = ({
   handleAddQuantity,
 }) => {
   console.log("item scard¤", item);
-  // const {image, price,name,description ,handleAddProduct}=item;
-  // 
-  
+  //It was to test s card items on console
+
   return (
     <div className="container">
       <div className="row mb-1 d-flex justify-content-center sCardProductRow">
@@ -34,7 +33,7 @@ const ProductShoppingCard = ({
           </div>
         </div>
         <div className="col-4 col-md-4 col-lg-4 d-flex align-items-center justify-content-center mt-1 mb-2">
-          {/* İçerik */}
+          {/* quantity container*/}
           <div className="quantity-container">
             <button
               onClick={() => handleAddQuantity(item)}
@@ -54,7 +53,7 @@ const ProductShoppingCard = ({
           </div>
         </div>
         <div className="col-4 col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
-          {/* İçerik */}
+          {/* total price div*/}
           <div className="col-4 col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
             <span className="productPrice d-flex align-items-center justify-content-center">
               {`NOK ${item.price * item.quantity}`}

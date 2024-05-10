@@ -17,11 +17,7 @@ body {
   margin-bottom: 25px;
   padding: 90px;
 }
-/* Dette justerer mellomrommet mellom product radet og titlene(product size osv.)
- .sCardContainer2 {
-  
-  margin-top: 20px;
-} */
+
 
 .productRow{
   border-bottom: solid #c8b479;

@@ -17,9 +17,7 @@
     margin-right: auto; 
   }
   
-  /* .PackakesTitle{
-    text-decoration: underline;
-  } */
+
   .PackagesTitle {
     position: relative; 
     display: inline-block; 
@@ -84,9 +82,9 @@
     margin-bottom: 10px;
   }
 
-
+/*Code for responsive design*/
 @media (max-width: 767px) {
-  /* Card başlıklarının stilleri */
+
   .cardTitle-no-responsive {
       display: none;
   }
@@ -127,7 +125,7 @@
   }
 
   @media (max-width: 767px) {
-    /* Card başlıklarının stilleri */
+  
     .packagecontact {
         font-size: 15px;
     }

@@ -4,7 +4,7 @@ import { collection, query, where, getDocs, updateDoc, doc,orderBy } from 'fireb
 import Swal from 'sweetalert2';
 import './Usercontact.css';
 import { useNavigate } from 'react-router-dom';
-
+//Code fdor the page whick show the user contact form data.
 const Usercontact = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +12,7 @@ const Usercontact = () => {
   const [isSearchMade, setIsSearchMade] = useState(false);
   const [emailList, setEmailList] = useState([]);
   const [statusFilter, setStatusFilter] = useState('unread');
-
+//Fetching all of user including old users who are the admin allready read from the firestore.
   const fetchContacts = async (filter = 'all') => {
     let q = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
     if (filter === 'unread') {
@@ -52,6 +52,7 @@ const Usercontact = () => {
     }
   };
 
+  //When the admin will change to read of form status will the code call this function.
   const updateStatusToRead = async (id) => {
     try {
       const contactRef = doc(db, 'contacts', id);
@@ -91,6 +92,7 @@ const Usercontact = () => {
         <button className='btn btn-info me-2' onClick={() => setStatusFilter('all')}>All Contact Forms</button>
         <button className='btn btn-warning' onClick={() => setStatusFilter('unread')}>Unread Emails</button>
       </div>
+      {/* Here is the list of user contacts. And dynbamicly styling each rows based on if they are read or unread */}
       <div className="email-list">
         <ul>
           {emailList.map((contact, index) => (

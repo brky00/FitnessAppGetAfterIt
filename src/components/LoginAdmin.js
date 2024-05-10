@@ -12,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
-    // funksjon for  å logge inn brukeren med epost og passord
+    // function for login with mail and password.
     const handleLogin = (e) => {
         e.preventDefault();
         Swal.fire({
@@ -59,7 +59,7 @@ const Login = () => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error('Error logging in: ', errorCode, errorMessage);
-                // implement kode for login error melding
+                // error feedback,
             });
     };
     return(

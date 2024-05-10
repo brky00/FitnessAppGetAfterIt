@@ -1,7 +1,7 @@
 import { InstagramEmbed } from 'react-social-media-embed';
 import './Instagram.css';
 
-
+//react-social-media-embed will use the instagram APIS from the framework and get the instagram profil/contents of our client dynamically.
 const Instagram = () => {
   return (
     <>

@@ -8,6 +8,7 @@ import './Edit.css'
 import { useNavigate } from "react-router-dom";
 
 const Edit = ({selectedProduct}) => {
+  //Navigate object is created for navigating to other pages. It comes from React Router Dom.
   const navigate = useNavigate();
     const id= selectedProduct.id;
     console.log("Selected product id: ",id);
@@ -15,12 +16,10 @@ const Edit = ({selectedProduct}) => {
 
   const [dbSizes, setDbSizes] = useState(['XXS','XS','S', 'M', 'L', 'XL', 'XXL']);
   const dbsizesLength = dbSizes.length;
-  // const [addNewSize, setAddNewSize] = useState(false);
   const [error, setError] = useState('');
   const [productPrice, setProductPrice] = useState(0);
   const [productQuantity, setProductQuantity] = useState(0);
   const [sizes, setSizes] = useState([]);
-  // const [newSize, setNewSize] = useState("");
   const [productSelectionImgs, setProductSelectionImgs] = useState({});
   const [isInStock, setIsInStock] = useState(true); 
   const [productMainImage, setProductMainImage] = useState(null); 
@@ -29,7 +28,7 @@ const Edit = ({selectedProduct}) => {
   const [sizeQuantities, setSizeQuantities] = useState({});
   const [imagesName,setImagesName] = useState(null);
 
-  //new
+ 
   const [fileQuantities, setFileQuantities] = useState({});
   const [fileNames, setFileNames] = useState([]);
   const [uploadedFilesInfo, setUploadedFilesInfo] = useState({}); // Yüklenen dosyaların bilgilerini tutacak state
@@ -39,13 +38,13 @@ const Edit = ({selectedProduct}) => {
   console.log("selectedProduct: ",selectedProduct);
 
 
-
+//Whole function to update edits
   const handleUpdate = async (e) => {
     e.preventDefault();
   
-    // object for updated
+    // object for updated.
     let updatePayload = {};
-  
+    //States for updated item 
     if (productName) updatePayload.productName = productName;
     if (productDescription) updatePayload.description = productDescription;
     if (productPrice) updatePayload.price = Number(productPrice);
@@ -92,6 +91,7 @@ const Edit = ({selectedProduct}) => {
   const types = ['image/png', 'image/jpeg']
 
 
+  //other functions for update of edits
   
   const handleImageChangeForSize = async (size, files) => {
     const uploads = Array.from(files).map(async (file) => {

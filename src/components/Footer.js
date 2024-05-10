@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Footer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
-
+//Footer code
 const Footer = () => {
   return (
     <footer className="mt-5 footer">

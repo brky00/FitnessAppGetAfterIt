@@ -15,7 +15,7 @@ const OrderDetails = () => {
     const navigate = useNavigate();
 
 
-  
+  //Frontend code of the page
     return (
       <>
       <header>

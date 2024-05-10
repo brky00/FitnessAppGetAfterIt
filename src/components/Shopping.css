@@ -20,7 +20,7 @@
     font-size: large;
  
     height: 52px;
-    padding: 30px 20px 30px 20px; /* Yatay padding ayarı, içeriğe bağlı olarak genişliği ayarlar */
+    padding: 30px 20px 30px 20px; 
     margin-top: 10px;
     margin-bottom: 10px;
     gap: 18px;
@@ -113,7 +113,7 @@
     }
 
     .summaryContainer {
-      gap: 3px; /* İçerikler arası boşluk azaltıldı */
+      gap: 3px; 
       padding: 5px;
     }
 

@@ -2,11 +2,11 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './Table.css'
-
+//This is the code of Product Management page.
 const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
   console.log("db products management", dbProducts);
   const navigate = useNavigate();
-
+//header and the table used. Used bootstrap class style code names for a responsive table.
   return (
     <>
            <header className='mt-4 product-table-header'>
@@ -26,7 +26,7 @@ const Table = ({ dbProducts, handleDeleteProduct,handleEditProduct }) => {
               <th scope="col">Main Image</th>
             
               <th scope="col">Stock and selection images of each size</th>
-              {/* <th scope="col">Selection Images</th> */}
+          
              
               <th className="text-center" colSpan={2} scope="col">
                 Actions
