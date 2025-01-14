@@ -37,7 +37,7 @@ The admin page for this project is hosted at the following URL:
 To set up the project locally, follow these steps: 
 
 1. **Clone the repository**: 
- git clone https://github.com/Howie02/APP2000-Get-After-It.git 
+ git clone https://github.com/brky00/FitnessAppGetAfterIt.git
 
 2. **Navigate to the project directory**: 
 cd APP2000-Get-After-It 
