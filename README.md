@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Get After It E-Commerce Website for Gym/Fitness Products and Online Coaching Services
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This e-commerce website is developed using React.js and Firebase by Berkay Caglar, designed to cater to a fitness-focused audience. It features a robust admin panel for product and order management, user authentication, and an interactive user interface for placing orders without a real payment system.
 
-## Available Scripts
+## Project Overview
+## Hosted Admin Page
+The admin page for this project is hosted at the following URL:
 
-In the project directory, you can run:
+- **URL:** https://app2000-gym-nettside.web.app/
+- **Login Credentials for Admin page:**
+  - **Username:** berkaytest@gmail.com
+  - **Password:** github123
 
-### `npm start`
+### Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Admin Authentication**: Secure login system for admins to manage the backend operations.
+- **Product Management**: Admins can add, remove, or update product details and manage inventory through the dashboard.
+- **Order Management**: Admins can view and manage orders, including details like order ID, customer information, and order status.
+- **User Interface**: Users can navigate between sections and different pages on the homepage, browse merchandise products, add them to their cart, and place orders by only providing personal and address details.
+- **Interactive Alerts**: Utilizes SweetAlert2 for dynamic feedback on user actions.
+- **Email Integration**: Uses Email.js for sending confirmation emails to users.
+- **Social Media Integration**: Embedded Instagram content using React Social Media Embed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Technologies
 
-### `npm test`
+- **Frontend**: React.js and React DOM for building the user interface.
+- **Backend**: Firebase, which provides authentication, Firestore database, and storage solutions.
+- **Routing**: React Router DOM for handling in-app navigation.
+- **Styling**: FontAwesome for icons.
+- **Charting**: Chart.js and React-Chartjs-2 for data visualization in the admin dashboard.
+- **Other Libraries**:
+  - SweetAlert2 for alert messages.
+  - Email.js for managing email functionalities.
+  - React Social Media Embed for integrating social media content.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation 
+To set up the project locally, follow these steps: 
 
-### `npm run build`
+1. **Clone the repository**: 
+ git clone https://github.com/Howie02/APP2000-Get-After-It.git 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Navigate to the project directory**: 
+cd APP2000-Get-After-It 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Install dependencies**: 
+npm install 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Start the development server**: 
+npm start 
 
-### `npm run eject`
+ 
+## Usage 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Admins**: Log in through the admin panel to access contact forms, product and order management features. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Users**: Visit and navigate the site, browse products,send contact form and place orders by entering necessary personal information. 
